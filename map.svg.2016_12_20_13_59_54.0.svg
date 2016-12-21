@@ -1,0 +1,2216 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="map.svg">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker32057"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path32059" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker31525"
+       style="overflow:visible;"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path31527"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker31007"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:collect="always">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path31009" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker30529"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path30531" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker30057"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path30059" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker29591"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path29593" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker29131"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path29133" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker28677"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path28679" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker28229"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path28231" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker27787"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path27789" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker27351"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path27353" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker26921"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path26923" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker26497"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path26499" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker26073"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path26075" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker25661"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path25663" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker25255"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path25257" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker24855"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path24857" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path5011"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker22827"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path22829" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker21601"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path21603" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker21219"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path21221" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker20843"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path20845" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker20473"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path20475" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker20109"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path20111" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker19751"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path19753" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker19399"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path19401" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker19053"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path19055" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker18713"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path18715" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker18379"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path18381" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker18051"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path18053" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker17729"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path17731" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker17413"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path17415" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker16779"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path16781" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker16469"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path16471" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker16165"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path16167" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker15867"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path15869" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker15575"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path15577" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker15289"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path15291" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker15009"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path15011" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker14735"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path14737" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker14467"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path14469" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker14205"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path14207" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker13949"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path13951" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker13699"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path13701" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker13455"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path13457" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker13217"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path13219" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker12985"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path12987" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker12293"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path12295"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker12073"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path12075"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker11859"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path11861"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker11651"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path11653"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker11449"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path11451"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker11253"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path11255"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker11063"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path11065"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker10879"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path10881"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker10701"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path10703"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker10529"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path10531"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker10363"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path10365"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker10203"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path10205"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker10049"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path10051"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker9901"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path9903"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker9301"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path9303" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker9165"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path9167" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker9035"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path9037" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker8911"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path8913" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker8793"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path8795" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker8681"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path8683" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker8575"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path8577" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker8475"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path8477" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker8381"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path8383" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker8293"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path8295" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker8211"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path8213" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker8135"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path8137" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker8065"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="scale(0.8) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path8067" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker5844"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path5846"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker5660"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path5662"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker5548"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path5550"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker5454"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path5456"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker5322"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path5324"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round;stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(0.6) rotate(180) translate(0,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Mend"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path5035"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round;stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(0.6) rotate(180) translate(0,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Mstart"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path5032"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round;stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(0.6) translate(0,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="-5958.6094"
+     inkscape:cy="7376.866"
+     inkscape:document-units="px"
+     inkscape:current-layer="g4741-9-4"
+     showgrid="false"
+     showborder="false"
+     inkscape:window-width="1962"
+     inkscape:window-height="2121"
+     inkscape:window-x="1874"
+     inkscape:window-y="18"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       sodipodi:linespacing="125%"
+       id="text4916"
+       y="2298.4248"
+       x="-1165.5869"
+       style="font-style:normal;font-weight:normal;font-size:80px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="2298.4248"
+         x="-1165.5869"
+         id="tspan4918"
+         sodipodi:role="line">Other Robots:</tspan><tspan
+         id="tspan4920"
+         y="2398.4248"
+         x="-1165.5869"
+         sodipodi:role="line">* Autonomuos tractor University of Kopenhagen</tspan><tspan
+         id="tspan4922"
+         y="2498.4248"
+         x="-1165.5869"
+         sodipodi:role="line">* Hortibot</tspan><tspan
+         id="tspan4924"
+         y="2598.4248"
+         x="-1165.5869"
+         sodipodi:role="line">* Weedy</tspan><tspan
+         y="2698.4248"
+         x="-1165.5869"
+         sodipodi:role="line"
+         id="tspan6190">* Autonomous Plant Inspection (API) research platform</tspan><tspan
+         y="2798.4248"
+         x="-1165.5869"
+         sodipodi:role="line"
+         id="tspan6196">* Robomow - Friendly Robotics</tspan><tspan
+         y="2898.4248"
+         x="-1165.5869"
+         sodipodi:role="line"
+         id="tspan6202">* Macrobe</tspan><tspan
+         y="2998.4248"
+         x="-1165.5869"
+         sodipodi:role="line"
+         id="tspan6160" /><tspan
+         y="3098.4248"
+         x="-1165.5869"
+         sodipodi:role="line"
+         id="tspan6162">Stuff:</tspan><tspan
+         y="3198.4248"
+         x="-1165.5869"
+         sodipodi:role="line"
+         id="tspan6164">* RTK-GPS</tspan><tspan
+         y="3298.4248"
+         x="-1165.5869"
+         sodipodi:role="line"
+         id="tspan6166" /><tspan
+         y="3398.4248"
+         x="-1165.5869"
+         sodipodi:role="line"
+         id="tspan6168">Relevant keywords:</tspan><tspan
+         y="3498.4248"
+         x="-1165.5869"
+         sodipodi:role="line"
+         id="tspan6170">*Autonomous vehicles</tspan><tspan
+         y="3598.4248"
+         x="-1165.5869"
+         sodipodi:role="line"
+         id="tspan6172">*Agricultural robots</tspan></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3336"
+       style="fill:black;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;font-family:Sans;font-style:normal;font-weight:normal;font-size:40px;line-height:125%;letter-spacing:0px;word-spacing:0px"><flowRegion
+         id="flowRegion3338"><rect
+           id="rect3340"
+           width="1897.1428"
+           height="3308.5715"
+           x="-754.28571"
+           y="-1407.6378" /></flowRegion><flowPara
+         id="flowPara3342"></flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3350"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"><flowRegion
+         id="flowRegion3352"><rect
+           id="rect3354"
+           width="1331.3811"
+           height="1874.8431"
+           x="-666.70068"
+           y="-1299.2729" /></flowRegion><flowPara
+         id="flowPara3362" /></flowRoot>    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-777.81744"
+       y="409.90518"
+       id="text3735"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3737"
+         x="-777.81744"
+         y="409.90518" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-901.05609"
+       y="626.07782"
+       id="text3739"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3741"
+         x="-901.05609"
+         y="626.07782">Diagram of sensor placement</tspan><tspan
+         sodipodi:role="line"
+         x="-901.05609"
+         y="676.07782"
+         id="tspan3743">Lidar units and visibility</tspan><tspan
+         sodipodi:role="line"
+         x="-901.05609"
+         y="726.07782"
+         id="tspan3745">All electric drive system based on ackermann steering</tspan><tspan
+         sodipodi:role="line"
+         x="-901.05609"
+         y="776.07782"
+         id="tspan3747">Sevcons modified to allow for direct CAN control.</tspan><tspan
+         sodipodi:role="line"
+         x="-901.05609"
+         y="826.07782"
+         id="tspan3749">Power system and battery pack</tspan><tspan
+         sodipodi:role="line"
+         x="-901.05609"
+         y="876.07782"
+         id="tspan3751">power-gen capable of charging battery pack approx 24hour duty</tspan><tspan
+         sodipodi:role="line"
+         x="-901.05609"
+         y="926.07782"
+         id="tspan3753">Drive motors used as steering motors</tspan><tspan
+         sodipodi:role="line"
+         x="-901.05609"
+         y="976.07782"
+         id="tspan3755">Control based on ROS, complete with gazebo simulation</tspan><tspan
+         sodipodi:role="line"
+         x="-901.05609"
+         y="1026.0779"
+         id="tspan3757">State the turning circle.</tspan><tspan
+         sodipodi:role="line"
+         x="-901.05609"
+         y="1076.0779"
+         id="tspan3759">State the mass and payload capability</tspan><tspan
+         sodipodi:role="line"
+         x="-901.05609"
+         y="1126.0779"
+         id="tspan3769">Show the area for drop-on modules (diagram)</tspan><tspan
+         sodipodi:role="line"
+         x="-901.05609"
+         y="1176.0779"
+         id="tspan3765">Integrated bin lifting mechanism</tspan><tspan
+         sodipodi:role="line"
+         x="-901.05609"
+         y="1226.0779"
+         id="tspan7111">Platform electronics</tspan><tspan
+         sodipodi:role="line"
+         x="-901.05609"
+         y="1276.0779"
+         id="tspan7115" /><tspan
+         sodipodi:role="line"
+         x="-901.05609"
+         y="1326.0779"
+         id="tspan7117">Good refrence for layout and diagrams = Agricultural Robotic Platform with Four Wheel Steering for Weed Detection</tspan><tspan
+         sodipodi:role="line"
+         x="-901.05609"
+         y="1376.0779"
+         id="tspan7113" /><tspan
+         sodipodi:role="line"
+         x="-901.05609"
+         y="1426.0779"
+         id="tspan3767" /><tspan
+         sodipodi:role="line"
+         x="-901.05609"
+         y="1476.0779"
+         id="tspan3763" /><tspan
+         sodipodi:role="line"
+         x="-901.05609"
+         y="1526.0779"
+         id="tspan3761" /></text>
+    <g
+       id="g4757"
+       transform="translate(3011.6574,-4572.9317)">
+      <rect
+         y="-1513.3522"
+         x="-885.71429"
+         height="1251.4286"
+         width="960"
+         id="rect3899"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+      <flowRoot
+         transform="translate(6.6140747,-0.97275907)"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot3371"
+         xml:space="preserve"><flowRegion
+           id="flowRegion3373"><rect
+             style="text-align:center;text-anchor:middle;fill:#000000"
+             y="-1418.4709"
+             x="-840.4469"
+             height="1454.6196"
+             width="854.58905"
+             id="rect3375" /></flowRegion><flowPara
+           id="flowPara3377">BoniRob: an autonomous field robot platform for individual plant phenotyping</flowPara><flowPara
+           id="flowPara3567" /><flowPara
+           id="flowPara3599">Ruckelshausen, A</flowPara><flowPara
+           id="flowPara3379" /><flowPara
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;font-family:Sans;-inkscape-font-specification:'Sans Italic';fill:#000000"
+           id="flowPara3381">Proceedings of Joint International Agricultural Conference (2009)</flowPara><flowPara
+           id="flowPara3601" /><flowPara
+           id="flowPara3603" /><flowPara
+           style="font-size:25px;fill:#000000"
+           id="flowPara3563">Four wheel hub motors with hydraulics. Spectral imaging, 3D time-of-flight cameras, RTK-DGPS for plant phenotyping. Can change its height. Mention a Gazebo-based 3D simultated environment. Refer the the robot as a scout platform.</flowPara><flowPara
+           id="flowPara3713"
+           style="font-size:25px;fill:#000000" /><flowPara
+           id="flowPara3715"
+           style="font-size:25px;fill:#000000">Have identified that robustness is a major hindrance for the introduction of a first prototype of an autonomouse agricultral field robot.</flowPara><flowPara
+           id="flowPara3719"
+           style="font-size:25px;fill:#000000" /><flowPara
+           id="flowPara3721"
+           style="font-size:25px;fill:#000000">Suggest that since the devleopment of agricultural robot is complex that the application should be of comparably low complexity.</flowPara><flowPara
+           id="flowPara3723"
+           style="font-size:25px;fill:#000000" /><flowPara
+           id="flowPara3725"
+           style="font-size:25px;fill:#000000">Identified crop scouting as ideal first application of autonomous platform.</flowPara><flowPara
+           id="flowPara3727"
+           style="font-size:25px;fill:#000000" /><flowPara
+           id="flowPara3731"
+           style="font-size:25px;fill:#000000">Internal system communication is via ethernet, with CAN used on lower levels.</flowPara><flowPara
+           id="flowPara3717"
+           style="font-size:25px;fill:#000000" /><flowPara
+           id="flowPara3573" /><flowPara
+           style="font-size:35px;fill:#000000"
+           id="flowPara3575">Ruckelshausen2009</flowPara></flowRoot>    </g>
+    <g
+       id="g4741"
+       transform="translate(3867.611,-4892.9871)">
+      <rect
+         y="-1339.0664"
+         x="714.28571"
+         height="1251.4286"
+         width="960"
+         id="rect3899-7"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+      <flowRoot
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot3371-3"
+         xml:space="preserve"
+         transform="translate(1606.2369,435.81301)"><flowRegion
+           id="flowRegion3373-6"><rect
+             style="text-align:center;text-anchor:middle"
+             y="-1418.4709"
+             x="-840.4469"
+             height="1454.6196"
+             width="854.58905"
+             id="rect3375-7" /></flowRegion><flowPara
+           id="flowPara3377-5">Weedy -- a sensor fusion based autonomous field robot for selective weed control</flowPara><flowPara
+           id="flowPara3567-3" /><flowPara
+           id="flowPara3599-5">Klose, R</flowPara><flowPara
+           id="flowPara3379-6" /><flowPara
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;font-family:Sans;-inkscape-font-specification:'Sans Italic'"
+           id="flowPara3381-2">Land.Technik 2008</flowPara><flowPara
+           id="flowPara3603-1" /><flowPara
+           id="flowPara3731-2"
+           style="font-size:25px" /><flowPara
+           id="flowPara3717-6"
+           style="font-size:25px">stsientirsten</flowPara><flowPara
+           id="flowPara3573-1" /><flowPara
+           style="font-size:35px"
+           id="flowPara3575-8">Klose2008</flowPara></flowRoot>    </g>
+    <g
+       transform="translate(-2602.8571,1825.7143)"
+       id="g4741-9">
+      <flowRoot
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot3371-3-2"
+         xml:space="preserve"
+         transform="translate(1606.2369,435.81301)"><flowRegion
+           id="flowRegion3373-6-0"><rect
+             style="text-align:center;text-anchor:middle"
+             y="-1418.4709"
+             x="-840.4469"
+             height="1454.6196"
+             width="854.58905"
+             id="rect3375-7-2" /></flowRegion><flowPara
+           id="flowPara3377-5-3">Template</flowPara><flowPara
+           id="flowPara3567-3-7" /><flowPara
+           id="flowPara3599-5-5">Klose, R</flowPara><flowPara
+           id="flowPara3379-6-9" /><flowPara
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;font-family:Sans;-inkscape-font-specification:'Sans Italic'"
+           id="flowPara3381-2-2">Land.Technik 2008</flowPara><flowPara
+           id="flowPara3603-1-2" /><flowPara
+           id="flowPara3731-2-8"
+           style="font-size:25px" /><flowPara
+           id="flowPara3717-6-9"
+           style="font-size:25px">stsientirsten</flowPara><flowPara
+           id="flowPara3573-1-7" /><flowPara
+           style="font-size:35px"
+           id="flowPara3575-8-3">Klose2008</flowPara></flowRoot>      <rect
+         y="-1339.0664"
+         x="714.28571"
+         height="1251.4286"
+         width="960"
+         id="rect3899-7-6"
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker30529)"
+       d="m 3085.9431,-5489.0593 1495.9536,-88.7902"
+       id="path4839"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g4757"
+       inkscape:connection-end="#g4741" />
+    <g
+       transform="translate(-3753.3842,-5217.6209)"
+       id="g4898">
+      <rect
+         y="-1300.3854"
+         x="714.28571"
+         height="1378.7078"
+         width="959.99994"
+         id="rect3899-7-6-1"
+         style="fill:#fff6d5;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+      <flowRoot
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot3371-3-2-2"
+         xml:space="preserve"
+         transform="translate(1606.7361,219.38363)"><flowRegion
+           id="flowRegion3373-6-0-9"><rect
+             style="text-align:center;text-anchor:middle"
+             y="-1418.4709"
+             x="-840.4469"
+             height="1454.6196"
+             width="854.58905"
+             id="rect3375-7-2-3" /></flowRegion><flowPara
+           id="flowPara3377-5-3-1">Agricultural robots - System analysis and economic feasibility</flowPara><flowPara
+           id="flowPara3567-3-7-9" /><flowPara
+           id="flowPara3599-5-5-4">Pedersen, S. M.</flowPara><flowPara
+           id="flowPara3379-6-9-7" /><flowPara
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;font-family:Sans;-inkscape-font-specification:'Sans Italic'"
+           id="flowPara3381-2-2-8">Precision Agriculture</flowPara><flowPara
+           id="flowPara3603-1-2-4" /><flowPara
+           id="flowPara3731-2-8-5"
+           style="font-size:25px" /><flowPara
+           id="flowPara3717-6-9-0"
+           style="font-size:25px">Note that fusion algorithms and data analysis, need to be adjusted to the dynamic conditions of unstructured agricultural environments.</flowPara><flowPara
+           style="font-size:25px"
+           id="flowPara6174" /><flowPara
+           style="font-size:25px"
+           id="flowPara6176">Research into autonomous vehicles in agruculture started in the early 1960s [citation].</flowPara><flowPara
+           style="font-size:25px"
+           id="flowPara6178" /><flowPara
+           style="font-size:25px"
+           id="flowPara6180">Goence compared autonomuos.. to conventional... and showed that when autonomouse can be utilised 23h a day they would be economocically feasible given slight reductions in navigation system cost or slight increases in labour [citation].</flowPara><flowPara
+           style="font-size:25px"
+           id="flowPara6186" /><flowPara
+           style="font-size:25px"
+           id="flowPara6188">artificial neural networks have also been used by many researcher to discriminate weeds with machine vision [citation].</flowPara><flowPara
+           style="font-size:25px"
+           id="flowPara6192" /><flowPara
+           style="font-size:25px"
+           id="flowPara6194">Feasibility analysis showed that the cost of autonomous weeding will be 15% higher than conventional weeding in sugar beet.</flowPara><flowPara
+           style="font-size:25px"
+           id="flowPara6198" /><flowPara
+           style="font-size:25px"
+           id="flowPara6200">Note the high cost of GTS systems as barrier to autonomous system adoption (esp with subscription to RTK and GPS reference signals)</flowPara><flowPara
+           style="font-size:25px"
+           id="flowPara6182" /><flowPara
+           style="font-size:25px"
+           id="flowPara6184" /><flowPara
+           id="flowPara3573-1-7-3" /><flowPara
+           style="font-size:35px"
+           id="flowPara3575-8-3-6">Pedersen2006</flowPara></flowRoot>    </g>
+    <g
+       transform="translate(-4897.505,1.9880006)"
+       id="g4741-9-0">
+      <flowRoot
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot3371-3-2-6"
+         xml:space="preserve"
+         transform="translate(1606.2369,435.81301)"><flowRegion
+           id="flowRegion3373-6-0-3"><rect
+             style="text-align:center;text-anchor:middle"
+             y="-1418.4709"
+             x="-840.4469"
+             height="1454.6196"
+             width="854.58905"
+             id="rect3375-7-2-2" /></flowRegion><flowPara
+           id="flowPara3377-5-3-0">Agricultural robots for field operations: Concepts and components</flowPara><flowPara
+           id="flowPara3567-3-7-6" /><flowPara
+           id="flowPara3599-5-5-1">Bechar, Avital</flowPara><flowPara
+           id="flowPara3379-6-9-5" /><flowPara
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;font-family:Sans;-inkscape-font-specification:'Sans Italic'"
+           id="flowPara3381-2-2-5">Biosystems Engineering</flowPara><flowPara
+           id="flowPara3603-1-2-47" /><flowPara
+           id="flowPara3731-2-8-6"
+           style="font-size:25px" /><flowPara
+           id="flowPara3717-6-9-5"
+           style="font-size:25px">stsientirsten</flowPara><flowPara
+           id="flowPara3573-1-7-6" /><flowPara
+           style="font-size:35px"
+           id="flowPara3575-8-3-9">Bechar2016</flowPara></flowRoot>      <rect
+         y="-1339.0664"
+         x="714.28571"
+         height="1251.4286"
+         width="960"
+         id="rect3899-7-6-3"
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+    </g>
+    <g
+       transform="translate(-11246.705,-5607.2151)"
+       id="g4741-9-7">
+      <g
+         id="g6261">
+        <rect
+           style="fill:#fff6d5;fill-opacity:1;stroke:#000000;stroke-opacity:1"
+           id="rect3899-7-6-4"
+           width="960"
+           height="1251.4286"
+           x="714.28571"
+           y="-1339.0664" />
+        <flowRoot
+           transform="translate(1606.6202,325.88259)"
+           xml:space="preserve"
+           id="flowRoot3371-3-2-4"
+           style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"><flowRegion
+             id="flowRegion3373-6-0-5"><rect
+               id="rect3375-7-2-25"
+               width="854.58905"
+               height="1454.6196"
+               x="-840.4469"
+               y="-1418.4709"
+               style="text-align:center;text-anchor:middle" /></flowRegion><flowPara
+             id="flowPara3377-5-3-4">Organic farming scenarios: Operational analysis and costs of implementing innovative technologies</flowPara><flowPara
+             id="flowPara3567-3-7-7" /><flowPara
+             id="flowPara3599-5-5-44">Sørensen, Claus G.</flowPara><flowPara
+             id="flowPara3379-6-9-3" /><flowPara
+             id="flowPara3381-2-2-0"
+             style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;font-family:Sans;-inkscape-font-specification:'Sans Italic'">Biosystems Engineering</flowPara><flowPara
+             id="flowPara3603-1-2-7" /><flowPara
+             style="font-size:25px"
+             id="flowPara3731-2-8-8" /><flowPara
+             style="font-size:25px"
+             id="flowPara3717-6-9-6">While these technologies increased the capital investment required, the labour demand was reduced by 83–85% in sugar beet and 60% in carrots, which would improve profitability by 72–85% if fully utilised. Profitability is reduced, if automation efforts result in insufficient weed removal compared to manual weeding. Specifically, the benefit gained by robotic weeding was sensitive to the weed intensity and the initial price of the equipment, but a weeding efficiency of under 25% is required to make it unprofitable</flowPara><flowPara
+             id="flowPara3573-1-7-8" /><flowPara
+             id="flowPara3575-8-3-8"
+             style="font-size:35px">Sørensen2005</flowPara></flowRoot>      </g>
+    </g>
+    <g
+       transform="translate(-7435.409,-4394.0731)"
+       id="g4741-9-3">
+      <rect
+         y="-1339.0664"
+         x="714.28571"
+         height="1251.4286"
+         width="960"
+         id="rect3899-7-6-0"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+      <flowRoot
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot3371-3-2-1"
+         xml:space="preserve"
+         transform="translate(1606.2369,435.81301)"><flowRegion
+           id="flowRegion3373-6-0-4"><rect
+             style="text-align:center;text-anchor:middle"
+             y="-1418.4709"
+             x="-840.4469"
+             height="1454.6196"
+             width="854.58905"
+             id="rect3375-7-2-9" /></flowRegion><flowPara
+           id="flowPara3377-5-3-2">An agricultural mobile robot with vision-based perception for mechanical weed control</flowPara><flowPara
+           id="flowPara3567-3-7-0" /><flowPara
+           id="flowPara6334">Åstrand, Björn</flowPara><flowPara
+           id="flowPara3379-6-9-8" /><flowPara
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;font-family:Sans;-inkscape-font-specification:'Sans Italic'"
+           id="flowPara3381-2-2-9">Autonomous Robots</flowPara><flowPara
+           id="flowPara3603-1-2-2" /><flowPara
+           id="flowPara3731-2-8-66"
+           style="font-size:25px" /><flowPara
+           id="flowPara3717-6-9-4"
+           style="font-size:25px">stsientirsten</flowPara><flowPara
+           id="flowPara3573-1-7-9" /><flowPara
+           style="font-size:35px"
+           id="flowPara3575-8-3-5">Astrand2002</flowPara></flowRoot>    </g>
+    <g
+       transform="translate(-7364.5727,-6289.517)"
+       id="g4741-9-4">
+      <rect
+         y="-1339.0664"
+         x="714.28571"
+         height="1251.4286"
+         width="960"
+         id="rect3899-7-6-49"
+         style="fill:#f6ffd5;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+      <flowRoot
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot3371-3-2-8"
+         xml:space="preserve"
+         transform="translate(1607.023,288.93801)"><flowRegion
+           id="flowRegion3373-6-0-7"><rect
+             style="text-align:center;text-anchor:middle"
+             y="-1418.4709"
+             x="-840.4469"
+             height="1454.6196"
+             width="854.58905"
+             id="rect3375-7-2-1" /></flowRegion><flowPara
+           id="flowPara3377-5-3-7">Agricultural Robotic Platform with Four Wheel Steering for Weed Detection</flowPara><flowPara
+           id="flowPara3567-3-7-2" /><flowPara
+           id="flowPara3599-5-5-7">Bak, Thomas</flowPara><flowPara
+           id="flowPara3379-6-9-2" /><flowPara
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;font-family:Sans;-inkscape-font-specification:'Sans Italic'"
+           id="flowPara3381-2-2-2">Biosystems Engineering</flowPara><flowPara
+           id="flowPara3603-1-2-6" /><flowPara
+           id="flowPara3731-2-8-1"
+           style="font-size:25px" /><flowPara
+           id="flowPara3717-6-9-06"
+           style="font-size:25px">A modular approach is taken with four identical wheel modules, allowing four wheel steering and propulsion of the platform.</flowPara><flowPara
+           style="font-size:25px"
+           id="flowPara7095" /><flowPara
+           style="font-size:25px"
+           id="flowPara7097">Brushless motor for propulsion with direct drive. All control electronics (motor, amplifier, mcu) are mounted in wheel module.</flowPara><flowPara
+           style="font-size:25px"
+           id="flowPara7099" /><flowPara
+           style="font-size:25px"
+           id="flowPara7101">Wheel module has simple mechanical interface that allows it to be mounted on virtually any vehicle chassis.</flowPara><flowPara
+           style="font-size:25px"
+           id="flowPara7103" /><flowPara
+           style="font-size:25px"
+           id="flowPara7105">Drive system is 12-36V and comms run over a CAN bus.</flowPara><flowPara
+           style="font-size:25px"
+           id="flowPara7107" /><flowPara
+           style="font-size:25px"
+           id="flowPara7109">No LiDAR</flowPara><flowPara
+           id="flowPara3573-1-7-1" /><flowPara
+           style="font-size:35px"
+           id="flowPara3575-8-3-59">Bak2004</flowPara></flowRoot>      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker32057)"
+         d="m 714.28571,-402.50131 -474.942,307.575221"
+         id="path32049"
+         inkscape:connector-type="polyline"
+         inkscape:connector-curvature="0"
+         inkscape:connection-start="#rect3899-7-6-49"
+         inkscape:connection-end="#g4741-9-9" />
+    </g>
+    <g
+       id="g7079"
+       transform="translate(-12772.369,-3503.209)">
+      <rect
+         y="-6274.0742"
+         x="2263.1477"
+         height="1251.4286"
+         width="960"
+         id="rect3899-7-6-2"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+      <flowRoot
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot3371-3-2-17"
+         xml:space="preserve"
+         transform="translate(3156.1438,-4474.1948)"><flowRegion
+           id="flowRegion3373-6-0-71"><rect
+             style="text-align:center;text-anchor:middle"
+             y="-1418.4709"
+             x="-840.4469"
+             height="1454.6196"
+             width="854.58905"
+             id="rect3375-7-2-15" /></flowRegion><flowPara
+           id="flowPara3377-5-3-9">Autonomous weeders for Christmas tree plantations - a feasibility study</flowPara><flowPara
+           id="flowPara3567-3-7-77" /><flowPara
+           id="flowPara3599-5-5-6">Have, Henrik</flowPara><flowPara
+           id="flowPara3379-6-9-73" /><flowPara
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;font-family:Sans;-inkscape-font-specification:'Sans Italic'"
+           id="flowPara3381-2-2-6">Danish Environmental Protection Agency</flowPara><flowPara
+           id="flowPara3603-1-2-5" /><flowPara
+           id="flowPara3731-2-8-63"
+           style="font-size:25px" /><flowPara
+           id="flowPara3717-6-9-9"
+           style="font-size:25px">stsientirsten</flowPara><flowPara
+           id="flowPara3573-1-7-4" /><flowPara
+           style="font-size:35px"
+           id="flowPara3575-8-3-81">Have2002</flowPara></flowRoot>    </g>
+    <g
+       transform="translate(-8799.5147,-5360.2402)"
+       id="g4741-9-9">
+      <rect
+         y="-1339.0664"
+         x="714.28571"
+         height="1251.4286"
+         width="960"
+         id="rect3899-7-6-48"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+      <flowRoot
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot3371-3-2-3"
+         xml:space="preserve"
+         transform="translate(1606.2369,435.81301)"><flowRegion
+           id="flowRegion3373-6-0-90"><rect
+             style="text-align:center;text-anchor:middle"
+             y="-1418.4709"
+             x="-840.4469"
+             height="1454.6196"
+             width="854.58905"
+             id="rect3375-7-2-8" /></flowRegion><flowPara
+           id="flowPara3377-5-3-8">Robotic weed control using machine vision</flowPara><flowPara
+           id="flowPara3567-3-7-5" /><flowPara
+           id="flowPara3599-5-5-0">Blasco, J</flowPara><flowPara
+           id="flowPara3379-6-9-9" /><flowPara
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;font-family:Sans;-inkscape-font-specification:'Sans Italic'"
+           id="flowPara3381-2-2-63">Biosystems Engineering</flowPara><flowPara
+           id="flowPara3603-1-2-8" /><flowPara
+           id="flowPara3731-2-8-56"
+           style="font-size:25px" /><flowPara
+           id="flowPara3717-6-9-1"
+           style="font-size:25px">stsientirsten</flowPara><flowPara
+           id="flowPara3573-1-7-15" /><flowPara
+           style="font-size:35px"
+           id="flowPara3575-8-3-98">Blasco2002</flowPara></flowRoot>    </g>
+    <g
+       transform="translate(-13420.724,-8623.8971)"
+       id="g4741-9-1">
+      <rect
+         y="-1339.0664"
+         x="714.28571"
+         height="1251.4286"
+         width="960"
+         id="rect3899-7-6-41"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+      <flowRoot
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot3371-3-2-0"
+         xml:space="preserve"
+         transform="translate(1606.2369,435.81301)"><flowRegion
+           id="flowRegion3373-6-0-30"><rect
+             style="text-align:center;text-anchor:middle"
+             y="-1418.4709"
+             x="-840.4469"
+             height="1454.6196"
+             width="854.58905"
+             id="rect3375-7-2-4" /></flowRegion><flowPara
+           id="flowPara3377-5-3-44">Autonomous robot in agriculture tasks</flowPara><flowPara
+           id="flowPara3567-3-7-4" /><flowPara
+           id="flowPara3599-5-5-76">García-Alegre, M C</flowPara><flowPara
+           id="flowPara3379-6-9-31" /><flowPara
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;font-family:Sans;-inkscape-font-specification:'Sans Italic'"
+           id="flowPara3381-2-2-7">Precision Agriculture '01</flowPara><flowPara
+           id="flowPara3603-1-2-59" /><flowPara
+           id="flowPara3731-2-8-62"
+           style="font-size:25px" /><flowPara
+           id="flowPara3717-6-9-17"
+           style="font-size:25px">stsientirsten</flowPara><flowPara
+           id="flowPara3573-1-7-85" /><flowPara
+           style="font-size:35px"
+           id="flowPara3575-8-3-7">Garcia-Alegre2001</flowPara></flowRoot>    </g>
+    <g
+       transform="translate(-6310.2506,-2194.9582)"
+       id="g4741-9-8">
+      <rect
+         y="-1339.0664"
+         x="714.28571"
+         height="1251.4286"
+         width="960"
+         id="rect3899-7-6-488"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+      <flowRoot
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot3371-3-2-5"
+         xml:space="preserve"
+         transform="translate(1606.2369,435.81301)"><flowRegion
+           id="flowRegion3373-6-0-97"><rect
+             style="text-align:center;text-anchor:middle"
+             y="-1418.4709"
+             x="-840.4469"
+             height="1454.6196"
+             width="854.58905"
+             id="rect3375-7-2-5" /></flowRegion><flowPara
+           id="flowPara3377-5-3-3">Automatic guidance of agricultural mobiles at the NCEA</flowPara><flowPara
+           id="flowPara3567-3-7-8" /><flowPara
+           id="flowPara3599-5-5-8">Billingsley, John</flowPara><flowPara
+           id="flowPara3379-6-9-318" /><flowPara
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;font-family:Sans;-inkscape-font-specification:'Sans Italic'"
+           id="flowPara3381-2-2-96">Industrial Robot</flowPara><flowPara
+           id="flowPara3603-1-2-43" /><flowPara
+           id="flowPara3731-2-8-3"
+           style="font-size:25px" /><flowPara
+           id="flowPara3717-6-9-3"
+           style="font-size:25px">stsientirsten</flowPara><flowPara
+           id="flowPara3573-1-7-86" /><flowPara
+           style="font-size:35px"
+           id="flowPara3575-8-3-0">Billingsley2000</flowPara></flowRoot>    </g>
+    <g
+       id="g6719"
+       transform="translate(-1514.7605,-2469.3661)">
+      <rect
+         y="-6915.1406"
+         x="-411.3096"
+         height="1251.4286"
+         width="960"
+         id="rect3899-7-6-47"
+         style="fill:#f4d7d7;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+      <flowRoot
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot3371-3-2-7"
+         xml:space="preserve"
+         transform="translate(480.64157,-5141.6369)"><flowRegion
+           id="flowRegion3373-6-0-76"><rect
+             style="text-align:center;text-anchor:middle"
+             y="-1418.4709"
+             x="-840.4469"
+             height="1454.6196"
+             width="854.58905"
+             id="rect3375-7-2-43" /></flowRegion><flowPara
+           id="flowPara6698">Design specifications for a small autonomous tractor with behavioural control</flowPara><flowPara
+           id="flowPara3567-3-7-09" /><flowPara
+           id="flowPara3599-5-5-2">Blackmore, B. S.</flowPara><flowPara
+           id="flowPara3379-6-9-54" /><flowPara
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;font-family:Sans;-inkscape-font-specification:'Sans Italic'"
+           id="flowPara3381-2-2-05">Ukendt Kilde</flowPara><flowPara
+           id="flowPara3603-1-2-9" /><flowPara
+           id="flowPara3731-2-8-4"
+           style="font-size:25px" /><flowPara
+           id="flowPara3717-6-9-69"
+           style="font-size:25px">stsientirsten</flowPara><flowPara
+           id="flowPara3573-1-7-2" /><flowPara
+           style="font-size:35px"
+           id="flowPara3575-8-3-2">N/A</flowPara></flowRoot>    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker29591)"
+       d="m -1690.1064,-8133.0781 -609.0388,1615.0718"
+       id="path6735"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g6719"
+       inkscape:connection-end="#g4898" />
+    <g
+       id="g6808"
+       transform="translate(-3461.0504,-1190.6785)">
+      <rect
+         y="-8406.126"
+         x="154.37579"
+         height="1251.4286"
+         width="960"
+         id="rect3899-7-6-47-5"
+         style="fill:#f4d7d7;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+      <flowRoot
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot3371-3-2-7-4"
+         xml:space="preserve"
+         transform="translate(1046.327,-6632.6222)"><flowRegion
+           id="flowRegion3373-6-0-76-8"><rect
+             style="text-align:center;text-anchor:middle"
+             y="-1418.4709"
+             x="-840.4469"
+             height="1454.6196"
+             width="854.58905"
+             id="rect3375-7-2-43-1" /></flowRegion><flowPara
+           id="flowPara6698-2">The economics of autonomous vehicles</flowPara><flowPara
+           id="flowPara3567-3-7-09-8" /><flowPara
+           id="flowPara3599-5-5-2-9">Goense, D</flowPara><flowPara
+           id="flowPara3379-6-9-54-3" /><flowPara
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;font-family:Sans;-inkscape-font-specification:'Sans Italic'"
+           id="flowPara3381-2-2-05-6">AGRIS</flowPara><flowPara
+           id="flowPara3603-1-2-9-8" /><flowPara
+           id="flowPara3731-2-8-4-0"
+           style="font-size:25px" /><flowPara
+           id="flowPara3717-6-9-69-2"
+           style="font-size:25px">stsientirsten</flowPara><flowPara
+           id="flowPara3573-1-7-2-1" /><flowPara
+           style="font-size:35px"
+           id="flowPara3575-8-3-2-0">N/A - 2003</flowPara></flowRoot>    </g>
+    <g
+       transform="translate(-674.27336,-2667.8003)"
+       id="g4741-9-5">
+      <rect
+         y="-1339.0664"
+         x="714.28571"
+         height="1251.4286"
+         width="960"
+         id="rect3899-7-6-13"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+      <flowRoot
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot3371-3-2-11"
+         xml:space="preserve"
+         transform="translate(1606.2369,435.81301)"><flowRegion
+           id="flowRegion3373-6-0-0"><rect
+             style="text-align:center;text-anchor:middle"
+             y="-1418.4709"
+             x="-840.4469"
+             height="1454.6196"
+             width="854.58905"
+             id="rect3375-7-2-85" /></flowRegion><flowPara
+           id="flowPara3377-5-3-06">Robotic Weeding</flowPara><flowPara
+           id="flowPara3567-3-7-46" /><flowPara
+           id="flowPara3599-5-5-25">Griepentrog, H W</flowPara><flowPara
+           id="flowPara3379-6-9-86" /><flowPara
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;font-family:Sans;-inkscape-font-specification:'Sans Italic'"
+           id="flowPara3381-2-2-28">Engineering the Future</flowPara><flowPara
+           id="flowPara3603-1-2-472" /><flowPara
+           id="flowPara3731-2-8-40"
+           style="font-size:25px" /><flowPara
+           id="flowPara3717-6-9-62"
+           style="font-size:25px">stsientirsten</flowPara><flowPara
+           id="flowPara3573-1-7-99" /><flowPara
+           style="font-size:35px"
+           id="flowPara3575-8-3-08">Griepentrog2004</flowPara></flowRoot>    </g>
+    <g
+       transform="translate(-2707.8559,-2002.9396)"
+       id="g4741-9-11">
+      <rect
+         y="-1339.0664"
+         x="714.28571"
+         height="1251.4286"
+         width="960"
+         id="rect3899-7-6-5"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+      <flowRoot
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot3371-3-2-03"
+         xml:space="preserve"
+         transform="translate(1606.2369,435.81301)"><flowRegion
+           id="flowRegion3373-6-0-40"><rect
+             style="text-align:center;text-anchor:middle"
+             y="-1418.4709"
+             x="-840.4469"
+             height="1454.6196"
+             width="854.58905"
+             id="rect3375-7-2-39" /></flowRegion><flowPara
+           id="flowPara3377-5-3-19">Development and test of an autonomous Christmas tree weeder</flowPara><flowPara
+           id="flowPara3567-3-7-69" /><flowPara
+           id="flowPara3599-5-5-3">Have, Henrik</flowPara><flowPara
+           id="flowPara3379-6-9-38" /><flowPara
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;font-family:Sans;-inkscape-font-specification:'Sans Italic'"
+           id="flowPara3381-2-2-056">Proceedings: Precision Agriculture '05</flowPara><flowPara
+           id="flowPara3603-1-2-64" /><flowPara
+           id="flowPara3731-2-8-0"
+           style="font-size:25px" /><flowPara
+           id="flowPara3717-6-9-04"
+           style="font-size:25px">stsientirsten</flowPara><flowPara
+           id="flowPara3573-1-7-62" /><flowPara
+           style="font-size:35px"
+           id="flowPara3575-8-3-67">Have2005</flowPara></flowRoot>    </g>
+    <g
+       transform="translate(-909.11155,-6844.3802)"
+       id="g4741-9-6">
+      <rect
+         y="-1339.0664"
+         x="714.28571"
+         height="1251.4286"
+         width="960"
+         id="rect3899-7-6-491"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+      <flowRoot
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot3371-3-2-9"
+         xml:space="preserve"
+         transform="translate(1606.2369,435.81301)"><flowRegion
+           id="flowRegion3373-6-0-8"><rect
+             style="text-align:center;text-anchor:middle"
+             y="-1418.4709"
+             x="-840.4469"
+             height="1454.6196"
+             width="854.58905"
+             id="rect3375-7-2-7" /></flowRegion><flowPara
+           id="flowPara3377-5-3-28">Mobile Robot for Weeding</flowPara><flowPara
+           id="flowPara3567-3-7-29" /><flowPara
+           id="flowPara3599-5-5-9">Madsen, T</flowPara><flowPara
+           id="flowPara3379-6-9-6" /><flowPara
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;font-family:Sans;-inkscape-font-specification:'Sans Italic'"
+           id="flowPara3381-2-2-02">Thesis - Tech Univ. of Denmark</flowPara><flowPara
+           id="flowPara3603-1-2-76" /><flowPara
+           id="flowPara3731-2-8-13"
+           style="font-size:25px" /><flowPara
+           id="flowPara3717-6-9-2"
+           style="font-size:25px">stsientirsten</flowPara><flowPara
+           id="flowPara3573-1-7-159" /><flowPara
+           style="font-size:35px"
+           id="flowPara3575-8-3-91">Madsen2001</flowPara></flowRoot>    </g>
+    <g
+       transform="translate(-4215.5623,-2636.7204)"
+       id="g4741-9-07">
+      <rect
+         y="-1339.0664"
+         x="714.28571"
+         height="1251.4286"
+         width="960"
+         id="rect3899-7-6-38"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+      <flowRoot
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot3371-3-2-58"
+         xml:space="preserve"
+         transform="translate(1606.2369,435.81301)"><flowRegion
+           id="flowRegion3373-6-0-70"><rect
+             style="text-align:center;text-anchor:middle"
+             y="-1418.4709"
+             x="-840.4469"
+             height="1454.6196"
+             width="854.58905"
+             id="rect3375-7-2-48" /></flowRegion><flowPara
+           id="flowPara3377-5-3-04">A Robotic System for Plant-Scale Husbandry</flowPara><flowPara
+           id="flowPara3567-3-7-296" /><flowPara
+           id="flowPara3599-5-5-10">Tillett, N D</flowPara><flowPara
+           id="flowPara3379-6-9-4" /><flowPara
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;font-family:Sans;-inkscape-font-specification:'Sans Italic'"
+           id="flowPara3381-2-2-22">Journal of Agricultural Engineering Research</flowPara><flowPara
+           id="flowPara3603-1-2-20" /><flowPara
+           id="flowPara3731-2-8-55"
+           style="font-size:25px" /><flowPara
+           id="flowPara3717-6-9-29"
+           style="font-size:25px">stsientirsten</flowPara><flowPara
+           id="flowPara3573-1-7-0" /><flowPara
+           style="font-size:35px"
+           id="flowPara3575-8-3-28">Tillett1998</flowPara></flowRoot>    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker29131)"
+       d="m -2617.7965,-6518.0063 -155.599,-1827.3696"
+       id="path9609"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g4898"
+       inkscape:connection-end="#g6808" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker28677)"
+       d="M -2079.0986,-6120.4522 -194.82584,-7265.9325"
+       id="path9623"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g4898"
+       inkscape:connection-end="#g4741-9-6" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker28229)"
+       d="m -2687.6416,-5139.2985 -216.9587,1163.5117"
+       id="path9819"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g4898"
+       inkscape:connection-end="#g4741-9-07" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker27787)"
+       d="m -2327.5254,-5139.2985 603.7604,1797.2925"
+       id="path9821"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g4898"
+       inkscape:connection-end="#g4741-9-11" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker27351)"
+       d="M -2079.0986,-5447.1137 40.012346,-3762.6911"
+       id="path9823"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g4898"
+       inkscape:connection-end="#g4741-9-5" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker26921)"
+       d="m -3039.0985,-5280.4172 -1596.8664,1823.8717"
+       id="path9831"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g4898"
+       inkscape:connection-end="#g4741-9-8" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker26497)"
+       d="m -3039.0985,-5734.631 -2722.0248,533.1844"
+       id="path9845"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g4898"
+       inkscape:connection-end="#g4741-9-3" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="M -3039.0985,-5984.7295 -5690.287,-6846.792"
+       id="path9847"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g4898"
+       inkscape:connection-end="#g4741-9-4" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker26073)"
+       d="m -9572.4193,-6942.0896 861.27,-1115.2055"
+       id="path9881"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g4741-9-7"
+       inkscape:connection-end="#g7079" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker25661)"
+       d="M -9572.4193,-6404.9293 -6650.287,-6918.507"
+       id="path9883"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g4741-9-7"
+       inkscape:connection-end="#g4741-9-4" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker25255)"
+       d="m -9572.4193,-6167.7824 2851.296,907.5724"
+       id="path9885"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g4741-9-7"
+       inkscape:connection-end="#g4741-9-3" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker24855)"
+       d="m -9572.4193,-6272.1247 1487.1903,150.0899"
+       id="path9887"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g4741-9-7"
+       inkscape:connection-end="#g4741-9-9" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker31007)"
+       d="m -10503.35,-6946.2815 -1272.158,-1765.2534"
+       id="path31497"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g4741-9-7"
+       inkscape:connection-end="#g4741-9-1" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker31525)"
+       d="m 2125.9431,-5494.7764 -4205.0417,-299.6692"
+       id="path32035"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g4757"
+       inkscape:connection-end="#g4898" />
+  </g>
+</svg>
