@@ -112,13 +112,14 @@
 %% \address[label1]{<address>}
 %% \address[label2]{<address>}
 
-\author{M. H. Jones, M. Seabright, J. Barnett, A. Scarfe, Prof. M. Duke}
+\author{Mark H. Jones, Matthew Seabright, Joshua Barnett, Alistair Scarfe, Prof. Mike Duke}
 
 \address{}
 
 \begin{abstract}
 %% Text of abstract
-    
+
+
 
     Other uses may be mechanical weed removal, targeted spraying, and crop scouting.
 \end{abstract}
@@ -141,10 +142,15 @@
 Short-term labor requirements within the New Zealand kiwifruit industry peak twice a year corresponding pollination and harvesting cycles \citep{Timmins2009}.
 These spikes in short-term labor requirements can make it difficult to source workers, occasionally leading to labor shortfalls.
 Being New Zealand's largest horticultural export, kiwifruit lends itself well to automation; primarily in the areas of pollination and fruit harvesting \citep{StatisticsNewZealand2015}.
-Previous work on automated harvesting of kiwifruit \citep{Scarfe2012}.
-
+Previous work on automated harvesting of kiwifruit was carried out in \citep{Scarfe2012}.
+In that work, an kiwifruit harvesting robot was built that demonstrated the capability of harvesting kiwifruit.
+That prototype
 Stress robustness required of vehicles designed for in-field use.
 High cost associated with conversion of a tractor to an autonomous vehicle.
+
+It has been stated that ``since the robot development already includes a high complexity, the application itself should be of comparably low complexity'' \citep{Ruckelshausen2009}.
+
+``The implementation of additional mechatronic systems, such as weeding or seeding, will increase the complexity due to technical and logistical aspects and thus reduce the probability for the development of a robust system.'' \citep{Ruckelshausen2009}.
 
 
 \section{Mechanical design}
@@ -154,14 +160,32 @@ Pivoting front axle used to maintain three points of contact at all times; no su
 Limited to \SI{10}{\kilo\meter\per\hour} by the choice of motor and gearboxes on the drive-system.
 Ackermann steering geometry with the ability to pivot about the centre of the rear wheels.
 
+\citep{Astrand2002} have used an ackermann steering system actuated by a single DC servo motor for their robotic beet-crop weeding platform. They have only two driving wheels placed at the rear of the system.
+
+
+
 \section{Hardware and sensors}
 \label{sect:hardware}
-Forward and upwards facing LiDAR are used for navigation and detection of canopy.
-GPS has been unreliable in kiwifruit orchards, probably due to the canopy itself and surrounding wind-breaks.
+GPS has proven to be unreliable when used under the dense canopy of a kiwifruit orchard.
+\citep{Pedersen2006} shows the economics of using an GPS-RTK system, as seen in other agricultural systems \citep{Bak2004,Ruckelshausen2009}, has considerable ongoing costs in the form of yearly fees.
+Forward and upwards facing LiDAR have been used for navigation and detection of the row and canopy.
+
+
+
+
+\section{Safety}
+Relay modules connected to the main computer via the system's CAN bus give a means of shutting down
+Both front drive motors are fitted with electromechanical brakes which engage when the power is cut.
+A wireless safety-rated controller, designed for use with cranes, has been adapted for use with driving robot platform.
+The controller provides the operator with a way of entering the platform into autonomous mode, manual control, triggering an emergency stop, or enabling/disabling auxiliary systems.
 
 \section{Software architecture}
 \label{sect:software}
-ROS used as the basis for platform control.
+The control software is comprised of individual nodes, writen in either C++ or Python, linked together using Robot Operating System (ROS) for interprocess communication.
+The system runs on Ubuntu Server 16.04 on an Intel NUC, a compact x86 based PC.
+A model of the robot platform has been depeloped for use with Gazebo simulation software.
+Such a model provides a way to test steering and movement strategies before deploying them on the hardware.
+
 
 % Diagram of sensor placement
 % Lidar units and visibility
