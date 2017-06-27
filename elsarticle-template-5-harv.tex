@@ -139,14 +139,24 @@
 %% main text
 \section{Introduction}
 \label{sect:intro}
-Short-term labor requirements within the New Zealand kiwifruit industry peak twice a year corresponding pollination and harvesting cycles \citep{Timmins2009}.
-These spikes in short-term labor requirements can make it difficult to source workers, occasionally leading to labor shortfalls.
-Being New Zealand's largest horticultural export, kiwifruit lends itself well to automation; primarily in the areas of pollination and fruit harvesting \citep{StatisticsNewZealand2015}.
-Previous work on automated harvesting of kiwifruit was carried out in \citep{Scarfe2012}.
-In that work, an kiwifruit harvesting robot was built that demonstrated the capability of harvesting kiwifruit.
-That prototype
+Short-term labor requirements within the New Zealand kiwifruit industry peak twice a year corresponding with pollination and harvesting cycles.
+The majority of employment in this industry during these peaks is filled by seasonal or casual workers \citep{Timmins2009}.
+As kiwifruit is New Zealand's largest horticultural export by value \citep{StatisticsNewZealand2015}, automation in kiwifruit harvesting and pollination should ease growth in this industry.
+Additionally, the New Zealand government aims to double exports from its primary industries between 2012 and 2025 and is actively investing in programmes to achieve this \citep{MinistryPrimaryIndustries2015}.
+
+Previous work on automated harvesting of kiwifruit was demonstrated in 2012 \citep{Scarfe2012}.
+That work presents a harvesting platform with the capability of in-orchard kiwifruit harvesting from pergola type orchards.
+The robotic platform presented in this paper is a second generation unit based on that previous, more integrated, design of kiwifruit harvester.
+Modularity of the platform has been increased to so as to be able to fit either a harvesting module or a pollination module with relative ease.
+This work discusses only the base platform, where details of the harvesting and pollination modules will be published separately.
+
+
+
+The robotic platform presented in this paper builds upon that design to create a second generation kiwifruit harvesting and pollinating robotic platform.
 Stress robustness required of vehicles designed for in-field use.
 High cost associated with conversion of a tractor to an autonomous vehicle.
+
+An electric four wheel steered robot is presented in \cite{Bak2004}.
 
 It has been stated that ``since the robot development already includes a high complexity, the application itself should be of comparably low complexity'' \citep{Ruckelshausen2009}.
 
@@ -158,9 +168,12 @@ It has been stated that ``since the robot development already includes a high co
 Skid steering inappropriate for orchard environments due to soft ground.
 Pivoting front axle used to maintain three points of contact at all times; no suspension.
 Limited to \SI{10}{\kilo\meter\per\hour} by the choice of motor and gearboxes on the drive-system.
+Operational speed of \SI{5}{\kilo\meter\per\hour}.
 Ackermann steering geometry with the ability to pivot about the centre of the rear wheels.
+Four wheel steering, such as presented by Bak \& Hans \citep{Bak2004}, was not deemed necessary as the headlands of kiwifruit orchards provide adequate turning areas.
 
 \citep{Astrand2002} have used an ackermann steering system actuated by a single DC servo motor for their robotic beet-crop weeding platform. They have only two driving wheels placed at the rear of the system.
+
 
 
 
@@ -171,10 +184,11 @@ GPS has proven to be unreliable when used under the dense canopy of a kiwifruit 
 Forward and upwards facing LiDAR have been used for navigation and detection of the row and canopy.
 
 
-
-
 \section{Safety}
-Relay modules connected to the main computer via the system's CAN bus give a means of shutting down
+% Include system layout diagram
+Relay modules connected to the main computer via the system's CAN bus give a means of shutting down subsystems.
+These relays monitor the platform's CAN bus to ensure that synchronisation messages are being sent out in a timely manner.
+In the event that the synchonisation messages begin to vary in frequency, or stop, the relays cut power to the subsystems.
 Both front drive motors are fitted with electromechanical brakes which engage when the power is cut.
 A wireless safety-rated controller, designed for use with cranes, has been adapted for use with driving robot platform.
 The controller provides the operator with a way of entering the platform into autonomous mode, manual control, triggering an emergency stop, or enabling/disabling auxiliary systems.
@@ -185,6 +199,10 @@ The control software is comprised of individual nodes, writen in either C++ or P
 The system runs on Ubuntu Server 16.04 on an Intel NUC, a compact x86 based PC.
 A model of the robot platform has been depeloped for use with Gazebo simulation software.
 Such a model provides a way to test steering and movement strategies before deploying them on the hardware.
+
+\section{Random info}
+
+``Field scouting and mechanical weeding have been identified and described as the first two niche tasks likely to become autonomous''\citep{Blackmore2004}.
 
 
 % Diagram of sensor placement
