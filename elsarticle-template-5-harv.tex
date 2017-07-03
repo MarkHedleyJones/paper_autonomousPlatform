@@ -116,9 +116,10 @@
 
 %% Group authors per affiliation:
 \author[UoW]{Mark H. Jones\corref{mjemail}} 
-\cortext[mjemail]{markjones112358@gmail.com}
+\cortext[mjemail]{markj@waikato.ac.nz}
 
-\author[UoA]{Jamie Bell}
+\author[UoA]{Jamie Bell\corref{jbemail}}
+\cortext[jbemail]{jamie977@gmail.com}
 \author[UoW]{Matthew Seabright}
 \author[UoW]{Josh Barnett}
 \author[RPL]{Alistair Scarfe}
@@ -160,14 +161,23 @@ Additionally, the New Zealand government aims to double exports from its primary
 Previous work on automated harvesting of kiwifruit was demonstrated in 2012 \citep{Scarfe2012}.
 That work presents a harvesting platform with the capability of in-orchard kiwifruit harvesting from pergola type orchards.
 The robotic platform presented in this paper is a second generation unit based on that previous, more integrated, design of kiwifruit harvester.
-Modularity of the platform has been increased to so as to be able to fit either a harvesting module or a pollination module with relative ease.
-This work discusses only the base platform, where details of the harvesting and pollination modules will be published separately.
-
+Modularity of the platform has been increased to so as to be able to fit either a harvesting module or a pollination module relativly easily.
+This work discusses only the base platform, where details of the harvesting and pollination modules are published separately.
 
 
 The robotic platform presented in this paper builds upon that design to create a second generation kiwifruit harvesting and pollinating robotic platform.
 Stress robustness required of vehicles designed for in-field use.
 High cost associated with conversion of a tractor to an autonomous vehicle.
+
+
+Many self driving vehicles for use in the agricultural industry have previously been reported, many of those being conversions of existing vehicles into a self-driving form.
+While this can reduce the initial cost for development of self driving systems, the cost of deplaying such units may not be cost effective.
+In this work we present an agricultural vehicle designed specifically for use in kiwifruit orchards.
+
+%Some vehicles that that employ neural networks as part of a navigation system have also been reported \citep{Noguchi1997}.
+Many of the agricultural autonomous vehicles reported in the literature are based on conversions of tractors or other existing farming implements.
+
+
 
 An electric four wheel steered robot is presented in \cite{Bak2004}.
 
@@ -175,6 +185,9 @@ It has been stated that ``since the robot development already includes a high co
 
 ``The implementation of additional mechatronic systems, such as weeding or seeding, will increase the complexity due to technical and logistical aspects and thus reduce the probability for the development of a robust system.'' \citep{Ruckelshausen2009}.
 
+Autonomous driving vechicles that use neural networks have been used as early as 1997
+
+\section{Review}
 
 \section{Mechanical design}
 \label{sect:mechanical}
@@ -192,14 +205,11 @@ Additionally, control strategies for a platform having only two sterable wheels 
 \citep{Astrand2002} have used an ackermann steering system actuated by a single DC servo motor for their robotic beet-crop weeding platform. They have only two driving wheels placed at the rear of the system.
 
 
-
-
-\section{Hardware and sensors}
+\section{Hardware}
 \label{sect:hardware}
 GPS has proven to be unreliable when used under the dense canopy of a kiwifruit orchard.
-\citep{Pedersen2006} shows the economics of using an GPS-RTK system, as seen in other agricultural systems \citep{Bak2004,Ruckelshausen2009}, has considerable ongoing costs in the form of yearly fees.
+\citep{Pedersen2006} shows the economics of using an GPS-RTK system, as seen in other agricultural systems \citep{Bak2004,Ruckelshausen2009}[Nagasaka et al from \citep{Torii2000}], has considerable ongoing costs in the form of yearly fees, although the cost of these units is rapidly decreasing \citep{Torii2000}.
 Forward and upwards facing LiDAR have been used for navigation and detection of the row and canopy.
-
 
 \section{Safety}
 % Include system layout diagram
@@ -216,6 +226,9 @@ The control software is comprised of individual nodes, writen in either C++ or P
 The system runs on Ubuntu Server 16.04 on an Intel NUC, a compact x86 based PC.
 A model of the robot platform has been depeloped for use with Gazebo simulation software.
 Such a model provides a way to test steering and movement strategies before deploying them on the hardware.
+
+\section{Sensor selection}
+[Jamie's section]
 
 \section{Random info}
 
