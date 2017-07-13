@@ -133,8 +133,7 @@
 \begin{abstract}
 %% Text of abstract
 
-
-
+    This will be written last.
     Other uses may be mechanical weed removal, targeted spraying, and crop scouting.
 \end{abstract}
 
@@ -158,25 +157,26 @@ The majority of employment in this industry during these peaks is filled by seas
 As kiwifruit is New Zealand's largest horticultural export by value \citep{StatisticsNewZealand2015}, automation in kiwifruit harvesting and pollination should ease growth in this industry.
 Additionally, the New Zealand government aims to double exports from its primary industries between 2012 and 2025 and is actively investing in programmes to achieve this \citep{MinistryPrimaryIndustries2015}.
 
-Previous work on automated harvesting of kiwifruit was demonstrated in 2012 \citep{Scarfe2012}.
+Previous work on automated harvesting of kiwifruit has been demonstrated \citep{Scarfe2012,scarfe2009}.
 That work presents a harvesting platform with the capability of in-orchard kiwifruit harvesting from pergola type orchards.
+
 The robotic platform presented in this paper is a second generation unit based on that previous, more integrated, design of kiwifruit harvester.
-Modularity of the platform has been increased to so as to be able to fit either a harvesting module or a pollination module relativly easily.
+Modularity of the platform has been increased to so as to be able to fit either a harvesting module or a pollination module.
 This work discusses only the base platform, where details of the harvesting and pollination modules are published separately.
 
+Automation in harvesting and pollinating kiwifruit demands the use of real-time computer control, state-of-the-art manipulators, and convolutional neural networks.
+In their current state of development these systems are bulky and have specific geometic requirements dictated by the environment they operate in.
+As part of a wider kiwifruit automation project, of which this research falls into, two separate modules have been developed for the tasks of artificial pollination and kiwifruit harvesting.
+These modules share common requirements in that they both require transport to and from orchards, electrical power, and air pressure, but differ in they way they move the orchard.
+The pollination module is designed to move at a well-known velcity down with minimum changes in angle, whereas the harvesting module repeatidly starts and stops, advancing set distance between cycles.
+The duration of any given harvesting cycle is determined by the number of fruit to be harvested during that particular cycle.
+As the harvester is designed to be autonomous, there must be communication between the harvester and the base platform to make efficient use of time.
+That communication can be as simple as a command anologous to `harvesting completed, advance to next section', but highlights the need for an autonomous platform for the modules.
 
-The robotic platform presented in this paper builds upon that design to create a second generation kiwifruit harvesting and pollinating robotic platform.
-Stress robustness required of vehicles designed for in-field use.
-High cost associated with conversion of a tractor to an autonomous vehicle.
-
-
-Many self driving vehicles for use in the agricultural industry have previously been reported, many of those being conversions of existing vehicles into a self-driving form.
-While this can reduce the initial cost for development of self driving systems, the cost of deplaying such units may not be cost effective.
-In this work we present an agricultural vehicle designed specifically for use in kiwifruit orchards.
-
-%Some vehicles that that employ neural networks as part of a navigation system have also been reported \citep{Noguchi1997}.
-Many of the agricultural autonomous vehicles reported in the literature are based on conversions of tractors or other existing farming implements.
-
+Many autonomous vehicles for use in the agricultural industry have previously been reported, many of those being conversions of existing vehicles into a self-driving form [Mark chuck some references here].
+While this can reduce the initial cost for development of self driving systems, the cost of deploying such units may make them commercially unfeasible.
+In this work we present an agricultural vehicle designed specifically for use in kiwifruit orchards to transport modularised pollinating and harvesting units.
+The weight and size of these units requires a vehicle that is robust, computer controllable, low-slung, and is capable of performing turns between rows.
 
 
 An electric four wheel steered robot is presented in \cite{Bak2004}.
@@ -185,7 +185,6 @@ It has been stated that ``since the robot development already includes a high co
 
 ``The implementation of additional mechatronic systems, such as weeding or seeding, will increase the complexity due to technical and logistical aspects and thus reduce the probability for the development of a robust system.'' \citep{Ruckelshausen2009}.
 
-Autonomous driving vechicles that use neural networks have been used as early as 1997
 
 \section{Review}
 
