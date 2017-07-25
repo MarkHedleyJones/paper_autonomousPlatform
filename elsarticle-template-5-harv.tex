@@ -184,7 +184,6 @@
 
 \section{Review}
 \label{sect:review}
-
     
     An autonomous vehicle used to spray individual plants whilst driving at \SI{2.5}{\kilo\meter\per\hour} is published in 1998 \citep{Tillett1998}.
     It used wheel encoders, a compass, and accelerometers for odometry information.
@@ -205,7 +204,7 @@
     Like the platform presented earlier by Pederson et al., it combined a compass, gyroscope and GPS for odommetry.
     However, it also featured encoder feedback and a row detection sensor, both of which were missing from Pedersen's unit.
     Additionally, the GPS unit used here utilised Real Time Kinematic (RTK) corrections from a base station.
-    RTK-GPS is capable of providing positioning with accuracies down to \SI{2}{\centi\meter} \citep{Durrant-Whyte2005}.
+    RTK-GPS is capable of providing positioning with accuracies of around \SI{2}{\centi\meter}.
     This unit utilised a Controller Area Network (CAN) bus for some system communication.
 
     In 2008, Klose et al. publish a paper presenting `Weedy', a autonomous weed control robot for field use.
@@ -222,25 +221,34 @@
     The authors created a simulated model of the platform using Gazebo in which they could test the many-degrees-of-freedom drive system.
 
     Most relevant is the previous work of Scarfe et al. on an autonomous kiwifruit picking robot \cite{scarfe2009, Scarfe2012}.
-    That work involved the creation of a hydraulically driven platform with Ackermann steering, referred to as `ATP', to which for fruit harvesting arms were integrated.
+    That work involved the creation of a hydraulically driven platform with Ackermann steering to which for fruit harvesting arms were integrated.
+    The platform and harvester combination was not developed to a level appropriate for commercial use, but formed the foundation for what the work presented here.
+    
 
-
-
-    A common theme among these vehicles appears to be the use of sensor fusion, whereby data from multiple sensors is merged and filtered.
+    Common among these vehicles is the use of sensor fusion, whereby data from multiple sensors is merged and filtered.
     This provides a way to combine the advantages of multiple sensor types, and the redundancy of having multiple sensors, into a single computation space.
-    One such sensor is the RTK-GPS unit, appearing on the platforms published after 2004.
+    One such sensor is the RTK-GPS unit, appearing on platforms published after 2004.
     With regards to its use in place of machine vision based guidance systems, Slaughter et al. points out the trade-off of requiring an ``unobstructed ``view'' of the sky from all parts of the field'' \citep{Slaughter2008}.
     This requirement can not be satisfied under the dense canopy of a kiwifruit orchard which are generally surrounded by thick, and tall wind-breaking hedges.
-    Also, a separate feasibility analysis highlighted the use of RTK-GPS systems as a significant cost in yearly subscriptions alone \cite{Pedersen2006}.
+    Additionally, multi-path signal propagation caused by nearby foliage or the geometry of the land itself presents its own mode of failure\cite{Durrant-Whyte2005}.
+    A separate feasibility analysis highlighted the use of RTK-GPS systems as a significant cost in yearly subscriptions alone \cite{Pedersen2006}.
     Torii suggests a combination of both RTK-GPS and machine vision systems to be the most promising system going forward based on reductions in costs and increases in performance of these systems \cite{Torii2000}.
 
-
+    
     The popularity of the CAN bus for low-level communication is evidenced by its increasing frequency of usage over these developments.
 
 
 
 \section{Mechanical design}
 \label{sect:mechanical}
+
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=\linewidth]{imgs/profile_views/AMMP-All-Labelled.pdf}
+        \caption{Profile drawings of the robotic platform with kiwifruit bin.}
+        \label{fig:AMMP}
+    \end{figure}
+
     Skid steering inappropriate for orchard environments due to soft ground.
     Pivoting front axle used to maintain three points of contact at all times; no suspension.
     Limited to \SI{10}{\kilo\meter\per\hour} by the choice of motor and gearboxes on the drive-system.
