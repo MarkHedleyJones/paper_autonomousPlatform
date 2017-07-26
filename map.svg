@@ -1557,14 +1557,14 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="-6772.3146"
-     inkscape:cy="6806.2482"
+     inkscape:zoom="0.9899495"
+     inkscape:cx="-1657.9089"
+     inkscape:cy="-750.42884"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g4741-9-8-8-36"
      showgrid="false"
      showborder="false"
-     inkscape:window-width="1869"
+     inkscape:window-width="1506"
      inkscape:window-height="2075"
      inkscape:window-x="3870"
      inkscape:window-y="30"
@@ -2540,7 +2540,7 @@
        inkscape:connection-end="#g4741-9-11" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker27351)"
-       d="M -2113.3842,-6161.5991 -4271.1136,-4113.443"
+       d="m -2113.3842,-6161.5991 -2157.7294,2048.156"
        id="path9823"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -2684,7 +2684,7 @@
            id="flowPara3575-8-3-9-9-7">Torii2000</flowPara></flowRoot>    </g>
     <path
        style="display:inline;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker7655)"
-       d="M -2113.3842,-6314.2618 -5781.8053,-3998.861"
+       d="M -1463.2253,-5927.8699 0,0"
        id="path7637"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -3596,5 +3596,44 @@
            id="flowPara3573-1-7-86-9-9-2-6" /><flowPara
            style="font-size:35px"
            id="flowPara3575-8-3-0-7-3-8-1">Noguchi1997</flowPara></flowRoot>    </g>
+    <g
+       transform="translate(-2782.8571,2417.1429)"
+       id="g4741-9-8-8-36">
+      <rect
+         y="-1339.0664"
+         x="714.28571"
+         height="1251.4286"
+         width="960"
+         id="rect3899-7-6-488-7-7"
+         style="fill:#f6ffd5;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+      <flowRoot
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot3371-3-2-5-9-5"
+         xml:space="preserve"
+         transform="translate(1606.2369,435.81301)"><flowRegion
+           id="flowRegion3373-6-0-97-2-3"><rect
+             style="text-align:center;text-anchor:middle"
+             y="-1418.4709"
+             x="-840.4469"
+             height="1454.6196"
+             width="854.58905"
+             id="rect3375-7-2-5-0-5" /></flowRegion><flowPara
+           id="flowPara3377-5-3-3-2-6">Review of research on agricultural vehicle autonomous guidance</flowPara><flowPara
+           id="flowPara3567-3-7-8-3-2" /><flowPara
+           id="flowPara3599-5-5-8-7-9">Li, Ming</flowPara><flowPara
+           id="flowPara5791">Imou, Kenji</flowPara><flowPara
+           id="flowPara5793">Wakabayashi, Katsuhiro</flowPara><flowPara
+           id="flowPara5795">Yokoyama, Shinya</flowPara><flowPara
+           id="flowPara3379-6-9-318-5-1" /><flowPara
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35px;font-family:Sans;-inkscape-font-specification:'Sans Italic'"
+           id="flowPara3381-2-2-96-9-2">International Journal of Agricultural and Biological Engineering</flowPara><flowPara
+           id="flowPara3603-1-2-43-2-7" /><flowPara
+           id="flowPara3731-2-8-3-2-0"
+           style="font-size:25px" /><flowPara
+           style="font-size:25px"
+           id="flowPara5809">The introduction of computers and digital camera technology during the 1980s sparked reasearch into creating autonomous vehicles for agriculural use.</flowPara><flowPara
+           id="flowPara3573-1-7-86-9-3" /><flowPara
+           style="font-size:35px"
+           id="flowPara3575-8-3-0-7-6">Li2009</flowPara></flowRoot>    </g>
   </g>
 </svg>
