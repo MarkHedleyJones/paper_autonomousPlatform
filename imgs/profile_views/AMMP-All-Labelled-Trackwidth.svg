@@ -16,7 +16,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="AMMP-All-Labelled.svg">
+   sodipodi:docname="AMMP-All-Labelled-Trackwidth.svg">
   <defs
      id="defs4">
     <marker
@@ -461,11 +461,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="7.9999999"
-     inkscape:cx="358.37113"
-     inkscape:cy="123.87713"
+     inkscape:zoom="2"
+     inkscape:cx="266.4799"
+     inkscape:cy="314.4638"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g6974"
      showgrid="false"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -513,7 +513,7 @@
      transform="translate(121.60714,-369.7584)">
     <g
        id="g8432"
-       transform="translate(2,-24.112165)">
+       transform="translate(2,-24.112167)">
       <text
          sodipodi:linespacing="125%"
          id="text4147"
@@ -644,13 +644,13 @@
         <text
            xml:space="preserve"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;line-height:125%;font-family:cmr10;-inkscape-font-specification:cmr10;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           x="200.59822"
+           x="200.86607"
            y="596.92249"
            id="text4177-5-4"
            sodipodi:linespacing="125%"><tspan
              sodipodi:role="line"
              id="tspan4179-2-7"
-             x="200.59822"
+             x="200.86607"
              y="596.92249">E</tspan></text>
       </g>
       <g
@@ -869,8 +869,8 @@
        id="g5994-1"
        transform="translate(253.19787,256.18961)" />
     <g
-       id="g7142"
-       transform="translate(5.1895022,2.6933996)">
+       id="g6974"
+       transform="translate(5.1895022,0)">
       <text
          sodipodi:linespacing="125%"
          id="text4147-8"
@@ -881,7 +881,7 @@
            y="619.59302"
            x="306.02295"
            sodipodi:role="line"
-           id="tspan6644-6">Track-width: 1840</tspan><tspan
+           id="tspan6644-6">Trackwidth: 1840</tspan><tspan
            id="tspan6901"
            y="633.65552"
            x="306.02295"
@@ -889,7 +889,7 @@
            id="tspan6905"
            y="647.71802"
            x="306.02295"
-           sodipodi:role="line">Turning circle: 6400</tspan></text>
+           sodipodi:role="line">Turning cicrle: 3200</tspan></text>
       <text
          sodipodi:linespacing="125%"
          id="text4147-8-0"

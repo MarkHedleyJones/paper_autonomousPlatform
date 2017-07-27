@@ -170,33 +170,31 @@
     The duration of any given harvesting cycle is determined by the number of fruit to be harvested during that particular cycle.
     Therefore, as the harvester is designed to be autonomous, there must be communication between the harvester and platform to trigger forward movement after each harvest cycle.
 
+    It has been stated that ``since the robot development already includes a high complexity, the application itself should be of comparably low complexity'' \citep{Ruckelshausen2009}.
+    By separating development of the base platform from the task-specific modules, risk of over-complexity is reduced by way of isolation.
+    The platform presented here simply needs to transport the separately developed modules through kiwifruit orchards autonomously.
+
     Many autonomous vehicles for use in the agricultural industry have previously been reported, many of those being conversions of existing vehicles into a self-driving form.
     While this can reduce the initial cost for development of self driving systems, the cost of deploying such units may make them commercially unfeasible.
     In this work we present an agricultural vehicle designed specifically for use in kiwifruit orchards to transport modularised pollinating and harvesting units.
-    The weight and size of these units requires a vehicle that is robust, computer controllable, low-slung, and is capable of performing turns between adjacent orchard rows.
-
-    It has been stated that ``since the robot development already includes a high complexity, the application itself should be of comparably low complexity'' \citep{Ruckelshausen2009}.
-    By separating development the base platform from the more specialised task-specific modules, risk of over-complexity is somewhat reduced.
-    The platform presented here has one simple application in that it transports the separately developed modules through kiwifruit orchards.
-    Thus, in order for the unit to be successful in its own right, it only needs to demonstrate the ability to navigate through kiwifruit orchards autonomously.
 
 \section{Review}
 \label{sect:review}
 
     The introduction of computers and digital camera technology during the 1980s sparked research into creating autonomous vehicles for agricultural use \cite{Li2009}.
-    When publishing details of an autonomous vehicle in 1999, Tillett et al. cites difficulties dealing with variability in lighting and the environment as the reason no commercial ready vehicles were available at the time.
+    When publishing details of an autonomous vehicle in 1999, Tillett et~al.\@ cites difficulties dealing with variability in lighting and the environment as the reason no commercial ready vehicles were available at the time.
     His vehicle used wheel encoders, a compass, and accelerometers for odometry information, and featured a camera based row guidance system.
     It was capable of spraying individual plants whilst autonomously driving at \SI{2.5}{\kilo\meter\per\hour}.
     
     Later, in 2002, \cite{Pedersen2002} presented an Ackermann based autonomous robot designed for weed mapping.
     It had a top speed of \SI{6}{\kilo\meter\per\hour} and used GPS to determine the absolute position of the vehicle at semi-regular intervals.
     Between those updates, odometry estimates based on a gyro and compass were used.
-    Their vehicle was designed to follow pre-defined paths through row-crops, but the authors found that this was impractical without a separate row sensor.
+    Their vehicle was designed to follow pre-defined paths through row-crops, but the authors found that this was impractical without a dedicated row guidance sensor.
 
     These reports suggest that neither perception based row guidance nor absolute positioning, such as by GPS, are suitable on their own for agricultural vehicle guidance.
     
     \cite{Bak2004} presented a relatively advanced robotic platform based on a four wheel steering geometry.
-    It is noted that the control strategy for the four independently controlled wheels was non-trivial.
+    The authors noted that the control strategy for the four independently controlled wheels was non-trivial.
     Like the platform presented earlier by Pederson et~al.\@, it combined a compass, gyroscope and GPS for odommetry.
     However, it also featured encoder feedback, a row detection sensor and a GPS unit utilising Real Time Kinematic (RTK) corrections from a base station.
     RTK-GPS is capable of providing positioning with accuracies of around \SI{2}{\centi\meter}.
@@ -222,45 +220,50 @@
 
     Common among these vehicles is the use of sensor fusion, whereby data from multiple sensors is merged and filtered.
     This provides a way to combine the advantages of multiple sensor types, and the benefit of redundancy from multiple sensors, into a single computation space.
-    One such sensor is the RTK-GPS unit, appearing on platforms published after 2004.
-    With regards to its use in place of machine vision based guidance systems, Slaughter et~al.\@ points out the trade-off of requiring an ``unobstructed ``view'' of the sky from all parts of the field'' \citep{Slaughter2008}.
-    This requirement can not be satisfied under the dense canopy of a kiwifruit orchard which are generally surrounded by thick, and tall wind-breaking hedges.
+    With regards to the use of RTK-GPS of perception based guidance systems, Slaughter et~al.\@ points out the trade-off of requiring an ``unobstructed ``view'' of the sky from all parts of the field'' \citep{Slaughter2008}.
     Additionally, multi-path signal propagation caused by nearby foliage or the geometry of the land itself presents its own mode of failure \citep{Durrant-Whyte2005}.
+    This requirements can not be satisfied under the canopy of a kiwifruit orchard which are then surrounded by tall wind-breaking hedges.
     A separate feasibility analysis highlighted the use of RTK-GPS systems as a significant cost in yearly subscriptions alone \citep{Pedersen2006}.
     Torii suggests a combination of both RTK-GPS and machine vision systems to be the most promising system going forward based on reductions in costs and increases in performance of these systems \cite{Torii2000}.
 
-    Of the reported platforms there appears to be an equal split between Ackermann and four-wheel steering geometries.
-    The ability of four wheel steering to pivot about the centre of the vehicle, as opposed to the centre of the rear wheels with an Ackermann system offers little gain in an orchard environment.
-    Not only does Ackermann offer a reduction in mechanical complexity, but removes the need to develop the ``non-trivial'' control strategies.
+    % Of the reported platforms designed specifically to be autonomous there appears to be an equal split between Ackermann and four-wheel steering geometries.
+    % The ability of four wheel steering to pivot about the centre of the vehicle, as opposed to the centre of the rear wheels with an Ackermann geometry, offers little gain in an orchard environment.
+    % Not only can Ackermann geometry offer a reduction in mechanical complexity, but also removes the need to develop the ``non-trivial'' control strategies.
 
     \cite{Blackmore2007} envisaged significant reductions in production costs by re-purposing parts already in use in the agricultural and automotive industry.
     While not a physical component, the CAN is one such technology borrowed from the automotive industry aiding developmental of low-level communications.
     Many of the platforms reviewed, especially the more recent ones, made use of this protocol for real-time communication.
-
-    The use of simulation tools allowed the creators of BoniRob to develop and test their mobility system separate of the physical hardware.
-    The Gazebo robot simulation software used by that group is open source and has become tightly integrated into the Robot Operating System (ROS).
-
-    Trends in the development of similar platforms show a increase in the variety of sensors used.
-    With that, comes advances in the way the sensor data is combined into a single frame of reference.
-    CAN as a means of low-level communication gained popularity and appears to be the standard signaling protocol.
     Platforms designed for open field crops appear to favor four-wheel steering over the more traditional Ackermann geometry.
+    The use of simulation tools allowed the creators of BoniRob to develop and test their mobility system separate of the physical hardware.
 
 \section{Mechanical design}
 \label{sect:mechanical}
 
-    As the platform is intended solely for use in kiwifruit orchards, its design is specific to this environment.
-    An orchard canopy can 
-    The platform is designed solely for use in kiwifruit orchards, which dictates much 
-    where canopy heights can be as low as \SI{1300}{\milli\meter}
-
-    \begin{figure}[htbp]
+    \begin{figure}[htb]
         \centering
         \includegraphics[width=\linewidth]{imgs/profile_views/AMMP-All-Labelled.pdf}
         \caption{Profile drawings of the robotic platform with kiwifruit bin.}
         \label{fig:AMMP}
     \end{figure}
 
-    Skid steering inappropriate for orchard environments due to soft ground.
+    Canopy heights of kiwifruit orchards range between \SI{1300}{\milli\meter} and \SI{1700}{\milli\meter}.
+    Modules on the platform need additional clearance from the canopy in addition the height of the module itself.
+    To maximise space available to the modules it carries, the platform must be low-slung where these modules attach.
+    Figure \ref{fig:AMMP} shows the design of the platform, with its module area is visible between markers `F' and `E' in the side view (top left).
+
+    Steering geometry is Ackermann based with independent motors on the front wheels for actuation.
+    The ability to actuate the angles individually simplifies the mechanical geometry needed to coordinate the steering wheels, especially at the extreme angles.
+    Each steering wheel has the freedom to rotate \SI{340}{\degree}, which gives the platform the ability to pivot about the centre of its rear wheels.
+    This sets the turning circle to be twice the distance from the centre of the rear wheels to the front of the vehicle.
+    Implementing four wheel steering would allow the centre of rotation to move to the centre of the vehicle, decreasing the turning circle to the total length of the vehicle.
+    As the headlands of kiwifruit orchards are sized for tractors to turn between rows, Ackermann based steering is sufficient.
+    The implementation of Ackermann geometry simplifies the overall design and increases the usable area at the rear of the vehicle; allowing a full-size kiwifruit bin and lifting mechanism to occupy this space.
+    Not only does the Ackermann geometry offer a reduction in mechanical complexity, but also removes the need to develop the ``non-trivial'' control strategies.
+    A differential drive, or skid steer, system was expected to cause ground damage to a level considered unacceptable to orchard owners.
+
+    The platform has no suspension, other than its tries, and features a front pivoting axle to maintain three points of contact with the ground.
+    
+
     Pivoting front axle used to maintain three points of contact at all times; no suspension.
     Limited to \SI{10}{\kilo\meter\per\hour} by the choice of motor and gearboxes on the drive-system.
     Operational speed of \SI{5}{\kilo\meter\per\hour}.
@@ -277,7 +280,7 @@
 \section{Hardware}
 \label{sect:hardware}
 
-    \begin{figure}[htbp]
+    \begin{figure}[htb]
         \centering
         \includegraphics[width=\linewidth]{imgs/photos/development_wBatteryBoxes.jpg}
         \caption{
@@ -312,9 +315,10 @@
 \label{sect:sensors}
     [Jamie's section]
 
-\section{Random info}
+\section*{Acknowledgements}
+This research was funded in-part by a grant from the New Zealand Ministry of Business Innovation and Employment.
+The authors acknowledge contributions from Phillip Ross and Gordon Neshausen for design and fabrication of the platform.
 
-``Field scouting and mechanical weeding have been identified and described as the first two niche tasks likely to become autonomous''\citep{Blackmore2004}.
 
 
 % Diagram of sensor placement
