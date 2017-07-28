@@ -47,7 +47,7 @@
 \usepackage{amssymb}
 %% The amsthm package provides extended theorem environments
 %% \usepackage{amsthm}
-
+\usepackage{color}
 \usepackage{siunitx}
 
 %% The lineno packages adds line numbers. Start line numbering with
@@ -105,7 +105,8 @@
 %% \address{Address\fnref{label3}}
 %% \fntext[label3]{}
 
-\title{An Autonomous Platform for Use in Kiwifruit Orchards}
+% \title{An Autonomous Platform for Use in Kiwifruit Orchards}
+\title{A Platform for Autonomous Navigation in Kiwifruit Orchards}
 
 %% use optional labels to link authors explicitly to addresses:
 %% \author[label1,label2]{<author name>}
@@ -134,7 +135,13 @@
 %% Text of abstract
 
     This will be written last.
-    Other uses may be mechanical weed removal, targeted spraying, and crop scouting.
+    General tone of paper is:
+    We present a vehicle designed specifically for autonomous control in kiwifruit orchards.
+    Here are some other people who have made autonomous specific vehicles.
+    Here is ours and this is how it fits in with those.
+    We've gone with these sensors and this method of navigation and it has demonstrated itself to work in the orchard.
+    We think that we could improve the thing by using this algorithm and increasing module space.
+    Generally it is an improvement on the previous work of Scarfe.
 \end{abstract}
 
 \begin{keyword}
@@ -178,27 +185,39 @@
     While this can reduce the initial cost for development of self driving systems, the cost of deploying such units may make them commercially unfeasible.
     In this work we present an agricultural vehicle designed specifically for use in kiwifruit orchards to transport modularised pollinating and harvesting units.
 
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=\linewidth]{imgs/photos/suzy_general.jpg}
+        \caption{
+            Photo of the platform in a kiwifruit orchard.
+        }
+        \label{fig:suzy}
+    \end{figure}
+
 \section{Review}
 \label{sect:review}
 
     The introduction of computers and digital camera technology during the 1980s sparked research into creating autonomous vehicles for agricultural use \cite{Li2009}.
     When publishing details of an autonomous vehicle in 1999, Tillett et~al.\@ cites difficulties dealing with variability in lighting and the environment as the reason no commercial ready vehicles were available at the time.
-    His vehicle used wheel encoders, a compass, and accelerometers for odometry information, and featured a camera based row guidance system.
+    The vehicle used wheel encoders, a compass, and accelerometers for odometry information, and featured a camera based row guidance system.
     It was capable of spraying individual plants whilst autonomously driving at \SI{2.5}{\kilo\meter\per\hour}.
     
-    Later, in 2002, \cite{Pedersen2002} presented an Ackermann based autonomous robot designed for weed mapping.
-    It had a top speed of \SI{6}{\kilo\meter\per\hour} and used GPS to determine the absolute position of the vehicle at semi-regular intervals.
-    Between those updates, odometry estimates based on a gyro and compass were used.
-    Their vehicle was designed to follow pre-defined paths through row-crops, but the authors found that this was impractical without a dedicated row guidance sensor.
-
-    These reports suggest that neither perception based row guidance nor absolute positioning, such as by GPS, are suitable on their own for agricultural vehicle guidance.
+    In 2002, two autonomous robots designed for weed mapping and control were published \citep{Pedersen2002,Astrand2002}.
+    The platforms in these works were relatively simple in terms of their design, referring only to the chassis and drive system, as they are still in a prototype stage.
+    Both were Ackermann based and designed for field crops.
+    The vehicle presented by \cite{Pedersen2002} was designed to follow pre-defined paths through row-crops, but the authors found that this was impractical without a dedicated row guidance sensor.
+    They then discuss a revision of their prototype that features a four wheel steering and drive system and integrating both GPS and a row guidance measurements.
+    This work demonstrates a need to combine data from multiple sensor types, which becomes the standard henceforth.
+    Mention at this time was made of utilising a Controller Area Network (CAN) to communicate with drive and steering modules on the revised unit due to it being a dominating standard in agricultural vehicles.
+    \colorbox{yellow}{Did this next prototype ever get published?}
     
-    \cite{Bak2004} presented a relatively advanced robotic platform based on a four wheel steering geometry.
+    
+    \cite{Bak2004} present a relatively advanced robotic platform based on a four wheel steering geometry.
     The authors noted that the control strategy for the four independently controlled wheels was non-trivial.
     Like the platform presented earlier by Pederson et~al.\@, it combined a compass, gyroscope and GPS for odommetry.
     However, it also featured encoder feedback, a row detection sensor and a GPS unit utilising Real Time Kinematic (RTK) corrections from a base station.
     RTK-GPS is capable of providing positioning with accuracies of around \SI{2}{\centi\meter}.
-    Their robot utilised a Controller Area Network (CAN) bus for some aspects of system communication.
+    Their robot utilised a CAN bus for some aspects of system communication.
 
     In 2008, Klose et~al.\@ publish details of `Weedy', a autonomous weed control robot for field use.
     It used a simplistic four wheel steering geometry.
@@ -222,9 +241,14 @@
     This provides a way to combine the advantages of multiple sensor types, and the benefit of redundancy from multiple sensors, into a single computation space.
     With regards to the use of RTK-GPS of perception based guidance systems, Slaughter et~al.\@ points out the trade-off of requiring an ``unobstructed ``view'' of the sky from all parts of the field'' \citep{Slaughter2008}.
     Additionally, multi-path signal propagation caused by nearby foliage or the geometry of the land itself presents its own mode of failure \citep{Durrant-Whyte2005}.
-    This requirements can not be satisfied under the canopy of a kiwifruit orchard which are then surrounded by tall wind-breaking hedges.
+    This requirement can not be satisfied under the canopy of a kiwifruit orchard which are usually surrounded by tall wind-breaking hedges.
     A separate feasibility analysis highlighted the use of RTK-GPS systems as a significant cost in yearly subscriptions alone \citep{Pedersen2006}.
     Torii suggests a combination of both RTK-GPS and machine vision systems to be the most promising system going forward based on reductions in costs and increases in performance of these systems \cite{Torii2000}.
+    While \cite{Li2009} concludes that either GPS and machine vision, or GPS and lidar will be used together as a development trend.
+
+    This review has focused on the automation of vehicles specifically designed for autonomous driving in agriculture.
+    Much of the sensing requirements discussed for autonomous navigation have been developed on existing vehicles converted for computer control.
+    Most, if not all, sensing and navigation developments made on those vehicle also apply here.
 
     % Of the reported platforms designed specifically to be autonomous there appears to be an equal split between Ackermann and four-wheel steering geometries.
     % The ability of four wheel steering to pivot about the centre of the vehicle, as opposed to the centre of the rear wheels with an Ackermann geometry, offers little gain in an orchard environment.
@@ -235,6 +259,10 @@
     Many of the platforms reviewed, especially the more recent ones, made use of this protocol for real-time communication.
     Platforms designed for open field crops appear to favor four-wheel steering over the more traditional Ackermann geometry.
     The use of simulation tools allowed the creators of BoniRob to develop and test their mobility system separate of the physical hardware.
+
+    \color{red}
+        shift focus here to the mechanical aspects, but keep whatever ties in with what Jamie has done in terms of sensor selection
+    \color{black}
 
 \section{Mechanical design}
 \label{sect:mechanical}
@@ -249,63 +277,70 @@
     Canopy heights of kiwifruit orchards range between \SI{1300}{\milli\meter} and \SI{1700}{\milli\meter}.
     Modules on the platform need additional clearance from the canopy in addition the height of the module itself.
     To maximise space available to the modules it carries, the platform must be low-slung where these modules attach.
-    Figure \ref{fig:AMMP} shows the design of the platform, with its module area is visible between markers `F' and `E' in the side view (top left).
+    Figure \ref{fig:AMMP} illustrates the design; area for mounting modules is visible between markers `F' and `E' in the side view (top left).
 
     Steering geometry is Ackermann based with independent motors on the front wheels for actuation.
-    The ability to actuate the angles individually simplifies the mechanical geometry needed to coordinate the steering wheels, especially at the extreme angles.
-    Each steering wheel has the freedom to rotate \SI{340}{\degree}, which gives the platform the ability to pivot about the centre of its rear wheels.
+    The ability to actuate the angles individually simplifies the mechanical geometry needed to coordinate steering, particularly at extreme steering angles.
+    Each steering wheel has the freedom to rotate \SI{340}{\degree}, providing the ability to pivot about the centre of its rear wheels.
     This sets the turning circle to be twice the distance from the centre of the rear wheels to the front of the vehicle.
     Implementing four wheel steering would allow the centre of rotation to move to the centre of the vehicle, decreasing the turning circle to the total length of the vehicle.
     As the headlands of kiwifruit orchards are sized for tractors to turn between rows, Ackermann based steering is sufficient.
     The implementation of Ackermann geometry simplifies the overall design and increases the usable area at the rear of the vehicle; allowing a full-size kiwifruit bin and lifting mechanism to occupy this space.
-    Not only does the Ackermann geometry offer a reduction in mechanical complexity, but also removes the need to develop the ``non-trivial'' control strategies.
+    Not only does it offer a reduction in mechanical complexity, but removes the need to develop ``non-trivial'' control strategies.
     A differential drive, or skid steer, system was expected to cause ground damage to a level considered unacceptable to orchard owners.
 
     The platform has no suspension, other than its tries, and features a front pivoting axle to maintain three points of contact with the ground.
-    
+    Each wheel is mounted directly to a 40:1 fixed ratio planetary gear gearbox connected to a permanent magnet, brushless AC motor.
+    The gearbox-motor combination allows the platform to travel at a maximum speed of \SI{10}{\kilo\meter\per\hour}.
+    In total, the drive system is capable of delivering \SI{25.6}{\kilo\watt} of power and \SI{3.3}{\kilo\newton\meter} of torque continuously.
+    With these specifications it is capable of accelerating from a stand-still to its maximum speed at an incline of \SI{20}{\degree} carrying a \SI{600}{\kilo\gram} payload in \SI{2.0}{\second}.
 
-    Pivoting front axle used to maintain three points of contact at all times; no suspension.
-    Limited to \SI{10}{\kilo\meter\per\hour} by the choice of motor and gearboxes on the drive-system.
-    Operational speed of \SI{5}{\kilo\meter\per\hour}.
-    Ackermann steering geometry with the ability to pivot about the centre of the rear wheels.
-    Four wheel steering, such as presented by Bak \& Hans \citep{Bak2004}, was not deemed necessary as the headlands of kiwifruit orchards provide adequate turning areas.
-    Additionally, control strategies for a platform having only two steerable wheels is simpler.
-    % Diagram showing turn circle of four wheel steer vs two wheel steer, showing only a half wheelbase difference.
+    At the front of the platform sits a power generation unit including a petrol engine, air compressor, and alternator.
+    These are connected together by a single timing belt.
+    The compressor and alternator are activated electronically by a custom power generation controller.
+    Fuel and compressed air tanks sits over the right-hand rear wheel, which are visible in figure \ref{fig:suzy}.
+    Battery modules attached to the sides of the chassis each house fifteen lithium-iron-phosphate batteries.
 
+    Unloaded, the machine has an estimated mass of \SI{850}{\kilo\gram}, including the power generation unit.
+    It has been designed and tested to be capable of carrying \SI{1000}{\kilo\gram} in it's payload space.
+    With that load, the platform's maneuverability and ability to brake or accelerate was not noticeably affected.
+    \colorbox{yellow}{Stuff starts getting flaky from here.}
 
-
-    \citep{Astrand2002} have used an ackermann steering system actuated by a single DC servo motor for their robotic beet-crop weeding platform. They have only two driving wheels placed at the rear of the system.
-
-
-\section{Hardware}
+\section{System Architecture}
 \label{sect:hardware}
 
     \begin{figure}[htb]
         \centering
-        \includegraphics[width=\linewidth]{imgs/photos/development_wBatteryBoxes.jpg}
-        \caption{
-            Photo of the platform during development showing battery housings and system internals.
-            Battery compartments are visible along the sides of the chassis.
-        }
-        \label{fig:AMMP}
+        \includegraphics[width=\linewidth]{imgs/system_diagram/diagram_v3.pdf}
+        \caption{Hardware level system diagram showing the types of interfaces and relative relations on the platform.}
+        \label{fig:system_diagram}
     \end{figure}
+    Ethernet, USB, and CAN busses are connect each part of the system as shown in figure \ref{fig:system_diagram}.
+    A computer dedicated to processing sensing data related to navigation is connected to the platform's `System PC' via ethernet.
+    The open source Robotic Operating System (ROS) is used to facilitate communicate between the two computers.
+    Not only is ROS used for inter-computer communication, but also within separate software nodes running on the same machine.
+    For example, a node running on the `Driving PC' takes information from a lidar and publishes it on a topic that another node on the same PC has subscribed to.
+    The subscribing node then processes the data and generates drive commands which are then published on another topic that the `System PC' is subscribed to.
+    From there, the `System PC' will further process that to calculate the steering angles and drive velocities based on the Ackermann geometry and publish it to a node that puts those commands on the CAN bus.
 
-    GPS has proven to be unreliable when used under the dense canopy of a kiwifruit orchard.
-    \citep{Pedersen2006} shows the economics of using an GPS-RTK system, as seen in other agricultural systems \citep{Bak2004,Ruckelshausen2009}[Nagasaka et al from \citep{Torii2000}], has considerable ongoing costs in the form of yearly fees, although the cost of these units is rapidly decreasing \citep{Torii2000}.
-    Forward and upwards facing LiDAR have been used for navigation and detection of the row and canopy.
+    \colorbox{yellow}{Maybe time for another diagram (software block diagram?)}
 
-\section{Safety}
-\label{sect:safety}
     % Include system layout diagram
     Relay modules connected to the main computer via the system's CAN bus give a means of shutting down subsystems.
-    These relays monitor the platform's CAN bus to ensure that synchronisation messages are being sent out in a timely manner.
-    In the event that the synchonisation messages begin to vary in frequency, or stop, the relays cut power to the subsystems.
-    Both front drive motors are fitted with electromechanical brakes which engage when the power is cut.
-    A wireless safety-rated controller, designed for use with cranes, has been adapted for use with driving robot platform.
-    The controller provides the operator with a way of entering the platform into autonomous mode, manual control, triggering an emergency stop, or enabling/disabling auxiliary systems.
+    They are used to control various outputs on the platform, such as a machine state indicators, electro-actuated park brakes, and the supply of power to sub-systems. 
+    Additionally, the relays monitor the platform's CAN bus to ensure that synchronisation messages are being sent out in a timely manner.
+    Monitoring the frequency of these messages is one way to determine the state of the computer generating them, which in this case it is the system PC.
+    In the event that the synchonisation messages begin to vary in frequency, or stop, the relays cut power to all subsystems and engage the brakes.
 
-\section{Software architecture}
+    % A wireless safety-rated controller is used to remotely control platform.
+    % The controller 
+    % The controller provides the operator with a way of entering the platform into autonomous mode, manual control, triggering an emergency stop, or enabling/disabling auxiliary systems.
+
+\section{Software}
 \label{sect:software}
+    \color{red}
+        OLD CONTENT: Unsure about what to put in this section. Jamie, you are free to completely hijack this.
+    \color{black}
     The control software is comprised of individual nodes, writen in either C++ or Python, linked together using Robot Operating System (ROS) for interprocess communication.
     The system runs on Ubuntu Server 16.04 on an Intel NUC, a compact x86 based PC.
     A model of the robot platform has been depeloped for use with Gazebo simulation software.
@@ -315,11 +350,34 @@
 \label{sect:sensors}
     [Jamie's section]
 
+\section{Autonomous Driving}
+\label{sect:autonomous}
+    \color{red}
+        It would be great if we could put something in here with regards to how well the platform navigates an orchard.
+        If you don't want to write it, I can write something generic and put it in for you to approve.
+        Alternatively, you may not want anything in here relating to the navigation performance.
+    \color{black}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=\linewidth]{imgs/photos/suzy_turning.jpg}
+        \caption{
+            Photo showing the platform performing a row-end turn
+        }
+        \label{fig:suzy_turning}
+    \end{figure}
+
+\section{Discussion}
+    TODO: Generally summerise the platform, its ability to carry stuff, suitability for the orchard environment, and its ability to drive autonomously.
+
 \section*{Acknowledgements}
 This research was funded in-part by a grant from the New Zealand Ministry of Business Innovation and Employment.
-The authors acknowledge contributions from Phillip Ross and Gordon Neshausen for design and fabrication of the platform.
+The authors acknowledge contributions from Phillip Ross and Gordon Neshausen in the design and fabrication of the platform.
 
-
+\section{Jamie-Mark communication}
+You are free to suggest anything about anything.
+Maybe you want to add someone to the authors list?
+Maybe you don't like the focus of the review, or think a review is not necessary.
+Perhaps you can think of something that would go well in the paper that I've not mentioned.
 
 % Diagram of sensor placement
 % Lidar units and visibility
