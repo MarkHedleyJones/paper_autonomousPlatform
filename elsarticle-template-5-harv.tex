@@ -149,7 +149,7 @@
 
 %% MSC codes here, in the form: \MSC code \sep code
 %% or \MSC[2008] code \sep code (2000 is the default)
-
+    Autonomous \sep Agricultural \sep Robotic \sep Platform \sep Lidar \sep Ackermann
 \end{keyword}
 
 \end{frontmatter}
@@ -159,37 +159,35 @@
 %% main text
 \section{Introduction}
 \label{sect:intro}
-    Short-term labor requirements within the New Zealand kiwifruit industry peak twice a year corresponding with pollination and harvesting cycles.
-    The majority of employment in this industry during these peaks is filled by seasonal or casual workers \citep{Timmins2009}.
-    As kiwifruit is New Zealand's largest horticultural export by value \citep{StatisticsNewZealand2015}, automation in kiwifruit harvesting and pollination should ease growth in this industry.
-    Additionally, the New Zealand government aims to double exports from its primary industries between 2012 and 2025 and is actively investing in programmes to achieve this \citep{MinistryPrimaryIndustries2015}.
+    Short-term labor requirements within New Zealand's kiwifruit industry peak twice a year corresponding with pollination and harvesting.
+    The majority of employment during these peaks is filled by seasonal or casual workers \citep{Timmins2009}.
+    As kiwifruit is the country's largest horticultural export by value \citep{StatisticsNewZealand2015}, automation in this industry may promote economic growth.
+    % The New Zealand government aims to double exports from its primary industries between 2012 and 2025 and is actively investing in programmes to achieve this \citep{MinistryPrimaryIndustries2015}.
 
     Previous work on automated harvesting of kiwifruit has been demonstrated \citep{Scarfe2012,scarfe2009}.
-    That work presents a harvesting platform with the capability of in-orchard kiwifruit harvesting from pergola type orchards.
-    The robotic platform presented in this paper is a second generation unit based on that previous, more integrated, design of kiwifruit harvester.
-    Modularity of the platform has been increased to so as to be able to accommodate other modules, such as those for harvesting and pollination.
-    This work discusses only the base platform, where details of the harvesting and pollination modules are published separately \citep{williams2017,Seabright2017}.
+    That work presents a mobile platform integrated with robotic arms that is capable of harvesting pergola type kiwifruit orchards.
+    The platform presented in this paper is a second generation unit that increases modularity by separating the platform from the tasks it performs.
+    This work discusses only the base platform, where details of modules for harvesting and pollination are published separately \citep{williams2017,Seabright2017}.
 
-    Automation in harvesting and pollinating kiwifruit demands the use of real-time computer control, state-of-the-art manipulators, and convolutional neural networks.
-    In their current state of development these systems are bulky and have specific geometric requirements dictated by the environment they operate in, namely pergola style orchards.
-    They share common requirements in that they both require transport to and from orchards, electrical power, and air pressure, but differ in they way they move the orchard.
-    Whilst pollinating, the platform must move at a well-known velocity with minimum changes in angle, whereas harvesting repeatedly starts and stops, advancing set distance between cycles.
-    The duration of any given harvesting cycle is determined by the number of fruit to be harvested during that particular cycle.
-    Therefore, as the harvester is designed to be autonomous, there must be communication between the harvester and platform to trigger forward movement after each harvest cycle.
+    Automation in kiwifruit harvesting and pollinating demands computer control, state-of-the-art manipulators, and convolutional neural networks.
+    These systems are bulky and have specific geometric requirements dictated the environment and the tasks they perform.
+    They share the requirements of transport to and from orchards, electrical power, and air pressure, but differ in they way they move when in the orchard.
+    The pollinating module moves at a well-known velocity with minimum changes in angle, whereas the harvester advances a set distance between stationary harvest cycles.
+    The duration of a harvesting cycle is determined by the number of fruit to be harvested during that particular cycle.
+    Therefore, as the harvester is designed to be autonomous, there must be communication between the harvester and platform to trigger forward movement between cycles.
 
     It has been stated that ``since the robot development already includes a high complexity, the application itself should be of comparably low complexity'' \citep{Ruckelshausen2009}.
-    By separating development of the base platform from the task-specific modules, risk of over-complexity is reduced by way of isolation.
-    The platform presented here simply needs to transport the separately developed modules through kiwifruit orchards autonomously.
+    By separating development of the base platform from the task-specific modules, risk of over-complexity is reduced by way of separation.
+    The platform presented here simply needs to transport task specific modules autonomously through kiwifruit orchards.
 
-    Many autonomous vehicles for use in the agricultural industry have previously been reported, many of those being conversions of existing vehicles into a self-driving form.
-    While this can reduce the initial cost for development of self driving systems, the cost of deploying such units may make them commercially unfeasible.
-    In this work we present an agricultural vehicle designed specifically for use in kiwifruit orchards to transport modularised pollinating and harvesting units.
+    The development of autonomous vehicles in agriculture is not new, but much of the literature relates to existing vehicles converted to driverless.
+    This paper focuses on the development of a purpose built platform for the purpose of carrying robotic modules through an orchard environment.
 
     \begin{figure}[htb]
         \centering
         \includegraphics[width=\linewidth]{imgs/photos/suzy_general.jpg}
         \caption{
-            Photo of the platform in a kiwifruit orchard.
+            The robot platform driving through a kiwifruit orchard.
         }
         \label{fig:suzy}
     \end{figure}
@@ -199,18 +197,17 @@
 
     The introduction of computers and digital camera technology during the 1980s sparked research into creating autonomous vehicles for agricultural use \cite{Li2009}.
     When publishing details of an autonomous vehicle in 1999, Tillett et~al.\@ cites difficulties dealing with variability in lighting and the environment as the reason no commercial ready vehicles were available at the time.
-    The vehicle used wheel encoders, a compass, and accelerometers for odometry information, and featured a camera based row guidance system.
+    Their vehicle combined wheel encoders, a compass, and accelerometers for odometry information, and featured a camera based row guidance system.
     It was capable of spraying individual plants whilst autonomously driving at \SI{2.5}{\kilo\meter\per\hour}.
     
     In 2002, two autonomous robots designed for weed mapping and control were published \citep{Pedersen2002,Astrand2002}.
     The platforms in these works were relatively simple in terms of their design, referring only to the chassis and drive system, as they are still in a prototype stage.
     Both were Ackermann based and designed for field crops.
     The vehicle presented by \cite{Pedersen2002} was designed to follow pre-defined paths through row-crops, but the authors found that this was impractical without a dedicated row guidance sensor.
-    They then discuss a revision of their prototype that features a four wheel steering and drive system and integrating both GPS and a row guidance measurements.
+    They proposed a revision of their prototype that featured four wheel steering and drive system and integrating both GPS and a row guidance measurements.
     This work demonstrates a need to combine data from multiple sensor types, which becomes the standard henceforth.
     Mention at this time was made of utilising a Controller Area Network (CAN) to communicate with drive and steering modules on the revised unit due to it being a dominating standard in agricultural vehicles.
     \colorbox{yellow}{Did this next prototype ever get published?}
-    
     
     \cite{Bak2004} present a relatively advanced robotic platform based on a four wheel steering geometry.
     The authors noted that the control strategy for the four independently controlled wheels was non-trivial.
@@ -238,17 +235,17 @@
     The development of that robot forms much of the foundation for the work presented here.
 
     Common among these vehicles is the use of sensor fusion, whereby data from multiple sensors is merged and filtered.
-    This provides a way to combine the advantages of multiple sensor types, and the benefit of redundancy from multiple sensors, into a single computation space.
-    With regards to the use of RTK-GPS of perception based guidance systems, Slaughter et~al.\@ points out the trade-off of requiring an ``unobstructed ``view'' of the sky from all parts of the field'' \citep{Slaughter2008}.
+    This provides a way to combine the advantages of multiple sensor types, and the benefit of redundancy  into a single computation space.
+    With regards to the use of RTK-GPS in perception based guidance systems, Slaughter et~al.\@ points out the trade-off of requiring an ``unobstructed ``view'' of the sky from all parts of the field'' \citep{Slaughter2008}.
     Additionally, multi-path signal propagation caused by nearby foliage or the geometry of the land itself presents its own mode of failure \citep{Durrant-Whyte2005}.
     This requirement can not be satisfied under the canopy of a kiwifruit orchard which are usually surrounded by tall wind-breaking hedges.
     A separate feasibility analysis highlighted the use of RTK-GPS systems as a significant cost in yearly subscriptions alone \citep{Pedersen2006}.
     Torii suggests a combination of both RTK-GPS and machine vision systems to be the most promising system going forward based on reductions in costs and increases in performance of these systems \cite{Torii2000}.
     While \cite{Li2009} concludes that either GPS and machine vision, or GPS and lidar will be used together as a development trend.
 
-    This review has focused on the automation of vehicles specifically designed for autonomous driving in agriculture.
-    Much of the sensing requirements discussed for autonomous navigation have been developed on existing vehicles converted for computer control.
-    Most, if not all, sensing and navigation developments made on those vehicle also apply here.
+
+    % Much of the sensing requirements discussed for autonomous navigation have been developed on existing vehicles converted for computer control.
+    % Most, if not all, sensing and navigation developments made on those vehicle also applies here.
 
     % Of the reported platforms designed specifically to be autonomous there appears to be an equal split between Ackermann and four-wheel steering geometries.
     % The ability of four wheel steering to pivot about the centre of the vehicle, as opposed to the centre of the rear wheels with an Ackermann geometry, offers little gain in an orchard environment.
@@ -260,9 +257,6 @@
     Platforms designed for open field crops appear to favor four-wheel steering over the more traditional Ackermann geometry.
     The use of simulation tools allowed the creators of BoniRob to develop and test their mobility system separate of the physical hardware.
 
-    \color{red}
-        shift focus here to the mechanical aspects, but keep whatever ties in with what Jamie has done in terms of sensor selection
-    \color{black}
 
 \section{Mechanical design}
 \label{sect:mechanical}
@@ -274,77 +268,85 @@
         \label{fig:AMMP}
     \end{figure}
 
-    Canopy heights of kiwifruit orchards range between \SI{1300}{\milli\meter} and \SI{1700}{\milli\meter}.
-    Modules on the platform need additional clearance from the canopy in addition the height of the module itself.
-    To maximise space available to the modules it carries, the platform must be low-slung where these modules attach.
-    Figure \ref{fig:AMMP} illustrates the design; area for mounting modules is visible between markers `F' and `E' in the side view (top left).
+    The canopy of a kiwifruit orchard ranges between \SI{1300}{\milli\meter} and \SI{1700}{\milli\meter}.
+    Modules designed to be carried by the platform require clearance from the canopy, in addition to to height they occupy themselves.
+    To maximise space available to these modules the platform must be low-slung at the point of attachment.
+    Figure \ref{fig:AMMP} illustrates the design, with module area allocated between markers `F' and `E' in the side view (top left).
+    The height of the chassis in this region is \SI{360}{\milli\meter} from the ground.
 
     Steering geometry is Ackermann based with independent motors on the front wheels for actuation.
     The ability to actuate the angles individually simplifies the mechanical geometry needed to coordinate steering, particularly at extreme steering angles.
-    Each steering wheel has the freedom to rotate \SI{340}{\degree}, providing the ability to pivot about the centre of its rear wheels.
-    This sets the turning circle to be twice the distance from the centre of the rear wheels to the front of the vehicle.
+    Each steering wheel has the freedom to rotate \SI{340}{\degree}, limited by a mechanical stop.
+    This range of steering angle allows the vehicle to place the centre of rotation between its rear wheels.
+    At this angle, the turning circle is equal to approximately twice the length of the vehicle.
     Implementing four wheel steering would allow the centre of rotation to move to the centre of the vehicle, decreasing the turning circle to the total length of the vehicle.
-    As the headlands of kiwifruit orchards are sized for tractors to turn between rows, Ackermann based steering is sufficient.
-    The implementation of Ackermann geometry simplifies the overall design and increases the usable area at the rear of the vehicle; allowing a full-size kiwifruit bin and lifting mechanism to occupy this space.
-    Not only does it offer a reduction in mechanical complexity, but removes the need to develop ``non-trivial'' control strategies.
+    However, headlands in kiwifruit orchards are sized for tractors to turn between rows, tractors which use Ackerman steering geometries.
+    The implementation of Ackermann geometry on the platform simplifies the mechanical design, removes the need to develop ``non-trivial'' control strategies, and increases the usable area.
     A differential drive, or skid steer, system was expected to cause ground damage to a level considered unacceptable to orchard owners.
 
-    The platform has no suspension, other than its tries, and features a front pivoting axle to maintain three points of contact with the ground.
+    Bin lifting forks has been fitted to the area between the rear wheels.
+    This area is sized to accommodate a standard kiwifruit bin.
+    The lifter is actuated by two vertically mounted pneumatic cylinders and is controlled by a standard pneumatic valve block.
+    This allows the platform to pick-up and drop-off bins as necessary while operating in the orchard; a task expected to be automated in future.
+
+    Other than its tires, the platform has no suspension.
+    It features a front pivoting axle that ensures that a minimum of three wheels are always in contact with the ground.
     Each wheel is mounted directly to a 40:1 fixed ratio planetary gear gearbox connected to a permanent magnet, brushless AC motor.
     The gearbox-motor combination allows the platform to travel at a maximum speed of \SI{10}{\kilo\meter\per\hour}.
+    At this speed in an orchard a full suspension system is unnecessary.
     In total, the drive system is capable of delivering \SI{25.6}{\kilo\watt} of power and \SI{3.3}{\kilo\newton\meter} of torque continuously.
-    With these specifications it is capable of accelerating from a stand-still to its maximum speed at an incline of \SI{20}{\degree} carrying a \SI{600}{\kilo\gram} payload in \SI{2.0}{\second}.
+    With these specifications it is capable of accelerating from a stand-still to its maximum speed at an incline of \SI{20}{\degree} whilst carrying a \SI{600}{\kilo\gram} payload in \SI{2.0}{\second}.
 
     At the front of the platform sits a power generation unit including a petrol engine, air compressor, and alternator.
-    These are connected together by a single timing belt.
-    The compressor and alternator are activated electronically by a custom power generation controller.
-    Fuel and compressed air tanks sits over the right-hand rear wheel, which are visible in figure \ref{fig:suzy}.
+    The drive shafts of each are connected by a timing belt.
+    The compressor and alternator are activated electronically by an embedded controller module.
+    Fuel and compressed air tanks sit over the right-hand rear wheel; both are visible in figure \ref{fig:suzy}.
     Battery modules attached to the sides of the chassis each house fifteen lithium-iron-phosphate batteries.
 
     Unloaded, the machine has an estimated mass of \SI{850}{\kilo\gram}, including the power generation unit.
-    It has been designed and tested to be capable of carrying \SI{1000}{\kilo\gram} in it's payload space.
-    With that load, the platform's maneuverability and ability to brake or accelerate was not noticeably affected.
-    \colorbox{yellow}{Stuff starts getting flaky from here.}
+    It is capable of carrying a \SI{1000}{\kilo\gram} payload.
+    The mass of a standard bin of kiwifruit can be as much as \SI{400}{\kilo\gram}, leaving \SI{600}{\kilo\gram} for modules.
+    % With that load, the platform's maneuverability and ability to brake or accelerate was not noticeably affected.
 
 \section{System Architecture}
 \label{sect:hardware}
 
+    \newcommand{\rpm}{\raisebox{.2ex}{$\scriptstyle\pm$}}
+    
     \begin{figure}[htb]
         \centering
         \includegraphics[width=\linewidth]{imgs/system_diagram/diagram_v3.pdf}
         \caption{Hardware level system diagram showing the types of interfaces and relative relations on the platform.}
         \label{fig:system_diagram}
     \end{figure}
-    Ethernet, USB, and CAN busses are connect each part of the system as shown in figure \ref{fig:system_diagram}.
-    A computer dedicated to processing sensing data related to navigation is connected to the platform's `System PC' via ethernet.
+    Sub-systems on the platform, including the drive system, are connected to the system PC via a CAN bus, as shown in figure \ref{fig:system_diagram}.
+    The CANopen protocol has been implemented which offers message type prioritisation and a standardised way of sharing process data.
+    Messages on the bus during operation are restricted to commands, syncronisation messages, and status updates.
+    Relay modules connected to the bus allow the system to control the power to its on-board power supplies, motor controllers, park brakes, and lights.
+    They also monitor the timing of synchronisation messages transmitted by the system PC and will enter an error state if the timing falls outside set limits.
+    These messages must be transmitted every \SI{20}{\milli\second}, with a maximum allowable error of \rpm \SI{5}{\milli\second} \colorbox{red}{check these figures}.
+    Entering an error state results in the motor controllers being disabled, park brakes engaged, and power to the power supplies being cut.
+
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=\linewidth]{imgs/system_diagram/software.pdf}
+        \caption{High level system diagram showing software architecture}
+        \label{fig:system_diagram_software}
+    \end{figure}
+
+    A computer dedicated to processing sensing data related to navigation is connected to the platform's ``System PC'' via Ethernet.
     The open source Robotic Operating System (ROS) is used to facilitate communicate between the two computers.
     Not only is ROS used for inter-computer communication, but also within separate software nodes running on the same machine.
-    For example, a node running on the `Driving PC' takes information from a lidar and publishes it on a topic that another node on the same PC has subscribed to.
-    The subscribing node then processes the data and generates drive commands which are then published on another topic that the `System PC' is subscribed to.
-    From there, the `System PC' will further process that to calculate the steering angles and drive velocities based on the Ackermann geometry and publish it to a node that puts those commands on the CAN bus.
+    Figure \ref{fig:system_diagram_software} shows the flow of data from various sources to the motor controllers.
+    For simplicity it omits interface nodes, those used solely to interface the device to the ROS network.
 
-    \colorbox{yellow}{Maybe time for another diagram (software block diagram?)}
+    To maximise code reusablility, each device on the platform has its own node dedicated to publishing device data or subscribing to generated device commands.
+    Examples of such devices are CAN adapters, motor controllers, wireless controllers, lidar, encoders.
+    Nodes are also used to transform or perform calculations on available data as well as pass it between nodes written in either C++ or Python.
 
-    % Include system layout diagram
-    Relay modules connected to the main computer via the system's CAN bus give a means of shutting down subsystems.
-    They are used to control various outputs on the platform, such as a machine state indicators, electro-actuated park brakes, and the supply of power to sub-systems. 
-    Additionally, the relays monitor the platform's CAN bus to ensure that synchronisation messages are being sent out in a timely manner.
-    Monitoring the frequency of these messages is one way to determine the state of the computer generating them, which in this case it is the system PC.
-    In the event that the synchonisation messages begin to vary in frequency, or stop, the relays cut power to all subsystems and engage the brakes.
-
-    % A wireless safety-rated controller is used to remotely control platform.
-    % The controller 
-    % The controller provides the operator with a way of entering the platform into autonomous mode, manual control, triggering an emergency stop, or enabling/disabling auxiliary systems.
-
-\section{Software}
-\label{sect:software}
-    \color{red}
-        OLD CONTENT: Unsure about what to put in this section. Jamie, you are free to completely hijack this.
-    \color{black}
-    The control software is comprised of individual nodes, writen in either C++ or Python, linked together using Robot Operating System (ROS) for interprocess communication.
-    The system runs on Ubuntu Server 16.04 on an Intel NUC, a compact x86 based PC.
-    A model of the robot platform has been depeloped for use with Gazebo simulation software.
-    Such a model provides a way to test steering and movement strategies before deploying them on the hardware.
+    In addition to the drive commands generated by the ``Drive PC'', a safety rated wireless controller lets the operator generate commands by joystick.
+    The controller also has a mode selector that selects which commands are fed through to the motor drivers.
+    An emergency stop button on the controller means that the platform can be stopped at any time.
 
 \section{Sensor selection}
 \label{sect:sensors}
@@ -371,7 +373,7 @@
 
 \section*{Acknowledgements}
 This research was funded in-part by a grant from the New Zealand Ministry of Business Innovation and Employment.
-The authors acknowledge contributions from Phillip Ross and Gordon Neshausen in the design and fabrication of the platform.
+The authors acknowledge contributions from Phillip Ross, Gordon Neshausen, Joshua Barnett and Erin Simms in the design and fabrication of the platform.
 
 \section{Jamie-Mark communication}
 You are free to suggest anything about anything.
