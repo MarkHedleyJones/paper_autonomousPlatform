@@ -195,70 +195,127 @@
 \section{Review}
 \label{sect:review}
 
-    The introduction of computers and digital camera technology during the 1980s sparked research into creating autonomous vehicles for agricultural use \cite{Li2009}.
-    When publishing details of an autonomous vehicle in 1999, Tillett et~al.\@ cites difficulties dealing with variability in lighting and the environment as the reason no commercial ready vehicles were available at the time.
-    Their vehicle combined wheel encoders, a compass, and accelerometers for odometry information, and featured a camera based row guidance system.
-    It was capable of spraying individual plants whilst autonomously driving at \SI{2.5}{\kilo\meter\per\hour}.
-    
-    In 2002, two autonomous robots designed for weed mapping and control were published \citep{Pedersen2002,Astrand2002}.
-    The platforms in these works were relatively simple in terms of their design, referring only to the chassis and drive system, as they are still in a prototype stage.
-    Both were Ackermann based and designed for field crops.
-    The vehicle presented by \cite{Pedersen2002} was designed to follow pre-defined paths through row-crops, but the authors found that this was impractical without a dedicated row guidance sensor.
-    They proposed a revision of their prototype that featured four wheel steering and drive system and integrating both GPS and a row guidance measurements.
-    This work demonstrates a need to combine data from multiple sensor types, which becomes the standard henceforth.
-    Mention at this time was made of utilising a Controller Area Network (CAN) to communicate with drive and steering modules on the revised unit due to it being a dominating standard in agricultural vehicles.
-    \colorbox{yellow}{Did this next prototype ever get published?}
-    
-    \cite{Bak2004} present a relatively advanced robotic platform based on a four wheel steering geometry.
-    The authors noted that the control strategy for the four independently controlled wheels was non-trivial.
-    Like the platform presented earlier by Pederson et~al.\@, it combined a compass, gyroscope and GPS for odommetry.
-    However, it also featured encoder feedback, a row detection sensor and a GPS unit utilising Real Time Kinematic (RTK) corrections from a base station.
-    RTK-GPS is capable of providing positioning with accuracies of around \SI{2}{\centi\meter}.
-    Their robot utilised a CAN bus for some aspects of system communication.
+    \subsection{Purpose-built Autonomous Vehicles}
 
-    In 2008, Klose et~al.\@ publish details of `Weedy', a autonomous weed control robot for field use.
-    It used a simplistic four wheel steering geometry.
-    There are few details on the sensor selection apart from mention of the use of cameras and 'acoustic distance sensors'.
-    Presumably the selection of drive geometry on this robot is a cost/complexity optimisation.
-    It too makes use of a CAN bus for communication between on-board modules.
+        The introduction of computers and digital camera technology during the 1980s sparked research into creating autonomous vehicles for agricultural use \cite{Li2009}.
+        When publishing details of an autonomous vehicle in 1999, Tillett et~al.\@ cites difficulties dealing with variability in lighting and the environment as the reason no commercial ready vehicles were available at the time.
+        Their vehicle combined wheel encoders, a compass, and accelerometers for odometry information, and featured a camera based row guidance system.
+        It was capable of spraying individual plants whilst autonomously driving at \SI{2.5}{\kilo\meter\per\hour}.
+        
+        In 2002, two autonomous robots designed for weed mapping and control were published \citep{Pedersen2002,Astrand2002}.
+        The platforms in these works were relatively simple in terms of their design, referring only to the chassis and drive system, as they are still in a prototype stage.
+        Both were Ackermann based and designed for field crops.
+        The vehicle presented by \cite{Pedersen2002} was designed to follow pre-defined paths through row-crops, but the authors found that this was impractical without a dedicated row guidance sensor.
+        They proposed a revision of their prototype that featured four wheel steering and drive system and integrating both GPS and a row guidance measurements.
+        This work demonstrates a need to combine data from multiple sensor types, which becomes the standard henceforth.
+        Mention at this time was made of utilising a Controller Area Network (CAN) to communicate with drive and steering modules on the revised unit due to it being a dominating standard in agricultural vehicles.
+        \colorbox{yellow}{Did this next prototype ever get published?}
+        
+        \cite{Bak2004} present a relatively advanced robotic platform based on a four wheel steering geometry.
+        The authors noted that the control strategy for the four independently controlled wheels was non-trivial.
+        Like the platform presented earlier by Pederson et~al.\@, it combined a compass, gyroscope and GPS for odommetry.
+        However, it also featured encoder feedback, a row detection sensor and a GPS unit utilising Real Time Kinematic (RTK) corrections from a base station.
+        RTK-GPS is capable of providing positioning with accuracies of around \SI{2}{\centi\meter}.
+        Their robot utilised a CAN bus for some aspects of system communication.
 
-    The following year, many the same authors appearing on the `Weedy' paper published details an autonomous robotic platform with four wheel steering named BoniRob \citep{Ruckelshausen2009}.
-    BoniRob had the ability raise and lower itself and alter its wheel placement by actuating the arms to which the motors are attached to.
-    Similar to the unit presented by Bak et~al.\@ it features a gyroscope and RTK-GPS for localisation.
-    It introduces the use of both 2D and 3D laser-scanning (or lidar) for perception and row detection.
-    A CAN bus is used to control the low level systems (such as the drive control) and ethernet connections for higher level communication.
-    The authors created a simulated model of the platform using Gazebo in which they could test the many-degrees-of-freedom drive system.
+        In 2008, Klose et~al.\@ publish details of `Weedy', a autonomous weed control robot for field use.
+        It used a simplistic four wheel steering geometry.
+        There are few details on the sensor selection apart from mention of the use of cameras and 'acoustic distance sensors'.
+        Presumably the selection of drive geometry on this robot is a cost/complexity optimisation.
+        It too makes use of a CAN bus for communication between on-board modules.
 
-    Of particular relevance is the work of Scarfe et~al.\@ on an autonomous kiwifruit picking robot \citep{scarfe2009, Scarfe2012}.
-    That work involved the creation of a hydraulically driven platform with Ackermann steering to which four fruit harvesting arms were integrated.
-    For navigation it used lidar, camera based machine vision, GPS, and a compass.
-    The development of that robot forms much of the foundation for the work presented here.
+        The following year, many the same authors appearing on the `Weedy' paper published details an autonomous robotic platform with four wheel steering named BoniRob \citep{Ruckelshausen2009}.
+        BoniRob had the ability raise and lower itself and alter its wheel placement by actuating the arms to which the motors are attached to.
+        Similar to the unit presented by Bak et~al.\@ it features a gyroscope and RTK-GPS for localisation.
+        It introduces the use of both 2D and 3D laser-scanning (or lidar) for perception and row detection.
+        A CAN bus is used to control the low level systems (such as the drive control) and ethernet connections for higher level communication.
+        The authors created a simulated model of the platform using Gazebo in which they could test the many-degrees-of-freedom drive system.
 
-    Common among these vehicles is the use of sensor fusion, whereby data from multiple sensors is merged and filtered.
-    This provides a way to combine the advantages of multiple sensor types, and the benefit of redundancy  into a single computation space.
-    With regards to the use of RTK-GPS in perception based guidance systems, Slaughter et~al.\@ points out the trade-off of requiring an ``unobstructed ``view'' of the sky from all parts of the field'' \citep{Slaughter2008}.
-    Additionally, multi-path signal propagation caused by nearby foliage or the geometry of the land itself presents its own mode of failure \citep{Durrant-Whyte2005}.
-    This requirement can not be satisfied under the canopy of a kiwifruit orchard which are usually surrounded by tall wind-breaking hedges.
-    A separate feasibility analysis highlighted the use of RTK-GPS systems as a significant cost in yearly subscriptions alone \citep{Pedersen2006}.
-    Torii suggests a combination of both RTK-GPS and machine vision systems to be the most promising system going forward based on reductions in costs and increases in performance of these systems \cite{Torii2000}.
-    While \cite{Li2009} concludes that either GPS and machine vision, or GPS and lidar will be used together as a development trend.
+        Of particular relevance is the work of Scarfe et~al.\@ on an autonomous kiwifruit picking robot \citep{scarfe2009, Scarfe2012}.
+        That work involved the creation of a hydraulically driven platform with Ackermann steering to which four fruit harvesting arms were integrated.
+        For navigation it used lidar, camera based machine vision, GPS, and a compass.
+        The development of that robot forms much of the foundation for the work presented here.
+
+        \cite{Blackmore2007} envisaged significant reductions in production costs by re-purposing parts already in use in the agricultural and automotive industry.
+        While not a physical component, the CAN is one such technology borrowed from the automotive industry aiding developmental of low-level communications.
+        Many of the platforms reviewed, especially the more recent ones, made use of this protocol for real-time communication.
+        Platforms designed for open field crops appear to favor four-wheel steering over the more traditional Ackermann geometry.
+        The use of simulation tools allowed the creators of BoniRob to develop and test their mobility system separate of the physical hardware.
+
+        Common among these vehicles is the use of sensor fusion, whereby data from multiple sensors is merged and filtered.
+        This provides a way to combine the advantages of multiple sensor types, and the benefit of redundancy  into a single computation space.
+        With regards to the use of RTK-GPS in perception based guidance systems, Slaughter et~al.\@ points out the trade-off of requiring an ``unobstructed ``view'' of the sky from all parts of the field'' \citep{Slaughter2008}.
+        Additionally, multi-path signal propagation caused by nearby foliage or the geometry of the land itself presents its own mode of failure \citep{Durrant-Whyte2005}.
+        This requirement can not be satisfied under the canopy of a kiwifruit orchard which are usually surrounded by tall wind-breaking hedges.
+        A separate feasibility analysis highlighted the use of RTK-GPS systems as a significant cost in yearly subscriptions alone \citep{Pedersen2006}.
+        Torii suggests a combination of both RTK-GPS and machine vision systems to be the most promising system going forward based on reductions in costs and increases in performance of these systems \cite{Torii2000}.
+        While \cite{Li2009} concludes that either GPS and machine vision, or GPS and lidar will be used together as a development trend.
+
+    \subsection{Sensors for Row Based Navigation}
+
+        Sensors for orchard based row detection fall into two three categories; camera based, lidar based, or a combination.
+        Lidar come in two flavours: single-plane, and multi-plane.
+
+        \cite{Subramanian2006} tested both camera based guidance and lidar based guidance systems in a citrus fruit orchard.
+        Sensors were trialled separately on a tractor retrofitted with a fly-by-wire system.
+        It was able to navigate through the test area at up to \SI{3.1}{\meter\per\second} using lidar; the authors cite limitations in data acquisition rate from the liar as the limiting factor.
+        Their vehicle able to navigate at all speeds to an ``acceptable'' performance level using the machine-vision system, with path errors below \SI{60}{\milli\meter}.
+        They suggest that combining the two systems would give more robust guidance as well as providing the ability to detect obstacles.
 
 
-    % Much of the sensing requirements discussed for autonomous navigation have been developed on existing vehicles converted for computer control.
-    % Most, if not all, sensing and navigation developments made on those vehicle also applies here.
-
-    % Of the reported platforms designed specifically to be autonomous there appears to be an equal split between Ackermann and four-wheel steering geometries.
-    % The ability of four wheel steering to pivot about the centre of the vehicle, as opposed to the centre of the rear wheels with an Ackermann geometry, offers little gain in an orchard environment.
-    % Not only can Ackermann geometry offer a reduction in mechanical complexity, but also removes the need to develop the ``non-trivial'' control strategies.
-
-    \cite{Blackmore2007} envisaged significant reductions in production costs by re-purposing parts already in use in the agricultural and automotive industry.
-    While not a physical component, the CAN is one such technology borrowed from the automotive industry aiding developmental of low-level communications.
-    Many of the platforms reviewed, especially the more recent ones, made use of this protocol for real-time communication.
-    Platforms designed for open field crops appear to favor four-wheel steering over the more traditional Ackermann geometry.
-    The use of simulation tools allowed the creators of BoniRob to develop and test their mobility system separate of the physical hardware.
 
 
-\section{Mechanical design}
+
+        \cite{Subramanian2006} fit an angled single plane lidar. Citrus grove navigation. Angled down 2D lidar and camera (640x480) separately; steering encoder.
+        \cite{Barawid2007} Autonomous tractor in an orchard using a horizontal 2D lidar.
+        \cite{Hansen2011} Autonomous tractor using 2D lidar, fibre optic gyro and encoder odomentry.
+        \cite{He2011} Orchard row detection. Camera (640x480).
+        \cite{s110404086} Orchard row detection using camera (640x480)
+        \cite{Scarfe2012} horizontal 2D lidar, compass.
+        \cite{Freitas2012} angled 2D lidar, encoders, inertial measurement unit.
+        \cite{Zhang2014} Rotated 2D lidar; lidar rotation, wheel and steering encoders
+        \cite{Bergerman2015} Autonomous orchard vehicle Horizontal 2D lidar, wheel and steering encoders.
+        \cite{Bargoti2015} Apple orchard localisation. Vertical 2D lidar, Global Positioning Inertial Navigation System
+        \cite{Sharifi2015} Orchard row detection Camera.
+
+        % \begin{table}[h!]
+
+
+        %     \caption{Examples of sensors used in previous orchard navigation research.}
+        %     \centering
+        %     \begin{tabular}{ | m{3.2cm} | m{3.2cm}| m{6.2cm} | } 
+        %         \hline
+        %         \textbf{Reference} & \textbf{Application} & \textbf{Sensors} \\
+        %         \hline
+        %         Subramanian et al., 2006 & Citrus grove navigation & Angled down 2D lidar and camera (640x480) separately; steering encoder \\ 
+        %         \hline
+        %         Barawid et al., 2007 & Autonomous tractor & Horizontal 2D lidar \\ 
+        %         \hline
+        %         Hansen et al., 2011 & Autonomous orchard vehicle & Horizontal 2D lidar, fibre optic gyroscope, odometry (encoders) \\ 
+        %         \hline
+        %         He et al., 2011 & Orchard row detection & Camera (640x480) \\
+        %         \hline
+        %         Torres- Sospedra and Nebot, 2011 & Orchard row detection & Camera (640x480) \\
+        %         \hline
+        %         Scarfe, 2012 & Kiwifruit harvesting robot & Horizontal 2D lidar, fluxgate compass \\
+        %         \hline
+        %         Freitas et al., 2012  & Orchard robot obstacle detection & Angled down 2D lidar, wheel and steering encoders, low cost IMU \\
+        %         \hline
+        %         Zhang et al., 2013  & Orchard robot row following & Rotated 2D lidar; lidar rotation, wheel and steering encoders \\
+        %         \hline
+        %         Bergerman et al., 2015 & Autonomous orchard vehicle & Horizontal 2D lidar, wheel and steering encoders \\
+        %         \hline
+        %         Bargoti et al., 2015 & Apple orchard localisation & Vertical 2D lidar, Global Positioning Inertial Navigation System \\
+        %         \hline
+        %         Jagbrant et al., 2015 & Almond orchard localisation & Vertical 2D lidar, Global Positioning Inertial Navigation System \\
+        %         \hline
+        %         Sharifi and Chen, 2015 & Orchard row detection & Camera \\
+        %         \hline
+        %     \end{tabular}
+        %     \label{table:1}
+        % \end{table}
+
+\section{Vehicle design}
 \label{sect:mechanical}
 
     \begin{figure}[htb]
@@ -308,93 +365,58 @@
     The mass of a standard bin of kiwifruit can be as much as \SI{400}{\kilo\gram}, leaving \SI{600}{\kilo\gram} for modules.
     % With that load, the platform's maneuverability and ability to brake or accelerate was not noticeably affected.
 
-\section{System Architecture}
-\label{sect:hardware}
 
-    \newcommand{\rpm}{\raisebox{.2ex}{$\scriptstyle\pm$}}
-    
-    \begin{figure}[htb]
-        \centering
-        \includegraphics[width=\linewidth]{imgs/system_diagram/diagram_v3.pdf}
-        \caption{Hardware level system diagram showing the types of interfaces and relative relations on the platform.}
-        \label{fig:system_diagram}
-    \end{figure}
-    Sub-systems on the platform, including the drive system, are connected to the system PC via a CAN bus, as shown in figure \ref{fig:system_diagram}.
-    The CANopen protocol has been implemented which offers message type prioritisation and a standardised way of sharing process data.
-    Messages on the bus during operation are restricted to commands, syncronisation messages, and status updates.
-    Relay modules connected to the bus allow the system to control the power to its on-board power supplies, motor controllers, park brakes, and lights.
-    They also monitor the timing of synchronisation messages transmitted by the system PC and will enter an error state if the timing falls outside set limits.
-    These messages must be transmitted every \SI{20}{\milli\second}, with a maximum allowable error of \rpm \SI{5}{\milli\second} \colorbox{red}{check these figures}.
-    Entering an error state results in the motor controllers being disabled, park brakes engaged, and power to the power supplies being cut.
 
-    \begin{figure}[htb]
-        \centering
-        \includegraphics[width=\linewidth]{imgs/system_diagram/software.pdf}
-        \caption{High level system diagram showing software architecture}
-        \label{fig:system_diagram_software}
-    \end{figure}
 
-    A computer dedicated to processing sensing data related to navigation is connected to the platform's ``System PC'' via Ethernet.
-    The open source Robotic Operating System (ROS) is used to facilitate communicate between the two computers.
-    Not only is ROS used for inter-computer communication, but also within separate software nodes running on the same machine.
-    Figure \ref{fig:system_diagram_software} shows the flow of data from various sources to the motor controllers.
-    For simplicity it omits interface nodes, those used solely to interface the device to the ROS network.
 
-    To maximise code reusablility, each device on the platform has its own node dedicated to publishing device data or subscribing to generated device commands.
-    Examples of such devices are CAN adapters, motor controllers, wireless controllers, lidar, encoders.
-    Nodes are also used to transform or perform calculations on available data as well as pass it between nodes written in either C++ or Python.
-
-    In addition to the drive commands generated by the ``Drive PC'', a safety rated wireless controller lets the operator generate commands by joystick.
-    The controller also has a mode selector that selects which commands are fed through to the motor drivers.
-    An emergency stop button on the controller means that the platform can be stopped at any time.
 
 \section{Navigation Sensor Selection}
 \label{sect:sensors}
-    Sensor selection was a critical early step in the development of the navigation system for the AMMP because it dictated the direction of subsequent research. Four approaches were used in the process of sensor selection:
-    \begin{enumerate}
-        \item Conducting a literature survey of sensors previously used in orchard navigation and similar applications.
-        \item Surveying the features, specifications and cost of sensors available to purchase in order to perform a cost-benefit analysis.
-        \item Purchasing some sensors, based on the cost-benefit analysis, collecting data from the sensors in kiwifruit orchards and analysing the data to ensure that the sensors perform according to some minimum criteria in the orchard environment.
-        \item Developing simple algorithms for the sensor data to demonstrate that the sensors can perform the functions that they have been purchased for.
-    \end{enumerate}
+%     Sensor selection was a critical early step in the development of the navigation system for the AMMP because it dictated the direction of subsequent research. Four approaches were used in the process of sensor selection:
+%     \begin{enumerate}
+%         \item Conducting a literature survey of sensors previously used in orchard navigation and similar applications.
+%         \item Surveying the features, specifications and cost of sensors available to purchase in order to perform a cost-benefit analysis.
+%         \item Purchasing some sensors, based on the cost-benefit analysis, collecting data from the sensors in kiwifruit orchards and analysing the data to ensure that the sensors perform according to some minimum criteria in the orchard environment.
+%         \item Developing simple algorithms for the sensor data to demonstrate that the sensors can perform the functions that they have been purchased for.
+%     \end{enumerate}
 
-\subsection{Sensor Literature Survey}
-    From the existing literature, it seems that the existing sensors that have been commonly used for orchard navigation systems are cameras, 2D lidar, GPS, inertial sensors and encoders for odometry. Some examples are summarised in Table \ref{table:1}.
+% \subsection{Sensor Literature Survey}
+%     From the existing literature, it seems that the existing sensors that have been commonly used for orchard navigation systems are cameras, 2D lidar, GPS, inertial sensors and encoders for odometry. Some examples are summarised in Table \ref{table:1}.
 
-    \begin{table}[h!]
-    \caption{Examples of sensors used in previous orchard navigation research.}
-    \centering
-    \begin{tabular}{ | m{3.2cm} | m{3.2cm}| m{6.2cm} | } 
-    \hline
-    \textbf{Reference} & \textbf{Application} & \textbf{Sensors} \\
-    \hline
-    Subramanian et al., 2006 & Citrus grove navigation & Angled down 2D lidar and camera (640x480) separately; steering encoder \\ 
-    \hline
-    Barawid et al., 2007 & Autonomous tractor & Horizontal 2D lidar \\ 
-    \hline
-    Hansen et al., 2011 & Autonomous orchard vehicle & Horizontal 2D lidar, fibre optic gyroscope, odometry (encoders) \\ 
-    \hline
-    He et al., 2011 & Orchard row detection & Camera (640x480) \\
-    \hline
-    Torres- Sospedra and Nebot, 2011 & Orchard row detection & Camera (640x480) \\
-    \hline
-    Scarfe, 2012 & Kiwifruit harvesting robot & Horizontal 2D lidar, fluxgate compass \\
-    \hline
-    Freitas et al., 2012  & Orchard robot obstacle detection & Angled down 2D lidar, wheel and steering encoders, low cost IMU \\
-    \hline
-    Zhang et al., 2013  & Orchard robot row following & Rotated 2D lidar; lidar rotation, wheel and steering encoders \\
-    \hline
-    Bergerman et al., 2015 & Autonomous orchard vehicle & Horizontal 2D lidar, wheel and steering encoders \\
-    \hline
-    Bargoti et al., 2015 & Apple orchard localisation & Vertical 2D lidar, Global Positioning Inertial Navigation System \\
-    \hline
-    Jagbrant et al., 2015 & Almond orchard localisation & Vertical 2D lidar, Global Positioning Inertial Navigation System \\
-    \hline
-    Sharifi and Chen, 2015 & Orchard row detection & Camera \\
-    \hline
-    \end{tabular}
-    \label{table:1}
-    \end{table}
+%     \begin{table}[h!]
+%     \caption{Examples of sensors used in previous orchard navigation research.}
+%     \centering
+%     \begin{tabular}{ | m{3.2cm} | m{3.2cm}| m{6.2cm} | } 
+%     \hline
+%     \textbf{Reference} & \textbf{Application} & \textbf{Sensors} \\
+%     \hline
+%     Subramanian et al., 2006 & Citrus grove navigation & Angled down 2D lidar and camera (640x480) separately; steering encoder \\ 
+%     \hline
+%     Barawid et al., 2007 & Autonomous tractor & Horizontal 2D lidar \\ 
+%     \hline
+%     Hansen et al., 2011 & Autonomous orchard vehicle & Horizontal 2D lidar, fibre optic gyroscope, odometry (encoders) \\ 
+%     \hline
+%     He et al., 2011 & Orchard row detection & Camera (640x480) \\
+%     \hline
+%     Torres- Sospedra and Nebot, 2011 & Orchard row detection & Camera (640x480) \\
+%     \hline
+%     Scarfe, 2012 & Kiwifruit harvesting robot & Horizontal 2D lidar, fluxgate compass \\
+%     \hline
+%     Freitas et al., 2012  & Orchard robot obstacle detection & Angled down 2D lidar, wheel and steering encoders, low cost IMU \\
+%     \hline
+%     Zhang et al., 2013  & Orchard robot row following & Rotated 2D lidar; lidar rotation, wheel and steering encoders \\
+%     \hline
+%     Bergerman et al., 2015 & Autonomous orchard vehicle & Horizontal 2D lidar, wheel and steering encoders \\
+%     \hline
+%     Bargoti et al., 2015 & Apple orchard localisation & Vertical 2D lidar, Global Positioning Inertial Navigation System \\
+%     \hline
+%     Jagbrant et al., 2015 & Almond orchard localisation & Vertical 2D lidar, Global Positioning Inertial Navigation System \\
+%     \hline
+%     Sharifi and Chen, 2015 & Orchard row detection & Camera \\
+%     \hline
+%     \end{tabular}
+%     \label{table:1}
+%     \end{table}
 
 \subsection{Cost Benefit Analysis of Sensors}
     The costs of different sensors for a single unit were collated by contacting various manufacturers and suppliers; these results were used to estimate cost ranges for each sensor type. The benefits and issues for each sensor type were noted, based on previous experience and results. All of this information is summarised in Table \ref{table:2}.
@@ -566,43 +588,92 @@
         \label{fig:singlePlaneExtraction}
     \end{figure}
 
-\subsubsection{Orchard Driving Testing}
-    A 3D lidar navigation algorithm was developed and tested on smaller robot platforms, as described by Bell et al. [31]⁠. The key part of this algorithm was the calculation of the angular offset of the robot’s coordinate system from the row centreline. This algorithm attempted to extract the posts and trees from the lidar data and then find the angle between posts and trunks in the same treeline. The key steps of the algorithm were:
-    \begin{enumerate}
-    \item Clusters of close consecutive points were found in each plane of the 3D lidar data using the method described by Scarfe [24]⁠. 
-    \item Clusters with a length greater than a threshold were deemed to be unlikely to be row defining features, such as posts or trunks; as a result, these clusters were removed. 
-    \item Any clusters within a set distance of a set number of other clusters were also removed because these clusters could be a part of the clouds of data, which are returned from non structure defining features such as the kiwifruit canopy or the ground. An example result after this step for a single plane of the 3D lidar data is shown in Figure \ref{fig:singlePlaneExtraction}.
-    \item The clusters from multiple planes were grouped based on a threshold distance between clusters. 
-    \item The heights of the resulting groups from step 4 were compared to a threshold to determine which were posts and trees. An example result after this step for a single frame of 3D lidar data is shown in Figure \ref{fig:lastLidarFrame}.
-    \item Using the data from feature extraction, each cluster’s nearest neighbour was found. This step was taken because most posts and trunks are closer to other posts or trunks in the same tree-line than to an adjacent tree-line. This suggests that the angle between nearest neighbours should also be the angle of the tree-line. 
-    \item Nearest neighbours that were further apart than the row width were rejected to eliminate the possibility of using neighbours that were not in the same tree-line. 
-    \item The angles between the resulting nearest neighbours were calculated. 
-    \item The mode of the calculated angles was taken to be the current estimate of the angular offset of the robot from the row centreline. 
-    \end{enumerate}
+% \subsubsection{Orchard Driving Testing}
+%     A 3D lidar navigation algorithm was developed and tested on smaller robot platforms, as described by Bell et al. [31]⁠. The key part of this algorithm was the calculation of the angular offset of the robot’s coordinate system from the row centreline. This algorithm attempted to extract the posts and trees from the lidar data and then find the angle between posts and trunks in the same treeline. The key steps of the algorithm were:
+%     \begin{enumerate}
+%     \item Clusters of close consecutive points were found in each plane of the 3D lidar data using the method described by Scarfe [24]⁠. 
+%     \item Clusters with a length greater than a threshold were deemed to be unlikely to be row defining features, such as posts or trunks; as a result, these clusters were removed. 
+%     \item Any clusters within a set distance of a set number of other clusters were also removed because these clusters could be a part of the clouds of data, which are returned from non structure defining features such as the kiwifruit canopy or the ground. An example result after this step for a single plane of the 3D lidar data is shown in Figure \ref{fig:singlePlaneExtraction}.
+%     \item The clusters from multiple planes were grouped based on a threshold distance between clusters. 
+%     \item The heights of the resulting groups from step 4 were compared to a threshold to determine which were posts and trees. An example result after this step for a single frame of 3D lidar data is shown in Figure \ref{fig:lastLidarFrame}.
+%     \item Using the data from feature extraction, each cluster’s nearest neighbour was found. This step was taken because most posts and trunks are closer to other posts or trunks in the same tree-line than to an adjacent tree-line. This suggests that the angle between nearest neighbours should also be the angle of the tree-line. 
+%     \item Nearest neighbours that were further apart than the row width were rejected to eliminate the possibility of using neighbours that were not in the same tree-line. 
+%     \item The angles between the resulting nearest neighbours were calculated. 
+%     \item The mode of the calculated angles was taken to be the current estimate of the angular offset of the robot from the row centreline. 
+%     \end{enumerate}
 
-    Once the angular offset was found, the linear offset of the robot’s coordinate system origin from the row centreline was calculated. The steps used were:
-    \begin{enumerate}
-    \item The clusters belonging to the current row were found using the angular offset and the maximum row width for the orchard.
-    \item Lines were fitted to the treelines on the left and right sides of the row.
-    \item The row centreline was found as the average line from the left and right treelines.
-    \item The displacement of the robot centre from the row centreline was calculated.
-    \end{enumerate}
+%     Once the angular offset was found, the linear offset of the robot’s coordinate system origin from the row centreline was calculated. The steps used were:
+%     \begin{enumerate}
+%     \item The clusters belonging to the current row were found using the angular offset and the maximum row width for the orchard.
+%     \item Lines were fitted to the treelines on the left and right sides of the row.
+%     \item The row centreline was found as the average line from the left and right treelines.
+%     \item The displacement of the robot centre from the row centreline was calculated.
+%     \end{enumerate}
 
-    Row following was performed by calculating the steering angle from the sum of the proportional control signals for the linear and angular offsets. Row end detection was performed by detecting a volume of free space above the 3D lidar sensor. Row end driving was performed by driving a sequence of set curvature movements, while performing obstacle avoidance.
+%     Row following was performed by calculating the steering angle from the sum of the proportional control signals for the linear and angular offsets. Row end detection was performed by detecting a volume of free space above the 3D lidar sensor. Row end driving was performed by driving a sequence of set curvature movements, while performing obstacle avoidance.
 
-    The autonomous driving algorithm described here has been used to drive 20 km autonomously on three different robot platforms, including the AMMP, in two different real kiwifruit orchards. This driving was performed using just lidar and encoder data. 
+%     The autonomous driving algorithm described here has been used to drive 20 km autonomously on three different robot platforms, including the AMMP, in two different real kiwifruit orchards. This driving was performed using just lidar and encoder data. 
     
-    \begin{figure}[htb]
-        \centering
-        \includegraphics[width=\linewidth]{imgs/photos/lastLidarFrame.png}
-        \caption{
-            A single plane of 3D laser scanner data (red) with the points found by feature extraction highlighted in white, nearest neighbours indicated with blue and the detected row centreline (green arrow).
-        }
-        \label{fig:lastLidarFrame}
-    \end{figure}
+%     \begin{figure}[htb]
+%         \centering
+%         \includegraphics[width=\linewidth]{imgs/photos/lastLidarFrame.png}
+%         \caption{
+%             A single plane of 3D laser scanner data (red) with the points found by feature extraction highlighted in white, nearest neighbours indicated with blue and the detected row centreline (green arrow).
+%         }
+%         \label{fig:lastLidarFrame}
+%     \end{figure}
 
 \subsection{Sensor Selection Conclusions}
     The results from prototyping algorithms indicate that the 3D lidar and encoder sensors may be feasible selections for performing mapping, localisation and autonomous driving in kiwifruit orchards. Object detection using cameras in kiwifruit orchards also seems possible. Given these results with prototyping algorithms for the navigation system, it was decided to procede with using cameras, 3D lidar and encoders as the primary sensors for the navigation system.   
+
+
+
+
+
+
+
+
+
+\section{System Architecture}
+\label{sect:hardware}
+
+    \newcommand{\rpm}{\raisebox{.2ex}{$\scriptstyle\pm$}}
+    
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=\linewidth]{imgs/system_diagram/diagram_v3.pdf}
+        \caption{Hardware level system diagram showing the types of interfaces and relative relations on the platform.}
+        \label{fig:system_diagram}
+    \end{figure}
+    Sub-systems on the platform, including the drive system, are connected to the system PC via a CAN bus, as shown in figure \ref{fig:system_diagram}.
+    The CANopen protocol has been implemented which offers message type prioritisation and a standardised way of sharing process data.
+    Messages on the bus during operation are restricted to commands, syncronisation messages, and status updates.
+    Relay modules connected to the bus allow the system to control the power to its on-board power supplies, motor controllers, park brakes, and lights.
+    They also monitor the timing of synchronisation messages transmitted by the system PC and will enter an error state if the timing falls outside set limits.
+    These messages must be transmitted every \SI{20}{\milli\second}, with a maximum allowable error of \rpm \SI{5}{\milli\second} \colorbox{red}{check these figures}.
+    Entering an error state results in the motor controllers being disabled, park brakes engaged, and power to the power supplies being cut.
+
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=\linewidth]{imgs/system_diagram/software.pdf}
+        \caption{High level system diagram showing software architecture in terms of the manual and autonomous drive system.}
+        \label{fig:system_diagram_software}
+    \end{figure}
+
+    A computer dedicated to processing sensing data related to navigation is connected to the platform's ``System PC'' via Ethernet.
+    The open source Robotic Operating System (ROS) is used to facilitate communicate between the two computers.
+    Not only is ROS used for inter-computer communication, but also within separate software nodes running on the same machine.
+    Figure \ref{fig:system_diagram_software} shows the flow of data from various sources to the motor controllers.
+    For simplicity it omits interface nodes, those used solely to interface the device to the ROS network.
+
+    To maximise code reusablility, each device on the platform has its own node dedicated to publishing device data or subscribing to generated device commands.
+    Examples of such devices are CAN adapters, motor controllers, wireless controllers, lidar, encoders.
+    Nodes are also used to transform or perform calculations on available data as well as pass it between nodes written in either C++ or Python.
+
+    In addition to the drive commands generated by the ``Drive PC'', a safety rated wireless controller lets the operator generate commands by joystick.
+    The controller also has a mode selector that selects which commands are fed through to the motor drivers.
+    An emergency stop button on the controller means that the platform can be stopped at any time.
+
 
 \section{Autonomous Driving}
 \label{sect:autonomous}
