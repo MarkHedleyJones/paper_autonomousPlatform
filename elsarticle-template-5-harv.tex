@@ -565,7 +565,7 @@
     In order to validate that the 3D lidar and camera could perform these functions, prototype navigation algorithms were created using these sensors.
 
 \subsubsection{Object detection and classification}
-    Object detection and classification was firstly prototyped fully on the camera data. It was decided to use a Convolutional Neural Network (CNN) for this purpose, because of the existing success of using CNNs for various image processing tasks. The CNN architecture chosen was FCN-8s, which is a neural network made up of convolutional layers without fully connected layers, as opposed to having convolutional layers at the input and fully connected layers at the output. FCN-8s performs semantic segmentation, which is the per pixel labelling of images.
+    Object detection and classification was firstly prototyped fully on the camera data. It was decided to use a Convolutional Neural Network (CNN) for this purpose, because of the existing success of using CNNs for various image processing tasks \citep{LeCun2015}. The CNN architecture chosen was FCN-8s \citep{long2015}, which is a neural network made up of convolutional layers without fully connected layers, as opposed to having convolutional layers at the input and fully connected layers at the output. FCN-8s performs semantic segmentation, which is the per pixel labelling of images.
     In order to train the FCN-8s network, the camera image dataset, which was created in order assess the cameras for sensor selection, was reused and hand labelled. The hand labelling consisted of drawing outlines of objects of interest in an image, filling those outlines with colours that were defined to correspond to the given object, extracting the drawn pixels out onto a blank image and converting the result to a palleted indexed format. An example of an original image and a corresponding label image is shown in Figure \ref{fig:segImgLabelPair}.
 
     \begin{figure}[htb]
@@ -584,10 +584,19 @@
     \item The end of the row.
     \end{itemize}
 
-    The labelled data was used to train an FCN-8s network.
+    The labelled data was used to train an FCN-8s network. An example of the output from the trained network is shown in Figure \ref{fig:semSegRowResults}.
+
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=\linewidth]{imgs/photos/semSegRowResults.png}
+        \caption{
+            An example result from the FCN-8s network, segmenting a kiwifruit orchard row.
+        }
+        \label{fig:semSegRowResults}
+    \end{figure}
 
 \subsubsection{Mapping and Localisation}
-    In order to test the use of 3D lidar for mapping and localisation, an existing Simultaneous Localisation and Mapping (SLAM) package was used. The package used Gmapping [29]⁠, implemented as a ROS package [30]⁠. The required input for Gmapping was odometry data, which was provided by the wheel encoders, and a single plane of lidar data. The 3D lidar provides 16 planes of lidar data so a conversion had to be performed in order to produce a single plane of lidar data for Gmapping. The most simple approach of extracting a single plane out of the 16 planes from the 3D lidar sensor was not used because it was thought that this would produce the clouds of unstructured data, which was observed with the 2D lidar sensors. Instead, the approach initially used was:
+    In order to test the use of 3D lidar for mapping and localisation, an existing Simultaneous Localisation and Mapping (SLAM) package was used. The package used Gmapping \citep{Grisetti2007}, implemented as a ROS package \citep{Gerkey}. The required input for Gmapping was odometry data, which was provided by the wheel encoders, and a single plane of lidar data. The 3D lidar provides 16 planes of lidar data so a conversion had to be performed in order to produce a single plane of lidar data for Gmapping. The most simple approach of extracting a single plane out of the 16 planes from the 3D lidar sensor was not used because it was thought that this would produce the clouds of unstructured data, which was observed with the 2D lidar sensors. Instead, the approach initially used was:
     \begin{enumerate}
     \item The 4 lidar planes that were closest to horizontal were extracted. These planes were selected because they were the planes that generally detected the least amount of ground and canopy.
     \item For each angle of the lidar data, the difference in the range measurement between consecutive layers in the 4 lidar planes was calculated. 
@@ -616,7 +625,7 @@
     \end{figure}
 
 % \subsubsection{Orchard Driving Testing}
-%     A 3D lidar navigation algorithm was developed and tested on smaller robot platforms, as described by Bell et al. [31]⁠. The key part of this algorithm was the calculation of the angular offset of the robot’s coordinate system from the row centreline. This algorithm attempted to extract the posts and trees from the lidar data and then find the angle between posts and trunks in the same treeline. The key steps of the algorithm were:
+%     A 3D lidar navigation algorithm was developed and tested on smaller robot platforms, as described by Bell et al. \citep{Bell2016}. The key part of this algorithm was the calculation of the angular offset of the robot’s coordinate system from the row centreline. This algorithm attempted to extract the posts and trees from the lidar data and then find the angle between posts and trunks in the same treeline. The key steps of the algorithm were:
 %     \begin{enumerate}
 %     \item Clusters of close consecutive points were found in each plane of the 3D lidar data using the method described by Scarfe [24]⁠. 
 %     \item Clusters with a length greater than a threshold were deemed to be unlikely to be row defining features, such as posts or trunks; as a result, these clusters were removed. 
