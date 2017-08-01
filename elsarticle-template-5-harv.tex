@@ -149,7 +149,7 @@
 
 %% MSC codes here, in the form: \MSC code \sep code
 %% or \MSC[2008] code \sep code (2000 is the default)
-    Autonomous \sep Agricultural \sep Robotic \sep Platform \sep Lidar \sep Ackermann
+    Agricultural robotics \sep outdoor navigation \sep
 \end{keyword}
 
 \end{frontmatter}
@@ -233,9 +233,8 @@
 
         Of particular relevance is the work of Scarfe et~al.\@ on an autonomous kiwifruit picking robot \citep{scarfe2009, Scarfe2012}.
         That work involved the creation of a hydraulically driven platform with Ackermann steering to which four fruit harvesting arms were integrated.
-        For navigation it used lidar, camera based machine vision, GPS, and a compass.
-        The development of that robot forms much of the foundation for the work presented here.
-
+        While it the ability to navigate a kiwifruit orchard was not tested, it formed the foundation for the second-generation platform presented here.
+        
         \cite{Blackmore2007} envisaged significant reductions in production costs by re-purposing parts already in use in the agricultural and automotive industry.
         While not a physical component, the CAN is one such technology borrowed from the automotive industry aiding developmental of low-level communications.
         Many of the platforms reviewed, especially the more recent ones, made use of this protocol for real-time communication.
@@ -256,22 +255,50 @@
         Sensors for orchard based row detection fall into two three categories; camera based, lidar based, or a combination.
         Lidar come in two flavours: single-plane, and multi-plane.
 
-        \cite{Subramanian2006} tested both camera based guidance and lidar based guidance systems in a citrus fruit orchard.
+        \cite{Subramanian2006} tested both camera based guidance and lidar (Sick LMS-200) based guidance systems in a citrus fruit orchard.
         Sensors were trialled separately on a tractor retrofitted with a fly-by-wire system.
         It was able to navigate through the test area at up to \SI{3.1}{\meter\per\second} using lidar; the authors cite limitations in data acquisition rate from the liar as the limiting factor.
         Their vehicle able to navigate at all speeds to an ``acceptable'' performance level using the machine-vision system, with path errors below \SI{60}{\milli\meter}.
         They suggest that combining the two systems would give more robust guidance as well as providing the ability to detect obstacles.
 
+        \cite{Barawid2007} fit a single-plane lidar (Sick LMS-219) to a tractor for row guidance between tree rows.
+        The authors determine a speed of \SI{0.36}{\meter\per\second} is appropriate for autonomous navigation on their system as this produced minimal errors of \SI{0.5}{\degree} in heading and \SI{50}{\milli\meter} in position.
+        The platform also utilised RTK-GPS receiver and a fibre optic gyro, but only the lidar was used for guidance.
+
+        \cite{Hansen2011} use a single-plane lidar (Sick LMS-200) fitted to a drive-by-wire tractor conversion.
+        The vehicle was also fitted with a RTK-GPS receiver, fiber optic gyro.
+        This work focuses on comparing software filters for localisation, rather than path planning.
+
+        \cite{He2011} combine camera and GPS receiver on a small electric truck (non-autonomous).
+        They use traditional machine vision algorithms to generate a path between rows of trees in an orchard.
+        The authors note that it may not be suitable when the background becomes complex.
+
+        \cite{Torres2011} combine neural networks and cameras to generate paths between rows of an orange orchard.
+        Their research focused on the generation of a centre-line rather than full autonomous navigation.
+        The results they obtain from the inclusion of neural networks prove robust in various lighting conditions.
+
+        \cite{Scarfe2012} developed a platform designed to be autonomous in kiwifruit orchards.
+        That work combined traditional camera based image processing techniques with a single-plane lidar (Sick LMS-111).
+        The image based approach failed to cope with variability in lighting conditions, however the lidar proved useful for detecting the trunks and posts of the row.
+        
+        % Sentence here relating to how whenever traditional image processing is used, it always ends up not being able to cope when the lighting changes.
 
 
 
 
-        \cite{Subramanian2006} fit an angled single plane lidar. Citrus grove navigation. Angled down 2D lidar and camera (640x480) separately; steering encoder.
-        \cite{Barawid2007} Autonomous tractor in an orchard using a horizontal 2D lidar.
-        \cite{Hansen2011} Autonomous tractor using 2D lidar, fibre optic gyro and encoder odomentry.
-        \cite{He2011} Orchard row detection. Camera (640x480).
-        \cite{s110404086} Orchard row detection using camera (640x480)
-        \cite{Scarfe2012} horizontal 2D lidar, compass.
+
+
+
+
+
+
+
+        % \cite{Subramanian2006} fit an angled single plane lidar. Citrus grove navigation. Angled down 2D lidar and camera (640x480) separately; steering encoder.
+        % \cite{Barawid2007} Autonomous tractor in an orchard using a horizontal 2D lidar.
+        % \cite{Hansen2011} Autonomous tractor using 2D lidar, fibre optic gyro and encoder odomentry.
+        % \cite{He2011} Orchard row detection. Camera (640x480).
+        % \cite{Torres2011} Orchard row detection using camera (640x480)
+        % \cite{Scarfe2012} horizontal 2D lidar, compass.
         \cite{Freitas2012} angled 2D lidar, encoders, inertial measurement unit.
         \cite{Zhang2014} Rotated 2D lidar; lidar rotation, wheel and steering encoders
         \cite{Bergerman2015} Autonomous orchard vehicle Horizontal 2D lidar, wheel and steering encoders.
