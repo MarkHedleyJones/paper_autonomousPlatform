@@ -405,30 +405,31 @@
 
     \begin{table}[h!]
         \centering
-        \begin{tabular}{ | m{1.4cm} | m{2.9cm}| m{1.4cm} | m{2.9cm} | m{2.9cm} } 
-            \hline
-            \scriptsize \textbf{Sensor Type} & \scriptsize \textbf{Manufacturers Considered} &\scriptsize \textbf{Cost Range (USD)} &\scriptsize \textbf{Navigation Applications} &\scriptsize \textbf{Issues} \\
-            \hline
-            \scriptsize GPS & \scriptsize Ublox, Garmin, Omnistar & \scriptsize 50- 4000 per annum & \scriptsize Localisation, pose and velocity measurement &\scriptsize Signal loss under the kiwifruit canopy \\ 
-            \hline
-            \scriptsize IMU & \scriptsize InvenSense, Analog Devices & \scriptsize 50- 3000 & \scriptsize Acceleration and angular velocity measurement & \scriptsize Thermal drift, accumulated errors \\
-            \hline
-            \scriptsize Digital Compass & \scriptsize Honeywell, KVH & \scriptsize 50-500 & \scriptsize Heading measurement & \scriptsize \\
-            \hline
-            \scriptsize Encoders & \scriptsize CUI & \scriptsize 30-50 & \scriptsize Dead reckoning, velocity measurement & \scriptsize Accumulated errors \\
-            \hline
-            \scriptsize 2D Lidar & \scriptsize Hokuyo, SICK & \scriptsize 2000-10000 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well in fog and heavier rain \\
-            \hline
-            \scriptsize 3D Lidar & \scriptsize Velodyne, Quanergy, Neptec & \scriptsize 4000-90000 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well in fog and heavier rain \\
-            \hline
-            \scriptsize Time of Flight Cameras & \scriptsize Intel, Basler, Fotonic, Odos Imaging & \scriptsize 100-9000 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well in sunlight conditions, fog and heavier rain \\
-            \hline
-            \scriptsize Cameras & \scriptsize FLIR, Basler & \scriptsize 500-1500 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well when visibility is low \\
-            \hline
-            \scriptsize Thermal Cameras & \scriptsize FLIR, Optris & \scriptsize 3000-14000 & \scriptsize Pedestrian detection & \scriptsize In hot conditions, this sensor becomes less useful for pedestrian detection \\
-            \hline
-            \scriptsize Radar & \scriptsize Delphi & \scriptsize 3000-5000 & \scriptsize Object detection & \scriptsize \\
-            \hline
+        \footnotesize
+        \begin{tabular}{ l l l l } 
+            % \scriptsize \textbf{Sensor Type} & \scriptsize \textbf{Manufacturers Considered} &\scriptsize \textbf{Cost Range (USD)} &\scriptsize \textbf{Navigation Applications} &\scriptsize \textbf{Issues} \\ \hline
+            % \scriptsize GPS & \scriptsize Ublox, Garmin, Omnistar & \scriptsize 50- 4000 per annum & \scriptsize Localisation, pose and velocity measurement &\scriptsize Signal loss under the kiwifruit canopy \\  \hline
+            % \scriptsize IMU & \scriptsize InvenSense, Analog Devices & \scriptsize 50- 3000 & \scriptsize Acceleration and angular velocity measurement & \scriptsize Thermal drift, accumulated errors \\ \hline
+            % \scriptsize Digital Compass & \scriptsize Honeywell, KVH & \scriptsize 50-500 & \scriptsize Heading measurement & \scriptsize \\ \hline
+            % \scriptsize Encoders & \scriptsize CUI & \scriptsize 30-50 & \scriptsize Dead reckoning, velocity measurement & \scriptsize Accumulated errors \\ \hline
+            % \scriptsize 2D Lidar & \scriptsize Hokuyo, SICK & \scriptsize 2000-10000 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well in fog and heavier rain \\ \hline
+            % \scriptsize 3D Lidar & \scriptsize Velodyne, Quanergy, Neptec & \scriptsize 4000-90000 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well in fog and heavier rain \\ \hline
+            % \scriptsize Time of Flight Cameras & \scriptsize Intel, Basler, Fotonic, Odos Imaging & \scriptsize 100-9000 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well in sunlight conditions, fog and heavier rain \\ \hline
+            % \scriptsize Cameras & \scriptsize FLIR, Basler & \scriptsize 500-1500 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well when visibility is low \\ \hline
+            % \scriptsize Thermal Cameras & \scriptsize FLIR, Optris & \scriptsize 3000-14000 & \scriptsize Pedestrian detection & \scriptsize In hot conditions, this sensor becomes less useful for pedestrian detection \\ \hline
+            % \scriptsize Radar & \scriptsize Delphi & \scriptsize 3000-5000 & \scriptsize Object detection & \scriptsize \\
+            % \hline
+            \textbf{Sensor Type} & \textbf{Manufacturers Considered} &\textbf{Cost ($$USD)}\\ \hline
+            GPS & Ublox, Garmin, Omnistar & 50- 4000 per annum\\  \hline
+            IMU & InvenSense, Analog Devices & 50- 3000\\ \hline
+            Digital Compass & Honeywell, KVH & 50-500\\ \hline
+            Encoders & CUI & 30-50\\ \hline
+            2D Lidar & Hokuyo, SICK & 2000-10000\\ \hline
+            3D Lidar & Velodyne, Quanergy, Neptec & 4000-90000\\ \hline
+            Time of Flight & Intel, Basler, Fotonic, Odos Imaging & 100-9000 \\ \hline
+            Cameras & FLIR, Basler & 500-1500 \\ \hline
+            Thermal Cameras & FLIR, Optris & 3000-14000 \\ \hline
+            Radar & Delphi & 3000-5000 \\
         \end{tabular}
         \label{table:2}
         \caption{A sample of the sensors considered and parameters used for sensor selection for the AMMP navigation system.}
