@@ -192,7 +192,7 @@
         \label{fig:suzy}
     \end{figure}
 
-\section{Review}
+\section{Related Work}
 \label{sect:review}
 
     \subsection{Purpose-built Autonomous Vehicles}
@@ -250,151 +250,104 @@
         Torii suggests a combination of both RTK-GPS and machine vision systems to be the most promising system going forward based on reductions in costs and increases in performance of these systems \cite{Torii2000}.
         While \cite{Li2009} concludes that either GPS and machine vision, or GPS and lidar will be used together as a development trend.
 
-    \subsection{Sensors for Row Based Navigation}
+    \subsection{Sensors for Row Based Navigation in Orchards}
 
-        Sensors for orchard based row detection fall into two three categories; camera based, lidar based, or a combination.
-        Lidar come in two flavours: single-plane, and multi-plane.
+        Sensors for orchard based row detection fall into two three categories; camera based, lidar based, or a combination of these approaches.
+        The following section summarises review of row detection efforts in orchards using either of these techniques.
+        % Lidar come in two flavours: single-plane, and multi-plane.
 
         \cite{Subramanian2006} tested both camera based guidance and lidar (Sick LMS-200) based guidance systems in a citrus fruit orchard.
         Sensors were trialled separately on a tractor retrofitted with a fly-by-wire system.
-        It was able to navigate through the test area at up to \SI{3.1}{\meter\per\second} using lidar; the authors cite limitations in data acquisition rate from the liar as the limiting factor.
-        Their vehicle able to navigate at all speeds to an ``acceptable'' performance level using the machine-vision system, with path errors below \SI{60}{\milli\meter}.
+        Their vehicle was able to navigate a small and simplified path using both machine vision and lidar based approaches at speeds of up to \SI{4.4}{\meter\per\second}.
+        Lidar proved more accurate to the point that data rate became a limiting factor, after which image based approach became favourable.
         They suggest that combining the two systems would give more robust guidance as well as providing the ability to detect obstacles.
+        No mention of the ability for the image based approach to cope with varying conditions is made.
 
-        \cite{Barawid2007} fit a single-plane lidar (Sick LMS-219) to a tractor for row guidance between tree rows.
-        The authors determine a speed of \SI{0.36}{\meter\per\second} is appropriate for autonomous navigation on their system as this produced minimal errors of \SI{0.5}{\degree} in heading and \SI{50}{\milli\meter} in position.
-        The platform also utilised RTK-GPS receiver and a fibre optic gyro, but only the lidar was used for guidance.
+        \cite{Barawid2007} demonstrate the use data from a single-plane lidar (Sick LMS-219) being used to control a drive-by-wire tractor through an orchard.
+        Their results show real-time processing of lidar data is sufficient to navigate an orchard at \SI{0.36}{\meter\per\second} (\SI{1.3}{\kilo\meter\per\hour}).
 
-        \cite{Hansen2011} use a single-plane lidar (Sick LMS-200) fitted to a drive-by-wire tractor conversion.
-        The vehicle was also fitted with a RTK-GPS receiver, fiber optic gyro.
-        This work focuses on comparing software filters for localisation, rather than path planning.
+        \cite{Hansen2011} show the ability to use a single-plane lidar (Sick LMS-200) for vehicle localisation in an orchard.
+        Also in 2011, two groups publish work on the generation of centre-lines from camera data of orchard rows.
+        \cite{He2011} uses traditional machine vision, where \cite{Torres2011} makes use of neural network based image processing.
+        Both methods generate valid paths, alghouth He et~al.\@ note that theirs may not be suitable when the envirnoment background becomes complex.
 
-        \cite{He2011} combine camera and GPS receiver on a small electric truck (non-autonomous).
-        They use traditional machine vision algorithms to generate a path between rows of trees in an orchard.
-        The authors note that it may not be suitable when the background becomes complex.
-
-        \cite{Torres2011} combine neural networks and cameras to generate paths between rows of an orange orchard.
-        Their research focused on the generation of a centre-line rather than full autonomous navigation.
-        The results they obtain from the inclusion of neural networks prove robust in various lighting conditions.
-
-        \cite{Scarfe2012} developed a platform designed to be autonomous in kiwifruit orchards.
-        That work combined traditional camera based image processing techniques with a single-plane lidar (Sick LMS-111).
+        The work of \cite{Scarfe2012}, combined traditional camera based image processing techniques with a single-plane lidar (Sick LMS-111).
         The image based approach failed to cope with variability in lighting conditions, however the lidar proved useful for detecting the trunks and posts of the row.
-        
-        % Sentence here relating to how whenever traditional image processing is used, it always ends up not being able to cope when the lighting changes.
+
+        \cite{Freitas2012} focus on the detection of people and bins in the rows of an apple orchard using lidar (Sick LMS-291), a low-cost inertial measurement unit, and wheel encoders.
+        Their algorithm was capable of detecting each obstacle classe off-line from data captured in an apple orchard.
+
+        \cite{Zhang2014} use a lidar (Hokuyo UTM-30LX) to generate maps of an apple orchard with the aid of artificial landmarks.
+        They use an actuated single-plane lidar to generate multi-plane data for use in row and landmark sensing.
+        Placing artificial land-marks in orchards is designed to reduce the effort required to create orchard maps for guidance systems.
+
+        The following year, many of the same authors write about their autonomous vehicle \citep{Bergerman2015}.
+        It describes a electric utility vehicle converted to fly-by-wire with the addition wheel encoders for odometry and a single-plane lidar (Sick LMS-111).
+        While not able to detect obstacles in real-time, their previous work processing off-line data \citep{Freitas2012} has potential to be integrated with the addition of extra computing capability.
+
+        Most recently, \cite{Sharifi2015} write about a method to generate a centre-line from an image an of an orchard rows.
+        Like the work of \cite{He2011}, the technique offers a way to generate paths from a single camera image without resorting to neural networks.
+        However, their future work focuses on increasing robustness to variations in lighting conditions, which suggests their system may have issues in this area.
+        Additionally, they suggest their system as being complementary to lidar based navigation.
+
+        These works show that traditional image based processing for navigation fails when the scene becomes complex or the lighting varies.
+        Combining cameras with neural network based processing increases the robustness to environmental complexities, such as light or clutter.
+        The experiences of \cite{Scarfe2012} and similar indicate that Lidar outputs data which requires less post-processing to be robust.
+        The use of lidar has seen two of the reported vehicles navigate autonomously through orchard enviroments.
 
 
 
+\section{Platform Design}
 
+    \subsection{Vehicle Configuration}
+    \label{sect:mechanical}
 
+        \begin{figure}[htb]
+            \centering
+            \includegraphics[width=\linewidth]{imgs/profile_views/AMMP-All-Labelled.pdf}
+            \caption{Profile drawings of the robotic platform with kiwifruit bin.}
+            \label{fig:AMMP}
+        \end{figure}
 
+        The canopy of a kiwifruit orchard ranges between \SI{1300}{\milli\meter} and \SI{1700}{\milli\meter}.
+        Modules designed to be carried by the platform require clearance from the canopy, in addition to to height they occupy themselves.
+        To maximise space available to these modules the platform must be low-slung at the point of attachment.
+        Figure \ref{fig:AMMP} illustrates the design, with module area allocated between markers `F' and `E' in the side view (top left).
+        The height of the chassis in this region is \SI{360}{\milli\meter} from the ground.
 
+        Steering geometry is Ackermann based with independent motors on the front wheels for actuation.
+        The ability to actuate the angles individually simplifies the mechanical geometry needed to coordinate steering, particularly at extreme steering angles.
+        Each steering wheel has the freedom to rotate \SI{340}{\degree}, limited by a mechanical stop.
+        This range of steering angle allows the vehicle to place the centre of rotation between its rear wheels.
+        At this angle, the turning circle is equal to approximately twice the length of the vehicle.
+        Implementing four wheel steering would allow the centre of rotation to move to the centre of the vehicle, decreasing the turning circle to the total length of the vehicle.
+        However, headlands in kiwifruit orchards are sized for tractors to turn between rows, tractors which use Ackerman steering geometries.
+        The implementation of Ackermann geometry on the platform simplifies the mechanical design, removes the need to develop ``non-trivial'' control strategies, and increases the usable area.
+        A differential drive, or skid steer, system was expected to cause ground damage to a level considered unacceptable to orchard owners.
 
+        Bin lifting forks has been fitted to the area between the rear wheels.
+        This area is sized to accommodate a standard kiwifruit bin.
+        The lifter is actuated by two vertically mounted pneumatic cylinders and is controlled by a standard pneumatic valve block.
+        This allows the platform to pick-up and drop-off bins as necessary while operating in the orchard; a task expected to be automated in future.
 
+        Other than its tires, the platform has no suspension.
+        It features a front pivoting axle that ensures that a minimum of three wheels are always in contact with the ground.
+        Each wheel is mounted directly to a 40:1 fixed ratio planetary gear gearbox connected to a permanent magnet, brushless AC motor.
+        The gearbox-motor combination allows the platform to travel at a maximum speed of \SI{10}{\kilo\meter\per\hour}.
+        At this speed in an orchard a full suspension system is unnecessary.
+        In total, the drive system is capable of delivering \SI{25.6}{\kilo\watt} of power and \SI{3.3}{\kilo\newton\meter} of torque continuously.
+        With these specifications it is capable of accelerating from a stand-still to its maximum speed at an incline of \SI{20}{\degree} whilst carrying a \SI{600}{\kilo\gram} payload in \SI{2.0}{\second}.
 
+        At the front of the platform sits a power generation unit including a petrol engine, air compressor, and alternator.
+        The drive shafts of each are connected by a timing belt.
+        The compressor and alternator are activated electronically by an embedded controller module.
+        Fuel and compressed air tanks sit over the right-hand rear wheel; both are visible in figure \ref{fig:suzy}.
+        Battery modules attached to the sides of the chassis each house fifteen lithium-iron-phosphate batteries.
 
-        % \cite{Subramanian2006} fit an angled single plane lidar. Citrus grove navigation. Angled down 2D lidar and camera (640x480) separately; steering encoder.
-        % \cite{Barawid2007} Autonomous tractor in an orchard using a horizontal 2D lidar.
-        % \cite{Hansen2011} Autonomous tractor using 2D lidar, fibre optic gyro and encoder odomentry.
-        % \cite{He2011} Orchard row detection. Camera (640x480).
-        % \cite{Torres2011} Orchard row detection using camera (640x480)
-        % \cite{Scarfe2012} horizontal 2D lidar, compass.
-        \cite{Freitas2012} angled 2D lidar, encoders, inertial measurement unit.
-        \cite{Zhang2014} Rotated 2D lidar; lidar rotation, wheel and steering encoders
-        \cite{Bergerman2015} Autonomous orchard vehicle Horizontal 2D lidar, wheel and steering encoders.
-        \cite{Bargoti2015} Apple orchard localisation. Vertical 2D lidar, Global Positioning Inertial Navigation System
-        \cite{Sharifi2015} Orchard row detection Camera.
-
-        % \begin{table}[h!]
-
-
-        %     \caption{Examples of sensors used in previous orchard navigation research.}
-        %     \centering
-        %     \begin{tabular}{ | m{3.2cm} | m{3.2cm}| m{6.2cm} | } 
-        %         \hline
-        %         \textbf{Reference} & \textbf{Application} & \textbf{Sensors} \\
-        %         \hline
-        %         Subramanian et al., 2006 & Citrus grove navigation & Angled down 2D lidar and camera (640x480) separately; steering encoder \\ 
-        %         \hline
-        %         Barawid et al., 2007 & Autonomous tractor & Horizontal 2D lidar \\ 
-        %         \hline
-        %         Hansen et al., 2011 & Autonomous orchard vehicle & Horizontal 2D lidar, fibre optic gyroscope, odometry (encoders) \\ 
-        %         \hline
-        %         He et al., 2011 & Orchard row detection & Camera (640x480) \\
-        %         \hline
-        %         Torres- Sospedra and Nebot, 2011 & Orchard row detection & Camera (640x480) \\
-        %         \hline
-        %         Scarfe, 2012 & Kiwifruit harvesting robot & Horizontal 2D lidar, fluxgate compass \\
-        %         \hline
-        %         Freitas et al., 2012  & Orchard robot obstacle detection & Angled down 2D lidar, wheel and steering encoders, low cost IMU \\
-        %         \hline
-        %         Zhang et al., 2013  & Orchard robot row following & Rotated 2D lidar; lidar rotation, wheel and steering encoders \\
-        %         \hline
-        %         Bergerman et al., 2015 & Autonomous orchard vehicle & Horizontal 2D lidar, wheel and steering encoders \\
-        %         \hline
-        %         Bargoti et al., 2015 & Apple orchard localisation & Vertical 2D lidar, Global Positioning Inertial Navigation System \\
-        %         \hline
-        %         Jagbrant et al., 2015 & Almond orchard localisation & Vertical 2D lidar, Global Positioning Inertial Navigation System \\
-        %         \hline
-        %         Sharifi and Chen, 2015 & Orchard row detection & Camera \\
-        %         \hline
-        %     \end{tabular}
-        %     \label{table:1}
-        % \end{table}
-
-\section{Vehicle design}
-\label{sect:mechanical}
-
-    \begin{figure}[htb]
-        \centering
-        \includegraphics[width=\linewidth]{imgs/profile_views/AMMP-All-Labelled.pdf}
-        \caption{Profile drawings of the robotic platform with kiwifruit bin.}
-        \label{fig:AMMP}
-    \end{figure}
-
-    The canopy of a kiwifruit orchard ranges between \SI{1300}{\milli\meter} and \SI{1700}{\milli\meter}.
-    Modules designed to be carried by the platform require clearance from the canopy, in addition to to height they occupy themselves.
-    To maximise space available to these modules the platform must be low-slung at the point of attachment.
-    Figure \ref{fig:AMMP} illustrates the design, with module area allocated between markers `F' and `E' in the side view (top left).
-    The height of the chassis in this region is \SI{360}{\milli\meter} from the ground.
-
-    Steering geometry is Ackermann based with independent motors on the front wheels for actuation.
-    The ability to actuate the angles individually simplifies the mechanical geometry needed to coordinate steering, particularly at extreme steering angles.
-    Each steering wheel has the freedom to rotate \SI{340}{\degree}, limited by a mechanical stop.
-    This range of steering angle allows the vehicle to place the centre of rotation between its rear wheels.
-    At this angle, the turning circle is equal to approximately twice the length of the vehicle.
-    Implementing four wheel steering would allow the centre of rotation to move to the centre of the vehicle, decreasing the turning circle to the total length of the vehicle.
-    However, headlands in kiwifruit orchards are sized for tractors to turn between rows, tractors which use Ackerman steering geometries.
-    The implementation of Ackermann geometry on the platform simplifies the mechanical design, removes the need to develop ``non-trivial'' control strategies, and increases the usable area.
-    A differential drive, or skid steer, system was expected to cause ground damage to a level considered unacceptable to orchard owners.
-
-    Bin lifting forks has been fitted to the area between the rear wheels.
-    This area is sized to accommodate a standard kiwifruit bin.
-    The lifter is actuated by two vertically mounted pneumatic cylinders and is controlled by a standard pneumatic valve block.
-    This allows the platform to pick-up and drop-off bins as necessary while operating in the orchard; a task expected to be automated in future.
-
-    Other than its tires, the platform has no suspension.
-    It features a front pivoting axle that ensures that a minimum of three wheels are always in contact with the ground.
-    Each wheel is mounted directly to a 40:1 fixed ratio planetary gear gearbox connected to a permanent magnet, brushless AC motor.
-    The gearbox-motor combination allows the platform to travel at a maximum speed of \SI{10}{\kilo\meter\per\hour}.
-    At this speed in an orchard a full suspension system is unnecessary.
-    In total, the drive system is capable of delivering \SI{25.6}{\kilo\watt} of power and \SI{3.3}{\kilo\newton\meter} of torque continuously.
-    With these specifications it is capable of accelerating from a stand-still to its maximum speed at an incline of \SI{20}{\degree} whilst carrying a \SI{600}{\kilo\gram} payload in \SI{2.0}{\second}.
-
-    At the front of the platform sits a power generation unit including a petrol engine, air compressor, and alternator.
-    The drive shafts of each are connected by a timing belt.
-    The compressor and alternator are activated electronically by an embedded controller module.
-    Fuel and compressed air tanks sit over the right-hand rear wheel; both are visible in figure \ref{fig:suzy}.
-    Battery modules attached to the sides of the chassis each house fifteen lithium-iron-phosphate batteries.
-
-    Unloaded, the machine has an estimated mass of \SI{850}{\kilo\gram}, including the power generation unit.
-    It is capable of carrying a \SI{1000}{\kilo\gram} payload.
-    The mass of a standard bin of kiwifruit can be as much as \SI{400}{\kilo\gram}, leaving \SI{600}{\kilo\gram} for modules.
-    % With that load, the platform's maneuverability and ability to brake or accelerate was not noticeably affected.
-
-
-
-
+        Unloaded, the machine has an estimated mass of \SI{850}{\kilo\gram}, including the power generation unit.
+        It is capable of carrying a \SI{1000}{\kilo\gram} payload.
+        The mass of a standard bin of kiwifruit can be as much as \SI{400}{\kilo\gram}, leaving \SI{600}{\kilo\gram} for modules.
+        % With that load, the platform's maneuverability and ability to brake or accelerate was not noticeably affected.
 
 
 \section{Navigation Sensor Selection}
@@ -451,34 +404,34 @@
     This data seemed to indictate that the sensors that deliver the most functionality are lidar, cameras and time of flight cameras. In addition, these three sensor types are a reasonable price, at the lower end of their cost range; especially for time of flight cameras, although these sensors have a serious issue with degredation in performance in sunlight. Because localisation is such a key functionality, GPS also seemed like an important option to test. From this data and since the AMMP has built-in encoders, it seemed to make sense to use encoders to assist with mapping, localisation and velocity feedback. 
 
     \begin{table}[h!]
-    \label{table:2}
-    \caption{A sample of the sensors considered and parameters used for sensor selection for the AMMP navigation system.}
-    \centering
-    \begin{tabular}{ | m{1.4cm} | m{2.9cm}| m{1.4cm} | m{2.9cm} | m{2.9cm} } 
-    \hline
-    \scriptsize \textbf{Sensor Type} & \scriptsize \textbf{Manufacturers Considered} &\scriptsize \textbf{Cost Range (USD)} &\scriptsize \textbf{Navigation Applications} &\scriptsize \textbf{Issues} \\
-    \hline
-    \scriptsize GPS & \scriptsize Ublox, Garmin, Omnistar & \scriptsize 50- 4000 per annum & \scriptsize Localisation, pose and velocity measurement &\scriptsize Signal loss under the kiwifruit canopy \\ 
-    \hline
-    \scriptsize IMU & \scriptsize InvenSense, Analog Devices & \scriptsize 50- 3000 & \scriptsize Acceleration and angular velocity measurement & \scriptsize Thermal drift, accumulated errors \\
-    \hline
-    \scriptsize Digital Compass & \scriptsize Honeywell, KVH & \scriptsize 50-500 & \scriptsize Heading measurement & \scriptsize \\
-    \hline
-    \scriptsize Encoders & \scriptsize CUI & \scriptsize 30-50 & \scriptsize Dead reckoning, velocity measurement & \scriptsize Accumulated errors \\
-    \hline
-    \scriptsize 2D Lidar & \scriptsize Hokuyo, SICK & \scriptsize 2000-10000 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well in fog and heavier rain \\
-    \hline
-    \scriptsize 3D Lidar & \scriptsize Velodyne, Quanergy, Neptec & \scriptsize 4000-90000 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well in fog and heavier rain \\
-    \hline
-    \scriptsize Time of Flight Cameras & \scriptsize Intel, Basler, Fotonic, Odos Imaging & \scriptsize 100-9000 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well in sunlight conditions, fog and heavier rain \\
-    \hline
-    \scriptsize Cameras & \scriptsize FLIR, Basler & \scriptsize 500-1500 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well when visibility is low \\
-    \hline
-    \scriptsize Thermal Cameras & \scriptsize FLIR, Optris & \scriptsize 3000-14000 & \scriptsize Pedestrian detection & \scriptsize In hot conditions, this sensor becomes less useful for pedestrian detection \\
-    \hline
-    \scriptsize Radar & \scriptsize Delphi & \scriptsize 3000-5000 & \scriptsize Object detection & \scriptsize \\
-    \hline
-    \end{tabular}
+        \centering
+        \begin{tabular}{ | m{1.4cm} | m{2.9cm}| m{1.4cm} | m{2.9cm} | m{2.9cm} } 
+            \hline
+            \scriptsize \textbf{Sensor Type} & \scriptsize \textbf{Manufacturers Considered} &\scriptsize \textbf{Cost Range (USD)} &\scriptsize \textbf{Navigation Applications} &\scriptsize \textbf{Issues} \\
+            \hline
+            \scriptsize GPS & \scriptsize Ublox, Garmin, Omnistar & \scriptsize 50- 4000 per annum & \scriptsize Localisation, pose and velocity measurement &\scriptsize Signal loss under the kiwifruit canopy \\ 
+            \hline
+            \scriptsize IMU & \scriptsize InvenSense, Analog Devices & \scriptsize 50- 3000 & \scriptsize Acceleration and angular velocity measurement & \scriptsize Thermal drift, accumulated errors \\
+            \hline
+            \scriptsize Digital Compass & \scriptsize Honeywell, KVH & \scriptsize 50-500 & \scriptsize Heading measurement & \scriptsize \\
+            \hline
+            \scriptsize Encoders & \scriptsize CUI & \scriptsize 30-50 & \scriptsize Dead reckoning, velocity measurement & \scriptsize Accumulated errors \\
+            \hline
+            \scriptsize 2D Lidar & \scriptsize Hokuyo, SICK & \scriptsize 2000-10000 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well in fog and heavier rain \\
+            \hline
+            \scriptsize 3D Lidar & \scriptsize Velodyne, Quanergy, Neptec & \scriptsize 4000-90000 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well in fog and heavier rain \\
+            \hline
+            \scriptsize Time of Flight Cameras & \scriptsize Intel, Basler, Fotonic, Odos Imaging & \scriptsize 100-9000 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well in sunlight conditions, fog and heavier rain \\
+            \hline
+            \scriptsize Cameras & \scriptsize FLIR, Basler & \scriptsize 500-1500 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well when visibility is low \\
+            \hline
+            \scriptsize Thermal Cameras & \scriptsize FLIR, Optris & \scriptsize 3000-14000 & \scriptsize Pedestrian detection & \scriptsize In hot conditions, this sensor becomes less useful for pedestrian detection \\
+            \hline
+            \scriptsize Radar & \scriptsize Delphi & \scriptsize 3000-5000 & \scriptsize Object detection & \scriptsize \\
+            \hline
+        \end{tabular}
+        \label{table:2}
+        \caption{A sample of the sensors considered and parameters used for sensor selection for the AMMP navigation system.}
     \end{table}
 
 \subsection{Sensor Data Collection and Inspection}
@@ -713,11 +666,6 @@
 
 \section{Autonomous Driving}
 \label{sect:autonomous}
-    \color{red}
-        It would be great if we could put something in here with regards to how well the platform navigates an orchard.
-        If you don't want to write it, I can write something generic and put it in for you to approve.
-        Alternatively, you may not want anything in here relating to the navigation performance.
-    \color{black}
     \begin{figure}[htb]
         \centering
         \includegraphics[width=\linewidth]{imgs/photos/suzy_turning.jpg}
@@ -726,6 +674,11 @@
         }
         \label{fig:suzy_turning}
     \end{figure}
+    \color{red}
+    Need content here.
+    \color{black}
+    Figure \ref{fig:suzy_turning} shows the AMMP turning, which is great.
+
 
 \section{Discussion}
     TODO: Generally summerise the platform, its ability to carry stuff, suitability for the orchard environment, and its ability to drive autonomously.
