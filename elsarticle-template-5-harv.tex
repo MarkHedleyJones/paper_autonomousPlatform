@@ -107,7 +107,7 @@
 %% \fntext[label3]{}
 
 % \title{An Autonomous Platform for Use in Kiwifruit Orchards}
-\title{A Platform for Autonomous Navigation in Kiwifruit Orchards}
+\title{A Platform for Autonomous Navigation of Kiwifruit Orchards}
 
 %% use optional labels to link authors explicitly to addresses:
 %% \author[label1,label2]{<author name>}
@@ -173,15 +173,15 @@
     These systems are bulky and have specific geometric requirements dictated the environment and the tasks they perform.
     They share the requirements of transport to and from orchards, electrical power, and air pressure, but differ in they way they move when in the orchard.
     The pollinating module moves at a well-known velocity with minimum changes in angle, whereas the harvester advances a set distance between stationary harvest cycles.
-    The duration of a harvesting cycle is determined by the number of fruit to be harvested during that particular cycle.
-    Therefore, as the harvester is designed to be autonomous, there must be communication between the harvester and platform to trigger forward movement between cycles.
+    The duration of such harvesting cycles are determined by the number of fruit available during any particular cycle.
+    As the harvester is designed to be autonomous, there must be communication between the platform and harvester to trigger forward movement between cycles.
 
     It has been stated that ``since the robot development already includes a high complexity, the application itself should be of comparably low complexity'' \citep{Ruckelshausen2009}.
     By separating development of the base platform from the task-specific modules, risk of over-complexity is reduced by way of separation.
     The platform presented here simply needs to transport task specific modules autonomously through kiwifruit orchards.
 
     The development of autonomous vehicles in agriculture is not new, but much of the literature relates to existing vehicles converted to driverless.
-    This paper focuses on the development of a purpose built platform for the purpose of carrying robotic modules through an orchard environment.
+    This work details the development of a purpose-built platform for carrying robotic modules through an orchard environment.
 
     \begin{figure}[htb]
         \centering
@@ -203,11 +203,11 @@
         It was capable of spraying individual plants whilst autonomously driving at \SI{2.5}{\kilo\meter\per\hour}.
         
         In 2002, two autonomous robots designed for weed mapping and control were published \citep{Pedersen2002,Astrand2002}.
-        The platforms in these works were relatively simple in terms of their design, referring only to the chassis and drive system, as they are still in a prototype stage.
+        These platforms had relatively simple chassis and drive systems as they were both at a prototype stage.
         Both were Ackermann based and designed for field crops.
         The vehicle presented by \cite{Pedersen2002} was designed to follow pre-defined paths through row-crops, but the authors found that this was impractical without a dedicated row guidance sensor.
         They proposed a revision of their prototype that featured four wheel steering and drive system and integrating both GPS and a row guidance measurements.
-        This work demonstrates a need to combine data from multiple sensor types, which becomes the standard henceforth.
+        This work demonstrates a need to combine data from multiple sensor types, which becomes common.
         Mention at this time was made of utilising a Controller Area Network (CAN) to communicate with drive and steering modules on the revised unit due to it being a dominating standard in agricultural vehicles.
         \colorbox{yellow}{Did this next prototype ever get published?}
         
@@ -219,8 +219,8 @@
         Their robot utilised a CAN bus for some aspects of system communication.
 
         In 2008, Klose et~al.\@ publish details of `Weedy', a autonomous weed control robot for field use.
-        It used a simplistic four wheel steering geometry.
-        There are few details on the sensor selection apart from mention of the use of cameras and 'acoustic distance sensors'.
+        It used a very simple four wheel steering geometry.
+        There are few details on the sensor selection apart from mention of the use of cameras and `acoustic distance sensors'.
         Presumably the selection of drive geometry on this robot is a cost/complexity optimisation.
         It too makes use of a CAN bus for communication between on-board modules.
 
@@ -231,9 +231,9 @@
         A CAN bus is used to control the low level systems (such as the drive control) and ethernet connections for higher level communication.
         The authors created a simulated model of the platform using Gazebo in which they could test the many-degrees-of-freedom drive system.
 
-        Of particular relevance is the work of Scarfe et~al.\@ on an autonomous kiwifruit picking robot \citep{scarfe2009, Scarfe2012}.
+        Of particular relevance to this work is that of Scarfe et~al.\@ on an autonomous kiwifruit picking robot \citep{scarfe2009, Scarfe2012}.
         That work involved the creation of a hydraulically driven platform with Ackermann steering to which four fruit harvesting arms were integrated.
-        While it the ability to navigate a kiwifruit orchard was not tested, it formed the foundation for the second-generation platform presented here.
+        While its ability to navigate a kiwifruit orchard was not tested, it formed the foundation for the second-generation platform we present here.
         
         \cite{Blackmore2007} envisaged significant reductions in production costs by re-purposing parts already in use in the agricultural and automotive industry.
         While not a physical component, the CAN is one such technology borrowed from the automotive industry aiding developmental of low-level communications.
@@ -252,21 +252,21 @@
 
     \subsection{Sensors for Row Based Navigation in Orchards}
 
-        Sensors for orchard based row detection fall into two three categories; camera based, lidar based, or a combination of these approaches.
-        The following section summarises review of row detection efforts in orchards using either of these techniques.
+        Sensors for orchard based row detection fall into two three categories; camera based, lidar based, or a combination of the two.
+        The following section summarises a review of row detection efforts in orchards using these techniques.
         % Lidar come in two flavours: single-plane, and multi-plane.
 
         \cite{Subramanian2006} tested both camera based guidance and lidar (Sick LMS-200) based guidance systems in a citrus fruit orchard.
         Sensors were trialled separately on a tractor retrofitted with a fly-by-wire system.
         Their vehicle was able to navigate a small and simplified path using both machine vision and lidar based approaches at speeds of up to \SI{4.4}{\meter\per\second}.
-        Lidar proved more accurate to the point that data rate became a limiting factor, after which image based approach became favourable.
+        Lidar proved more accurate to the point at which the data rate became a limiting factor, after which image based approach became favourable.
         They suggest that combining the two systems would give more robust guidance as well as providing the ability to detect obstacles.
         No mention of the ability for the image based approach to cope with varying conditions is made.
 
-        \cite{Barawid2007} demonstrate the use data from a single-plane lidar (Sick LMS-219) being used to control a drive-by-wire tractor through an orchard.
+        \cite{Barawid2007} demonstrate the use of data from a single-plane lidar (Sick LMS-219) being used to control a drive-by-wire tractor through an orchard.
         Their results show real-time processing of lidar data is sufficient to navigate an orchard at \SI{0.36}{\meter\per\second} (\SI{1.3}{\kilo\meter\per\hour}).
 
-        \cite{Hansen2011} show the ability to use a single-plane lidar (Sick LMS-200) for vehicle localisation in an orchard.
+        \cite{Hansen2011} show the use of a single-plane lidar (Sick LMS-200) for vehicle localisation in an orchard.
         Also in 2011, two groups publish work on the generation of centre-lines from camera data of orchard rows.
         \cite{He2011} uses traditional machine vision, where \cite{Torres2011} makes use of neural network based image processing.
         Both methods generate valid paths, alghouth He et~al.\@ note that theirs may not be suitable when the envirnoment background becomes complex.
@@ -287,8 +287,8 @@
 
         Most recently, \cite{Sharifi2015} write about a method to generate a centre-line from an image an of an orchard rows.
         Like the work of \cite{He2011}, the technique offers a way to generate paths from a single camera image without resorting to neural networks.
-        However, their future work focuses on increasing robustness to variations in lighting conditions, which suggests their system may have issues in this area.
-        Additionally, they suggest their system as being complementary to lidar based navigation.
+        However, their future work focuses on increasing robustness to variations in lighting conditions, which indicates issues in this area.
+        They state their system has use in being complementary to lidar based navigation.
 
         These works show that traditional image based processing for navigation fails when the scene becomes complex or the lighting varies.
         Combining cameras with neural network based processing increases the robustness to environmental complexities, such as light or clutter.
@@ -309,15 +309,15 @@
             \label{fig:AMMP}
         \end{figure}
 
-        The canopy of a kiwifruit orchard ranges between \SI{1300}{\milli\meter} and \SI{1700}{\milli\meter}.
         Modules designed to be carried by the platform require clearance from the canopy, in addition to to height they occupy themselves.
+        A kiwifruit canopy ranges in height between \SI{1300}{\milli\meter} and \SI{1700}{\milli\meter}.
         To maximise space available to these modules the platform must be low-slung at the point of attachment.
-        Figure \ref{fig:AMMP} illustrates the design, with module area allocated between markers `F' and `E' in the side view (top left).
+        Figure \ref{fig:AMMP} illustrates the platform's design, with module area allocated between markers `F' and `E' in the side view (top left).
         The height of the chassis in this region is \SI{360}{\milli\meter} from the ground.
 
         Steering geometry is Ackermann based with independent motors on the front wheels for actuation.
         The ability to actuate the angles individually simplifies the mechanical geometry needed to coordinate steering, particularly at extreme steering angles.
-        Each steering wheel has the freedom to rotate \SI{340}{\degree}, limited by a mechanical stop.
+        Steered wheels have the freedom to rotate \SI{340}{\degree}, limited by a mechanical stop.
         This range of steering angle allows the vehicle to place the centre of rotation between its rear wheels.
         At this angle, the turning circle is equal to approximately twice the length of the vehicle.
         Implementing four wheel steering would allow the centre of rotation to move to the centre of the vehicle, decreasing the turning circle to the total length of the vehicle.
@@ -325,24 +325,24 @@
         The implementation of Ackermann geometry on the platform simplifies the mechanical design, removes the need to develop ``non-trivial'' control strategies, and increases the usable area.
         A differential drive, or skid steer, system was expected to cause ground damage to a level considered unacceptable to orchard owners.
 
-        Bin lifting forks has been fitted to the area between the rear wheels.
+        Bin lifting forks are fitted to the area between the rear wheels.
         This area is sized to accommodate a standard kiwifruit bin.
         The lifter is actuated by two vertically mounted pneumatic cylinders and is controlled by a standard pneumatic valve block.
-        This allows the platform to pick-up and drop-off bins as necessary while operating in the orchard; a task expected to be automated in future.
+        With this, the platform will have the ability to pick and place bins while operating in the orchard.
 
         Other than its tires, the platform has no suspension.
         It features a front pivoting axle that ensures that a minimum of three wheels are always in contact with the ground.
-        Each wheel is mounted directly to a 40:1 fixed ratio planetary gear gearbox connected to a permanent magnet, brushless AC motor.
-        The gearbox-motor combination allows the platform to travel at a maximum speed of \SI{10}{\kilo\meter\per\hour}.
-        At this speed in an orchard a full suspension system is unnecessary.
-        In total, the drive system is capable of delivering \SI{25.6}{\kilo\watt} of power and \SI{3.3}{\kilo\newton\meter} of torque continuously.
-        With these specifications it is capable of accelerating from a stand-still to its maximum speed at an incline of \SI{20}{\degree} whilst carrying a \SI{600}{\kilo\gram} payload in \SI{2.0}{\second}.
+        Each wheel is mounted directly to a 40:1 fixed ratio planetary gearbox connected to a permanent magnet brushless AC motor.
+        This specific gearbox-motor combination allows the platform to travel at a maximum speed of \SI{10}{\kilo\meter\per\hour}.
+        The lack of suspension is not an issue when operating in orchards at this speed.
+        In total, the drive system can continuously deliver \SI{25.6}{\kilo\watt} of power and \SI{3.3}{\kilo\newton\meter} of torque.
+        Based on these specifications it is capable of accelerating from a stand-still to its maximum speed at an incline of \SI{20}{\degree} whilst carrying a \SI{600}{\kilo\gram} payload in \SI{2.0}{\second}.
 
-        At the front of the platform sits a power generation unit including a petrol engine, air compressor, and alternator.
-        The drive shafts of each are connected by a timing belt.
+        A power generation unit including a petrol engine, air compressor, and alternator is fitted at the front of the vehicle.
+        The drive shafts of each are connected by a heavy-duty timing belt.
         The compressor and alternator are activated electronically by an embedded controller module.
-        Fuel and compressed air tanks sit over the right-hand rear wheel; both are visible in figure \ref{fig:suzy}.
-        Battery modules attached to the sides of the chassis each house fifteen lithium-iron-phosphate batteries.
+        Fuel and compressed air tanks sit over the right-hand rear wheel, these can be seen in figure \ref{fig:suzy}.
+        Battery modules attached to the sides of the chassis each house fifteen lithium-iron-phosphate batteries (thirty batteries in total).
 
         Unloaded, the machine has an estimated mass of \SI{850}{\kilo\gram}, including the power generation unit.
         It is capable of carrying a \SI{1000}{\kilo\gram} payload.
@@ -350,8 +350,10 @@
         % With that load, the platform's maneuverability and ability to brake or accelerate was not noticeably affected.
 
 
-\section{Navigation Sensor Selection}
+\section{Navigation Sensors}
 \label{sect:sensors}
+    The choice of sensors incorporated into a platform determines which approaches are available for navigation and object detection.
+    This section details the sensor selection specific for use in kiwifruit orchards.
 %     Sensor selection was a critical early step in the development of the navigation system for the AMMP because it dictated the direction of subsequent research. Four approaches were used in the process of sensor selection:
 %     \begin{enumerate}
 %         \item Conducting a literature survey of sensors previously used in orchard navigation and similar applications.
@@ -398,158 +400,206 @@
 %     \label{table:1}
 %     \end{table}
 
-\subsection{Cost Benefit Analysis of Sensors}
-    The costs of different sensors for a single unit were collated by contacting various manufacturers and suppliers; these results were used to estimate cost ranges for each sensor type.
-	The benefits and issues for each sensor type were noted, based on previous experience and results.
-	All of this information is summarised in Table \ref{table:2}.
+\subsection{Sensor Selection}
 
-    This data seemed to indictate that the sensors that deliver the most functionality are lidar, cameras and time of flight cameras.
-	In addition, these three sensor types are a reasonable price, at the lower end of their cost range; especially for time of flight cameras, although these sensors have a serious issue with degredation in performance in sunlight.
-	Because localisation is such a key functionality, GPS also seemed like an important option to test.
-	From this data and since the AMMP has built-in encoders, it seemed to make sense to use encoders to assist with mapping, localisation and velocity feedback.
-	
+    As the drive motors have built-in wheel encoders, odometry data is already available on the platform.
+    Encoders from powered wheels give false readings if wheel slip occurs, so these sensors cannot be used for odomentry alone.
+    The data they provide can be used to assist with mapping, localisation, and provide velocity feedback.
 
-    \begin{table}[h!]
+    \begin{table}[htbp]
         \centering
         \footnotesize
-        \begin{tabular}{ l l l l } 
-            % \scriptsize \textbf{Sensor Type} & \scriptsize \textbf{Manufacturers Considered} &\scriptsize \textbf{Cost Range (USD)} &\scriptsize \textbf{Navigation Applications} &\scriptsize \textbf{Issues} \\ \hline
-            % \scriptsize GPS & \scriptsize Ublox, Garmin, Omnistar & \scriptsize 50- 4000 per annum & \scriptsize Localisation, pose and velocity measurement &\scriptsize Signal loss under the kiwifruit canopy \\  \hline
-            % \scriptsize IMU & \scriptsize InvenSense, Analog Devices & \scriptsize 50- 3000 & \scriptsize Acceleration and angular velocity measurement & \scriptsize Thermal drift, accumulated errors \\ \hline
-            % \scriptsize Digital Compass & \scriptsize Honeywell, KVH & \scriptsize 50-500 & \scriptsize Heading measurement & \scriptsize \\ \hline
-            % \scriptsize Encoders & \scriptsize CUI & \scriptsize 30-50 & \scriptsize Dead reckoning, velocity measurement & \scriptsize Accumulated errors \\ \hline
-            % \scriptsize 2D Lidar & \scriptsize Hokuyo, SICK & \scriptsize 2000-10000 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well in fog and heavier rain \\ \hline
-            % \scriptsize 3D Lidar & \scriptsize Velodyne, Quanergy, Neptec & \scriptsize 4000-90000 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well in fog and heavier rain \\ \hline
-            % \scriptsize Time of Flight Cameras & \scriptsize Intel, Basler, Fotonic, Odos Imaging & \scriptsize 100-9000 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well in sunlight conditions, fog and heavier rain \\ \hline
-            % \scriptsize Cameras & \scriptsize FLIR, Basler & \scriptsize 500-1500 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well when visibility is low \\ \hline
-            % \scriptsize Thermal Cameras & \scriptsize FLIR, Optris & \scriptsize 3000-14000 & \scriptsize Pedestrian detection & \scriptsize In hot conditions, this sensor becomes less useful for pedestrian detection \\ \hline
-            % \scriptsize Radar & \scriptsize Delphi & \scriptsize 3000-5000 & \scriptsize Object detection & \scriptsize \\
-            % \hline
-            \textbf{Sensor Type} & \textbf{Manufacturers Considered} &\textbf{Cost ($$USD)}\\ \hline
-            GPS & Ublox, Garmin, Omnistar & 50- 4000 per annum\\  \hline
-            IMU & InvenSense, Analog Devices & 50- 3000\\ \hline
-            Digital Compass & Honeywell, KVH & 50-500\\ \hline
-            Encoders & CUI & 30-50\\ \hline
-            2D Lidar & Hokuyo, SICK & 2000-10000\\ \hline
-            3D Lidar & Velodyne, Quanergy, Neptec & 4000-90000\\ \hline
-            Time of Flight & Intel, Basler, Fotonic, Odos Imaging & 100-9000 \\ \hline
-            Cameras & FLIR, Basler & 500-1500 \\ \hline
-            Thermal Cameras & FLIR, Optris & 3000-14000 \\ \hline
-            Radar & Delphi & 3000-5000 \\
+        \begin{tabular}{ l l} 
+            \textbf{Sensor Type}   &\textbf{Possible Issues} \\ \hline
+            GPS                    & Prone to signal loss from surrounding foiliage\\  \hline
+            IMU                    & Error accumulation and thermal drift\\ \hline
+            Digital Compass        & Can be affected by nearby metal structures\\ \hline
+            Encoders               & Error accumulation \\ \hline
+            Lidar                  & Reduced visibility in fog and heavy rain \\ \hline
+            Time of Flight Cameras & Reduced visibility in sunlight, fog and heavy rain \\ \hline
+            Cameras                & Reduced visibility in fog or direct sunlight \\ \hline
+            Thermal Cameras        & Reduced visibility in conditions of low thermal contrast\\ \hline
         \end{tabular}
-        \label{table:2}
-        \caption{A sample of the sensors considered and parameters used for sensor selection for the AMMP navigation system.}
+        \label{table:sensor_comparison}
+        \caption{Sensor types considered for inclusion on the platform.}
     \end{table}
 
-\subsection{Sensor Data Collection and Inspection}
+    Other sensors considered for inclusion on the platform, and their associated issues, are outlined in table \ref{table:sensor_comparison}.
+    Factors influencing which sensors were trialled were the benefits and issues of each sensor type, success during previously reported usage, and availability at a commercially viable price-point.
+    Results of this work suggested that lidar, cameras, and time-of-flight cameras offered the most functionality for navigation and object detection.
+    Because localisation is such a key functionality, GPS was also tested.
+
+ %    The costs of different sensors for a single unit were collated by contacting various manufacturers and suppliers; these results were used to estimate cost ranges for each sensor type.
+    % The benefits and issues for each sensor type were noted, based on previous experience and results.
+    % All of this information is summarised in Table \ref{table:2}.
+
+ %    This data seemed to indictate that the sensors that deliver the most functionality are lidar, cameras and time of flight cameras.
+    % In addition, these three sensor types are a reasonable price, at the lower end of their cost range; especially for time of flight cameras, although these sensors have a serious issue with degredation in performance in sunlight.
+    % Because localisation is such a key functionality, GPS also seemed like an important option to test.
+    % From this data and since the AMMP has built-in encoders, it seemed to make sense to use encoders to assist with mapping, localisation and velocity feedback.
+    
+
+    % \begin{table}[htbp]
+    %     \centering
+    %     \footnotesize
+    %     \begin{tabular}{ l l l l } 
+    %         \textbf{Sensor Type} &\textbf{Navigation Applications} &\textbf{Issues} \\ \hline
+    %         GPS                    & Localisation, pose and velocity measurement                              & Signal loss\\  \hline
+    %         IMU                    & Acceleration and angular velocity measurement                            & Thermal drift, error accululation \\ \hline
+    %         Digital Compass        & Heading measurement                                                      & \\ \hline
+    %         Encoders               & Dead reckoning, velocity measurement                                     & Error accululation \\ \hline
+    %         Lidar                  & Mapping, localisation, pose and velocity measurement, obstacle detection & Reduced functionality in fog and heavier rain \\ \hline
+    %         Time of Flight Cameras & Mapping, localisation, pose and velocity measurement, obstacle detection & Reduced functionality in sunlight conditions, fog and heavier rain \\ \hline
+    %         Cameras                & Mapping, localisation, pose and velocity measurement, obstacle detection & Reduced functionality when visibility is low \\ \hline
+    %         Thermal Cameras        & Pedestrian detection                                                     & Reduced functionality in conditions of low thermal constrast\\ \hline
+    %         Radar                  & Object detection                                                         & \\            
+    %     \end{tabular}
+    %     \label{table:sensor_comparison}
+    %     \caption{A sample of the sensors considered and parameters used for sensor selection for the AMMP navigation system.}
+    % \end{table}
+
+
+ %    \begin{table}[h!]
+ %        \centering
+ %        \footnotesize
+ %        \begin{tabular}{ l l l l } 
+ %            % \scriptsize \textbf{Sensor Type} & \scriptsize \textbf{Manufacturers Considered} &\scriptsize \textbf{Cost Range (USD)} &\scriptsize \textbf{Navigation Applications} &\scriptsize \textbf{Issues} \\ \hline
+ %            % \scriptsize GPS & \scriptsize Ublox, Garmin, Omnistar & \scriptsize 50- 4000 per annum & \scriptsize Localisation, pose and velocity measurement &\scriptsize Signal loss under the kiwifruit canopy \\  \hline
+ %            % \scriptsize IMU & \scriptsize InvenSense, Analog Devices & \scriptsize 50- 3000 & \scriptsize Acceleration and angular velocity measurement & \scriptsize Thermal drift, accumulated errors \\ \hline
+ %            % \scriptsize Digital Compass & \scriptsize Honeywell, KVH & \scriptsize 50-500 & \scriptsize Heading measurement & \scriptsize \\ \hline
+ %            % \scriptsize Encoders & \scriptsize CUI & \scriptsize 30-50 & \scriptsize Dead reckoning, velocity measurement & \scriptsize Accumulated errors \\ \hline
+ %            % \scriptsize 2D Lidar & \scriptsize Hokuyo, SICK & \scriptsize 2000-10000 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well in fog and heavier rain \\ \hline
+ %            % \scriptsize 3D Lidar & \scriptsize Velodyne, Quanergy, Neptec & \scriptsize 4000-90000 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well in fog and heavier rain \\ \hline
+ %            % \scriptsize Time of Flight Cameras & \scriptsize Intel, Basler, Fotonic, Odos Imaging & \scriptsize 100-9000 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well in sunlight conditions, fog and heavier rain \\ \hline
+ %            % \scriptsize Cameras & \scriptsize FLIR, Basler & \scriptsize 500-1500 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well when visibility is low \\ \hline
+ %            % \scriptsize Thermal Cameras & \scriptsize FLIR, Optris & \scriptsize 3000-14000 & \scriptsize Pedestrian detection & \scriptsize In hot conditions, this sensor becomes less useful for pedestrian detection \\ \hline
+ %            % \scriptsize Radar & \scriptsize Delphi & \scriptsize 3000-5000 & \scriptsize Object detection & \scriptsize \\
+ %            % \hline
+ %            \textbf{Sensor Type} & \textbf{Manufacturers Considered} &\textbf{Cost ($$USD)}\\ \hline
+ %            GPS & Ublox, Garmin, Omnistar & 50-4000 per annum\\  \hline
+ %            IMU & InvenSense, Analog Devices & 50-3000\\ \hline
+ %            Digital Compass & Honeywell, KVH & 50-500\\ \hline
+ %            Encoders & CUI & 30-50\\ \hline
+ %            2D Lidar & Hokuyo, SICK & 2000-10000\\ \hline
+ %            3D Lidar & Velodyne, Quanergy, Neptec & 4000-90000\\ \hline
+ %            Time of Flight & Intel, Basler, Fotonic, Odos Imaging & 100-9000 \\ \hline
+ %            Cameras & FLIR, Basler & 500-1500 \\ \hline
+ %            Thermal Cameras & FLIR, Optris & 3000-14000 \\ \hline
+ %            Radar & Delphi & 3000-5000 \\
+ %        \end{tabular}
+ %        \label{table:2}
+ %        \caption{A sample of the sensors considered and parameters used for sensor selection for the AMMP navigation system.}
+ %    \end{table}
+
+\subsection{Data Collection and Inspection}
     The sensors that seemed important to test, based on both the literature survey and the cost-benefit analysis were lidar, cameras and GPS.
 	In addition, time of flight cameras were considered, because they seemed to be a compelling option based on the cost-benefit analysis; especially if some of the less expensive models were found to work well in sunlight.
 	It was also decided that encoders would be tested in favour of using an IMU because the encoders were built into the AMMP motors.
 	Some data was collected from each sensor in order to decide which sensors to prototype algorithms for.
 
-\subsubsection{GPS Data Collection}
-    Two GPS modules were tested.
-	Both were connected via serial to a Beaglebone Black single board  computer.
-	The GPS set-ups tested were:
-    \begin{itemize}
-      \item Ublox Neo-M8N module, selected for its superior navigation sensitivity of -167 dBm and internal Low Noise Amplifier (LNA), additional 20 dB gain/ 0.8 dB noise LNA and active circuitry for the 25mm square ceramic patch antenna.
-      \item OmniSTAR 5120VBS module, with AX0 series antenna, with 34 dB gain/ 1.4 dB noise LNA.
-	The AX0 series antenna claims high multipath rejection.
-    \end{itemize}
-    The procedure used for data collection was:
-    \begin{enumerate}
-        \item A route through a kiwifruit orchard was planned and plotted on a satellite map. The route was designed to include long stretches underneath the canopy and some areas with a good view of the sky.
-        \item The distance between post centres along the planned route was measured using a tape measure.
-        \item The GPS data collection setups were turned on at the starting point of the planned route and were left to initialise for 30 minutes.
-        \item The data collection unit was carried along the planned route, stopping at each pole. At each pole, the data collection unit was placed near to the pole in an orientation that was repeated for every pole along the route.
-        \item Step 4 was repeated until the entire route had been traversed and every pole along the way had been (approximately) mapped by the data collection unit.
-    \end{enumerate}
+    \subsubsection{GPS Data Collection}
+        Two GPS modules were tested.
+    	Both were connected via serial to a Beaglebone Black single board  computer.
+    	The GPS set-ups tested were:
+        \begin{itemize}
+          \item Ublox Neo-M8N module, selected for its superior navigation sensitivity of -167 dBm and internal Low Noise Amplifier (LNA), additional 20 dB gain/ 0.8 dB noise LNA and active circuitry for the 25mm square ceramic patch antenna.
+          \item OmniSTAR 5120VBS module, with AX0 series antenna, with 34 dB gain/ 1.4 dB noise LNA.
+    	The AX0 series antenna claims high multipath rejection.
+        \end{itemize}
+        The procedure used for data collection was:
+        \begin{enumerate}
+            \item A route through a kiwifruit orchard was planned and plotted on a satellite map. The route was designed to include long stretches underneath the canopy and some areas with a good view of the sky.
+            \item The distance between post centres along the planned route was measured using a tape measure.
+            \item The GPS data collection setups were turned on at the starting point of the planned route and were left to initialise for 30 minutes.
+            \item The data collection unit was carried along the planned route, stopping at each pole. At each pole, the data collection unit was placed near to the pole in an orientation that was repeated for every pole along the route.
+            \item Step 4 was repeated until the entire route had been traversed and every pole along the way had been (approximately) mapped by the data collection unit.
+        \end{enumerate}
 
-    It was noticed during testing that the signal quality lights on both GPS setups were regularly indicating loss of GPS fix.
-	Although the entire data collection procedure was performed, many of the results, such as the measurement of spacing between trees and performance, are far less significant than the regular loss of the GPS fix.
+        It was noticed during testing that the signal quality lights on both GPS setups were regularly indicating loss of GPS fix.
+    	Although the entire data collection procedure was performed, many of the results, such as the measurement of spacing between trees and performance, are far less significant than the regular loss of the GPS fix.
 
-    The orchard used for the data collection was Bateman’s at 48 Newnham Road, Whakamarama, New Zealand.
-	A path followed and the corresponding GPS data collected from the different setups is shown in Figure \ref{fig:gpsResults}.
-	Note that the path followed was traversed twice- once going out and once returning.
-	The data was collected at a slow walking speed- the entire path of approximately 500 metres took in the order of 15 minutes to complete, including stops about every 5.5 metres within the orchard.
-	Multiple sets of data were collected but Figure \ref{fig:gpsResults} is indicative of the results.
+        The orchard used for the data collection was Bateman’s at 48 Newnham Road, Whakamarama, New Zealand.
+    	A path followed and the corresponding GPS data collected from the different setups is shown in Figure \ref{fig:gpsResults}.
+    	Note that the path followed was traversed twice- once going out and once returning.
+    	The data was collected at a slow walking speed- the entire path of approximately 500 metres took in the order of 15 minutes to complete, including stops about every 5.5 metres within the orchard.
+    	Multiple sets of data were collected but Figure \ref{fig:gpsResults} is indicative of the results.
 
-    \begin{figure}[htb]
-        \centering
-        \includegraphics{imgs/gps_path/gps_path.pdf}
-        \caption{
-            Aerial view of a path through a kiwifruit orchard and the associated GPS data.
-        }
-        \label{fig:gpsResults}
-    \end{figure}
+        \begin{figure}[htb]
+            \centering
+            \includegraphics{imgs/gps_path/gps_path.pdf}
+            \caption{
+                Aerial view of a path through a kiwifruit orchard and the associated GPS data.
+            }
+            \label{fig:gpsResults}
+        \end{figure}
 
-    The Omnistar GPS setup appears to track the approximate path well but the data is sparse and there appears to be regular loss of signal in the orchard.
-	The Ublox GPS setup collected more data than the Omnistar setup but was much less accurate.
-	The conclusions of this work are that high quality GPS equipment may be useful to provide sanity checks of the approximate location in the orchard.
-	However, it was decided that GPS could not be relied on to provide localisation and other feedback, under the kiwifruit canopy.
+        The Omnistar GPS setup appears to track the approximate path well but the data is sparse and there appears to be regular loss of signal in the orchard.
+    	The Ublox GPS setup collected more data than the Omnistar setup but was much less accurate.
+    	The conclusions of this work are that high quality GPS equipment may be useful to provide sanity checks of the approximate location in the orchard.
+    	However, it was decided that GPS could not be relied on to provide localisation and other feedback, under the kiwifruit canopy.
 
-\subsubsection{Time of Flight Cameras}
-    Two models of Time of Flight cameras were tested.
-	The first was the Basler TOF640-20GM-850NM.
-	This sensor provides depth and return signal data at a resolution of 640 pixels wide by 480 pixels high.
-	It was thought that this sensor migt work well in sunlight because it had previously been successfully used to collect data from the underside of the kiwifruit canopy in different lighting conditions, with minimal occurences of the data being washed out.
-	However, it was found that on bright sunny days and in overcast conditions, there was large amounts of data loss, which was deemed unacceptable for important navigation functions such as obstacle detection.
+    \subsubsection{Time of Flight Cameras}
+        Two models of Time of Flight cameras were tested.
+    	The first was the Basler TOF640-20GM-850NM.
+    	This sensor provides depth and return signal data at a resolution of 640 pixels wide by 480 pixels high.
+    	It was thought that this sensor migt work well in sunlight because it had previously been successfully used to collect data from the underside of the kiwifruit canopy in different lighting conditions, with minimal occurences of the data being washed out.
+    	However, it was found that on bright sunny days and in overcast conditions, there was large amounts of data loss, which was deemed unacceptable for important navigation functions such as obstacle detection.
 
-    The second time of flight sensor tested was an Intel RealSense R200.
-	The appealing characteristics of this sensor were its low cost and it was advertised as being able to work outdoors.
-	However, in overcast and sunny conditions, there was complete loss of range data.
+        The second time of flight sensor tested was an Intel RealSense R200.
+    	The appealing characteristics of this sensor were its low cost and it was advertised as being able to work outdoors.
+    	However, in overcast and sunny conditions, there was complete loss of range data.
 
-\subsubsection{Lidar Data Collection}
-    Data was collected from two 2D lidar sensors; these were a Hokuyo UTM-30LX and a SICK LMS111.
-	Data was also collected from a 3D lidar sensor, which was a Velodyne VLP-16.
-	The data was collected by driving along rows in kiwifruit orchards with the sensors horizontal and at a height of 0.8 m, which was approximately midway between the ground and the canopy.
+    \subsubsection{Lidar Data Collection}
+        Data was collected from two 2D lidar sensors; these were a Hokuyo UTM-30LX and a SICK LMS111.
+    	Data was also collected from a 3D lidar sensor, which was a Velodyne VLP-16.
+    	The data was collected by driving along rows in kiwifruit orchards with the sensors horizontal and at a height of 0.8 m, which was approximately midway between the ground and the canopy.
 
-    The Hokuyo UTM-30LX exhibited some spurious unexplained measurements.
-	The cause of these erroneous measurements was not determined.
+        The Hokuyo UTM-30LX exhibited some spurious unexplained measurements.
+    	The cause of these erroneous measurements was not determined.
 
-    \begin{figure}[htb]
-        \centering
-        \includegraphics[width=\linewidth]{imgs/canopy_data/canopy_data.pdf}
-        \caption{
-            Captured lidar data showing the points reflected by the canopy (indicated by red markers) and points from tree trunks and posts (green markers).
-            The arrow indicates the position and heading of the platform.
-        }
-        \label{fig:canopyDataCloud}
-    \end{figure}
+        \begin{figure}[htb]
+            \centering
+            \includegraphics[width=\linewidth]{imgs/canopy_data/canopy_data.pdf}
+            \caption{
+                Captured lidar data showing the points reflected by the canopy (indicated by red markers) and points from tree trunks and posts (green markers).
+                The arrow indicates the position and heading of the platform.
+            }
+            \label{fig:canopyDataCloud}
+        \end{figure}
 
-    It was thought that the lidar sensors would measure the position of structure defining features in the orchard, such as post, trunks and hedges.
-	Detecting such features would then allow the boundaries of the row to be found for row following or these features could be mapped and used for localisation.
-	However, both 2D lidar sensors produced clouds of unstructured data amongst the structured features, as shown in Figure \ref{fig:canopyDataCloud}.
-	This was caused by the lidar plane intercepting the canopy on convex slopes and, similarly intercepting the ground on concave slopes (Figure \ref{fig:concaveSlope}) at short ranges.
+        It was thought that the lidar sensors would measure the position of structure defining features in the orchard, such as post, trunks and hedges.
+    	Detecting such features would then allow the boundaries of the row to be found for row following or these features could be mapped and used for localisation.
+    	However, both 2D lidar sensors produced clouds of unstructured data amongst the structured features, as shown in Figure \ref{fig:canopyDataCloud}.
+    	This was caused by the lidar plane intercepting the canopy on convex slopes and, similarly intercepting the ground on concave slopes (Figure \ref{fig:concaveSlope}) at short ranges.
 
-    \begin{figure}[htb]
-        \centering
-        \includegraphics[width=\linewidth]{imgs/concave_slope/concave_slope_v4.pdf}
-        \caption{
-            On a concave slope the lidar scan plane may reflect off the ground instead of tree trunks and posts.
-        }
-        \label{fig:concaveSlope}
-    \end{figure}
+        \begin{figure}[htb]
+            \centering
+            \includegraphics[width=\linewidth]{imgs/concave_slope/concave_slope_v4.pdf}
+            \caption{
+                On a concave slope the lidar scan plane may reflect off the ground instead of tree trunks and posts.
+            }
+            \label{fig:concaveSlope}
+        \end{figure}
 
-    Data was also collected from the 3D lidar sensor.
-	The 3D lidar sensor had 16 layers of data vertically.
-	As a result on concave slopes, some of the angled up planes had a longer viewing range facing forwards and on convex slopes some of the angled down planes had a longer viewing range facing forwards.
+        Data was also collected from the 3D lidar sensor.
+    	The 3D lidar sensor had 16 layers of data vertically.
+    	As a result on concave slopes, some of the angled up planes had a longer viewing range facing forwards and on convex slopes some of the angled down planes had a longer viewing range facing forwards.
 
-    From these results it seemed that the 2D lidar may be a useful sensor at a relatively short range to use for an independent channel of processing for redundancy and increased reliability.
-	However, it was decided to use 3D lidar as a primary navigation sensor because of its ability to be used at longer ranges on undulating ground in kiwifruit orchards.
+        From these results it seemed that the 2D lidar may be a useful sensor at a relatively short range to use for an independent channel of processing for redundancy and increased reliability.
+    	However, it was decided to use 3D lidar as a primary navigation sensor because of its ability to be used at longer ranges on undulating ground in kiwifruit orchards.
 
-\subsubsection{Camera Data Collection}
-    Data was collected from Logitech C920, Basler Dart daA1600-60uc and Flir CM3-U3-13S2C-CS cameras.
-	Data collection was performed at various times of the day and night, in different weather conditions and different orchards.
-	The data was collected on autonomous and manually driven platforms at a height of approximately 0.8 m from the ground and at speeds of up to 3 ms-1.
-	
+    \subsubsection{Camera Data Collection}
+        Data was collected from Logitech C920, Basler Dart daA1600-60uc and Flir CM3-U3-13S2C-CS cameras.
+    	Data collection was performed at various times of the day and night, in different weather conditions and different orchards.
+    	The data was collected on autonomous and manually driven platforms at a height of approximately 0.8 m from the ground and at speeds of up to 3 ms-1.
+    	
 
-    It was noticed that the Logitech C920 cameras produced significant motion blur.
-	In addition, these cameras did not provide a hardware trigger interface, which would be important if the cameras were used for stereovision.
-	No image quality issues were noticed with the Basler and Flir sensors; however, the Basler camera was favoured for its later model image sensor.
+        It was noticed that the Logitech C920 cameras produced significant motion blur.
+    	In addition, these cameras did not provide a hardware trigger interface, which would be important if the cameras were used for stereovision.
+    	No image quality issues were noticed with the Basler and Flir sensors; however, the Basler camera was favoured for its later model image sensor.
 
-    In terms of sensor selection, the camera images seemed acceptable for performing object detection and classification.
-	This was checked by processing the data using readily accessible algorithms.
+        In terms of sensor selection, the camera images seemed acceptable for performing object detection and classification.
+    	This was checked by processing the data using readily accessible algorithms.
 
 \subsection{Sensor Demonstration by Prototype Algorithm}
     The 3D lidar and cameras seemed to be the best of the sensors considered for use as the main sensors for the navigation system.
