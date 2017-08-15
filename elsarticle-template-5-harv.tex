@@ -293,7 +293,7 @@
         These works show that traditional image based processing for navigation fails when the scene becomes complex or the lighting varies.
         Combining cameras with neural network based processing increases the robustness to environmental complexities, such as light or clutter.
         The experiences of \cite{Scarfe2012} and similar indicate that Lidar outputs data which requires less post-processing to be robust.
-        The use of lidar has seen two of the reported vehicles navigate autonomously through orchard enviroments.
+        The use of lidar has seen two of the reported vehicles navigate autonomously through orchard environments.
 
 
 
@@ -410,119 +410,46 @@
         \centering
         \footnotesize
         \begin{tabular}{ l l} 
-            \textbf{Sensor Type}   &\textbf{Possible Issues} \\ \hline
-            GPS                    & Prone to signal loss from surrounding foiliage\\  \hline
-            IMU                    & Error accumulation and thermal drift\\ \hline
-            Digital Compass        & Can be affected by nearby metal structures\\ \hline
-            Encoders               & Error accumulation \\ \hline
-            Lidar                  & Reduced visibility in fog and heavy rain \\ \hline
-            Time of Flight Cameras & Reduced visibility in sunlight, fog and heavy rain \\ \hline
-            Cameras                & Reduced visibility in fog or direct sunlight \\ \hline
-            Thermal Cameras        & Reduced visibility in conditions of low thermal contrast\\ \hline
+            \textbf{Sensor Type}      &\textbf{Possible Issues} \\ \hline
+            GPS receiver              & Prone to signal loss from surrounding foiliage\\  \hline
+            Inertial Measurement Unit & Error accumulation and thermal drift\\ \hline
+            Digital Compass           & Can be affected by nearby metal structures\\ \hline
+            Encoder                   & Error accumulation \\ \hline
+            Lidar                     & Reduced visibility in fog and heavy rain \\ \hline
+            Time of Flight Camera     & Reduced visibility in sunlight, fog and heavy rain \\ \hline
+            Camera                    & Reduced visibility in fog or direct sunlight \\ \hline
+            Thermal Camera            & Reduced visibility in conditions of low thermal contrast\\ \hline
         \end{tabular}
         \label{table:sensor_comparison}
         \caption{Sensor types considered for inclusion on the platform.}
     \end{table}
 
-    Other sensors considered for inclusion on the platform, and their associated issues, are outlined in table \ref{table:sensor_comparison}.
-    Factors influencing which sensors were trialled were the benefits and issues of each sensor type, success during previously reported usage, and availability at a commercially viable price-point.
-    Results of this work suggested that lidar, cameras, and time-of-flight cameras offered the most functionality for navigation and object detection.
-    Because localisation is such a key functionality, GPS was also tested.
+    Other sensors considered for inclusion, and their associated issues, are outlined in table \ref{table:sensor_comparison}.
+    Factors influencing which sensors were trialled were the benefits and issues of each sensor, reported usage in literature for similar environments, and availability at a commercially viable price.
+    The investigation suggested that lidar, and cameras offered the most functionality for navigation and object detection.
+    Time-of-flight were a compelling option based on the cost-benefit analysis; especially if the less expensive units work in sunlight.
+    Because localisation is such a key functionality, the performance of GPS has been evaluated in a kiwifruit orchard.
 
- %    The costs of different sensors for a single unit were collated by contacting various manufacturers and suppliers; these results were used to estimate cost ranges for each sensor type.
-    % The benefits and issues for each sensor type were noted, based on previous experience and results.
-    % All of this information is summarised in Table \ref{table:2}.
+% \subsection{Data Collection and Inspection}
+ %    The sensors that seemed important to test, based on both the literature survey and the cost-benefit analysis were lidar, cameras and GPS.
+	% In addition, time of flight cameras were considered, because they seemed to be a compelling option based on the cost-benefit analysis; especially if some of the less expensive models were found to work well in sunlight.
+	% It was also decided that encoders would be tested in favour of using an IMU because the encoders were built into the AMMP motors.
+	% Some data was collected from each sensor in order to decide which sensors to prototype algorithms for.
 
- %    This data seemed to indictate that the sensors that deliver the most functionality are lidar, cameras and time of flight cameras.
-    % In addition, these three sensor types are a reasonable price, at the lower end of their cost range; especially for time of flight cameras, although these sensors have a serious issue with degredation in performance in sunlight.
-    % Because localisation is such a key functionality, GPS also seemed like an important option to test.
-    % From this data and since the AMMP has built-in encoders, it seemed to make sense to use encoders to assist with mapping, localisation and velocity feedback.
-    
+    \subsubsection{In-orchard GPS Evaluation}
+        Two GPS modules were evaluated: a Ublox Neo-M8N module and an OmniSTAR 5120VBS with AX0 series antenna.
+    	Both were connected via serial to a Beaglebone Black single board computer for data acquisition.
+        The Ublox module was selected for its -167 dBm sensitivity, internal Low Noise Amplifier (LNA), and active circuitry for the 25mm square ceramic patch antenna.
+        The OmniSTAR receiver was chosen for its high gain antenna (34 dB) which claims to feature high multi-path rejection.
 
-    % \begin{table}[htbp]
-    %     \centering
-    %     \footnotesize
-    %     \begin{tabular}{ l l l l } 
-    %         \textbf{Sensor Type} &\textbf{Navigation Applications} &\textbf{Issues} \\ \hline
-    %         GPS                    & Localisation, pose and velocity measurement                              & Signal loss\\  \hline
-    %         IMU                    & Acceleration and angular velocity measurement                            & Thermal drift, error accululation \\ \hline
-    %         Digital Compass        & Heading measurement                                                      & \\ \hline
-    %         Encoders               & Dead reckoning, velocity measurement                                     & Error accululation \\ \hline
-    %         Lidar                  & Mapping, localisation, pose and velocity measurement, obstacle detection & Reduced functionality in fog and heavier rain \\ \hline
-    %         Time of Flight Cameras & Mapping, localisation, pose and velocity measurement, obstacle detection & Reduced functionality in sunlight conditions, fog and heavier rain \\ \hline
-    %         Cameras                & Mapping, localisation, pose and velocity measurement, obstacle detection & Reduced functionality when visibility is low \\ \hline
-    %         Thermal Cameras        & Pedestrian detection                                                     & Reduced functionality in conditions of low thermal constrast\\ \hline
-    %         Radar                  & Object detection                                                         & \\            
-    %     \end{tabular}
-    %     \label{table:sensor_comparison}
-    %     \caption{A sample of the sensors considered and parameters used for sensor selection for the AMMP navigation system.}
-    % \end{table}
-
-
- %    \begin{table}[h!]
- %        \centering
- %        \footnotesize
- %        \begin{tabular}{ l l l l } 
- %            % \scriptsize \textbf{Sensor Type} & \scriptsize \textbf{Manufacturers Considered} &\scriptsize \textbf{Cost Range (USD)} &\scriptsize \textbf{Navigation Applications} &\scriptsize \textbf{Issues} \\ \hline
- %            % \scriptsize GPS & \scriptsize Ublox, Garmin, Omnistar & \scriptsize 50- 4000 per annum & \scriptsize Localisation, pose and velocity measurement &\scriptsize Signal loss under the kiwifruit canopy \\  \hline
- %            % \scriptsize IMU & \scriptsize InvenSense, Analog Devices & \scriptsize 50- 3000 & \scriptsize Acceleration and angular velocity measurement & \scriptsize Thermal drift, accumulated errors \\ \hline
- %            % \scriptsize Digital Compass & \scriptsize Honeywell, KVH & \scriptsize 50-500 & \scriptsize Heading measurement & \scriptsize \\ \hline
- %            % \scriptsize Encoders & \scriptsize CUI & \scriptsize 30-50 & \scriptsize Dead reckoning, velocity measurement & \scriptsize Accumulated errors \\ \hline
- %            % \scriptsize 2D Lidar & \scriptsize Hokuyo, SICK & \scriptsize 2000-10000 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well in fog and heavier rain \\ \hline
- %            % \scriptsize 3D Lidar & \scriptsize Velodyne, Quanergy, Neptec & \scriptsize 4000-90000 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well in fog and heavier rain \\ \hline
- %            % \scriptsize Time of Flight Cameras & \scriptsize Intel, Basler, Fotonic, Odos Imaging & \scriptsize 100-9000 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well in sunlight conditions, fog and heavier rain \\ \hline
- %            % \scriptsize Cameras & \scriptsize FLIR, Basler & \scriptsize 500-1500 & \scriptsize Mapping, localisation, pose and velocity measurement, obstacle detection & \scriptsize Tend to not work well when visibility is low \\ \hline
- %            % \scriptsize Thermal Cameras & \scriptsize FLIR, Optris & \scriptsize 3000-14000 & \scriptsize Pedestrian detection & \scriptsize In hot conditions, this sensor becomes less useful for pedestrian detection \\ \hline
- %            % \scriptsize Radar & \scriptsize Delphi & \scriptsize 3000-5000 & \scriptsize Object detection & \scriptsize \\
- %            % \hline
- %            \textbf{Sensor Type} & \textbf{Manufacturers Considered} &\textbf{Cost ($$USD)}\\ \hline
- %            GPS & Ublox, Garmin, Omnistar & 50-4000 per annum\\  \hline
- %            IMU & InvenSense, Analog Devices & 50-3000\\ \hline
- %            Digital Compass & Honeywell, KVH & 50-500\\ \hline
- %            Encoders & CUI & 30-50\\ \hline
- %            2D Lidar & Hokuyo, SICK & 2000-10000\\ \hline
- %            3D Lidar & Velodyne, Quanergy, Neptec & 4000-90000\\ \hline
- %            Time of Flight & Intel, Basler, Fotonic, Odos Imaging & 100-9000 \\ \hline
- %            Cameras & FLIR, Basler & 500-1500 \\ \hline
- %            Thermal Cameras & FLIR, Optris & 3000-14000 \\ \hline
- %            Radar & Delphi & 3000-5000 \\
- %        \end{tabular}
- %        \label{table:2}
- %        \caption{A sample of the sensors considered and parameters used for sensor selection for the AMMP navigation system.}
- %    \end{table}
-
-\subsection{Data Collection and Inspection}
-    The sensors that seemed important to test, based on both the literature survey and the cost-benefit analysis were lidar, cameras and GPS.
-	In addition, time of flight cameras were considered, because they seemed to be a compelling option based on the cost-benefit analysis; especially if some of the less expensive models were found to work well in sunlight.
-	It was also decided that encoders would be tested in favour of using an IMU because the encoders were built into the AMMP motors.
-	Some data was collected from each sensor in order to decide which sensors to prototype algorithms for.
-
-    \subsubsection{GPS Data Collection}
-        Two GPS modules were tested.
-    	Both were connected via serial to a Beaglebone Black single board  computer.
-    	The GPS set-ups tested were:
-        \begin{itemize}
-          \item Ublox Neo-M8N module, selected for its superior navigation sensitivity of -167 dBm and internal Low Noise Amplifier (LNA), additional 20 dB gain/ 0.8 dB noise LNA and active circuitry for the 25mm square ceramic patch antenna.
-          \item OmniSTAR 5120VBS module, with AX0 series antenna, with 34 dB gain/ 1.4 dB noise LNA.
-    	The AX0 series antenna claims high multipath rejection.
-        \end{itemize}
-        The procedure used for data collection was:
-        \begin{enumerate}
-            \item A route through a kiwifruit orchard was planned and plotted on a satellite map. The route was designed to include long stretches underneath the canopy and some areas with a good view of the sky.
-            \item The distance between post centres along the planned route was measured using a tape measure.
-            \item The GPS data collection setups were turned on at the starting point of the planned route and were left to initialise for 30 minutes.
-            \item The data collection unit was carried along the planned route, stopping at each pole. At each pole, the data collection unit was placed near to the pole in an orientation that was repeated for every pole along the route.
-            \item Step 4 was repeated until the entire route had been traversed and every pole along the way had been (approximately) mapped by the data collection unit.
-        \end{enumerate}
-
-        It was noticed during testing that the signal quality lights on both GPS setups were regularly indicating loss of GPS fix.
-    	Although the entire data collection procedure was performed, many of the results, such as the measurement of spacing between trees and performance, are far less significant than the regular loss of the GPS fix.
-
-        The orchard used for the data collection was Bateman’s at 48 Newnham Road, Whakamarama, New Zealand.
-    	A path followed and the corresponding GPS data collected from the different setups is shown in Figure \ref{fig:gpsResults}.
-    	Note that the path followed was traversed twice- once going out and once returning.
-    	The data was collected at a slow walking speed- the entire path of approximately 500 metres took in the order of 15 minutes to complete, including stops about every 5.5 metres within the orchard.
-    	Multiple sets of data were collected but Figure \ref{fig:gpsResults} is indicative of the results.
+        The testing proceedure first involved planning a path through a single row within a kiwifruit orchard and plotting it on a sattelite map.
+        Waypoints were placed along the row at the location of posts used to hold the canopy structure.
+        Relative distances between these waypoints was measured with a tape measure and recorded.
+        The receivers were then tested separately, one after the other.
+        Before testing, each unit was powered up and given \SI{30}{\minute} to initialise in an open area near the kiwifruit orchard.
+        During the test, each unit was walked slowly through the pre-determined path with stops at each of the waypoints to provide time for a fix.
+        The path of approximately \SI{500}{\meter} took approximately \SI{15}{\minute} to complete, including stops at each waypoint.
+        Waypoints were spaced approximately every \SI{5.5}{\meter} along the selected orchard row.
 
         \begin{figure}[htb]
             \centering
@@ -533,12 +460,49 @@
             \label{fig:gpsResults}
         \end{figure}
 
-        The Omnistar GPS setup appears to track the approximate path well but the data is sparse and there appears to be regular loss of signal in the orchard.
-    	The Ublox GPS setup collected more data than the Omnistar setup but was much less accurate.
-    	The conclusions of this work are that high quality GPS equipment may be useful to provide sanity checks of the approximate location in the orchard.
-    	However, it was decided that GPS could not be relied on to provide localisation and other feedback, under the kiwifruit canopy.
+    	% The GPS set-ups tested were:
+     %    \begin{itemize}
+     %      \item Ublox Neo-M8N module, selected for its superior navigation sensitivity of -167 dBm and internal Low Noise Amplifier (LNA), additional 20 dB gain/ 0.8 dB noise LNA and active circuitry for the 25mm square ceramic patch antenna.
+     %      \item OmniSTAR 5120VBS module, with AX0 series antenna, with 34 dB gain/ 1.4 dB noise LNA.
+    	% The AX0 series antenna claims high multipath rejection.
+     %    \end{itemize}
+        % The procedure for data collection was:
+        % \begin{enumerate}
+        %     \item Plan and plot a path through a kiwifruit orchard on a satellite map, selecting waypoints through the journey.
+        %     \item Measure relative distances between selected waypoints with a tape-measure.
+        %     \item Power up the receiver under test and leave to initialise with unobstructed view of sky for \SI{30}{\minute}.
+        %     \item Walk the receiver along the previously measured path, and back again, stopping at each waypoint to allow time for a reading.
+        %     \item Repeat previous two steps for second receiver
+        % \end{enumerate}
+
+        % \begin{enumerate}
+        %     \item Plan a route through a kiwifruit orchard was planned and plotted on a satellite map. The route was designed to include long stretches underneath the canopy and some areas with a good view of the sky.
+        %     \item The distance between post centres along the planned route was measured using a tape measure.
+        %     \item The GPS data collection setups were turned on at the starting point of the planned route and were left to initialise for 30 minutes.
+        %     \item The data collection unit was carried along the planned route, stopping at each pole. At each pole, the data collection unit was placed near to the pole in an orientation that was repeated for every pole along the route.
+        %     \item Step 4 was repeated until the entire route had been traversed and every pole along the way had been (approximately) mapped by the data collection unit.
+        % \end{enumerate}
+
+        
+    	% Although the entire data collection procedure was performed, many of the results, such as the measurement of spacing between trees and performance, are far less significant than the regular loss of the GPS fix.
+
+        % The orchard used for the data collection was Bateman’s at 48 Newnham Road, Whakamarama, New Zealand.
+
+
+        The path followed and the corresponding GPS locations collected from the receivers is presented in figure \ref{fig:gpsResults}.
+        It should be noted that data has been recorded for the round-trip, so represents two passes along the path.
+        It was noticed during testing that the signal quality lights on both GPS receivers regularly indicated a loss of signal.
+
+
+        The Omnistar receiver appears to track the approximate path well, but the data is sparse with regular loss of signal when in the orchard.
+    	The Ublox receiver collected more data than the Omnistar unit, but was much less accurate.
+        It may be possible to use a unit such as the Omnistar, which provided more accurate but fewer readings, as a sanity check for an approximate location within an orchard.
+        Overall the units could not be relied on for localisation under the kiwifruit canopy and were not used for navigation.
 
     \subsubsection{Time of Flight Cameras}
+        Two time-of-flight cameras were evaluated: a Basler TOF640-20GM-850NM and an Intel RealSense R200.
+        
+        
         Two models of Time of Flight cameras were tested.
     	The first was the Basler TOF640-20GM-850NM.
     	This sensor provides depth and return signal data at a resolution of 640 pixels wide by 480 pixels high.
