@@ -254,7 +254,7 @@
 
         Sensors for orchard based row detection fall into two three categories; camera based, lidar based, or a combination of the two.
         The following section summarises a review of row detection efforts in orchards using these techniques.
-        % Lidar come in two flavours: single-plane, and multi-plane.
+        % Lidar come in two flavours: single-plane, and multi-layer.
 
         \cite{Subramanian2006} tested both camera based guidance and lidar (Sick LMS-200) based guidance systems in a citrus fruit orchard.
         Sensors were trialled separately on a tractor retrofitted with a fly-by-wire system.
@@ -278,7 +278,7 @@
         Their algorithm was capable of detecting each obstacle classe off-line from data captured in an apple orchard.
 
         \cite{Zhang2014} use a lidar (Hokuyo UTM-30LX) to generate maps of an apple orchard with the aid of artificial landmarks.
-        They use an actuated single-plane lidar to generate multi-plane data for use in row and landmark sensing.
+        They use an actuated single-plane lidar to generate multi-layer data for use in row and landmark sensing.
         Placing artificial land-marks in orchards is designed to reduce the effort required to create orchard maps for guidance systems.
 
         The following year, many of the same authors write about their autonomous vehicle \citep{Bergerman2015}.
@@ -429,6 +429,7 @@
     The investigation suggested that lidar, and cameras offered the most functionality for navigation and object detection.
     Time-of-flight were a compelling option based on the cost-benefit analysis; especially if the less expensive units work in sunlight.
     Because localisation is such a key functionality, the performance of GPS has been evaluated in a kiwifruit orchard.
+    The following sections detail our experiences while trialling these sensors.
 
 % \subsection{Data Collection and Inspection}
  %    The sensors that seemed important to test, based on both the literature survey and the cost-benefit analysis were lidar, cameras and GPS.
@@ -440,9 +441,9 @@
         Two GPS modules were evaluated: a Ublox Neo-M8N module and an OmniSTAR 5120VBS with AX0 series antenna.
     	Both were connected via serial to a Beaglebone Black single board computer for data acquisition.
         The Ublox module was selected for its -167 dBm sensitivity, internal Low Noise Amplifier (LNA), and active circuitry for the 25mm square ceramic patch antenna.
-        The OmniSTAR receiver was chosen for its high gain antenna (34 dB) which claims to feature high multi-path rejection.
+        The OmniSTAR receiver was chosen for its high gain antenna (34 dB) which claims high multi-path rejection.
 
-        The testing proceedure first involved planning a path through a single row within a kiwifruit orchard and plotting it on a sattelite map.
+        The testing procedure first involved planning a path through a single row within a kiwifruit orchard and plotting it on a satellite map.
         Waypoints were placed along the row at the location of posts used to hold the canopy structure.
         Relative distances between these waypoints was measured with a tape measure and recorded.
         The receivers were then tested separately, one after the other.
@@ -460,35 +461,6 @@
             \label{fig:gpsResults}
         \end{figure}
 
-    	% The GPS set-ups tested were:
-     %    \begin{itemize}
-     %      \item Ublox Neo-M8N module, selected for its superior navigation sensitivity of -167 dBm and internal Low Noise Amplifier (LNA), additional 20 dB gain/ 0.8 dB noise LNA and active circuitry for the 25mm square ceramic patch antenna.
-     %      \item OmniSTAR 5120VBS module, with AX0 series antenna, with 34 dB gain/ 1.4 dB noise LNA.
-    	% The AX0 series antenna claims high multipath rejection.
-     %    \end{itemize}
-        % The procedure for data collection was:
-        % \begin{enumerate}
-        %     \item Plan and plot a path through a kiwifruit orchard on a satellite map, selecting waypoints through the journey.
-        %     \item Measure relative distances between selected waypoints with a tape-measure.
-        %     \item Power up the receiver under test and leave to initialise with unobstructed view of sky for \SI{30}{\minute}.
-        %     \item Walk the receiver along the previously measured path, and back again, stopping at each waypoint to allow time for a reading.
-        %     \item Repeat previous two steps for second receiver
-        % \end{enumerate}
-
-        % \begin{enumerate}
-        %     \item Plan a route through a kiwifruit orchard was planned and plotted on a satellite map. The route was designed to include long stretches underneath the canopy and some areas with a good view of the sky.
-        %     \item The distance between post centres along the planned route was measured using a tape measure.
-        %     \item The GPS data collection setups were turned on at the starting point of the planned route and were left to initialise for 30 minutes.
-        %     \item The data collection unit was carried along the planned route, stopping at each pole. At each pole, the data collection unit was placed near to the pole in an orientation that was repeated for every pole along the route.
-        %     \item Step 4 was repeated until the entire route had been traversed and every pole along the way had been (approximately) mapped by the data collection unit.
-        % \end{enumerate}
-
-        
-    	% Although the entire data collection procedure was performed, many of the results, such as the measurement of spacing between trees and performance, are far less significant than the regular loss of the GPS fix.
-
-        % The orchard used for the data collection was Bateman’s at 48 Newnham Road, Whakamarama, New Zealand.
-
-
         The path followed and the corresponding GPS locations collected from the receivers is presented in figure \ref{fig:gpsResults}.
         It should be noted that data has been recorded for the round-trip, so represents two passes along the path.
         It was noticed during testing that the signal quality lights on both GPS receivers regularly indicated a loss of signal.
@@ -499,27 +471,43 @@
         It may be possible to use a unit such as the Omnistar, which provided more accurate but fewer readings, as a sanity check for an approximate location within an orchard.
         Overall the units could not be relied on for localisation under the kiwifruit canopy and were not used for navigation.
 
-    \subsubsection{Time of Flight Cameras}
-        Two time-of-flight cameras were evaluated: a Basler TOF640-20GM-850NM and an Intel RealSense R200.
-        
-        
-        Two models of Time of Flight cameras were tested.
-    	The first was the Basler TOF640-20GM-850NM.
-    	This sensor provides depth and return signal data at a resolution of 640 pixels wide by 480 pixels high.
-    	It was thought that this sensor migt work well in sunlight because it had previously been successfully used to collect data from the underside of the kiwifruit canopy in different lighting conditions, with minimal occurences of the data being washed out.
-    	However, it was found that on bright sunny days and in overcast conditions, there was large amounts of data loss, which was deemed unacceptable for important navigation functions such as obstacle detection.
+    \subsubsection{Time of Flight Camera}
 
-        The second time of flight sensor tested was an Intel RealSense R200.
-    	The appealing characteristics of this sensor were its low cost and it was advertised as being able to work outdoors.
-    	However, in overcast and sunny conditions, there was complete loss of range data.
+        The Basler TOF640-20GM-850NM provides both depth and return signal data at a resolution of 640 by 480 pixels.
+        It had previously been used to collect depth data from the under-side of a kiwifruit canopy.
+        During that time it was used under different lighting conditions and exhibited minimal occurrences of data washout.
+        However, these tests revealed that in both bright sunlight and overcast conditions there was significant data loss. \colorbox{red}{can this be quantified?}
+
+
+        % My rewrite before I realised the RealSense isn't a time-of-flight camera.
+
+        % Two time-of-flight cameras were evaluated: a Basler TOF640-20GM-850NM and an Intel RealSense R200.
+        % The Basler sensor provides both depth and return signal data at a resolution of 640 by 480 pixels.
+        % It had previously been used to collect depth data from the under-side of a kiwifruit canopy.
+        % During that time it was used under different lighting conditions and exhibited minimal occurrences of data washout.
+        % However, these tests revealed that in both bright sunlight and overcast conditions there was significant data loss. \colorbox{red}{can this be quantified?}
+
+        % The Intel sensor had a camera resolution of 640 by 480 pixels, but a maximum depth resolution of 480x360.
+        % The second sensor exhibited a complete loss of range data in both bright sunlight and overcast conditions.
+        % Both sensors were deemed unfit for use in important navigation functions such as obstacle detection.
+
+        % Jamie's original content
+        
+     %    Two models of Time of Flight cameras were tested.
+    	% The first was the Basler TOF640-20GM-850NM.
+    	% This sensor provides depth and return signal data at a resolution of 640 pixels wide by 480 pixels high.
+    	% It was thought that this sensor migt work well in sunlight because it had previously been successfully used to collect data from the underside of the kiwifruit canopy in different lighting conditions, with minimal occurences of the data being washed out.
+    	% However, it was found that on bright sunny days and in overcast conditions, there was large amounts of data loss, which was deemed unacceptable for important navigation functions such as obstacle detection.
+
+     %    The second time of flight sensor tested was an Intel RealSense R200.
+    	% The appealing characteristics of this sensor were its low cost and it was advertised as being able to work outdoors.
+    	% However, in overcast and sunny conditions, there was complete loss of range data.
 
     \subsubsection{Lidar Data Collection}
-        Data was collected from two 2D lidar sensors; these were a Hokuyo UTM-30LX and a SICK LMS111.
-    	Data was also collected from a 3D lidar sensor, which was a Velodyne VLP-16.
-    	The data was collected by driving along rows in kiwifruit orchards with the sensors horizontal and at a height of 0.8 m, which was approximately midway between the ground and the canopy.
-
-        The Hokuyo UTM-30LX exhibited some spurious unexplained measurements.
-    	The cause of these erroneous measurements was not determined.
+        Three lidar were evaluated, two single-plane lidars and one multi-layer lidar.
+        The two single-plane lidars were the Hokuyo UTM-30LX and a SICK LMS111.
+        The multi-layer is a Velodyne VLP-16 which has 16 horizontal \SI{360}{\degree} planes spread over \SI{15}{\degree}.
+    	Data was collected from each lidar by driving through orchard rows with the sensor placed midway between the ground and canopy (approximately \SI{0.8}{\meter} off the ground).
 
         \begin{figure}[htb]
             \centering
@@ -531,26 +519,54 @@
             \label{fig:canopyDataCloud}
         \end{figure}
 
-        It was thought that the lidar sensors would measure the position of structure defining features in the orchard, such as post, trunks and hedges.
-    	Detecting such features would then allow the boundaries of the row to be found for row following or these features could be mapped and used for localisation.
-    	However, both 2D lidar sensors produced clouds of unstructured data amongst the structured features, as shown in Figure \ref{fig:canopyDataCloud}.
-    	This was caused by the lidar plane intercepting the canopy on convex slopes and, similarly intercepting the ground on concave slopes (Figure \ref{fig:concaveSlope}) at short ranges.
+        The intention was to use the lidar as a means of detecting structure defining features of the orchard, such as posts, trunks and hedges.
+        Detecting these features should allow for row boundary detection, or general mapping and localisation.
+        However, both single-plane lidar produced clouds of unstructured data amongst the structured features, as shown in Figure \ref{fig:canopyDataCloud}.
+        This was caused by the lidar's scan plane intercepting with the canopy on convex slopes.
+        Similarly this issue arose on concave slopes where the plane intercepted with the ground, as depicted in figure \ref{fig:concaveSlope}.
 
         \begin{figure}[htb]
             \centering
             \includegraphics[width=\linewidth]{imgs/concave_slope/concave_slope_v4.pdf}
             \caption{
-                On a concave slope the lidar scan plane may reflect off the ground instead of tree trunks and posts.
+                On concave slopes the lidar scan plane intercepts with the ground instead of trunks or posts.
             }
             \label{fig:concaveSlope}
         \end{figure}
 
-        Data was also collected from the 3D lidar sensor.
-    	The 3D lidar sensor had 16 layers of data vertically.
-    	As a result on concave slopes, some of the angled up planes had a longer viewing range facing forwards and on convex slopes some of the angled down planes had a longer viewing range facing forwards.
+        This issue can be reduced when using a multi-layer lidar.
+        Because of the 16 layers, it is possible to select the scan layer that gives the longest viewing range.
+        Referring to figure \ref{fig:concaveSlope}, that would correspond to a layer above the horizontal.
 
-        From these results it seemed that the 2D lidar may be a useful sensor at a relatively short range to use for an independent channel of processing for redundancy and increased reliability.
-    	However, it was decided to use 3D lidar as a primary navigation sensor because of its ability to be used at longer ranges on undulating ground in kiwifruit orchards.
+        In this environment a single-plane liadr could still be used at relatively short range as an independent channel of processing for redundancy or obstacle detection.
+        It was decided that a multi-layer lidar would be best suited for navigation due to its ability to to see longer canges on undulating ground in kiwifruit orchards.
+        For the platform, a single-plane lidar has been fitted to the front of the vehicle an object detector for possible collisions, and a multi-layer lidar has also been fitted for use in navigation and general object detection.
+
+        % However, it was decided to use 3D lidar as a primary navigation sensor because of its ability to be used at longer ranges on undulating ground in kiwifruit orchards.
+        
+     %    It was thought that the lidar sensors would measure the position of structure defining features in the orchard, such as post, trunks and hedges.
+    	% Detecting such features would then allow the boundaries of the row to be found for row following or these features could be mapped and used for localisation.
+    	% However, both 2D lidar sensors produced clouds of unstructured data amongst the structured features, as shown in Figure \ref{fig:canopyDataCloud}.
+    	% This was caused by the lidar plane intercepting the canopy on convex slopes and, similarly intercepting the ground on concave slopes (Figure \ref{fig:concaveSlope}) at short ranges.
+
+     %    \begin{figure}[htb]
+     %        \centering
+     %        \includegraphics[width=\linewidth]{imgs/concave_slope/concave_slope_v4.pdf}
+     %        \caption{
+     %            On a concave slope the lidar scan plane may reflect off the ground instead of tree trunks and posts.
+     %        }
+     %        \label{fig:concaveSlope}
+     %    \end{figure}
+
+     %    % The Hokuyo UTM-30LX exhibited some spurious unexplained measurements.
+     %    % The cause of these erroneous measurements was not determined.
+
+     %    Data was also collected from the 3D lidar sensor.
+    	% The 3D lidar sensor had 16 layers of data vertically.
+    	% As a result on concave slopes, some of the angled up planes had a longer viewing range facing forwards and on convex slopes some of the angled down planes had a longer viewing range facing forwards.
+
+     %    From these results it seemed that the 2D lidar may be a useful sensor at a relatively short range to use for an independent channel of processing for redundancy and increased reliability.
+    	% However, it was decided to use 3D lidar as a primary navigation sensor because of its ability to be used at longer ranges on undulating ground in kiwifruit orchards.
 
     \subsubsection{Camera Data Collection}
         Data was collected from Logitech C920, Basler Dart daA1600-60uc and Flir CM3-U3-13S2C-CS cameras.
@@ -564,6 +580,14 @@
 
         In terms of sensor selection, the camera images seemed acceptable for performing object detection and classification.
     	This was checked by processing the data using readily accessible algorithms.
+
+        % ////////////////
+        % Integrate the RealSense camera into this section
+        % \\\\\\\\\\\\\\\\
+
+        % The Intel sensor had a camera resolution of 640 by 480 pixels, but a maximum depth resolution of 480x360.
+        % The second sensor exhibited a complete loss of range data in both bright sunlight and overcast conditions.
+        % Both sensors were deemed unfit for use in important navigation functions such as obstacle detection.
 
 \subsection{Sensor Demonstration by Prototype Algorithm}
     The 3D lidar and cameras seemed to be the best of the sensors considered for use as the main sensors for the navigation system.
