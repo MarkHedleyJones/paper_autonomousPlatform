@@ -471,43 +471,11 @@
         It may be possible to use a unit such as the Omnistar, which provided more accurate but fewer readings, as a sanity check for an approximate location within an orchard.
         Overall the units could not be relied on for localisation under the kiwifruit canopy and were not used for navigation.
 
-    \subsubsection{Time of Flight Camera}
-
-        The Basler TOF640-20GM-850NM provides both depth and return signal data at a resolution of 640 by 480 pixels.
-        It had previously been used to collect depth data from the under-side of a kiwifruit canopy.
-        During that time it was used under different lighting conditions and exhibited minimal occurrences of data washout.
-        However, these tests revealed that in both bright sunlight and overcast conditions there was significant data loss. \colorbox{red}{can this be quantified?}
-
-
-        % My rewrite before I realised the RealSense isn't a time-of-flight camera.
-
-        % Two time-of-flight cameras were evaluated: a Basler TOF640-20GM-850NM and an Intel RealSense R200.
-        % The Basler sensor provides both depth and return signal data at a resolution of 640 by 480 pixels.
-        % It had previously been used to collect depth data from the under-side of a kiwifruit canopy.
-        % During that time it was used under different lighting conditions and exhibited minimal occurrences of data washout.
-        % However, these tests revealed that in both bright sunlight and overcast conditions there was significant data loss. \colorbox{red}{can this be quantified?}
-
-        % The Intel sensor had a camera resolution of 640 by 480 pixels, but a maximum depth resolution of 480x360.
-        % The second sensor exhibited a complete loss of range data in both bright sunlight and overcast conditions.
-        % Both sensors were deemed unfit for use in important navigation functions such as obstacle detection.
-
-        % Jamie's original content
-        
-     %    Two models of Time of Flight cameras were tested.
-    	% The first was the Basler TOF640-20GM-850NM.
-    	% This sensor provides depth and return signal data at a resolution of 640 pixels wide by 480 pixels high.
-    	% It was thought that this sensor migt work well in sunlight because it had previously been successfully used to collect data from the underside of the kiwifruit canopy in different lighting conditions, with minimal occurences of the data being washed out.
-    	% However, it was found that on bright sunny days and in overcast conditions, there was large amounts of data loss, which was deemed unacceptable for important navigation functions such as obstacle detection.
-
-     %    The second time of flight sensor tested was an Intel RealSense R200.
-    	% The appealing characteristics of this sensor were its low cost and it was advertised as being able to work outdoors.
-    	% However, in overcast and sunny conditions, there was complete loss of range data.
-
     \subsubsection{Lidar Data Collection}
         Three lidar were evaluated, two single-plane lidars and one multi-layer lidar.
         The two single-plane lidars were the Hokuyo UTM-30LX and a SICK LMS111.
         The multi-layer is a Velodyne VLP-16 which has 16 horizontal \SI{360}{\degree} planes spread over \SI{15}{\degree}.
-    	Data was collected from each lidar by driving through orchard rows with the sensor placed midway between the ground and canopy (approximately \SI{0.8}{\meter} off the ground).
+        Data was collected from each lidar by driving through orchard rows with the sensor placed midway between the ground and canopy (approximately \SI{0.8}{\meter} off the ground).
 
         \begin{figure}[htb]
             \centering
@@ -544,25 +512,79 @@
 
 
     \subsubsection{Camera Data Collection}
-        Data was collected from Logitech C920, Basler Dart daA1600-60uc and Flir CM3-U3-13S2C-CS cameras.
-    	Data collection was performed at various times of the day and night, in different weather conditions and different orchards.
-    	The data was collected on autonomous and manually driven platforms at a height of approximately 0.8 m from the ground and at speeds of up to 3 ms-1.
-    	
 
-        It was noticed that the Logitech C920 cameras produced significant motion blur.
-    	In addition, these cameras did not provide a hardware trigger interface, which would be important if the cameras were used for stereovision.
-    	No image quality issues were noticed with the Basler and Flir sensors; however, the Basler camera was favoured for its later model image sensor.
+        Three varieties of camera were tested: time-of-flight, 3D stereo, and traditional color camera.
 
-        In terms of sensor selection, the camera images seemed acceptable for performing object detection and classification.
-    	This was checked by processing the data using readily accessible algorithms.
+        The time-of-flight based camera was the Basler TOF640-20GM-850NM.
+        It provides both depth and return signal data at a resolution of 640 by 480 pixels.
+        This model was chosen for testing as it had previously proved useful when collecting depth data of kiwifruit canopies.
+        During those usages it was operated under different lighting conditions and exhibited minimal occurrences of data washout.
+        However, these tests revealed that in both direct sunlight and overcast conditions there was significant data loss.
 
-        % ////////////////
-        % Integrate the RealSense camera into this section
-        % \\\\\\\\\\\\\\\\
+        The 3D stereo camera tested was an Intel RealSense R200.
+        It combines a stereo pair of infra-red cameras with a color camera.
+        Additionally, it features an infra-red projector as a means of adding ``texture'' to objects in its field of view to assist with stereo processing.
+        The appealing characteristics of this sensor were its low cost and its claim as being long-range and able to work outdoors.
+        However, in overcast and sunny conditions, it suffered from a complete loss of range data.
 
-        % The Intel sensor had a camera resolution of 640 by 480 pixels, but a maximum depth resolution of 480x360.
-        % The second sensor exhibited a complete loss of range data in both bright sunlight and overcast conditions.
-        % Both sensors were deemed unfit for use in important navigation functions such as obstacle detection.
+        Finally, traditional color cameras trialled were the Basler Dart daA1600-60uc, Flir CM3-U3-13S2C-CS, and Logitech C920 cameras.
+        The cameras were driven through the orchard at a height of \SI{0.8}{\meter} from the ground.
+        The Logitech C920 cameras suffered from significant motion blur.
+        In addition, these cameras did not provide a hardware trigger interface, which would be important if the cameras were used in stereo vision applications.
+        The Basler and Flir cameras both produced images of sufficient quality.
+        The Basler offering was favored for its later model image sensor.
+
+        Overall, the color camera images were the best suited for object detection and classification.
+        This was verified by processing the data using readily accessible detection algorithms.
+
+    %     % My rewrite before I realised the RealSense isn't a time-of-flight camera.
+
+    %     % Two time-of-flight cameras were evaluated: a Basler TOF640-20GM-850NM and an Intel RealSense R200.
+    %     % The Basler sensor provides both depth and return signal data at a resolution of 640 by 480 pixels.
+    %     % It had previously been used to collect depth data from the under-side of a kiwifruit canopy.
+    %     % During that time it was used under different lighting conditions and exhibited minimal occurrences of data washout.
+    %     % However, these tests revealed that in both bright sunlight and overcast conditions there was significant data loss. \colorbox{red}{can this be quantified?}
+
+    %     % The Intel sensor had a camera resolution of 640 by 480 pixels, but a maximum depth resolution of 480x360.
+    %     % The second sensor exhibited a complete loss of range data in both bright sunlight and overcast conditions.
+    %     % Both sensors were deemed unfit for use in important navigation functions such as obstacle detection.
+
+    %     % Jamie's original content
+        
+    %  %    Two models of Time of Flight cameras were tested.
+    % 	% The first was the Basler TOF640-20GM-850NM.
+    % 	% This sensor provides depth and return signal data at a resolution of 640 pixels wide by 480 pixels high.
+    % 	% It was thought that this sensor migt work well in sunlight because it had previously been successfully used to collect data from the underside of the kiwifruit canopy in different lighting conditions, with minimal occurences of the data being washed out.
+    % 	% However, it was found that on bright sunny days and in overcast conditions, there was large amounts of data loss, which was deemed unacceptable for important navigation functions such as obstacle detection.
+
+    %  %    The second time of flight sensor tested was an Intel RealSense R200.
+    % 	% The appealing characteristics of this sensor were its low cost and it was advertised as being able to work outdoors.
+    % 	% However, in overcast and sunny conditions, there was complete loss of range data.
+
+
+
+
+    % \subsubsection{Camera Data Collection}
+    %     Data was collected from a Basler Dart daA1600-60uc, Flir CM3-U3-13S2C-CS, and a Logitech C920 web-camera.
+
+    % 	Data collection was performed at various times of the day and night, in different weather conditions and different orchards.
+    % 	The data was collected on autonomous and manually driven platforms at a height of approximately 0.8 m from the ground and at speeds of up to 3 ms-1.
+
+    %     It was noticed that the Logitech C920 cameras produced significant motion blur.
+    % 	In addition, these cameras did not provide a hardware trigger interface, which would be important if the cameras were used for stereo vision.
+    % 	No image quality issues were noticed with the Basler and Flir sensors; however, the Basler camera was favored for its later model image sensor.
+
+    %     In terms of sensor selection, the camera images seemed acceptable for performing object detection and classification.
+    % 	This was checked by processing the data using readily accessible algorithms.
+
+    %     Additionally, a stereo vision based Intel RealSense R200 camera was tested.
+    %     % ////////////////
+    %     % Integrate the RealSense camera into this section
+    %     % \\\\\\\\\\\\\\\\
+
+    %     % The Intel sensor had a camera resolution of 640 by 480 pixels, but a maximum depth resolution of 480x360.
+    %     % The second sensor exhibited a complete loss of range data in both bright sunlight and overcast conditions.
+    %     % Both sensors were deemed unfit for use in important navigation functions such as obstacle detection.
 
 \subsection{Sensor Demonstration by Prototype Algorithm}
     The 3D lidar and cameras seemed to be the best of the sensors considered for use as the main sensors for the navigation system.
