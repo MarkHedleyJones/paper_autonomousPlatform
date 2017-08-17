@@ -637,39 +637,43 @@
 
 
     \subsubsection{Kiwifruit Orchard Row Tracking}
-        A 3D lidar navigation algorithm was developed and tested on smaller robot platforms, as described by Bell et al. \citep{Bell2016}. The key part of this algorithm was the calculation of the angular offset of the robot’s coordinate system from the row centreline. This algorithm attempted to extract the posts and trees from the lidar data and then find the angle between posts and trunks in the same treeline. The key steps of the algorithm were:
-        \begin{enumerate}
-        \item Clusters of close consecutive points were found in each plane of the 3D lidar data using the method described by Scarfe [24]⁠.
-        \item Clusters with a length greater than a threshold were deemed to be unlikely to be row defining features, such as posts or trunks; as a result, these clusters were removed.
-        % \item Any clusters within a set distance of a set number of other clusters were also removed because these clusters could be a part of the clouds of data, which are returned from non structure defining features such as the kiwifruit canopy or the ground. An example result after this step for a single plane of the 3D lidar data is shown in Figure \ref{fig:singlePlaneExtraction}.
-        \item The clusters from multiple planes were grouped based on a threshold distance between clusters.
-        \item The heights of the resulting groups from step 4 were compared to a threshold to determine which were posts and trees. An example result after this step for a single frame of 3D lidar data is shown in Figure \ref{fig:lastLidarFrame}.
-        \item Using the data from feature extraction, each cluster’s nearest neighbour was found. This step was taken because most posts and trunks are closer to other posts or trunks in the same tree-line than to an adjacent tree-line. This suggests that the angle between nearest neighbours should also be the angle of the tree-line.
-        \item Nearest neighbours that were further apart than the row width were rejected to eliminate the possibility of using neighbours that were not in the same tree-line.
-        \item The angles between the resulting nearest neighbours were calculated.
-        \item The mode of the calculated angles was taken to be the current estimate of the angular offset of the robot from the row centreline.
-        \end{enumerate}
+        The last navigation test requires determining the orchard's structure and generating a path based on that structure.
+        
+        % A 3D lidar navigation algorithm was developed and tested on smaller robot platforms, as described by Bell et al. \citep{Bell2016}.
+        % The key part of this algorithm was the calculation of the angular offset of the robot’s coordinate system from the row centreline.
+        % This algorithm attempted to extract the posts and trees from the lidar data and then find the angle between posts and trunks in the same treeline. The key steps of the algorithm were:
+        % \begin{enumerate}
+        % \item Clusters of close consecutive points were found in each plane of the 3D lidar data using the method described by Scarfe [24]⁠.
+        % \item Clusters with a length greater than a threshold were deemed to be unlikely to be row defining features, such as posts or trunks; as a result, these clusters were removed.
+        % % \item Any clusters within a set distance of a set number of other clusters were also removed because these clusters could be a part of the clouds of data, which are returned from non structure defining features such as the kiwifruit canopy or the ground. An example result after this step for a single plane of the 3D lidar data is shown in Figure \ref{fig:singlePlaneExtraction}.
+        % \item The clusters from multiple planes were grouped based on a threshold distance between clusters.
+        % \item The heights of the resulting groups from step 4 were compared to a threshold to determine which were posts and trees. An example result after this step for a single frame of 3D lidar data is shown in Figure \ref{fig:lastLidarFrame}.
+        % \item Using the data from feature extraction, each cluster’s nearest neighbour was found. This step was taken because most posts and trunks are closer to other posts or trunks in the same tree-line than to an adjacent tree-line. This suggests that the angle between nearest neighbours should also be the angle of the tree-line.
+        % \item Nearest neighbours that were further apart than the row width were rejected to eliminate the possibility of using neighbours that were not in the same tree-line.
+        % \item The angles between the resulting nearest neighbours were calculated.
+        % \item The mode of the calculated angles was taken to be the current estimate of the angular offset of the robot from the row centreline.
+        % \end{enumerate}
 
-        Once the angular offset was found, the linear offset of the robot’s coordinate system origin from the row centreline was calculated. The steps used were:
-        \begin{enumerate}
-        \item The clusters belonging to the current row were found using the angular offset and the maximum row width for the orchard.
-        \item Lines were fitted to the treelines on the left and right sides of the row.
-        \item The row centreline was found as the average line from the left and right treelines.
-        \item The displacement of the robot centre from the row centreline was calculated.
-        \end{enumerate}
+        % Once the angular offset was found, the linear offset of the robot’s coordinate system origin from the row centreline was calculated. The steps used were:
+        % \begin{enumerate}
+        % \item The clusters belonging to the current row were found using the angular offset and the maximum row width for the orchard.
+        % \item Lines were fitted to the treelines on the left and right sides of the row.
+        % \item The row centreline was found as the average line from the left and right treelines.
+        % \item The displacement of the robot centre from the row centreline was calculated.
+        % \end{enumerate}
 
-        Row following was performed by calculating the steering angle from the sum of the proportional control signals for the linear and angular offsets. Row end detection was performed by detecting a volume of free space above the 3D lidar sensor. Row end driving was performed by driving a sequence of set curvature movements, while performing obstacle avoidance.
+        % Row following was performed by calculating the steering angle from the sum of the proportional control signals for the linear and angular offsets. Row end detection was performed by detecting a volume of free space above the 3D lidar sensor. Row end driving was performed by driving a sequence of set curvature movements, while performing obstacle avoidance.
 
-        The autonomous driving algorithm described here has been used to drive 20 km autonomously on three different robot platforms, including the AMMP, in two different real kiwifruit orchards. This driving was performed using just lidar and encoder data.
+        % The autonomous driving algorithm described here has been used to drive 20 km autonomously on three different robot platforms, including the AMMP, in two different real kiwifruit orchards. This driving was performed using just lidar and encoder data.
 
-        \begin{figure}[htb]
-            \centering
-            \includegraphics[width=\linewidth]{imgs/photos/lastLidarFrame.png}
-            \caption{
-                A single plane of 3D laser scanner data (red) with the points found by feature extraction highlighted in white, nearest neighbours indicated with blue and the detected row centreline (green arrow).
-            }
-            \label{fig:lastLidarFrame}
-        \end{figure}
+        % \begin{figure}[htb]
+        %     \centering
+        %     \includegraphics[width=\linewidth]{imgs/photos/lastLidarFrame.png}
+        %     \caption{
+        %         A single plane of 3D laser scanner data (red) with the points found by feature extraction highlighted in white, nearest neighbours indicated with blue and the detected row centreline (green arrow).
+        %     }
+        %     \label{fig:lastLidarFrame}
+        % \end{figure}
 
 \subsection{Sensor Selection Conclusions}
     The results from prototyping algorithms indicate that the 3D lidar and encoder sensors may be feasible selections for performing mapping, localisation and autonomous driving in kiwifruit orchards.
