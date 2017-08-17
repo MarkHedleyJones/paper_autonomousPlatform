@@ -22,7 +22,6 @@
 %% $URL: http://lenova.river-valley.com/svn/elsbst/trunk/elsarticle-template-5-harv.tex $
 %%
 \documentclass[preprint,authoryear,12pt]{elsarticle}
-
 %% Use the option review to obtain double line spacing
 %% \documentclass[authoryear,preprint,review,12pt]{elsarticle}
 
@@ -117,7 +116,7 @@
 % \author{Mark H. Jones, Jamie Bell, Matthew Seabright, Joshua Barnett, Alistair Scarfe, Bruce MacDonald, Mike Duke}
 
 %% Group authors per affiliation:
-\author[UoW]{Mark H. Jones\corref{mjemail}} 
+\author[UoW]{Mark H. Jones\corref{mjemail}}
 \cortext[mjemail]{markj@waikato.ac.nz}
 
 \author[UoA]{Jamie Bell\corref{jbemail}}
@@ -201,7 +200,7 @@
         When publishing details of an autonomous vehicle in 1999, Tillett et~al.\@ cites difficulties dealing with variability in lighting and the environment as the reason no commercial ready vehicles were available at the time.
         Their vehicle combined wheel encoders, a compass, and accelerometers for odometry information, and featured a camera based row guidance system.
         It was capable of spraying individual plants whilst autonomously driving at \SI{2.5}{\kilo\meter\per\hour}.
-        
+
         In 2002, two autonomous robots designed for weed mapping and control were published \citep{Pedersen2002,Astrand2002}.
         These platforms had relatively simple chassis and drive systems as they were both at a prototype stage.
         Both were Ackermann based and designed for field crops.
@@ -210,7 +209,7 @@
         This work demonstrates a need to combine data from multiple sensor types, which becomes common.
         Mention at this time was made of utilising a Controller Area Network (CAN) to communicate with drive and steering modules on the revised unit due to it being a dominating standard in agricultural vehicles.
         \colorbox{yellow}{Did this next prototype ever get published?}
-        
+
         \cite{Bak2004} present a relatively advanced robotic platform based on a four wheel steering geometry.
         The authors noted that the control strategy for the four independently controlled wheels was non-trivial.
         Like the platform presented earlier by Pederson et~al.\@, it combined a compass, gyroscope and GPS for odommetry.
@@ -234,7 +233,7 @@
         Of particular relevance to this work is that of Scarfe et~al.\@ on an autonomous kiwifruit picking robot \citep{scarfe2009, Scarfe2012}.
         That work involved the creation of a hydraulically driven platform with Ackermann steering to which four fruit harvesting arms were integrated.
         While its ability to navigate a kiwifruit orchard was not tested, it formed the foundation for the second-generation platform we present here.
-        
+
         \cite{Blackmore2007} envisaged significant reductions in production costs by re-purposing parts already in use in the agricultural and automotive industry.
         While not a physical component, the CAN is one such technology borrowed from the automotive industry aiding developmental of low-level communications.
         Many of the platforms reviewed, especially the more recent ones, made use of this protocol for real-time communication.
@@ -368,15 +367,15 @@
 %     \begin{table}[h!]
 %     \caption{Examples of sensors used in previous orchard navigation research.}
 %     \centering
-%     \begin{tabular}{ | m{3.2cm} | m{3.2cm}| m{6.2cm} | } 
+%     \begin{tabular}{ | m{3.2cm} | m{3.2cm}| m{6.2cm} | }
 %     \hline
 %     \textbf{Reference} & \textbf{Application} & \textbf{Sensors} \\
 %     \hline
-%     Subramanian et al., 2006 & Citrus grove navigation & Angled down 2D lidar and camera (640x480) separately; steering encoder \\ 
+%     Subramanian et al., 2006 & Citrus grove navigation & Angled down 2D lidar and camera (640x480) separately; steering encoder \\
 %     \hline
-%     Barawid et al., 2007 & Autonomous tractor & Horizontal 2D lidar \\ 
+%     Barawid et al., 2007 & Autonomous tractor & Horizontal 2D lidar \\
 %     \hline
-%     Hansen et al., 2011 & Autonomous orchard vehicle & Horizontal 2D lidar, fibre optic gyroscope, odometry (encoders) \\ 
+%     Hansen et al., 2011 & Autonomous orchard vehicle & Horizontal 2D lidar, fibre optic gyroscope, odometry (encoders) \\
 %     \hline
 %     He et al., 2011 & Orchard row detection & Camera (640x480) \\
 %     \hline
@@ -409,7 +408,7 @@
     \begin{table}[htbp]
         \centering
         \footnotesize
-        \begin{tabular}{ l l} 
+        \begin{tabular}{ l l}
             \textbf{Sensor Type}      &\textbf{Possible Issues} \\ \hline
             GPS receiver              & Prone to signal loss from surrounding foiliage\\  \hline
             Inertial Measurement Unit & Error accumulation and thermal drift\\ \hline
@@ -512,6 +511,7 @@
 
 
     \subsubsection{In-orchard Camera Evaluation}
+        \label{sect:camera_evaluation}
 
         Three varieties of camera were tested: time-of-flight, 3D stereoscopic, and traditional colour camera.
 
@@ -538,10 +538,11 @@
         This is verified by processing the data using readily accessible detection algorithms.
 
 \subsection{Sensor Demonstration by Prototype Algorithm}
-    
+
     Basic tests indicated that multi-layer lidar and colour camera sensors were best suited as primary navigation sensors.
     Further testing by prototyping navigation algorithms was made to ensure the apparent sensor benefits translated into practical advantages.
     The goals for the navigation system are:
+
     \begin{itemize}
         \item object detection and classification,
         \item mapping and localisation, and
@@ -549,131 +550,139 @@
     \end{itemize}
     To validate that the sensors could perform these functions, prototype navigation algorithms have been created.
 
-    \subsubsection{Object detection and classification}
-    
-        Object detection and classification was firstly prototyped fully on the camera data.
-    	It was decided to use a Convolutional Neural Network (CNN) for this purpose, because of the existing success of using CNNs for various image processing tasks \citep{LeCun2015}.
-    	The CNN architecture chosen was FCN-8s \citep{long2015}, which is a neural network made up of convolutional layers without fully connected layers, as opposed to having convolutional layers at the input and fully connected layers at the output.
-    	FCN-8s performs semantic segmentation, which is the per pixel labelling of images.
-        In order to train the FCN-8s network, the camera image dataset, which was created in order assess the cameras for sensor selection, was reused and hand labelled.
-    	The hand labelling consisted of drawing outlines of objects of interest in an image, filling those outlines with colours that were defined to correspond to the given object, extracting the drawn pixels out onto a blank image and converting the result to a palleted indexed format.
-    	An example of an original image and a corresponding label image is shown in Figure \ref{fig:segImgLabelPair}.
+    \subsubsection{Object Detection and Classification}
+
+        % Object detection and classification was firstly prototyped fully on the camera data.
+        Based on existing success using Convolutional Neural Networks (CNN) for image processing tasks \citep{LeCun2015}, a camera based system was chosen for object detection and classification.
+    	The network architecture chosen was FCN-8s \citep{long2015}.
+        It is a neural network made of convolutional layers without fully connected layers.
+        % convolutional layers at the input and fully connected layers at the output.
+    	FCN-8s performs semantic segmentation, which is per pixel labelling of images.
+        To train the FCN-8 network, the camera image dataset used to assess the camera performance in section \ref{sect:camera_evaluation} was hand labeled.
+        % , which was created in order assess the cameras for sensor selection, was reused and hand labelled.
+    	Labeling involved drawing object outlines in each image, filling those outlines with colours corresponding to the object type, and filling any non-labeled areas with black.
+        The resulting image was then converted to a palleted indexed format.
+    	An example of an original image and a corresponding label image is shown as figure \ref{fig:segImgLabelPair}.
 
         \begin{figure}[htb]
             \centering
-            \includegraphics[width=\linewidth]{imgs/photos/segImgLabelPair.png}
+            \includegraphics[width=\linewidth]{imgs/photos/segImgLabelPair_trimmed.png}
+            % \includegraphics[width=\linewidth]{imgs/photos/segImg_sideBySide.png}
             \caption{
                 An input image (top) and labelled output (bottom) for semantic segmentation.
             }
             \label{fig:segImgLabelPair}
         \end{figure}
 
-        Some experimentation was performed with labelling individual trees and posts in the kiwifruit orchard.
-    	However, what seemed to work best was to label the entire treeline, consisting of trees and posts as a single class.
-    	The list of objects that were labelled during algorithm prototyping were:
-        \begin{itemize}
-        \item The traversable space, which was defined as the ground in the image that the AMMP could drive a direct path to without collision.
-        \item Treelines.
-        \item The end of the row.
-        \end{itemize}
-
-        The labelled data was used to train an FCN-8s network.
-    	An example of the output from the trained network is shown in Figure \ref{fig:semSegRowResults}.
-
         \begin{figure}[htb]
             \centering
             \includegraphics[width=\linewidth]{imgs/photos/semSegRowResults.png}
             \caption{
-                An example result from the FCN-8s network, segmenting a kiwifruit orchard row.
+                An example result from the FCN-8 network, segmenting a kiwifruit orchard row.
             }
             \label{fig:semSegRowResults}
         \end{figure}
 
-    \subsubsection{Mapping and Localisation}
-        In order to test the use of 3D lidar for mapping and localisation, an existing Simultaneous Localisation and Mapping (SLAM) package was used.
-    	The package used Gmapping \citep{Grisetti2007}, implemented as a ROS package \citep{Gerkey}.
-    	The required input for Gmapping was odometry data, which was provided by the wheel encoders, and a single plane of lidar data.
-    	The 3D lidar provides 16 planes of lidar data so a conversion had to be performed in order to produce a single plane of lidar data for Gmapping.
-    	The most simple approach of extracting a single plane out of the 16 planes from the 3D lidar sensor was not used because it was thought that this would produce the clouds of unstructured data, which was observed with the 2D lidar sensors.
-    	Instead, the approach initially used was:
+        Experimentation with labelling individual trees and posts in the kiwifruit orchard was performed.
+    	However, labeling the entire treeline as a single class gave the best results.
+    	Objects labeled during algorithm prototyping were:
         \begin{enumerate}
-        \item The 4 lidar planes that were closest to horizontal were extracted.
-    	These planes were selected because they were the planes that generally detected the least amount of ground and canopy.
-        \item For each angle of the lidar data, the difference in the range measurement between consecutive layers in the 4 lidar planes was calculated.
-    	
-        \item If all of the differences between range measurements from step 2 at a given angle were less than a set threshold, the minimum of the ranges at that angle was extracted.
-        \item Each extracted minimum range was used to populate a single plane of lidar data at the angle that the range was originally measured at.
+        \item traversable space (labeled as red),
+        \item treelines (labeled as green), and
+        \item the end of the row (labeled as tan).
         \end{enumerate}
+        Traversable space was defined as the ground area that the platform could drive directly to without collision.
+        These labelled images were then used to train the FCN-8 network.
+    	Sample output from the trained network is presented as figure \ref{fig:semSegRowResults}.
 
-        \begin{figure}[htb]
-            \centering
-            \includegraphics{imgs/gmapmap/gmapmap.pdf}
-            \caption{
-                A map of a kiwifruit orchard, created using GMapping, odometry data from encoders and a 3D lidar.
-            }
-            \label{fig:gmapmap}
-        \end{figure}
-
-        The output of these steps was a single plane of lidar data with reduced amounts of data from the canopy and ground at longer ranges.
-    	This data and the encoder data were used as the inputs for Gmapping.
-    	By driving along four rows of a kiwifruit block, the map in Figure \ref{fig:gmapmap}.
+    \subsubsection{Mapping and Localisation}
+        An existing Simultaneous Localisation and Mapping (SLAM) package was used to test the multi-plane lidar.
+        The package was Gmapping \citep{Grisetti2007}, implemented as a ROS package \citep{Gerkey2010}.
+    	Required input for Gmapping is odometry data and a single plane of lidar data.
+        The obometry data was provided by the platforms built-in wheel encoders and the Velodyne VLP-16 lidar was used as the lidar.
+    	As this lidar has 16 scanning layers, a conversion was performed to produce the single plane of lidar data required by Gmapping.
+        The easiest conversion would by to simply select a single plane from the 16 available layers and discard the remaining data.
+        However, by taking this approach the system would loose any benefit offered by the multiple scanning layers.
+        This would then produce the unstructured clouds of data observed with the single-plane lidar.
+        Instead, a point filtering approach was used.
 
         \begin{figure}[htb]
             \centering
             \includegraphics[width=\linewidth]{imgs/single_plane_extraction/single_plane_extraction.pdf}
             \caption{
-                A single plane of the 3D lidar data. Points used for further processing are drawn in black and rejected points in red.
+                Processing of multi-layer lidar data into a single plane equivalent.
+                Blue points are those selected by the algorithm for further processing, whereas red are rejected.
             }
             \label{fig:singlePlaneExtraction}
         \end{figure}
 
-    % \subsubsection{Orchard Driving Testing}
-    %     A 3D lidar navigation algorithm was developed and tested on smaller robot platforms, as described by Bell et al. \citep{Bell2016}. The key part of this algorithm was the calculation of the angular offset of the robot’s coordinate system from the row centreline. This algorithm attempted to extract the posts and trees from the lidar data and then find the angle between posts and trunks in the same treeline. The key steps of the algorithm were:
-    %     \begin{enumerate}
-    %     \item Clusters of close consecutive points were found in each plane of the 3D lidar data using the method described by Scarfe [24]⁠. 
-    %     \item Clusters with a length greater than a threshold were deemed to be unlikely to be row defining features, such as posts or trunks; as a result, these clusters were removed. 
-    %     \item Any clusters within a set distance of a set number of other clusters were also removed because these clusters could be a part of the clouds of data, which are returned from non structure defining features such as the kiwifruit canopy or the ground. An example result after this step for a single plane of the 3D lidar data is shown in Figure \ref{fig:singlePlaneExtraction}.
-    %     \item The clusters from multiple planes were grouped based on a threshold distance between clusters. 
-    %     \item The heights of the resulting groups from step 4 were compared to a threshold to determine which were posts and trees. An example result after this step for a single frame of 3D lidar data is shown in Figure \ref{fig:lastLidarFrame}.
-    %     \item Using the data from feature extraction, each cluster’s nearest neighbour was found. This step was taken because most posts and trunks are closer to other posts or trunks in the same tree-line than to an adjacent tree-line. This suggests that the angle between nearest neighbours should also be the angle of the tree-line. 
-    %     \item Nearest neighbours that were further apart than the row width were rejected to eliminate the possibility of using neighbours that were not in the same tree-line. 
-    %     \item The angles between the resulting nearest neighbours were calculated. 
-    %     \item The mode of the calculated angles was taken to be the current estimate of the angular offset of the robot from the row centreline. 
-    %     \end{enumerate}
+        Filtering the multi-layer data into a single plane was done by examining data from the centre four layers at each azimuth.
+        If the difference between all four points is below a certain threshold, the closest point is returned.
+        Alternatively, if the spread in points is above the threshold, no points are returned.
+        This has the effect of eliminating points returned from the ground or canopy when driving over concave or convex ground, while still returning information about the location of posts and branches.
+        The resulting points are then fed into Gmapping as a single plane of data along with the platform's wheel encoder data.
 
-    %     Once the angular offset was found, the linear offset of the robot’s coordinate system origin from the row centreline was calculated. The steps used were:
-    %     \begin{enumerate}
-    %     \item The clusters belonging to the current row were found using the angular offset and the maximum row width for the orchard.
-    %     \item Lines were fitted to the treelines on the left and right sides of the row.
-    %     \item The row centreline was found as the average line from the left and right treelines.
-    %     \item The displacement of the robot centre from the row centreline was calculated.
-    %     \end{enumerate}
+        \begin{figure}[htb]
+            \centering
+            \includegraphics{imgs/gmapmap/gmapmap.pdf}
+            \caption{
+                A resulting SLAM based map of a kiwifruit orchard created using Gmapping.
+                Odometry information has been taken from wheel encoders and a multi-layer lidar.
+            }
+            \label{fig:gmapmap}
+        \end{figure}
 
-    %     Row following was performed by calculating the steering angle from the sum of the proportional control signals for the linear and angular offsets. Row end detection was performed by detecting a volume of free space above the 3D lidar sensor. Row end driving was performed by driving a sequence of set curvature movements, while performing obstacle avoidance.
+        Figure~\ref{fig:singlePlaneExtraction} shows the ability of this method to filter structure data from canopy or ground reflections.
+        Using this method, a SLAM based map of the orchard was created by driving the lidar through only four of the orchard's rows, presented as figure \ref{fig:gmapmap}.
 
-    %     The autonomous driving algorithm described here has been used to drive 20 km autonomously on three different robot platforms, including the AMMP, in two different real kiwifruit orchards. This driving was performed using just lidar and encoder data. 
-        
-    %     \begin{figure}[htb]
-    %         \centering
-    %         \includegraphics[width=\linewidth]{imgs/photos/lastLidarFrame.png}
-    %         \caption{
-    %             A single plane of 3D laser scanner data (red) with the points found by feature extraction highlighted in white, nearest neighbours indicated with blue and the detected row centreline (green arrow).
-    %         }
-    %         \label{fig:lastLidarFrame}
-    %     \end{figure}
+
+    \subsubsection{Kiwifruit Orchard Row Tracking}
+        A 3D lidar navigation algorithm was developed and tested on smaller robot platforms, as described by Bell et al. \citep{Bell2016}. The key part of this algorithm was the calculation of the angular offset of the robot’s coordinate system from the row centreline. This algorithm attempted to extract the posts and trees from the lidar data and then find the angle between posts and trunks in the same treeline. The key steps of the algorithm were:
+        \begin{enumerate}
+        \item Clusters of close consecutive points were found in each plane of the 3D lidar data using the method described by Scarfe [24]⁠.
+        \item Clusters with a length greater than a threshold were deemed to be unlikely to be row defining features, such as posts or trunks; as a result, these clusters were removed.
+        % \item Any clusters within a set distance of a set number of other clusters were also removed because these clusters could be a part of the clouds of data, which are returned from non structure defining features such as the kiwifruit canopy or the ground. An example result after this step for a single plane of the 3D lidar data is shown in Figure \ref{fig:singlePlaneExtraction}.
+        \item The clusters from multiple planes were grouped based on a threshold distance between clusters.
+        \item The heights of the resulting groups from step 4 were compared to a threshold to determine which were posts and trees. An example result after this step for a single frame of 3D lidar data is shown in Figure \ref{fig:lastLidarFrame}.
+        \item Using the data from feature extraction, each cluster’s nearest neighbour was found. This step was taken because most posts and trunks are closer to other posts or trunks in the same tree-line than to an adjacent tree-line. This suggests that the angle between nearest neighbours should also be the angle of the tree-line.
+        \item Nearest neighbours that were further apart than the row width were rejected to eliminate the possibility of using neighbours that were not in the same tree-line.
+        \item The angles between the resulting nearest neighbours were calculated.
+        \item The mode of the calculated angles was taken to be the current estimate of the angular offset of the robot from the row centreline.
+        \end{enumerate}
+
+        Once the angular offset was found, the linear offset of the robot’s coordinate system origin from the row centreline was calculated. The steps used were:
+        \begin{enumerate}
+        \item The clusters belonging to the current row were found using the angular offset and the maximum row width for the orchard.
+        \item Lines were fitted to the treelines on the left and right sides of the row.
+        \item The row centreline was found as the average line from the left and right treelines.
+        \item The displacement of the robot centre from the row centreline was calculated.
+        \end{enumerate}
+
+        Row following was performed by calculating the steering angle from the sum of the proportional control signals for the linear and angular offsets. Row end detection was performed by detecting a volume of free space above the 3D lidar sensor. Row end driving was performed by driving a sequence of set curvature movements, while performing obstacle avoidance.
+
+        The autonomous driving algorithm described here has been used to drive 20 km autonomously on three different robot platforms, including the AMMP, in two different real kiwifruit orchards. This driving was performed using just lidar and encoder data.
+
+        \begin{figure}[htb]
+            \centering
+            \includegraphics[width=\linewidth]{imgs/photos/lastLidarFrame.png}
+            \caption{
+                A single plane of 3D laser scanner data (red) with the points found by feature extraction highlighted in white, nearest neighbours indicated with blue and the detected row centreline (green arrow).
+            }
+            \label{fig:lastLidarFrame}
+        \end{figure}
 
 \subsection{Sensor Selection Conclusions}
     The results from prototyping algorithms indicate that the 3D lidar and encoder sensors may be feasible selections for performing mapping, localisation and autonomous driving in kiwifruit orchards.
 	Object detection using cameras in kiwifruit orchards also seems possible.
 	Given these results with prototyping algorithms for the navigation system, it was decided to procede with using cameras, 3D lidar and encoders as the primary sensors for the navigation system.
-	  
+
 
 
 \section{System Architecture}
 \label{sect:hardware}
 
     \newcommand{\rpm}{\raisebox{.2ex}{$\scriptstyle\pm$}}
-    
+
     \begin{figure}[htb]
         \centering
         \includegraphics[width=\linewidth]{imgs/system_diagram/diagram_v3.pdf}
