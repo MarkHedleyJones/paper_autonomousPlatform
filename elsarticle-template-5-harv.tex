@@ -133,14 +133,12 @@
 \begin{abstract}
 %% Text of abstract
 
-    This will be written last.
-    General tone of paper is:
     We present a vehicle designed specifically for autonomous control in kiwifruit orchards.
-    Here are some other people who have made autonomous specific vehicles.
     Here is ours and this is how it fits in with those.
     We've gone with these sensors and this method of navigation and it has demonstrated itself to work in the orchard.
     We think that we could improve the thing by using this algorithm and increasing module space.
     Generally it is an improvement on the previous work of Scarfe.
+    
 \end{abstract}
 
 \begin{keyword}
@@ -637,8 +635,29 @@
 
 
     \subsubsection{Kiwifruit Orchard Row Tracking}
-        The last navigation test requires determining the orchard's structure and generating a path based on that structure.
-        
+        \label{sect:row_tracking}
+
+        The last navigation test requires interpreting the orchard's structure and generating a path based on that structure.
+        Using the single-plane lidar data extraction technique used previously for SLAM mapping, a row guidance system is tested.
+        Details of the algorithm used for row navigation have been published elsewhere \citep{Bell2016}.
+        The key part of this algorithm was the calculation of the angular offset of the robot’s coordinate system from the row centreline.
+        Data captured while the platform navigated the kiwifruit orchard is presented as figure \ref{fig:lastLidarFrame}.
+
+        \begin{figure}[htb]
+            \centering
+            \includegraphics[width=\linewidth]{imgs/row_following/row_following_narrow.pdf}
+            \caption{
+                Row detection from multi-plane lidar data.
+                Red points indicate non-structured data that have been ignored.
+                Blue points indicate orchard structure data used for row navigation.
+                Grey lines link orchard structure points by their nearest neighbours.
+                The black arrow represents the centreline of the row current row.
+            }
+            \label{fig:lastLidarFrame}
+        \end{figure}
+
+        Row following was performed by calculating the steering angle from the sum of the proportional control signals for the linear and angular offsets of the robot from the row centreline.
+
         % A 3D lidar navigation algorithm was developed and tested on smaller robot platforms, as described by Bell et al. \citep{Bell2016}.
         % The key part of this algorithm was the calculation of the angular offset of the robot’s coordinate system from the row centreline.
         % This algorithm attempted to extract the posts and trees from the lidar data and then find the angle between posts and trunks in the same treeline. The key steps of the algorithm were:
@@ -677,8 +696,9 @@
 
 \subsection{Sensor Selection Conclusions}
     The results from prototyping algorithms indicate that the 3D lidar and encoder sensors may be feasible selections for performing mapping, localisation and autonomous driving in kiwifruit orchards.
-	Object detection using cameras in kiwifruit orchards also seems possible.
-	Given these results with prototyping algorithms for the navigation system, it was decided to procede with using cameras, 3D lidar and encoders as the primary sensors for the navigation system.
+	Object detection using cameras in kiwifruit orchards is also possible.
+	Given these results with prototyping algorithms for the navigation system, it was decided to proceed with using cameras, 3D lidar and encoders as the primary sensors for the navigation system.
+    The autonomous driving algorithm described here has been used to drive 20 km autonomously on three different robot platforms, including the AMMP, in two different real kiwifruit orchards. This driving was performed using just lidar and encoder data.
 
 
 
@@ -725,6 +745,22 @@
 
 \section{Autonomous Driving}
 \label{sect:autonomous}
+    Using the row following algorithm developed for sensor testing, map based autonomous navigation of a kiwifruit orchard demonstrated with two additions to the software.
+    These additions were the detection of a row's end and a method for turning between rows.
+    Using the developed navigation approaches, the platform presented here was able to navigate an orchard block unassisted.
+
+    Detection of the end of a row was made by detecting a minimum volume of free space above the multi-layer lidar.
+    This equates to the lidar searching for a lack of canopy above the robot.
+    This makes use of the multi-layer lidar, where layers above the horizontal are used as an `absence of canopy' detector.
+
+    Turns between rows were performed by driving a sequence of set curvature movements while performing obstacle avoidance.
+    The set movements were recorded in a map file which were carried out by the platform on a turn-by-turn basis.
+    A turn sequence would have the platform drive at a given angle for a given distance or until a given turn angle had been reached.
+    Each row turn could contain any number of turn sub-manovours.
+    On completion of the turn, the row following mode was entered which then guides the platform through the row.
+
+    Figure \ref{fig:suzy_turning} shows the platform performing a row-end turn under autonomous control.
+
     \begin{figure}[htb]
         \centering
         \includegraphics[width=\linewidth]{imgs/photos/suzy_turning.jpg}
@@ -733,44 +769,19 @@
         }
         \label{fig:suzy_turning}
     \end{figure}
-    \color{red}
-    Need content here.
-    \color{black}
-    Figure \ref{fig:suzy_turning} shows the AMMP turning, which is great.
 
 
-\section{Discussion}
-    TODO: Generally summerise the platform, its ability to carry stuff, suitability for the orchard environment, and its ability to drive autonomously.
+\section{Conclusion}
+    In this work, a platform designed specifically for driving through pergola style kiwifruit orchards has been presented.
+    The platform has the capability to carry payloads of \SI{600}{\kilo\gram} through these orchards without performance degradation.
+    Sensors suitable for autonomous navigation have been selected, trialled and demonstrated as being useful as a means of navigating in this environment.
+    Convolutional neural networks applied to monocular image data proved to be a promising technique for row navigation.
+    By processing multi-layer lidar data, the platform was able to sucessfully and reliably navigate an entire orchard block without intervention.
+
 
 \section*{Acknowledgements}
-This research was funded in-part by a grant from the New Zealand Ministry of Business Innovation and Employment.
+This research was supported by the New Zealand Ministry for Business, Innovation and Employment (MBIE) on contract UOAX1414.
 The authors acknowledge contributions from Phillip Ross, Gordon Neshausen, Josh Barnett and Erin Simms in the design and fabrication of the platform.
-
-\section{Jamie-Mark communication}
-You are free to suggest anything about anything.
-Maybe you want to add someone to the authors list?
-Maybe you don't like the focus of the review, or think a review is not necessary.
-Perhaps you can think of something that would go well in the paper that I've not mentioned.
-
-% Diagram of sensor placement
-% Lidar units and visibility
-% All electric drive system based on ackermann steering
-% Sevcons modified to allow for direct CAN control.
-% Power system and battery pack
-% power-gen capable of charging battery pack approx 24hour duty
-% Drive motors used as steering motors
-% Control based on ROS, complete with gazebo simulation
-% State the turning circle.
-% State the mass and payload capability
-% Show the area for drop-on modules (diagram)
-% Integrated bin lifting mechanism
-% Platform electronics
-
-% Sections:
-%   Mechanical design
-%   Hardware and sensors
-%   Software architecture
-
 
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal sections
