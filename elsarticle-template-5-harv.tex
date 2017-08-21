@@ -146,7 +146,7 @@
 
 %% MSC codes here, in the form: \MSC code \sep code
 %% or \MSC[2008] code \sep code (2000 is the default)
-    Agricultural robotics \sep outdoor navigation \sep \colorbox{red}{more keywords}
+    Agricultural automation \sep autonomous navigation \sep orchard robotics \sep sensor selection
 \end{keyword}
 
 \end{frontmatter}
@@ -188,8 +188,8 @@
         \caption{
             The robot platform driving through a kiwifruit orchard.
         }
-        \label{fig:suzy
-}    \end{figure}
+        \label{fig:suzy}
+    \end{figure}
 
 \section{Related Work}
 \label{sect:review}
@@ -198,24 +198,25 @@
 
         The introduction of computers and digital camera technology during the 1980s sparked research into autonomous vehicles for agricultural use \citep{Li2009}.
         When publishing details of an autonomous vehicle in 1999, Tillett et~al.\@ cites difficulties dealing with variability in lighting and the environment as the reason no commercial ready vehicles were available at the time.
-        Their vehicle combined wheel encoders, a compass, and accelerometers for odometry information, and featured a camera based row guidance system.
+        Their vehicle combined wheel encoders, a compass, and accelerometers for odometry information.
+        It also featured a camera based row guidance system.
         It was capable of spraying individual plants whilst autonomously driving at a relatively slow pace of \SI{2.5}{\kilo\meter\per\hour}.
 
         Three years later, two autonomous robots designed for weed mapping and control were published \citep{Pedersen2002,Astrand2002}.
         These platforms had relatively simple chassis and drive systems as they were both at a prototype stage.
         They used two steering wheels and were designed specifically for field crops.
         The vehicle presented by \cite{Pedersen2002} was designed to follow pre-defined GPS based paths through row-crops, but the authors found that this was impractical without a dedicated row guidance sensor.
-        Interestingly, they proposed a revised design that featured a row guidance sensor, a new drive system with four wheel steering, and utilised a Controller Area Network (CAN) bus for low level communication.
+        They proposed a revised design that featured a row guidance sensor, a new drive system with four wheel steering, and a Controller Area Network (CAN) bus for low level communication.
         % This work demonstrates a need to combine data from multiple sensor types.
          % Controller Area Network (CAN) bus was used to communicate with drive and steering modules on the revised unit due to it being a dominating standard in agricultural vehicles.
-        \colorbox{yellow}{Did this next prototype ever get published?}
 
-        Two years later, \cite{Bak2004} present a relatively advanced robotic platform based on a four wheel steering geometry.
+        Two years later, \cite{Bak2004} present a robotic platform with all the features suggested in the paper presented in \cite{Pedersen2002}.
         The authors noted that the control strategy for the four independently controlled wheels was non-trivial.
-        Like the platform presented earlier by Pederson et~al.\@, it combined a compass, gyroscope and GPS for odommetry.
-        However, it also featured a row detection sensor and a GPS receiver utilising Real Time Kinematic (RTK) corrections from a base station.
+        The GPS receiver on this platform utilised Real Time Kinematic (RTK) corrections from a base station (RTK-GPS).
+        % Like the platform presented by Pederson et~al.\@, it combined a compass, gyroscope and GPS for odommetry.
+        % However, it also featured the row detection sensor and a GPS receiver utilising Real Time Kinematic (RTK) corrections from a base station.
         RTK-GPS is capable of providing positioning with accuracies of around \SI{2}{\centi\meter}.
-        Their robot utilised a CAN bus for some aspects of system communication.
+        % Their robot utilised a CAN bus for some aspects of system communication.
 
         % In 2008, Klose et~al.\@ publish details of `Weedy', a autonomous weed control robot for field use.
         % It used an overly simple four wheel steering geometry, likely to be a cost/complexity trade-off.
@@ -227,42 +228,44 @@
         After five years, in 2009, details of BoniRob are published by \cite{Ruckelshausen2009}.
         Similar to the unit presented by Bak et~al.\@ it features a gyroscope, RTK-GPS for localisation, a CAN bus for low level communication, and four wheel steering.
         What made BoniRob particularly interesting was its ability raise and lower itself and alter its wheel placement by actuating the arms to which the motors are attached to.
-        Also, it introduced the use of both 2D and 3D laser-scanning (or lidar) for perception and row detection.
+        For outdoor use it carried its own internal combustion engine.
+        Like the robots before it, BoniRob is designed for use on open field crops.
+        It introduced the use of both single plane and multi-layer laser-scanning (or lidar) for perception and row detection.
         % A CAN bus is used to control the low level systems (such as the drive control) and ethernet connections for higher level communication.
-        The authors created a simulated model of the platform using Gazebo in which they could test the many-degrees-of-freedom drive system.
-        During the previous year, some of these authors published details of a much simpler robot named `Weedy' \citep{Klose2008}.
+        During development, the authors created a simulated model of the platform using Gazebo in which they could test the many-degrees-of-freedom drive system.
+        During the previous year, some of these authors published details of a much simpler robot named `Weedy' \citep{Klose2008}, also an open field crop based sensing platform.
 
         Of particular relevance to this work is that of Scarfe et~al.\@ on an autonomous kiwifruit picking robot \citep{scarfe2009, Scarfe2012}.
         That work involved the creation of a hydraulically driven platform with two wheel steering to which four fruit harvesting arms were integrated.
+        It featured an internal combustion engine for on-board power generation and was designed specifically for use in kiwifruit orchards.
         While its ability to navigate a kiwifruit orchard was not tested, it formed the foundation for the second-generation platform we present here.
+
+        Most recently, \cite{Bawden2017} present their field crop robot - AgribotII.
+        For traction it uses two driven wheels in a differential drive configuration, with two castor wheels for support.
+        The overall design is based on two side modules that contain most of the drive system, and a wide centre-piece that bridges the side modules.
+        This centre-piece can be changed so as to alter the total width of the vehicle, and is designed to be specific to the environment and application.
+        The robot is designed specifically for weed management in open field crops..
 
         \cite{Blackmore2007} envisaged significant reductions in production costs by re-purposing parts already in use in the agricultural and automotive industry.
         While not a physical component, the CAN is one such technology borrowed from the automotive industry aiding developmental of low-level communications.
         Many of the platforms reviewed, especially the more recent ones, made use of this protocol for real-time communication.
-        Platforms designed for open field crops appear to favor four-wheel steering over two wheel steering.
+        Platforms designed for open field crops appear to favor four-wheel steering over two wheel steering - with the exception of the Agribot II.
         The use of simulation tools allowed the creators of BoniRob to develop and test their mobility system separate of the physical hardware.
 
-        Common among these vehicles is the use of sensor fusion, whereby data from multiple sensors is merged and filtered.
-        This provides a way to combine the advantages of multiple sensor types, and the benefit of redundancy  into a single computation space.
-        With regards to the use of RTK-GPS in perception based guidance systems, Slaughter et~al.\@ points out the trade-off of requiring an ``unobstructed ``view'' of the sky from all parts of the field'' \citep{Slaughter2008}.
-        Additionally, multi-path signal propagation caused by nearby foliage or the geometry of the land itself presents its own mode of failure \citep{Durrant-Whyte2005}.
-        This requirement can not be satisfied under the canopy of a kiwifruit orchard which are usually surrounded by tall wind-breaking hedges.
-        A separate feasibility analysis highlighted the use of RTK-GPS systems as a significant cost in yearly subscriptions alone \citep{Pedersen2006}.
-        Torii suggests a combination of both RTK-GPS and machine vision systems to be the most promising system going forward based on reductions in costs and increases in performance of these systems \cite{Torii2000}.
-        While \cite{Li2009} concludes that either GPS and machine vision, or GPS and lidar will be used together as a development trend.
 
     \subsection{Sensors for Row Based Navigation in Orchards}
 
-        Sensors for orchard based row detection fall into two three categories; camera based, lidar based, or a combination of the two.
+        Sensor combinations for orchard based row detection fall into two three categories; camera based, lidar based, or a combination of the two.
         The following section summarises a review of row detection efforts in orchards using these techniques.
         % Lidar come in two flavours: single-plane, and multi-layer.
 
         \cite{Subramanian2006} tested both camera based guidance and lidar (Sick LMS-200) based guidance systems in a citrus fruit orchard.
         Sensors were trialled separately on a tractor retrofitted with a fly-by-wire system.
         Their vehicle was able to navigate a small and simplified path using both machine vision and lidar based approaches at speeds of up to \SI{4.4}{\meter\per\second}.
-        Lidar proved more accurate to the point at which the data rate became a limiting factor, after which image based approach became favourable.
+        Lidar proved more accurate until the point at which data transfer rate became a limiting factor.
+        The image based was favorable after this point.
         They suggest that combining the two systems would give more robust guidance as well as providing the ability to detect obstacles.
-        No mention of the ability for the image based approach to cope with varying conditions is made.
+        No mention of the ability for the image based approach to cope with varying lighting conditions is made.
 
         \cite{Barawid2007} demonstrate the use of data from a single-plane lidar (Sick LMS-219) being used to control a drive-by-wire tractor through an orchard.
         Their results show real-time processing of lidar data is sufficient to navigate an orchard at \SI{0.36}{\meter\per\second} (\SI{1.3}{\kilo\meter\per\hour}).
@@ -276,10 +279,10 @@
         The image based approach failed to cope with variability in lighting conditions, however the lidar proved useful for detecting the trunks and posts of the row.
 
         \cite{Freitas2012} focus on the detection of people and bins in the rows of an apple orchard using lidar (Sick LMS-291), a low-cost inertial measurement unit, and wheel encoders.
-        Their algorithm was capable of detecting each obstacle classe off-line from data captured in an apple orchard.
+        Their algorithm was capable of detecting each obstacle class off-line from data captured in an apple orchard.
 
         \cite{Zhang2014} use a lidar (Hokuyo UTM-30LX) to generate maps of an apple orchard with the aid of artificial landmarks.
-        They use an actuated single-plane lidar to generate multi-layer data for use in row and landmark sensing.
+        They use an actuated single-plane lidar to generate multi-plane data for use in row and landmark sensing.
         Placing artificial land-marks in orchards is designed to reduce the effort required to create orchard maps for guidance systems.
 
         The following year, many of the same authors write about their autonomous vehicle \citep{Bergerman2015}.
@@ -292,10 +295,18 @@
         They state their system has use in being complementary to lidar based navigation.
 
         These works show that traditional image based processing for navigation fails when the scene becomes complex or the lighting varies.
-        Combining cameras with neural network based processing increases the robustness to environmental complexities, such as light or clutter.
-        The experiences of \cite{Scarfe2012} and similar indicate that Lidar outputs data which requires less post-processing to be robust.
-        The use of lidar has seen two of the reported vehicles navigate autonomously through orchard environments.
+        Combining cameras with neural network based processing increases the robustness to environmental complexities, such as light or clutter, at the expense of increased computation.
+        The experiences of \cite{Scarfe2012} and similar indicate that a lidar outputs data that requires less post-processing to be robust.
+        The use of lidar has seen two of the reported vehicles navigate autonomously through orchard environments, which is promising.
 
+        % Common among these vehicles is the use of sensor fusion, whereby data from multiple sensors is merged and filtered.
+        % This provides a way to combine the advantages of multiple sensor types, and the benefit of redundancy  into a single computation space.
+        With regards to the use of RTK-GPS in perception based guidance systems, Slaughter et~al.\@ points out the trade-off of requiring an ``unobstructed ``view'' of the sky from all parts of the field'' \citep{Slaughter2008}.
+        Additionally, multi-path signal propagation caused by nearby foliage or the geometry of the land itself presents its own mode of failure \citep{Durrant-Whyte2005}.
+        This requirement can not be satisfied under the canopy of a kiwifruit orchard which are usually surrounded by tall wind-breaking hedges.
+        A feasibility analysis by \cite{Pedersen2006} highlighted the use of RTK-GPS systems as a significant cost in yearly subscriptions alone.
+        \cite{Torii2000} suggests a combination of both RTK-GPS and machine vision systems to be the most promising system going forward based on reductions in costs and increases in performance of these systems.
+        While \cite{Li2009} concludes that either GPS and machine vision, or GPS and lidar will be used together as a development trend.
 
 
 \section{Platform Design}
@@ -313,33 +324,34 @@
         Modules designed to be carried by the platform require clearance from the canopy, in addition to to height they occupy themselves.
         A kiwifruit canopy ranges in height between \SI{1300}{\milli\meter} and \SI{1700}{\milli\meter}.
         To maximise space available to these modules the platform must be low-slung at the point of attachment.
-        Figure \ref{fig:AMMP} illustrates the platform's design, with module area allocated between markers `F' and `E' in the side view (top left).
-        The height of the chassis in this region is \SI{360}{\milli\meter} from the ground.
+        Figure \ref{fig:AMMP} illustrates the platform's design, with module area allocated between markers `G' and `H' in the side view (top left).
+        The top of chassis in this region is \SI{360}{\milli\meter} above the ground.
 
-        Steering geometry is Ackermann based with independent motors on the front wheels for actuation.
+        The platform's steering geometry is Ackermann based.
+        Steering angles are controlled using the front two wheels which are actuated independently by brushless AC motors.
         The ability to actuate the angles individually simplifies the mechanical geometry needed to coordinate steering, particularly at extreme steering angles.
-        Steered wheels have the freedom to rotate \SI{340}{\degree}, limited by a mechanical stop.
+        Both steered wheels have the freedom to rotate \SI{340}{\degree}, limited by a mechanical stop.
         This range of steering angle allows the vehicle to place the centre of rotation between its rear wheels.
-        At this angle, the turning circle is equal to approximately twice the length of the vehicle.
+        The vehicle's turning circle is approximately twice its length.
         Implementing four wheel steering would allow the centre of rotation to move to the centre of the vehicle, decreasing the turning circle to the total length of the vehicle.
-        However, headlands in kiwifruit orchards are sized for tractors to turn between rows, tractors which use Ackerman steering geometries.
-        The implementation of Ackermann geometry on the platform simplifies the mechanical design, removes the need to develop ``non-trivial'' control strategies, and increases the usable area.
+        However, headlands in kiwifruit orchards are sized for tractors to turn between rows, tractors which use two-wheel steering geometries.
+        Implementing a two wheel steering system removes the need to develop ``non-trivial'' control strategies and increases the usable area.
         A differential drive, or skid steer, system was expected to cause ground damage to a level considered unacceptable to orchard owners.
 
         Bin lifting forks are fitted to the area between the rear wheels.
         This area is sized to accommodate a standard kiwifruit bin.
         The lifter is actuated by two vertically mounted pneumatic cylinders and is controlled by a standard pneumatic valve block.
-        With this, the platform will have the ability to pick and place bins while operating in the orchard.
+        The platform will have the ability to pick and place bins while operating in the orchard.
 
         Other than its tires, the platform has no suspension.
         It features a front pivoting axle that ensures that a minimum of three wheels are always in contact with the ground.
         Each wheel is mounted directly to a 40:1 fixed ratio planetary gearbox connected to a permanent magnet brushless AC motor.
-        This specific gearbox-motor combination allows the platform to travel at a maximum speed of \SI{10}{\kilo\meter\per\hour}.
+        This specific gearbox-motor combination limits the platform to a maximum speed of \SI{10}{\kilo\meter\per\hour}.
         The lack of suspension is not an issue when operating in orchards at this speed.
         In total, the drive system can continuously deliver \SI{25.6}{\kilo\watt} of power and \SI{3.3}{\kilo\newton\meter} of torque.
         Based on these specifications it is capable of accelerating from a stand-still to its maximum speed at an incline of \SI{20}{\degree} whilst carrying a \SI{600}{\kilo\gram} payload in \SI{2.0}{\second}.
 
-        A power generation unit including a petrol engine, air compressor, and alternator is fitted at the front of the vehicle.
+        A power generation unit including a petrol engine, air compressor, and electrical alternator is fitted at the front of the vehicle.
         The drive shafts of each are connected by a heavy-duty timing belt.
         The compressor and alternator are activated electronically by an embedded controller module.
         Fuel and compressed air tanks sit over the right-hand rear wheel, these can be seen in figure \ref{fig:suzy}.
