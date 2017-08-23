@@ -366,7 +366,10 @@
 \section{Navigation Sensors}
 \label{sect:sensors}
     The choice of sensors incorporated into a platform determines which approaches are available for navigation and object detection.
-    This section details the sensor selection specific for use in kiwifruit orchards.
+    This section details the sensor selection and navigation algorithms specific for use in kiwifruit orchards.
+    We begin by selecting a number of sensors considered appropriate for navigation related trials in orchards.
+    Based on these trials, sensors performing well are further tested with prototype navigation and object detection algorithms.
+    Finally, an evaluation of each sensor/algorithm is discussed in the context of orchard based navigation.
 %     Sensor selection was a critical early step in the development of the navigation system for the AMMP because it dictated the direction of subsequent research. Four approaches were used in the process of sensor selection:
 %     \begin{enumerate}
 %         \item Conducting a literature survey of sensors previously used in orchard navigation and similar applications.
@@ -415,9 +418,16 @@
 
 \subsection{Sensor Selection}
 
-    As the drive motors have built-in wheel encoders, odometry data is already available on the platform.
-    Encoders from powered wheels give false readings if wheel slip occurs, so these sensors cannot be used for odomentry alone.
-    The data they provide can be used to assist with mapping, localisation, and provide velocity feedback.
+    As the drive motors have built-in wheel encoders, basic odometry data is already available on the platform.
+    Encoders on driven wheels can give false readings if wheel slip occurs so can not be used for odomentry alone.
+    However, the data they provide can be used to assist with mapping, localisation, and provide velocity feedback.
+
+    Other sensors considered for inclusion are outlined in table \ref{table:sensor_comparison} with their associated issues.
+    Factors for selecting the trialled sensors were each sensor's specific strengths and weaknesses, reported usage in literature for similar environments, and availability at a commercially viable price.
+    This investigation highlighted both lidar and 2D-cameras as offering the most functionality for navigation and object detection.
+    Time-of-flight cameras were a compelling option based on the cost-benefit analysis; especially if the less expensive units work in sunlight.
+    Because localisation is such a key functionality, the performance of GPS has also been evaluated in a kiwifruit orchard.
+    The following sections detail our experiences while trialling these sensors.
 
     \begin{table}[htbp]
         \centering
@@ -437,13 +447,6 @@
         \caption{Sensor types considered for inclusion on the platform.}
     \end{table}
 
-    Other sensors considered for inclusion, and their associated issues, are outlined in table \ref{table:sensor_comparison}.
-    Factors influencing which sensors were trialled were the benefits and issues of each sensor, reported usage in literature for similar environments, and availability at a commercially viable price.
-    The investigation suggested that lidar, and cameras offered the most functionality for navigation and object detection.
-    Time-of-flight were a compelling option based on the cost-benefit analysis; especially if the less expensive units work in sunlight.
-    Because localisation is such a key functionality, the performance of GPS has been evaluated in a kiwifruit orchard.
-    The following sections detail our experiences while trialling these sensors.
-
 % \subsection{Data Collection and Inspection}
  %    The sensors that seemed important to test, based on both the literature survey and the cost-benefit analysis were lidar, cameras and GPS.
 	% In addition, time of flight cameras were considered, because they seemed to be a compelling option based on the cost-benefit analysis; especially if some of the less expensive models were found to work well in sunlight.
@@ -452,18 +455,18 @@
 
     \subsubsection{In-orchard GPS Evaluation}
         Two GPS modules were evaluated: a Ublox Neo-M8N module and an OmniSTAR 5120VBS with AX0 series antenna.
-    	Both were connected via serial to a Beaglebone Black single board computer for data acquisition.
+    	Both were connected to a Beaglebone Black single board computer via serial connection for data acquisition.
         The Ublox module was selected for its -167 dBm sensitivity, internal Low Noise Amplifier (LNA), and active circuitry for the 25mm square ceramic patch antenna.
         The OmniSTAR receiver was chosen for its high gain antenna (34 dB) which claims high multi-path rejection.
 
-        The testing procedure first involved planning a path through a single row within a kiwifruit orchard and plotting it on a satellite map.
-        Waypoints were placed along the row at the location of posts used to hold the canopy structure.
-        Relative distances between these waypoints was measured with a tape measure and recorded.
-        The receivers were then tested separately, one after the other.
+        The testing procedure first involved planning a path through a single row of a kiwifruit orchard and plotting it on a satellite map.
+        Waypoints were placed along the row at the location of posts used to hold the canopy's structure.
+        Relative distances between these waypoints were measured with a tape measure and recorded.
+        The receivers were then tested separately over the course of approximately two hours \color{red} Jamie, does this sound about right? I'm assuming the time here \color{black}.
         Before testing, each unit was powered up and given \SI{30}{\minute} to initialise in an open area near the kiwifruit orchard.
-        During the test, each unit was walked slowly through the pre-determined path with stops at each of the waypoints to provide time for a fix.
-        The path of approximately \SI{500}{\meter} took approximately \SI{15}{\minute} to complete, including stops at each waypoint.
-        Waypoints were spaced approximately every \SI{5.5}{\meter} along the selected orchard row.
+        During testing, each unit was walked slowly along the pre-determined path with stops at each waypoint to provide time for a fix.
+        The path was approximately \SI{500}{\meter} in length and took approximately \SI{15}{\minute} to complete, including stops at each waypoint.
+        Waypoints were spaced approximately \SI{5.5}{\meter} apart along the selected orchard row.
 
         \begin{figure}[htb]
             \centering
@@ -474,20 +477,20 @@
             \label{fig:gpsResults}
         \end{figure}
 
-        The path followed and the corresponding GPS locations collected from the receivers is presented in figure \ref{fig:gpsResults}.
-        It should be noted that data has been recorded for the round-trip, so represents two passes along the path.
+        The path followed, and the corresponding GPS locations collected from the receivers, is presented in figure \ref{fig:gpsResults}.
+        It should be noted that data has been recorded for the round-trip so represents two passes along the path.
         It was noticed during testing that the signal quality lights on both GPS receivers regularly indicated a loss of signal.
 
 
-        The Omnistar receiver appears to track the approximate path well, but the data is sparse with regular loss of signal when in the orchard.
+        The Omnistar receiver appears to track the approximate path well, but the data is sparse with regular loss of signal after entering the orchard.
     	The Ublox receiver collected more data than the Omnistar unit, but was much less accurate.
         It may be possible to use a unit such as the Omnistar, which provided more accurate but fewer readings, as a sanity check for an approximate location within an orchard.
-        Overall the units could not be relied on for localisation under the kiwifruit canopy and were not used for navigation.
+        Overall the units could not be relied on for localisation under the kiwifruit canopy and therefore were not used.
 
     \subsubsection{In-orchard Lidar Evaluation}
         Three lidar were evaluated, two single-plane lidars and one multi-layer lidar.
         The two single-plane lidars were the Hokuyo UTM-30LX and a SICK LMS111.
-        The multi-layer is a Velodyne VLP-16 which has 16 horizontal \SI{360}{\degree} planes spread over \SI{15}{\degree}.
+        The multi-layer is a Velodyne VLP-16 which has 16 horizontal \SI{360}{\degree} planes spread over \SI{15}{\degree} vertically.
         Data was collected from each lidar by driving through orchard rows with the sensor placed midway between the ground and canopy (approximately \SI{0.8}{\meter} off the ground).
 
         \begin{figure}[htb]
@@ -511,50 +514,54 @@
             \includegraphics[width=\linewidth]{imgs/concave_slope/concave_slope_v4.pdf}
             \caption{
                 On concave slopes the lidar scan plane intercepts with the ground instead of trunks or posts.
+                The dashed line shows a horizontal plane coming from the the lidar.
+                The dotted line represents upper and lower layers angles used from the multi-layer lidar.
             }
             \label{fig:concaveSlope}
         \end{figure}
 
-        This issue can be reduced when using a multi-layer lidar.
-        Because of the 16 layers, it is possible to select the scan layer that gives the longest viewing range.
-        Referring to figure \ref{fig:concaveSlope}, that would correspond to a layer above the horizontal.
+        This issue was reduced by the use of a multi-layer lidar and post-processing.
+        Because of the 16 layers, it is possible to select the scan layer that gives the most useful viewing range.
+        Referring to figure \ref{fig:concaveSlope}, that would correspond to the dotted line above the horizontal which intercepts with a trunk.
 
-        In this environment a single-plane liadr could still be used at relatively short range as an independent channel of processing for redundancy or obstacle detection.
-        It was decided that a multi-layer lidar would be best suited for navigation due to its ability to to see longer changes on undulating ground in kiwifruit orchards.
-        For the platform, a single-plane lidar has been fitted to the front of the vehicle an object detector for possible collisions, and a multi-layer lidar has also been fitted for use in navigation and general object detection.
+        In this environment a single-plane lidar could still be used at relatively short range as an independent channel of processing for redundancy or obstacle detection.
+        It was decided that a multi-layer lidar would be best suited for navigation due to its ability to to see more distant features on undulating ground in kiwifruit orchards.
+        For the platform, a single-plane lidar has been fitted to the front of the vehicle an object detector for possible collisions, and a multi-layer lidar has been fitted for use in navigation and general object detection.
 
 
     \subsubsection{In-orchard Camera Evaluation}
         \label{sect:camera_evaluation}
 
-        Three varieties of camera were tested: time-of-flight, 3D stereoscopic, and traditional colour camera.
+        Three varieties of camera were tested: time-of-flight, 3D stereoscopic, and traditional 2D cameras.
 
         The time-of-flight based camera was the Basler TOF640-20GM-850NM.
-        It provides both depth and return signal data at a resolution of 640 by 480 pixels.
-        This model was chosen for testing as it had previously proved useful when collecting depth data of kiwifruit canopies.
-        During those usages it was operated under different lighting conditions and exhibited minimal occurrences of data washout.
+        It provides range, intensity, and confidence data at a resolution of 640 by 480 pixels.
+        This specific model of camera was chosen for testing as it had previously proved useful when collecting depth data of kiwifruit canopies.
+        It had been operated under different lighting conditions and exhibited minimal occurrences of data washout.
         However, these tests revealed that in both direct sunlight and overcast conditions there was significant data loss.
 
         The 3D stereo camera tested was an Intel RealSense R200.
         It combines a stereo pair of infra-red cameras with a colour camera.
-        Additionally, it features an infra-red projector as a means of adding ``texture'' to objects in its field of view to assist with stereo processing.
-        The appealing characteristics of this sensor were its low cost and its claim as being long-range and able to work outdoors.
-        However, in overcast and sunny conditions, it suffered from a complete loss of range data.
+        Additionally, it features an infra-red projector as a means of adding texture to objects in its field of view to assist with stereo processing.
+        The appealing characteristics of this sensor were its low cost and its claim of being long-range and able to work outdoors.
+        However, in both overcast and sunny conditions it suffered from a complete loss of range data.
 
-        Finally, traditional colour cameras trialled were the Basler Dart daA1600-60uc, Flir CM3-U3-13S2C-CS, and Logitech C920 cameras.
-        The cameras were driven through the orchard at a height of \SI{0.8}{\meter} from the ground.
-        The Logitech C920 cameras suffered from significant motion blur.
-        In addition, these cameras did not provide a hardware trigger interface, which would be important if the cameras were used in stereo vision applications.
+        Finally, 2D-cameras were trialled.
+        These were the Basler Dart daA1600-60uc, Flir CM3-U3-13S2C-CS, and Logitech C920 cameras.
+        Like the lidar tests, each camera was driven through the orchard at a height of \SI{0.8}{\meter} from the ground.
+        The Logitech C920 suffered from significant motion blur.
+        Being a consumer grade web-camera it does not provide a hardware trigger interface.
+        A hardware trigger will become important if the camera is used in stereo vision applications.
         The Basler and Flir cameras both produced images of sufficient quality.
         The Basler offering was favored for its later model image sensor.
 
-        Overall, colour camera images were the best suited for object detection and classification.
-        This is verified by processing the data using readily accessible detection algorithms.
+        Overall, traditional 2D camera images were the best suited for object detection and classification.
+        This was verified by processing the data using readily accessible detection algorithms such as convolutional neural networks.
 
 \subsection{Sensor Demonstration by Prototype Algorithm}
 
-    Basic tests indicated that multi-layer lidar and colour camera sensors were best suited as primary navigation sensors.
-    Further testing by prototyping navigation algorithms was made to ensure the apparent sensor benefits translated into practical advantages.
+    Basic tests indicated that multi-layer lidar and 2D camera sensors were best suited as primary navigation sensors.
+    Further testing by prototyping navigation algorithms were made to ensure the apparent sensor benefits translated into practical advantages.
     The goals for the navigation system are:
 
     \begin{itemize}
@@ -562,7 +569,7 @@
         \item mapping and localisation, and
         \item row tracking.
     \end{itemize}
-    To validate that the sensors could perform these functions, prototype navigation algorithms have been created.
+    To validate that the sensors could perform these functions, three prototype navigation algorithms have been created.
 
     \subsubsection{Object Detection and Classification}
 
@@ -572,11 +579,11 @@
         It is a neural network made of convolutional layers without fully connected layers.
         % convolutional layers at the input and fully connected layers at the output.
     	FCN-8s performs semantic segmentation, which is per pixel labelling of images.
-        To train the FCN-8 network, the camera image dataset used to assess the camera performance in section \ref{sect:camera_evaluation} was hand labeled.
-        % , which was created in order assess the cameras for sensor selection, was reused and hand labelled.
+
+        To train the FCN-8s network, the camera image dataset used to assess the camera performance in section \ref{sect:camera_evaluation} was hand labeled.
     	Labeling involved drawing object outlines in each image, filling those outlines with colours corresponding to the object type, and filling any non-labeled areas with black.
-        The resulting image was then converted to a palleted indexed format.
-    	An example of an original image and a corresponding label image is shown as figure \ref{fig:segImgLabelPair}.
+        Each image was then converted to a pallet indexed format.
+    	An example of an original image and its corresponding label image is shown as figure \ref{fig:segImgLabelPair}.
 
         \begin{figure}[htb]
             \centering
@@ -597,28 +604,25 @@
             \label{fig:semSegRowResults}
         \end{figure}
 
-        Experimentation with labelling individual trees and posts in the kiwifruit orchard was performed.
-    	However, labeling the entire treeline as a single class gave the best results.
-    	Objects labeled during algorithm prototyping were:
+        Experimentation with labeling individual trees and posts in the kiwifruit orchard was performed.
+    	However, labeling the entire tree-line as a single class gave more robust results.
+    	Objects labeled for this algorithm are:
         \begin{enumerate}
         \item traversable space (labeled as red),
         \item treelines (labeled as green), and
         \item the end of the row (labeled as tan).
         \end{enumerate}
         Traversable space was defined as the ground area that the platform could drive directly to without collision.
-        These labelled images were then used to train the FCN-8 network.
+        These labelled images were then used to train the FCN-8s network.
     	Sample output from the trained network is presented as figure \ref{fig:semSegRowResults}.
+        \colorbox{yellow}{was this actually used to perform row following?}
 
     \subsubsection{Mapping and Localisation}
         An existing Simultaneous Localisation and Mapping (SLAM) package was used to test the multi-plane lidar.
         The package was Gmapping \citep{Grisetti2007}, implemented as a ROS package \citep{Gerkey2010}.
     	Required input for Gmapping is odometry data and a single plane of lidar data.
-        The obometry data was provided by the platforms built-in wheel encoders and the Velodyne VLP-16 lidar was used as the lidar.
+        The obometry data was provided by the platform's built-in wheel encoders and the Velodyne VLP-16 lidar was used as the lidar.
     	As this lidar has 16 scanning layers, a conversion was performed to produce the single plane of lidar data required by Gmapping.
-        The easiest conversion would by to simply select a single plane from the 16 available layers and discard the remaining data.
-        However, by taking this approach the system would loose any benefit offered by the multiple scanning layers.
-        This would then produce the unstructured clouds of data observed with the single-plane lidar.
-        Instead, a point filtering approach was used.
 
         \begin{figure}[htb]
             \centering
@@ -630,11 +634,13 @@
             \label{fig:singlePlaneExtraction}
         \end{figure}
 
-        Filtering the multi-layer data into a single plane was done by examining data from the centre four layers at each azimuth.
-        If the difference between all four points is below a certain threshold, the closest point is returned.
+        The simplest conversion from multi-layer data to a single plane would be to select one of the available planes and discard the rest.
+        However, using this approach the system would loose any benefit offered by the multiple scanning layers.
+        Instead, filtering the multi-layer data into a single plane was done by examining data from the centre four layers at each azimuth.
+        If the difference between all four points falls below a certain threshold, the closest point is returned.
         Alternatively, if the spread in points is above the threshold, no points are returned.
-        This has the effect of eliminating points returned from the ground or canopy when driving over concave or convex ground, while still returning information about the location of posts and branches.
-        The resulting points are then fed into Gmapping as a single plane of data along with the platform's wheel encoder data.
+        This eliminates points from sloped or varying surfaces while still returning points from objects with vertical structure.
+        The effect of this is that the orchard's structural elements are visible, but the ground and canopy are not.
 
         \begin{figure}[htb]
             \centering
@@ -646,6 +652,7 @@
             \label{fig:gmapmap}
         \end{figure}
 
+        The resulting points are then fed into Gmapping as a single plane of data along with the platform's wheel encoder data.
         Figure~\ref{fig:singlePlaneExtraction} shows the ability of this method to filter structure data from canopy or ground reflections.
         Using this method, a SLAM based map of the orchard was created by driving the lidar through only four of the orchard's rows, presented as figure \ref{fig:gmapmap}.
 
@@ -653,10 +660,10 @@
     \subsubsection{Kiwifruit Orchard Row Tracking}
         \label{sect:row_tracking}
 
-        The last navigation test requires interpreting the orchard's structure and generating a path based on that structure.
+        Our final navigation test requires interpreting the orchard's structure for path generation.
         Using the single-plane lidar data extraction technique used previously for SLAM mapping, a row guidance system is tested.
-        Details of the algorithm used for row navigation have been published elsewhere \citep{Bell2016}.
-        The key part of this algorithm was the calculation of the angular offset of the robot’s coordinate system from the row centreline.
+        Details of the algorithm used for this row navigation are published elsewhere \citep{Bell2016}.
+        % The key part of this algorithm was the calculation of the angular offset of the robot’s coordinate system from the row centreline.
         Data captured while the platform navigated the kiwifruit orchard is presented as figure \ref{fig:lastLidarFrame}.
 
         \begin{figure}[htb]
@@ -672,7 +679,7 @@
             \label{fig:lastLidarFrame}
         \end{figure}
 
-        Row following was performed by calculating the steering angle from the sum of the proportional control signals for the linear and angular offsets of the robot from the row centreline.
+        % Row following was performed by calculating the steering angle from the sum of the proportional control signals for the linear and angular offsets of the robot from the row centreline.
 
         % A 3D lidar navigation algorithm was developed and tested on smaller robot platforms, as described by Bell et al. \citep{Bell2016}.
         % The key part of this algorithm was the calculation of the angular offset of the robot’s coordinate system from the row centreline.
@@ -711,8 +718,10 @@
         % \end{figure}
 
 \subsection{Sensor Selection Conclusions}
-    The results from prototyping algorithms indicate that the 3D lidar and encoder sensors may be feasible selections for performing mapping, localisation and autonomous driving in kiwifruit orchards.
-	Object detection using cameras in kiwifruit orchards is also possible.
+    The results from prototype algorithms indicate that the multi-layer lidar combined with encoder feedback are feasible selections for performing mapping, localisation and autonomous driving in kiwifruit orchards.
+    A combination of 2D cameras and neural networking also appears to be suitable for both row following and object detection.
+
+	% Object detection using a combination of colour cameras and neural networks in kiwifruit orchards .
 	Given these results with prototyping algorithms for the navigation system, it was decided to proceed with using cameras, 3D lidar and encoders as the primary sensors for the navigation system.
     The autonomous driving algorithm described here has been used to drive 20 km autonomously on three different robot platforms, including the AMMP, in two different real kiwifruit orchards. This driving was performed using just lidar and encoder data.
 
