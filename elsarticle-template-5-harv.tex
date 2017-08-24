@@ -50,6 +50,8 @@
 \usepackage{siunitx}
 \usepackage{array}
 
+\newcommand{\rpm}{\raisebox{.2ex}{$\scriptstyle\pm$}}
+
 %% The lineno packages adds line numbers. Start line numbering with
 %% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
 %% for the whole article with \linenumbers after \end{frontmatter}.
@@ -132,13 +134,13 @@
 
 \begin{abstract}
 %% Text of abstract
-
-    We present a vehicle designed specifically for autonomous control in kiwifruit orchards.
-    Here is ours and this is how it fits in with those.
-    We've gone with these sensors and this method of navigation and it has demonstrated itself to work in the orchard.
-    We think that we could improve the thing by using this algorithm and increasing module space.
-    Generally it is an improvement on the previous work of Scarfe.
-
+    Systems for performing horticultural tasks usually require a means of locomotion through the environment.
+    One approach is to directly integrate a drive system, thereby increasing the overall complexity and development risk of such a project.
+    We present a generic platform designed to carry task specific robots through pergola style kiwifruit orchards.
+    By separating the task of locomotion from other duties, a more modular and robust system overall is obtained.
+    Sensors suited for autonomous navigation within this environment are selected and their suitability within a kiwifruit orchard is tested.
+    Details of the platform's internal architecture is discussed.
+    The presented platform has self-navigated through a test orchard unassisted and is capable of carrying a \SI{1000}{\kilo\gram} payload.
 \end{abstract}
 
 \begin{keyword}
@@ -158,35 +160,36 @@
 \label{sect:intro}
     Short-term labor requirements within New Zealand's kiwifruit industry peak twice a year corresponding with the pollination and harvesting of kiwifruit.
     The majority of employment during these peaks is filled by seasonal or casual workers \citep{Timmins2009}.
-    As kiwifruit is the country's largest horticultural export by value \citep{StatisticsNewZealand2015}, automation in this industry should promote economic growth.
+    As kiwifruit is the country's largest horticultural export by value \citep{StatisticsNewZealand2015}, automation in this industry will promote economic growth.
     % The New Zealand government aims to double exports from its primary industries between 2012 and 2025 and is actively investing in programmes to achieve this \citep{MinistryPrimaryIndustries2015}.
 
-    Previous work on automated harvesting of kiwifruit has been demonstrated \citep{Scarfe2012}.
-    That work presents a mobile platform integrated with robotic arms that was capable of harvesting fruit from pergola style kiwifruit orchards.
-    The platform presented here is a second generation unit that increases modularity by separating the platform from the tasks it performs, namely harvesting and pollination.
-    This work discusses only the base platform, where details of modules for harvesting and pollination are published separately \citep{williams2017,Seabright2017}.
+    Previous work on automated kiwifruit harvesting has been demonstrated \citep{Scarfe2012}.
+    That work presented a mobile platform with four integrated robot arms that were capable of harvesting kiwifruit from pergola style orchards.
+    The platform presented here is a second generation of that unit.
+    It increases modularity by separating the platform from the tasks it performs, namely harvesting and pollination.
+    This work discusses only the base platform, where details of modules for pollination and harvesting are published separately \citep{williams2017,Seabright2017}.
 
     Automation in kiwifruit harvesting and pollinating demands computer control, state-of-the-art manipulators, and convolutional neural networks.
-    These systems are bulky and have specific geometric requirements dictated the environment and the tasks they perform.
+    These systems are bulky and have specific geometric requirements dictated by the environment and the tasks they perform.
     They share the requirements of transport to and from orchards, electrical power, and air pressure, but differ in they way they move when in the orchard.
-    Pollinating modules developed as part of this project move at a well-known velocity with minimum changes in angle.
+    Pollinating modules, developed as part of a wider project, move at a well-known velocity with minimum changes in angle.
     This differs from the separately developed harvesting module that advances a set distance between stationary harvest cycles.
-    The duration of such harvesting cycles are determined by the number of fruit available during any particular cycle.
+    % The duration of such harvesting cycles are determined by the number of fruit available during any particular cycle.
     As the harvester is designed to be autonomous, there must be communication between the platform and harvester to trigger forward movement between cycles.
-    Therefore, an autonomous harvesting module requires the platform it sits on to be autonomous too.
+    Therefore, to be truely autonomous, the harvesting module requires the platform it sits on to also be autonomous.
 
     It has been stated that ``since the robot development already includes a high complexity, the application itself should be of comparably low complexity'' \citep{Ruckelshausen2009}.
     By separating development of the base platform from the task-specific modules, risk of over-complexity is reduced by way of separation.
     The platform presented here simply needs to transport task specific modules autonomously through kiwifruit orchards.
 
-    The development of autonomous vehicles in agriculture is not new, but much of the literature relates to existing vehicles converted to driverless.
-    This work details the development of a purpose-built platform.
+    The development of autonomous vehicles in agriculture is not new, but much of the literature relates to manned vehicles converted to drive-by-wire.
+    This work details the development of a purpose-built platform build for navigating kiwifruit orchards grown in a pregola style.
 
     \begin{figure}[htb]
         \centering
         \includegraphics[width=\linewidth]{imgs/photos/suzy_general.jpg}
         \caption{
-            The robot platform driving through a kiwifruit orchard.
+            The robot platform driving through a pergola style kiwifruit orchard.
         }
         \label{fig:suzy}
     \end{figure}
@@ -194,7 +197,7 @@
 \section{Related Work}
 \label{sect:review}
 
-    \subsection{Purpose-built Autonomous Vehicles}
+    \subsection{Purpose-built Autonomous Vehicles in Agriculture}
 
         The introduction of computers and digital camera technology during the 1980s sparked research into autonomous vehicles for agricultural use \citep{Li2009}.
         When publishing details of an autonomous vehicle in 1999, Tillett et~al.\@ cites difficulties dealing with variability in lighting and the environment as the reason no commercial ready vehicles were available at the time.
@@ -204,18 +207,20 @@
 
         Three years later, two autonomous robots designed for weed mapping and control were published \citep{Pedersen2002,Astrand2002}.
         These platforms had relatively simple chassis and drive systems as they were both at a prototype stage.
-        They used two steering wheels and were designed specifically for field crops.
+        They featured two wheel steering and were designed specifically for field crops.
+        Both were battery powered, however the unit presented astrand could also be fitted with a combustion engine.
         The vehicle presented by \cite{Pedersen2002} was designed to follow pre-defined GPS based paths through row-crops, but the authors found that this was impractical without a dedicated row guidance sensor.
         They proposed a revised design that featured a row guidance sensor, a new drive system with four wheel steering, and a Controller Area Network (CAN) bus for low level communication.
         % This work demonstrates a need to combine data from multiple sensor types.
          % Controller Area Network (CAN) bus was used to communicate with drive and steering modules on the revised unit due to it being a dominating standard in agricultural vehicles.
 
-        Two years later, \cite{Bak2004} present a robotic platform with all the features suggested in the paper presented in \cite{Pedersen2002}.
+        Two years later, the revised design proposed by \cite{Pedersen2002} is presented by \cite{Bak2004}.
         The authors noted that the control strategy for the four independently controlled wheels was non-trivial.
-        The GPS receiver on this platform utilised Real Time Kinematic (RTK) corrections from a base station (RTK-GPS).
+        The GPS receiver on this platform utilised Real Time Kinematic (RTK) corrections from a base station.
+        RTK-GPS is capable of providing positioning with accuracies of \SI{2}{\centi\meter}.
         % Like the platform presented by Pederson et~al.\@, it combined a compass, gyroscope and GPS for odommetry.
         % However, it also featured the row detection sensor and a GPS receiver utilising Real Time Kinematic (RTK) corrections from a base station.
-        RTK-GPS is capable of providing positioning with accuracies of around \SI{2}{\centi\meter}.
+        
         % Their robot utilised a CAN bus for some aspects of system communication.
 
         % In 2008, Klose et~al.\@ publish details of `Weedy', a autonomous weed control robot for field use.
@@ -225,32 +230,33 @@
         % It too makes use of a CAN bus for communication between on-board modules.
 
         % The following year, many the same authors appearing on the `Weedy' paper published details an autonomous robotic platform with four wheel steering named BoniRob \citep{Ruckelshausen2009}.
-        After five years, in 2009, details of BoniRob are published by \cite{Ruckelshausen2009}.
-        Similar to the unit presented by Bak et~al.\@ it features a gyroscope, RTK-GPS for localisation, a CAN bus for low level communication, and four wheel steering.
-        What made BoniRob particularly interesting was its ability raise and lower itself and alter its wheel placement by actuating the arms to which the motors are attached to.
-        For outdoor use it carried its own internal combustion engine.
+        In 2009, details of BoniRob were published by \cite{Ruckelshausen2009}.
+        Similar to the unit presented by \cite{Bak2004}, it features a gyroscope, RTK-GPS for localisation, a CAN bus for low level communication, and four wheel steering.
+        What makes BoniRob particularly interesting is its ability to alter its track-width by actuating the arms to which the wheels were attached.
+        It is battery powered, but can also be fitted with a \SI{2.8}{\kilo\watt} petrol generator.
+        It is capable of carrying a \SI{150}{\kilo\gram} payload in its dedicated module space.
         Like the robots before it, BoniRob is designed for use on open field crops.
-        It introduced the use of both single plane and multi-layer laser-scanning (or lidar) for perception and row detection.
+        It introduced the use of both single plane and multi-layer laser range scanning, known as lidar, for perception and row detection.
         % A CAN bus is used to control the low level systems (such as the drive control) and ethernet connections for higher level communication.
-        During development, the authors created a simulated model of the platform using Gazebo in which they could test the many-degrees-of-freedom drive system.
         During the previous year, some of these authors published details of a much simpler robot named `Weedy' \citep{Klose2008}, also an open field crop based sensing platform.
 
         Of particular relevance to this work is that of Scarfe et~al.\@ on an autonomous kiwifruit picking robot \citep{scarfe2009, Scarfe2012}.
         That work involved the creation of a hydraulically driven platform with two wheel steering to which four fruit harvesting arms were integrated.
-        It featured an internal combustion engine for on-board power generation and was designed specifically for use in kiwifruit orchards.
-        While its ability to navigate a kiwifruit orchard was not tested, it formed the foundation for the second-generation platform we present here.
+        It used an internal combustion engine for on-board power generation and was designed specifically for use in kiwifruit orchards.
+        While its ability to navigate a kiwifruit orchard was not tested, it formed the foundation platform we present here.
 
-        Most recently, \cite{Bawden2017} present their field crop robot - AgribotII.
+        Most recently, \cite{Bawden2017} present their field crop robot - Agbot~II.
         For traction it uses two driven wheels in a differential drive configuration, with two castor wheels for support.
+        It is battery powered and designed to autonomously return to a shipping container sized shelter with in-built solar powered charging station.
         The overall design is based on two side modules that contain most of the drive system, and a wide centre-piece that bridges the side modules.
         This centre-piece can be changed so as to alter the total width of the vehicle, and is designed to be specific to the environment and application.
-        The robot is designed specifically for weed management in open field crops..
+        The choice of drive system geometry has considerably reduced the robot's complexity and weight over the designs previously discussed.
 
-        \cite{Blackmore2007} envisaged significant reductions in production costs by re-purposing parts already in use in the agricultural and automotive industry.
-        While not a physical component, the CAN is one such technology borrowed from the automotive industry aiding developmental of low-level communications.
+        \cite{Blackmore2007} envisaged significant reductions in production costs for agricultural robotics by re-purposing parts already in use in the agricultural and automotive industry.
+        While not a physical component, the CAN bus is one such technology borrowed from the automotive industry aiding development of low-level communications.
         Many of the platforms reviewed, especially the more recent ones, made use of this protocol for real-time communication.
-        Platforms designed for open field crops appear to favor four-wheel steering over two wheel steering - with the exception of the Agribot II.
-        The use of simulation tools allowed the creators of BoniRob to develop and test their mobility system separate of the physical hardware.
+        Platforms designed for open field crops appear to favor four-wheel steering over two wheel steering - with the exception of the Agbot II.
+        The use of simulation tools allowed the creators of BoniRob to develop and test their mobility system without physical hardware.
 
 
     \subsection{Sensors for Row Based Navigation in Orchards}
@@ -515,7 +521,7 @@
             \caption{
                 On concave slopes the lidar scan plane intercepts with the ground instead of trunks or posts.
                 The dashed line shows a horizontal plane coming from the the lidar.
-                The dotted line represents upper and lower layers angles used from the multi-layer lidar.
+                Dotted lines represent the upper and lower layers taken from the multi-layer lidar.
             }
             \label{fig:concaveSlope}
         \end{figure}
@@ -662,9 +668,15 @@
 
         Our final navigation test requires interpreting the orchard's structure for path generation.
         Using the single-plane lidar data extraction technique used previously for SLAM mapping, a row guidance system is tested.
+        The algorithm also makes use of the on-board wheel encoders.
         Details of the algorithm used for this row navigation are published elsewhere \citep{Bell2016}.
-        % The key part of this algorithm was the calculation of the angular offset of the robot’s coordinate system from the row centreline.
-        Data captured while the platform navigated the kiwifruit orchard is presented as figure \ref{fig:lastLidarFrame}.
+        A key modification to that algorithm was the calculation of the angular offset of the robot’s coordinate system from the row centre-line.
+        This was necessary due to the lidar not being mounted on the centreline of the platform.
+
+        A visualisation of data captured whilst navigating the kiwifruit orchard is presented as figure \ref{fig:lastLidarFrame}.
+        This algorithm was used to autonomously navigate \SI{20}{\kilo\meter} of kiwifruit orchards the platform and two smaller test platforms.
+        The method does not perform SLAM, so the visualised data represents only the current sensor input, i.e., previous sensor data is not considered.
+        Figure \ref{fig:lastLidarFrame} shows that while the algorithm is not perfect, it does a reasonable job at identifying orchard structure.
 
         \begin{figure}[htb]
             \centering
@@ -679,58 +691,20 @@
             \label{fig:lastLidarFrame}
         \end{figure}
 
-        % Row following was performed by calculating the steering angle from the sum of the proportional control signals for the linear and angular offsets of the robot from the row centreline.
-
-        % A 3D lidar navigation algorithm was developed and tested on smaller robot platforms, as described by Bell et al. \citep{Bell2016}.
-        % The key part of this algorithm was the calculation of the angular offset of the robot’s coordinate system from the row centreline.
-        % This algorithm attempted to extract the posts and trees from the lidar data and then find the angle between posts and trunks in the same treeline. The key steps of the algorithm were:
-        % \begin{enumerate}
-        % \item Clusters of close consecutive points were found in each plane of the 3D lidar data using the method described by Scarfe [24]⁠.
-        % \item Clusters with a length greater than a threshold were deemed to be unlikely to be row defining features, such as posts or trunks; as a result, these clusters were removed.
-        % % \item Any clusters within a set distance of a set number of other clusters were also removed because these clusters could be a part of the clouds of data, which are returned from non structure defining features such as the kiwifruit canopy or the ground. An example result after this step for a single plane of the 3D lidar data is shown in Figure \ref{fig:singlePlaneExtraction}.
-        % \item The clusters from multiple planes were grouped based on a threshold distance between clusters.
-        % \item The heights of the resulting groups from step 4 were compared to a threshold to determine which were posts and trees. An example result after this step for a single frame of 3D lidar data is shown in Figure \ref{fig:lastLidarFrame}.
-        % \item Using the data from feature extraction, each cluster’s nearest neighbour was found. This step was taken because most posts and trunks are closer to other posts or trunks in the same tree-line than to an adjacent tree-line. This suggests that the angle between nearest neighbours should also be the angle of the tree-line.
-        % \item Nearest neighbours that were further apart than the row width were rejected to eliminate the possibility of using neighbours that were not in the same tree-line.
-        % \item The angles between the resulting nearest neighbours were calculated.
-        % \item The mode of the calculated angles was taken to be the current estimate of the angular offset of the robot from the row centreline.
-        % \end{enumerate}
-
-        % Once the angular offset was found, the linear offset of the robot’s coordinate system origin from the row centreline was calculated. The steps used were:
-        % \begin{enumerate}
-        % \item The clusters belonging to the current row were found using the angular offset and the maximum row width for the orchard.
-        % \item Lines were fitted to the treelines on the left and right sides of the row.
-        % \item The row centreline was found as the average line from the left and right treelines.
-        % \item The displacement of the robot centre from the row centreline was calculated.
-        % \end{enumerate}
-
-        % Row following was performed by calculating the steering angle from the sum of the proportional control signals for the linear and angular offsets. Row end detection was performed by detecting a volume of free space above the 3D lidar sensor. Row end driving was performed by driving a sequence of set curvature movements, while performing obstacle avoidance.
-
-        % The autonomous driving algorithm described here has been used to drive 20 km autonomously on three different robot platforms, including the AMMP, in two different real kiwifruit orchards. This driving was performed using just lidar and encoder data.
-
-        % \begin{figure}[htb]
-        %     \centering
-        %     \includegraphics[width=\linewidth]{imgs/photos/lastLidarFrame.png}
-        %     \caption{
-        %         A single plane of 3D laser scanner data (red) with the points found by feature extraction highlighted in white, nearest neighbours indicated with blue and the detected row centreline (green arrow).
-        %     }
-        %     \label{fig:lastLidarFrame}
-        % \end{figure}
-
 \subsection{Sensor Selection Conclusions}
-    The results from prototype algorithms indicate that the multi-layer lidar combined with encoder feedback are feasible selections for performing mapping, localisation and autonomous driving in kiwifruit orchards.
-    A combination of 2D cameras and neural networking also appears to be suitable for both row following and object detection.
+    The results from prototype algorithms indicate that the multi-layer lidar combined with encoder feedback are feasible selections for performing mapping and localisation.
+    This sensor combination alone have proven successful autonomous driving in kiwifruit orchards.
+    A combination of 2D cameras and neural networking was suitable for object detection and classification.
+    The possibility of using this as a means of generating a path for row following is being tested and is likely to be published in future.
 
 	% Object detection using a combination of colour cameras and neural networks in kiwifruit orchards .
-	Given these results with prototyping algorithms for the navigation system, it was decided to proceed with using cameras, 3D lidar and encoders as the primary sensors for the navigation system.
+	Based on our test results for the navigation system, it was decided to proceed with using cameras, 3D lidar and encoders as the primary sensors for the navigation system.
     The autonomous driving algorithm described here has been used to drive 20 km autonomously on three different robot platforms, including the AMMP, in two different real kiwifruit orchards. This driving was performed using just lidar and encoder data.
 
 
 
-\section{System Architecture}
-\label{sect:hardware}
-
-    \newcommand{\rpm}{\raisebox{.2ex}{$\scriptstyle\pm$}}
+\section{Hardware and Software Architecture}
+\label{sect:architecture}
 
     \begin{figure}[htb]
         \centering
@@ -738,13 +712,23 @@
         \caption{Hardware level system diagram showing the types of interfaces and relative relations on the platform.}
         \label{fig:system_diagram}
     \end{figure}
-    Sub-systems on the platform, including the drive system, are connected to the system PC via a CAN bus, as shown in figure \ref{fig:system_diagram}.
-    The CANopen protocol has been implemented which offers message type prioritisation and a standardised way of sharing process data.
-    Messages on the bus during operation are restricted to commands, syncronisation messages, and status updates.
-    Relay modules connected to the bus allow the system to control the power to its on-board power supplies, motor controllers, park brakes, and lights.
-    They also monitor the timing of synchronisation messages transmitted by the system PC and will enter an error state if the timing falls outside set limits.
-    These messages must be transmitted every \SI{20}{\milli\second}, with a maximum allowable error of \rpm \SI{5}{\milli\second} \colorbox{red}{check these figures}.
-    Entering an error state results in the motor controllers being disabled, park brakes engaged, and power to the power supplies being cut.
+
+    This section briefly explains the hardware and software architecture of the platform.
+    Mostly the platform uses standardised protocols and software frameworks, but the general arrangement is explained.
+
+    The platform is centrally controlled by an x86 based small form factor PC running the server version of Ubuntu 16.04.
+    That computer is connected to both an on-board Ethernet network and a CAN bus.
+    Low-level sub-systems on the platform, such as motor controllers and relays, are connected to the main PC via a CAN bus, as shown in figure \ref{fig:system_diagram}.
+    
+    A second computer dedicated to processing sensing data for autonomous navigation is connected to the platform's main PC via Ethernet.
+    The open source Robotic Operating System (ROS) is used to facilitate communicate between both computers and between software nodes within each machine.
+    Figure \ref{fig:system_diagram_software} shows a simplified passage of information entering through navigation sensors, being passed between various nodes, and finally being fed the the motor controllers.
+    % For simplicity it omits interface nodes, those used solely to interface the device to the ROS network.
+
+    Relay modules connected via CAN bus allow the main PC to toggle power to on-board power supplies, motor controllers, park brakes, and lights.
+    The modules also monitor the timing of synchronisation messages transmitted by the main PC every \SI{20}{\milli\second} onto the bus.
+    If the module does not receive a syncronisation message for \SI{100}{\milli\second} it will enter an error state.
+    That state will result in the motor controllers and on-board power supplies being shut off and the park brakes engaged.
 
     \begin{figure}[htb]
         \centering
@@ -753,44 +737,39 @@
         \label{fig:system_diagram_software}
     \end{figure}
 
-    A computer dedicated to processing sensing data related to navigation is connected to the platform's ``System PC'' via Ethernet.
-    The open source Robotic Operating System (ROS) is used to facilitate communicate between the two computers.
-    Not only is ROS used for inter-computer communication, but also within separate software nodes running on the same machine.
-    Figure \ref{fig:system_diagram_software} shows the flow of data from various sources to the motor controllers.
-    For simplicity it omits interface nodes, those used solely to interface the device to the ROS network.
-
-    To maximise code reusablility, each device on the platform has its own node dedicated to publishing device data or subscribing to generated device commands.
-    Examples of such devices are CAN adapters, motor controllers, wireless controllers, lidar, encoders.
+    To maximise code reusablility, each device on the platform has its own ROS node dedicated to publishing device data or subscribing to generated device commands.
+    Examples of such devices are CAN adapters, motor controllers, wireless controllers, lidar, and encoders.
     Nodes are also used to transform or perform calculations on available data as well as pass it between nodes written in either C++ or Python.
 
-    In addition to the drive commands generated by the ``Drive PC'', a safety rated wireless controller lets the operator generate commands by joystick.
-    The controller also has a mode selector that selects which commands are fed through to the motor drivers.
-    An emergency stop button on the controller means that the platform can be stopped at any time.
+    In addition to the drive commands generated by the navigation system, a safety rated wireless controller lets the operator generate commands by joystick.
+    The controller has a mode switch which allows the operator to select between joystick and autonomous operation.
+    An emergency stop button on the controller allows the operator to stop the platform at any time.
 
 
 \section{Autonomous Driving}
 \label{sect:autonomous}
-    Using the row following algorithm developed for sensor testing, map based autonomous navigation of a kiwifruit orchard demonstrated with two additions to the software.
-    These additions were the detection of a row's end and a method for turning between rows.
-    Using the developed navigation approaches, the platform presented here was able to navigate an orchard block unassisted.
+    Using the row following algorithm developed for sensor testing, map based autonomous navigation of a kiwifruit orchard was implemented.
+    This implementation required two key additions in order for the platform to become fully autonomous.
+    These were the detection of a row's end and a method for turning between rows.
+    Using the developed navigation approaches, the platform presented here is able to navigate the test orchard block unassisted.
+    The test block consists of approximately \SI{1}{\kilo\meter} of total traversable length spread over 10 rows.
 
-    Detection of the end of a row was made by detecting a minimum volume of free space above the multi-layer lidar.
-    This equates to the lidar searching for a lack of canopy above the robot.
-    This makes use of the multi-layer lidar, where layers above the horizontal are used as an `absence of canopy' detector.
+    Detection of the end of a row was made by detecting a minimum volume of free space above the multi-layer lidar (Velodyne VLP-16).
+    In simple terms, this equates to searching for a lack of canopy above the robot.
+    This approach makes use of the multi-layer lidar, where layers above the horizontal are used as an `absence of canopy' detector.
 
     Turns between rows were performed by driving a sequence of set curvature movements while performing obstacle avoidance.
     The set movements were recorded in a map file which were carried out by the platform on a turn-by-turn basis.
     A turn sequence would have the platform drive at a given angle for a given distance or until a given turn angle had been reached.
     Each row turn could contain any number of turn sub-manovours.
     On completion of the turn, the row following mode was entered which then guides the platform through the row.
-
     Figure \ref{fig:suzy_turning} shows the platform performing a row-end turn under autonomous control.
 
     \begin{figure}[htb]
         \centering
         \includegraphics[width=\linewidth]{imgs/photos/suzy_turning.jpg}
         \caption{
-            Photo showing the platform performing a row-end turn
+            Photo of the platform autonomously performing a row-end turn.
         }
         \label{fig:suzy_turning}
     \end{figure}
@@ -800,13 +779,13 @@
     In this work, a platform designed specifically for driving through pergola style kiwifruit orchards has been presented.
     The platform has the capability to carry payloads of \SI{600}{\kilo\gram} through these orchards without performance degradation.
     Sensors suitable for autonomous navigation have been selected, trialled and demonstrated as being useful as a means of navigating in this environment.
-    Convolutional neural networks applied to monocular image data proved to be a promising technique for row navigation.
-    By processing multi-layer lidar data, the platform was able to sucessfully and reliably navigate an entire orchard block without intervention.
+    Convolutional neural networks applied to monocular image data proved to be a promising technique for row navigation and further work in this area is under-way.
+    By processing multi-layer lidar data, the platform was able to successfully and reliably navigate an entire orchard block without intervention.
 
 
 \section*{Acknowledgements}
 This research was supported by the New Zealand Ministry for Business, Innovation and Employment (MBIE) on contract UOAX1414.
-The authors acknowledge contributions from Phillip Ross, Gordon Neshausen, Josh Barnett and Erin Simms in the design and fabrication of the platform.
+The authors acknowledge contributions from Phillip Ross, Gordon Neshausen, Josh Barnett, and Erin Simms who were involved with the design and fabrication of the platform.
 
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal sections
