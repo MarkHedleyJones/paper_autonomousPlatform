@@ -134,13 +134,12 @@
 
 \begin{abstract}
 %% Text of abstract
-    Systems for performing horticultural tasks usually require a means of locomotion through the environment.
-    One approach is to directly integrate a drive system, thereby increasing the overall complexity and development risk of such a project.
-    We present a generic platform designed to carry task specific robots through pergola style kiwifruit orchards.
-    By separating the task of locomotion from other duties, a more modular and robust system overall is obtained.
-    Sensors suited for autonomous navigation within this environment are selected and their suitability within a kiwifruit orchard is tested.
-    Details of the platform's internal architecture is discussed.
-    The presented platform has self-navigated through a test orchard unassisted and is capable of carrying a \SI{1000}{\kilo\gram} payload.
+    Systems for performing horticultural tasks usually require a means of locomotion through their environment.
+    One approach is to directly integrate a drive system, thereby increasing overall complexity and development risk.
+    We present a generalised platform designed to carry task specific robots through pergola style kiwifruit orchards.
+    The selection of sensors best suited for autonomous navigation in this environment is discussed and presented with in-orchard test results.
+    Details of the platform's software and hardware architecture is also discussed.
+    The series-hybrid platform we present can reliably self-navigate through a test orchard unassisted and is capable of carrying a \SI{1000}{\kilo\gram} payload.
 \end{abstract}
 
 \begin{keyword}
@@ -171,11 +170,12 @@
 
     Automation in kiwifruit harvesting and pollinating demands computer control, state-of-the-art manipulators, and convolutional neural networks.
     These systems are bulky and have specific geometric requirements dictated by the environment and the tasks they perform.
-    They share the requirements of transport to and from orchards, electrical power, and air pressure, but differ in they way they move when in the orchard.
+    They share the requirements of transport in and around orchards, electrical power, and air pressure.
+    However, they differ in the way they move when in the orchard.
     Pollinating modules, developed as part of a wider project, move at a well-known velocity with minimum changes in angle.
-    This differs from the separately developed harvesting module that advances a set distance between stationary harvest cycles.
+    This differs from a harvesting module, also developed as part of a wider project, that advances a set distance between stationary harvest cycles.
     % The duration of such harvesting cycles are determined by the number of fruit available during any particular cycle.
-    As the harvester is designed to be autonomous, there must be communication between the platform and harvester to trigger forward movement between cycles.
+    As our harvester is designed to be autonomous, there must be communication between the platform and harvester to trigger forward movement between cycles.
     Therefore, to be truely autonomous, the harvesting module requires the platform it sits on to also be autonomous.
 
     It has been stated that ``since the robot development already includes a high complexity, the application itself should be of comparably low complexity'' \citep{Ruckelshausen2009}.
@@ -183,7 +183,7 @@
     The platform presented here simply needs to transport task specific modules autonomously through kiwifruit orchards.
 
     The development of autonomous vehicles in agriculture is not new, but much of the literature relates to manned vehicles converted to drive-by-wire.
-    This work details the development of a purpose-built platform build for navigating kiwifruit orchards grown in a pregola style.
+    This work details the development of a purpose-built platform built for navigating pergola style kiwifruit orchards.
 
     \begin{figure}[htb]
         \centering
@@ -227,63 +227,63 @@
         During the previous year, some of these authors published details of a much simpler robot named `Weedy' \citep{Klose2008}, also an open field crop based sensing platform.
 
         Of particular relevance to this work is that of Scarfe et~al.\@ on an autonomous kiwifruit picking robot \citep{scarfe2009, Scarfe2012}.
-        That work involved the creation of a hydraulically driven platform with two wheel steering to which four fruit harvesting arms were integrated.
-        While that platform was designed to navigate kiwifruit orchards autonomously, its ability to do was not proven.
+        That work involved the creation of a hydraulically driven platform with two wheel steering to which fruit harvesting arms were integrated.
+        While that platform was designed to navigate kiwifruit orchards autonomously, its ability to do so was not tested.
         That platform relied on an internal combustion engine for on-board power generation.
         Like the platform presented here, it was designed specifically for use in kiwifruit orchards.
 
         Most recently, \cite{Bawden2017} present their field crop robot - Agbot~II.
         For traction it uses two driven wheels in a differential drive configuration, with two castor wheels for support.
         It is battery powered and designed to autonomously return to a shipping container sized shelter with in-built solar powered charging station.
-        The platform is comprised of two side modules and a wide centre-piece that bridges the side modules.
-        The side modules contain the drive system, whereas the centre-piece is designed to be specific to the application.
-        The choice of drive system geometry has considerably reduced the robot's complexity and weight over the designs previously discussed.
+        Their platform is comprised of two side modules and a wide centrepiece that bridges the side modules.
+        These side modules contain the drive system, whereas the centre-piece is designed to be specific to the application.
+        This choice of drive system has considerably reduced the robot's complexity and weight over the designs previously discussed.
 
         \cite{Blackmore2007} envisaged significant reductions in production costs for agricultural robotics by repurposing parts already in use in the agricultural and automotive industry.
         While not a physical component, the CAN bus is one such technology borrowed from the automotive industry used in low-level communication.
-        Many of the platforms reviewed, especially the more recent ones, made use of this system.
+        Many of the platforms reviewed, especially the more recent ones, made use of this communication bus.
 
-        Platforms designed for open field crops appear to favor four-wheel steering over two wheel steering - with the exception of the Agbot II.
+        Note that the platforms designed specifically for open field crops appear to favor four-wheel steering over two wheel steering - with the exception of the Agbot II.
         The use of simulation tools allowed the creators of BoniRob to develop and test their mobility system without physical hardware.
 
 
     \subsection{Sensors for Row Based Navigation in Orchards}
 
-        Sensor combinations for orchard based row detection fall into two three categories; camera based, lidar based, or a combination of the two.
+        Sensor combinations for orchard based row detection fall into three categories; camera based, lidar based, or a combination of the two.
         The following section summarises a review of row detection efforts in orchards using these techniques.
         % Lidar come in two flavours: single-plane, and multi-layer.
 
         \cite{Subramanian2006} tested both camera based guidance and lidar (Sick LMS-200) based guidance systems in a citrus fruit orchard.
-        Sensors were trialled separately on a tractor retrofitted with a fly-by-wire system.
+        Sensors were trialled separately on a tractor retrofitted with a drive-by-wire system.
         Their vehicle was able to navigate a small and simplified path using both machine vision and lidar based approaches at speeds of up to \SI{4.4}{\meter\per\second}.
         Lidar proved more accurate until the point at which the lidar's data transfer rate became a limiting factor.
         The 2D camera based approach was favorable after this point.
         They suggest that combining the two systems would give more robust guidance as well as providing the ability to detect obstacles.
         No mention of the ability for the image based approach to cope with varying lighting conditions is made.
 
-        \cite{Barawid2007} demonstrate the use of data from a single-plane lidar (Sick LMS-219) being used to control a drive-by-wire tractor through an orchard.
+        \cite{Barawid2007} demonstrate the use of data from a single-plane lidar (Sick LMS-219) being used to guide a drive-by-wire tractor through an orchard.
         Their results show real-time processing of lidar data is sufficient to navigate an orchard at \SI{0.36}{\meter\per\second} (\SI{1.3}{\kilo\meter\per\hour}).
 
         \cite{Hansen2011} show the use of a single-plane lidar (Sick LMS-200) for vehicle localisation in an orchard.
-        Also in 2011, two groups publish work on the generation of centre-lines from camera data of orchard rows.
+        Also in 2011, two groups publish work on the generation of centre lines from camera data taken in orchard rows.
         \cite{He2011} uses traditional machine vision, where \cite{Torres2011} makes use of neural network based image processing.
         Both methods generate valid paths, alghouth He et~al.\@ note that theirs may not be suitable when the envirnoment background becomes complex.
 
         The work of \cite{Scarfe2012}, combined traditional camera based image processing techniques with a single-plane lidar (Sick LMS-111).
-        The image based approach failed to cope with variability in lighting conditions, however the lidar proved useful for detecting the trunks and posts of the row.
+        The image based approach failed to cope with variability in lighting conditions, however the lidar proved useful for detecting the trunks and posts of kiwifruit rows.
 
         \cite{Freitas2012} focus on the detection of people and bins in the rows of an apple orchard using lidar (Sick LMS-291), a low-cost inertial measurement unit, and wheel encoders.
         Their algorithm was capable of detecting each obstacle class off-line using data captured from a test orchard.
 
         \cite{Zhang2014} used a lidar (Hokuyo UTM-30LX) to generate maps of an apple orchard with the aid of artificial landmarks.
         They use an actuated single-plane lidar to generate multi-plane data for use in row and landmark sensing.
-        Placing artificial land-marks in orchards is designed to reduce the effort required to create orchard maps for guidance systems.
+        Placing artificial land-marks in orchards was designed to reduce the effort required to create orchard maps for guidance systems.
 
         The following year, many of the same authors from  the paper presented by \cite{Zhang2014} write about their autonomous vehicle \citep{Bergerman2015}.
-        It describes a electric utility vehicle converted to fly-by-wire with the addition wheel encoders for odometry and a single-plane lidar (Sick LMS-111).
+        It describes a electric utility vehicle converted to drive-by-wire with the addition wheel encoders for odometry and a single-plane lidar (Sick LMS-111).
         While not able to detect obstacles in real-time, their previous work processing off-line data \citep{Freitas2012} has potential to be integrated with the addition of extra on-platform computing capability.
 
-        Most recently, \cite{Sharifi2015} write about a method to generate a centre-lines from 2D images of orchard rows.
+        Most recently, \cite{Sharifi2015} write about a method to generate centre-lines from 2D images of orchard rows.
         Like the work of \cite{He2011}, the technique offers a way to generate paths from a single camera image without resorting to neural networks.
         However, their future work focuses on increasing robustness to variations in lighting conditions, which indicates issues in this area.
         They state their system has use in being complementary to lidar based navigation.
@@ -302,7 +302,7 @@
         A feasibility analysis by \cite{Pedersen2006} highlighted the use of RTK-GPS systems as a significant cost in yearly subscriptions alone.
         % \cite{Torii2000} suggests a combination of both RTK-GPS and machine vision systems to be the most promising system going forward based on reductions in costs and increases in performance of these systems.
         While \cite{Li2009} concludes that either GPS and machine vision, or GPS and lidar will be used together as a development trend.
-        Based on the high ongoing cost and increased receptin requirements we discount the use of an RTK-GPS system, but still consider the use of GPS in-orchard.
+        Based on the high ongoing cost and increased reception requirements we discount the use of an RTK-GPS system, but still consider the use of GPS in-orchard.
 
 \section{Platform Design}
 
@@ -329,7 +329,7 @@
         This allows the vehicle to pivot about the centre of the rear wheels during tight turns, during which its turning circle is equal to twice the vehicle's length.
         % This range in steering angle allows the vehicle to place the centre of rotation at the mid-point between its rear wheels during its tightest turn.
         % At this steering angle, .
-        Implementing four wheel steering would allow the centre of rotation to move to the centre of the vehicle, halving the turning circle.
+        Implementing four wheel steering would allow the centre of rotation to move to the centre of the vehicle, effectively halving the turning circle.
         However, headlands in kiwifruit orchards are sized for tractors to turn between rows; tractors which use two-wheel steering geometries.
         Implementing a two wheel steering system removes the need to develop the ``non-trivial'' control strategies and increases the usable platform area.
         A differential drive, or skid steer, system was expected to cause ground damage to a level considered unacceptable to orchard owners.
@@ -337,7 +337,7 @@
         Bin lifting forks are fitted to the area between the rear wheels.
         This area is sized to accommodate a kiwifruit bin.
         The lifter is actuated by two vertically mounted pneumatic cylinders and is controlled by a standard pneumatic valve block.
-        In future, the platform is expected to have the ability to pick and place bins autonomously while operating in the orchard.
+        In future, the platform is expected to have the ability to pick and place bins autonomously while operating in an orchard.
 
         Other than its tires, the platform has no suspension.
         It features a front pivoting axle that ensures that a minimum of three wheels are always in contact with the ground.
@@ -347,23 +347,68 @@
         In total, the drive system can continuously deliver \SI{25.6}{\kilo\watt} of power and \SI{3.3}{\kilo\newton\meter} of torque.
         Based on these specifications it is capable of accelerating from a stand-still to its maximum speed at an incline of \SI{20}{\degree} whilst carrying a \SI{600}{\kilo\gram} payload in \SI{2.0}{\second}.
 
-        A power generation unit including a petrol engine (Honda GX-690), air compressor (Rotorcomp NK-1), and electrical alternator (Heinzmann PMSG-150) sits over the front pivoting axle.
-        The drive shafts of each are connected by a heavy-duty timing belt.
-        The compressor and alternator are activated electronically by an embedded controller module.
+        A power generation unit including a petrol engine (Honda GX-690), air compressor (Rotorcomp NK-1), and electrical generator (Heinzmann PMSG-150) sits over the front pivoting axle.
+        The drive shafts of the three units are connected by a heavy-duty timing belt.
+        The compressor and alternator are engaged electronically by an embedded controller module.
         This power generation controller module is connected to the rest of the system via CAN bus.
         
         Fuel and compressed air tanks sit over the right-hand rear wheel, visible in figure \ref{fig:suzy}.
-        Electrical energy from the power generation unit is fed directly into the battery modules, making this a series-hybrid configuration.
+        Electrical energy from the power generation unit is fed directly into the battery modules in a series-hybrid configuration. 
         The fuel tank can hold approximately \SI{60}{\litre} of petrol, allowing the platform to operate continuiously for an estimated period of up to \SI{48}{\hour} under light loads.
         Two battery modules attached to the sides of the chassis each house fifteen lithium-iron-phosphate (LiFePO$_{\text{4}}$) batteries which are connected together in series.
-        The batteries used (Winston/Thundersky WB-LYP90AHA) have a nominal voltage of \SI{3.2}{\volt} and a capacity of \SI{90}{\ampere\hour}.
-        This results in a nominal bus voltage of \SI{96}{\volt} and a total electrical capacity of \SI{8.64}{\kilo\watt\hour}
-        
+        These batteries (Winston/Thundersky WB-LYP90AHA) have a nominal voltage of \SI{3.2}{\volt} and a capacity of \SI{90}{\ampere\hour}.
+        This results in a nominal bus voltage of \SI{96}{\volt} and a total electrical capacity of \SI{8.64}{\kilo\watt\hour}.
 
         Unloaded, the machine has an estimated mass of \SI{850}{\kilo\gram}, including the power generation unit.
         It is capable of carrying a \SI{1000}{\kilo\gram} payload.
         The mass of a standard bin of kiwifruit can be as much as \SI{400}{\kilo\gram}, leaving \SI{600}{\kilo\gram} for modules.
         % With that load, the platform's maneuverability and ability to brake or accelerate was not noticeably affected.
+
+    \subsection{System Architecture}
+    \label{sect:architecture}
+
+        \begin{figure}[htb]
+            \centering
+            \includegraphics[width=\linewidth]{imgs/system_diagram/diagram_v3.pdf}
+            \caption{Hardware level system diagram showing the types of interfaces and relative relations on the platform.}
+            \label{fig:system_diagram}
+        \end{figure}
+
+        This section briefly explains the hardware and software architecture of the platform.
+        Standardised protocols and software frameworks are employed where possible, supplemented with custom solutions where needed.
+
+        The platform is centrally controlled by an x86 based small-form-factor PC running Ubuntu 16.04 server.
+        That computer is connected to both an on-board Ethernet network and a CAN bus.
+        Low-level sub-systems on the platform, such as motor controllers and relays, are connected to this main PC via a CAN bus, as shown in figure \ref{fig:system_diagram}.
+        
+        A second computer dedicated to processing sensing data for autonomous navigation is connected to the platform's main PC via Ethernet.
+        It too is an x86 based PC running Ubuntu, but uses a micro-ATX form-factor with a Nvidia GTX 1070 graphics card.
+        The open source Robotic Operating System (ROS) is used to facilitate communication between both computers and between software nodes within each machine.
+        Figure \ref{fig:system_diagram_software} shows a simplified passage of information entering through navigation sensors, being passed between various nodes, and finally being fed the the motor controllers.
+        % For simplicity it omits interface nodes, those used solely to interface the device to the ROS network.
+
+        Relay modules connected via CAN bus allow the main PC to toggle power to on-board power supplies, motor controllers, park brakes, and lights.
+        The modules also monitor the timing of synchronisation messages transmitted by the main PC onto the CAN bus, which should occur every \SI{20}{\milli\second}.
+        Once a module detects an absence of synchronisation messages for \SI{100}{\milli\second} or longer it enters a defined error state.
+        % If the module does not receive a syncronisation message for \SI{100}{\milli\second} it will enter an error state.
+        That state will result in the motor controllers and on-board power supplies being shut off and the park brakes engaged.
+        This checking ensures that if the main PC becomes unresponsive that the system is shut down in a timely manner.
+
+        \begin{figure}[htb]
+            \centering
+            \includegraphics[width=\linewidth]{imgs/system_diagram/software.pdf}
+            \caption{High level system diagram showing software architecture in terms of the manual and autonomous drive system.}
+            \label{fig:system_diagram_software}
+        \end{figure}
+
+        To maximise code reusablility, each device on the platform has its own ROS node dedicated to publishing device data or subscribing to generated device commands.
+        Examples of such devices are CAN adapters, motor controllers, wireless controllers, lidar, and encoders.
+        Nodes are also used to transform or perform calculations on available data as well as pass it between nodes written in either C++ or Python.
+        For instance, as shown in figure \ref{fig:system_diagram_software}, one node is responsible for transforming steering input data to individual wheel velocities and positions based on Ackermann calculations.
+
+        In addition to the drive commands generated by the navigation system, a safety rated wireless controller lets the operator generate commands via joystick.
+        The controller also has a mode switch which allows the operator to select between manual and autonomous control.
+        An emergency stop button on the controller allows platform to be shut-down at any time.
 
 
 \section{Navigation Sensors}
@@ -700,53 +745,6 @@
 	% Based on these results it was decided to continue testing cameras and multi-plane lidar as the primary sensors for the navigation system.
     % The autonomous driving algorithm described has been used to drive 20 km autonomously on three different robot platforms, including the AMMP, in two different kiwifruit orchards.
     % This driving was performed using just lidar and encoder data.
-
-
-
-\section{System Architecture}
-\label{sect:architecture}
-
-    \begin{figure}[htb]
-        \centering
-        \includegraphics[width=\linewidth]{imgs/system_diagram/diagram_v3.pdf}
-        \caption{Hardware level system diagram showing the types of interfaces and relative relations on the platform.}
-        \label{fig:system_diagram}
-    \end{figure}
-
-    This section briefly explains the hardware and software architecture of the platform.
-    Standardised protocols and software frameworks are employed where possible, supplemented with custom solutions where needed.
-
-    The platform is centrally controlled by an x86 based small form factor PC running the server version of Ubuntu 16.04.
-    That computer is connected to both an on-board Ethernet network and a CAN bus.
-    Low-level sub-systems on the platform, such as motor controllers and relays, are connected to the main PC via a CAN bus, as shown in figure \ref{fig:system_diagram}.
-    
-    A second computer dedicated to processing sensing data for autonomous navigation is connected to the platform's main PC via Ethernet.
-    The open source Robotic Operating System (ROS) is used to facilitate communication between both computers and between software nodes within each machine.
-    Figure \ref{fig:system_diagram_software} shows a simplified passage of information entering through navigation sensors, being passed between various nodes, and finally being fed the the motor controllers.
-    % For simplicity it omits interface nodes, those used solely to interface the device to the ROS network.
-
-    Relay modules connected via CAN bus allow the main PC to toggle power to on-board power supplies, motor controllers, park brakes, and lights.
-    The modules also monitor the timing of synchronisation messages transmitted by the main PC onto the CAN bus, which should occur every \SI{20}{\milli\second}.
-    Once a module detects an absence of synchronisation messages for \SI{100}{\milli\second} or longer it enters a defined error state.
-    % If the module does not receive a syncronisation message for \SI{100}{\milli\second} it will enter an error state.
-    That state will result in the motor controllers and on-board power supplies being shut off and the park brakes engaged.
-    This checking ensures that if the main PC becomes unresponsive that the system is shut down in a timely manner.
-
-    \begin{figure}[htb]
-        \centering
-        \includegraphics[width=\linewidth]{imgs/system_diagram/software.pdf}
-        \caption{High level system diagram showing software architecture in terms of the manual and autonomous drive system.}
-        \label{fig:system_diagram_software}
-    \end{figure}
-
-    To maximise code reusablility, each device on the platform has its own ROS node dedicated to publishing device data or subscribing to generated device commands.
-    Examples of such devices are CAN adapters, motor controllers, wireless controllers, lidar, and encoders.
-    Nodes are also used to transform or perform calculations on available data as well as pass it between nodes written in either C++ or Python.
-    For instance, as shown in figure \ref{fig:system_diagram_software}, one node is responsible for transforming steering input data to individual wheel velocities and positions based on Ackermann calculations.
-
-    In addition to the drive commands generated by the navigation system, a safety rated wireless controller lets the operator generate commands by joystick.
-    The controller has a mode switch which allows the operator to select between joystick and autonomous operation.
-    An emergency stop button on the controller allows the operator to stop the platform at any time.
 
 
 \section{Autonomous Driving}
