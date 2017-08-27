@@ -135,7 +135,7 @@
 \begin{abstract}
 %% Text of abstract
     Systems for performing horticultural tasks usually require a means of locomotion through their environment.
-    One approach is to directly integrate a drive system, thereby increasing overall complexity and development risk.
+    One approach is to directly integrate a drive system at the expense of increasing overall complexity and development risk.
     We present a generalised platform designed to carry task specific robots through pergola style kiwifruit orchards.
     The selection of sensors best suited for autonomous navigation in this environment is discussed and presented with in-orchard test results.
     Details of the platform's software and hardware architecture is also discussed.
@@ -212,24 +212,24 @@
         The vehicle presented by \cite{Pedersen2002} was designed to follow pre-defined GPS based paths through row-crops, but the authors found that this was impractical without a dedicated row guidance sensor.
         They proposed a revised design that featured a row guidance sensor, a new drive system with four wheel steering, and a Controller Area Network (CAN) bus for low level communication.
 
-        Two years later, the revised design proposed by \cite{Pedersen2002} is presented by \cite{Bak2004}.
+        Two years later, the revised design proposed by \cite{Pedersen2002} was presented by \cite{Bak2004}.
         The authors noted that the control strategy for the four independently controlled wheels was non-trivial.
         The GPS receiver on this platform utilised Real Time Kinematic (RTK) corrections from a base station.
         RTK-GPS is capable of providing positioning with accuracies of \SI{2}{\centi\meter}.
 
         In 2009, details of BoniRob were published by \cite{Ruckelshausen2009}.
-        Similar to the unit presented by \cite{Bak2004}, it features a gyroscope, RTK-GPS for localisation, a CAN bus for low level communication, and four wheel steering.
+        Similar to the unit presented by \cite{Bak2004}, it featured a gyroscope, RTK-GPS for localisation, a CAN bus for low level communication, and four wheel steering.
         What makes BoniRob particularly interesting is its ability to alter its track-width by actuating the arms to which the wheels were attached.
-        It is battery powered, but can also be fitted with a \SI{2.8}{\kilo\watt} petrol generator.
-        It is capable of carrying a \SI{150}{\kilo\gram} payload in its dedicated module space.
-        Like the robots before it, BoniRob is designed for use on open field crops.
+        A \SI{2.8}{\kilo\watt} petrol generator could be mounted to its chassis, additional to its on-board batteries.
+        It was capable of carrying a \SI{150}{\kilo\gram} payload in its dedicated module space.
+        Like the robots before it, BoniRob was designed for use on open field crops.
         It introduced the use of both single plane and multi-layer laser range scanning, known as lidar, for perception and row detection.
         During the previous year, some of these authors published details of a much simpler robot named `Weedy' \citep{Klose2008}, also an open field crop based sensing platform.
 
         Of particular relevance to this work is that of Scarfe et~al.\@ on an autonomous kiwifruit picking robot \citep{scarfe2009, Scarfe2012}.
-        That work involved the creation of a hydraulically driven platform with two wheel steering to which fruit harvesting arms were integrated.
+        That work involved the creation of a hydraulically driven platform, with two wheel steering, to which fruit harvesting arms were integrated.
         While that platform was designed to navigate kiwifruit orchards autonomously, its ability to do so was not tested.
-        That platform relied on an internal combustion engine for on-board power generation.
+        The platform had an internal combustion engine for on-board power generation.
         Like the platform presented here, it was designed specifically for use in kiwifruit orchards.
 
         Most recently, \cite{Bawden2017} present their field crop robot - Agbot~II.
@@ -237,26 +237,26 @@
         It is battery powered and designed to autonomously return to a shipping container sized shelter with in-built solar powered charging station.
         Their platform is comprised of two side modules and a wide centrepiece that bridges the side modules.
         These side modules contain the drive system, whereas the centre-piece is designed to be specific to the application.
-        This choice of drive system has considerably reduced the robot's complexity and weight over the designs previously discussed.
+        The choice of drive system has considerably reduced the robot's complexity and weight over designs previously discussed.
 
         \cite{Blackmore2007} envisaged significant reductions in production costs for agricultural robotics by repurposing parts already in use in the agricultural and automotive industry.
         While not a physical component, the CAN bus is one such technology borrowed from the automotive industry used in low-level communication.
-        Many of the platforms reviewed, especially the more recent ones, made use of this communication bus.
+        Many of the platforms reviewed, especially the more recent ones, made use of this communication system.
 
-        Note that the platforms designed specifically for open field crops appear to favor four-wheel steering over two wheel steering - with the exception of the Agbot II.
+        There appears to be a trend where platforms designed specifically for open field crops favor four-wheel steering over two wheel steering, with the exception of the Agbot II.
         The use of simulation tools allowed the creators of BoniRob to develop and test their mobility system without physical hardware.
 
 
     \subsection{Sensors for Row Based Navigation in Orchards}
 
-        Sensor combinations for orchard based row detection fall into three categories; camera based, lidar based, or a combination of the two.
+        Sensor combinations for orchard based row detection mostly fall into three categories; camera based, lidar based, or a combination of the two.
         The following section summarises a review of row detection efforts in orchards using these techniques.
         % Lidar come in two flavours: single-plane, and multi-layer.
 
-        \cite{Subramanian2006} tested both camera based guidance and lidar (Sick LMS-200) based guidance systems in a citrus fruit orchard.
+        \cite{Subramanian2006} tested both camera and lidar (Sick LMS-200) based guidance systems in a citrus fruit orchard.
         Sensors were trialled separately on a tractor retrofitted with a drive-by-wire system.
-        Their vehicle was able to navigate a small and simplified path using both machine vision and lidar based approaches at speeds of up to \SI{4.4}{\meter\per\second}.
-        Lidar proved more accurate until the point at which the lidar's data transfer rate became a limiting factor.
+        Their vehicle was able to navigate a small and simplified path using both machine vision and lidar based approaches at speeds of up to \SI{4.4}{\meter\per\second} (\SI{15}{\kilo\meter\per\hour}).
+        Lidar proved more accurate the lidar's data transfer rate became a limiting factor.
         The 2D camera based approach was favorable after this point.
         They suggest that combining the two systems would give more robust guidance as well as providing the ability to detect obstacles.
         No mention of the ability for the image based approach to cope with varying lighting conditions is made.
@@ -276,11 +276,11 @@
         Their algorithm was capable of detecting each obstacle class off-line using data captured from a test orchard.
 
         \cite{Zhang2014} used a lidar (Hokuyo UTM-30LX) to generate maps of an apple orchard with the aid of artificial landmarks.
-        They use an actuated single-plane lidar to generate multi-plane data for use in row and landmark sensing.
+        They used an actuated single-plane lidar to generate multi-plane data for use in row and landmark sensing.
         Placing artificial land-marks in orchards was designed to reduce the effort required to create orchard maps for guidance systems.
 
         The following year, many of the same authors from  the paper presented by \cite{Zhang2014} write about their autonomous vehicle \citep{Bergerman2015}.
-        It describes a electric utility vehicle converted to drive-by-wire with the addition wheel encoders for odometry and a single-plane lidar (Sick LMS-111).
+        It describes an electric utility vehicle converted to drive-by-wire with the addition wheel encoders for odometry and a single-plane lidar (Sick LMS-111).
         While not able to detect obstacles in real-time, their previous work processing off-line data \citep{Freitas2012} has potential to be integrated with the addition of extra on-platform computing capability.
 
         Most recently, \cite{Sharifi2015} write about a method to generate centre-lines from 2D images of orchard rows.
@@ -326,10 +326,10 @@
         Steering angles are controlled using the front two wheels which are actuated independently by brushless AC motors.
         The ability to actuate the angles individually simplifies the mechanical geometry needed to coordinate steering, particularly at extreme angles.
         Both steered wheels have the freedom to rotate \SI{340}{\degree}, limited by mechanical stops.
-        This allows the vehicle to pivot about the centre of the rear wheels during tight turns, during which its turning circle is equal to twice the vehicle's length.
+        This allows the vehicle to pivot about the centre of the rear wheels during tight turns, where its turning circle would be twice the vehicle's length.
         % This range in steering angle allows the vehicle to place the centre of rotation at the mid-point between its rear wheels during its tightest turn.
         % At this steering angle, .
-        Implementing four wheel steering would allow the centre of rotation to move to the centre of the vehicle, effectively halving the turning circle.
+        Implementing four wheel steering would allow the centre of rotation to move to the centre of the vehicle, halving the turning circle.
         However, headlands in kiwifruit orchards are sized for tractors to turn between rows; tractors which use two-wheel steering geometries.
         Implementing a two wheel steering system removes the need to develop the ``non-trivial'' control strategies and increases the usable platform area.
         A differential drive, or skid steer, system was expected to cause ground damage to a level considered unacceptable to orchard owners.
@@ -340,8 +340,8 @@
         In future, the platform is expected to have the ability to pick and place bins autonomously while operating in an orchard.
 
         Other than its tires, the platform has no suspension.
-        It features a front pivoting axle that ensures that a minimum of three wheels are always in contact with the ground.
-        Each wheel is mounted directly to a 40:1 fixed ratio planetary gearbox connected to a permanent magnet brushless AC motor.
+        It features a front pivoting axle that ensures a minimum of three wheels are always in contact with the ground.
+        Each wheel is mounted directly to a 40:1 fixed-ratio planetary gearbox connected to a permanent magnet brushless AC motor.
         This specific gearbox-motor combination limits the platform to a maximum speed of \SI{10}{\kilo\meter\per\hour}.
         The lack of suspension is not an issue when operating in orchards at this speed.
         In total, the drive system can continuously deliver \SI{25.6}{\kilo\watt} of power and \SI{3.3}{\kilo\newton\meter} of torque.
@@ -355,9 +355,11 @@
         Fuel and compressed air tanks sit over the right-hand rear wheel, visible in figure \ref{fig:suzy}.
         Electrical energy from the power generation unit is fed directly into the battery modules in a series-hybrid configuration. 
         The fuel tank can hold approximately \SI{60}{\litre} of petrol, allowing the platform to operate continuiously for an estimated period of up to \SI{48}{\hour} under light loads.
-        Two battery modules attached to the sides of the chassis each house fifteen lithium-iron-phosphate (LiFePO$_{\text{4}}$) batteries which are connected together in series.
-        These batteries (Winston/Thundersky WB-LYP90AHA) have a nominal voltage of \SI{3.2}{\volt} and a capacity of \SI{90}{\ampere\hour}.
-        This results in a nominal bus voltage of \SI{96}{\volt} and a total electrical capacity of \SI{8.64}{\kilo\watt\hour}.
+        Two battery modules attached to the sides of the chassis each house fifteen lithium-iron-phosphate (LiFePO$_{\text{4}}$) batteries connected in series.
+        The batteries (Winston/Thundersky WB-LYP90AHA) have a nominal voltage of \SI{3.2}{\volt} and a capacity of \SI{90}{\ampere\hour}.
+        Together they provide a nominal bus voltage of \SI{96}{\volt} and a total electrical capacity of \SI{8.64}{\kilo\watt\hour}.
+        From this, on-board power supplies can continuously deliver \SI{2.8}{\kilo\watt} at \SI{12}{\volt}, \SI{3.8}{\kilo\watt} at \SI{24}{\volt}, and \SI{3500}{\kilo\watt} at \SI{240}{\volt}AC, simultaniously, while driving.
+        A connection panel near the front of the platform holds the weather-sealed plugs through which these outputs are accessible.
 
         Unloaded, the machine has an estimated mass of \SI{850}{\kilo\gram}, including the power generation unit.
         It is capable of carrying a \SI{1000}{\kilo\gram} payload.
@@ -378,37 +380,42 @@
         Standardised protocols and software frameworks are employed where possible, supplemented with custom solutions where needed.
 
         The platform is centrally controlled by an x86 based small-form-factor PC running Ubuntu 16.04 server.
-        That computer is connected to both an on-board Ethernet network and a CAN bus.
-        Low-level sub-systems on the platform, such as motor controllers and relays, are connected to this main PC via a CAN bus, as shown in figure \ref{fig:system_diagram}.
+        That computer is connected to an on-board Ethernet network and CAN bus.
+        Low-level sub-systems on the platform, such as motor controllers and relays, are connected to this `Platform PC' via CAN bus.
+        Figure \ref{fig:system_diagram} shows a simplified arrangement of connections between each module.
         
-        A second computer dedicated to processing sensing data for autonomous navigation is connected to the platform's main PC via Ethernet.
+        A second computer dedicated to processing sensing data for autonomous navigation is connected to the platform PC via Ethernet.
         It too is an x86 based PC running Ubuntu, but uses a micro-ATX form-factor with a Nvidia GTX 1070 graphics card.
+        This PC is responsible for computing all aspects of autonomous navigation, such as connecting to sensors, filtering and processing data, generating drive commands, and communicating with the platform PC.
+        The graphics card is used to accelerate neural network algorithms and some image processing functions.
+
         The open source Robotic Operating System (ROS) is used to facilitate communication between both computers and between software nodes within each machine.
-        Figure \ref{fig:system_diagram_software} shows a simplified passage of information entering through navigation sensors, being passed between various nodes, and finally being fed the the motor controllers.
+        Figure \ref{fig:system_diagram_software} shows a simplified passage of information entering through navigation sensors, being passed between various nodes, and finally being fed to the motor controllers.
         % For simplicity it omits interface nodes, those used solely to interface the device to the ROS network.
 
-        Relay modules connected via CAN bus allow the main PC to toggle power to on-board power supplies, motor controllers, park brakes, and lights.
-        The modules also monitor the timing of synchronisation messages transmitted by the main PC onto the CAN bus, which should occur every \SI{20}{\milli\second}.
+        Relay modules allow the platform PC to toggle power to on-board power supplies, motor controllers, park brakes, and lights.
+        These modules also monitor the timing of synchronisation messages transmitted by the platform PC onto the CAN bus, which should occur every \SI{20}{\milli\second}.
         Once a module detects an absence of synchronisation messages for \SI{100}{\milli\second} or longer it enters a defined error state.
         % If the module does not receive a syncronisation message for \SI{100}{\milli\second} it will enter an error state.
-        That state will result in the motor controllers and on-board power supplies being shut off and the park brakes engaged.
-        This checking ensures that if the main PC becomes unresponsive that the system is shut down in a timely manner.
+        That state will result in the motor controllers and on-board power supplies being shut-off and the park brakes engaged.
+        Since power is required to disengage the park brakes, this equates to `shutting-off' the brake release mechanism.
+        This CAN bus monitoring ensures that the system is automatically shut down in a timely manner should the platform PC become unresponsive.
 
         \begin{figure}[htb]
             \centering
             \includegraphics[width=\linewidth]{imgs/system_diagram/software.pdf}
-            \caption{High level system diagram showing software architecture in terms of the manual and autonomous drive system.}
+            \caption{Simplified system diagram (partial) showing node connectivity used for manual and autonomous platform control.}
             \label{fig:system_diagram_software}
         \end{figure}
 
         To maximise code reusablility, each device on the platform has its own ROS node dedicated to publishing device data or subscribing to generated device commands.
-        Examples of such devices are CAN adapters, motor controllers, wireless controllers, lidar, and encoders.
+        Examples of such devices are interface adapters, motor controllers, wireless controllers, lidar, and encoders.
         Nodes are also used to transform or perform calculations on available data as well as pass it between nodes written in either C++ or Python.
-        For instance, as shown in figure \ref{fig:system_diagram_software}, one node is responsible for transforming steering input data to individual wheel velocities and positions based on Ackermann calculations.
+        For instance, as figure \ref{fig:system_diagram_software} shows, one node (`Ackermann kinematics') transforms steering input data to individual wheel velocities and positions based on Ackermann calculations.
+        This node could easily be swapped out for a different translator node during run-time without disturbing the system.
 
         In addition to the drive commands generated by the navigation system, a safety rated wireless controller lets the operator generate commands via joystick.
-        The controller also has a mode switch which allows the operator to select between manual and autonomous control.
-        An emergency stop button on the controller allows platform to be shut-down at any time.
+        The joystick also has a mode switch that allows the operator to select between manual and autonomous control, and an emergency stop button.
 
 
 \section{Navigation Sensors}
@@ -419,64 +426,19 @@
     Following this, we test each sensor's performance at capturing relevant data.
     Finally, we test the performance of promising sensors with prototype navigation and object detection algorithms.
     An evaluation of each sensor/algorithm is discussed in the context of orchard based navigation.
-%     Sensor selection was a critical early step in the development of the navigation system for the AMMP because it dictated the direction of subsequent research. Four approaches were used in the process of sensor selection:
-%     \begin{enumerate}
-%         \item Conducting a literature survey of sensors previously used in orchard navigation and similar applications.
-%         \item Surveying the features, specifications and cost of sensors available to purchase in order to perform a cost-benefit analysis.
-%         \item Purchasing some sensors, based on the cost-benefit analysis, collecting data from the sensors in kiwifruit orchards and analysing the data to ensure that the sensors perform according to some minimum criteria in the orchard environment.
-%         \item Developing simple algorithms for the sensor data to demonstrate that the sensors can perform the functions that they have been purchased for.
-%     \end{enumerate}
-
-% \subsection{Sensor Literature Survey}
-%     From the existing literature, it seems that the existing sensors that have been commonly used for orchard navigation systems are cameras, 2D lidar, GPS, inertial sensors and encoders for odometry. Some examples are summarised in Table \ref{table:1}.
-
-%     \begin{table}[h!]
-%     \caption{Examples of sensors used in previous orchard navigation research.}
-%     \centering
-%     \begin{tabular}{ | m{3.2cm} | m{3.2cm}| m{6.2cm} | }
-%     \hline
-%     \textbf{Reference} & \textbf{Application} & \textbf{Sensors} \\
-%     \hline
-%     Subramanian et al., 2006 & Citrus grove navigation & Angled down 2D lidar and camera (640x480) separately; steering encoder \\
-%     \hline
-%     Barawid et al., 2007 & Autonomous tractor & Horizontal 2D lidar \\
-%     \hline
-%     Hansen et al., 2011 & Autonomous orchard vehicle & Horizontal 2D lidar, fibre optic gyroscope, odometry (encoders) \\
-%     \hline
-%     He et al., 2011 & Orchard row detection & Camera (640x480) \\
-%     \hline
-%     Torres- Sospedra and Nebot, 2011 & Orchard row detection & Camera (640x480) \\
-%     \hline
-%     Scarfe, 2012 & Kiwifruit harvesting robot & Horizontal 2D lidar, fluxgate compass \\
-%     \hline
-%     Freitas et al., 2012  & Orchard robot obstacle detection & Angled down 2D lidar, wheel and steering encoders, low cost IMU \\
-%     \hline
-%     Zhang et al., 2013  & Orchard robot row following & Rotated 2D lidar; lidar rotation, wheel and steering encoders \\
-%     \hline
-%     Bergerman et al., 2015 & Autonomous orchard vehicle & Horizontal 2D lidar, wheel and steering encoders \\
-%     \hline
-%     Bargoti et al., 2015 & Apple orchard localisation & Vertical 2D lidar, Global Positioning Inertial Navigation System \\
-%     \hline
-%     Jagbrant et al., 2015 & Almond orchard localisation & Vertical 2D lidar, Global Positioning Inertial Navigation System \\
-%     \hline
-%     Sharifi and Chen, 2015 & Orchard row detection & Camera \\
-%     \hline
-%     \end{tabular}
-%     \label{table:1}
-%     \end{table}
 
 \subsection{Sensor Selection}
 
-    As the drive motors have built-in wheel encoders, basic odometry data is already available on the platform.
-    Encoders on driven wheels can give false readings if wheel slip occurs so can not be used for odomentry alone.
+    As the drive motors have in-built wheel encoders, basic odometry data is already available.
+    Encoders on driven wheels can give false readings if wheel slip occurs so should not be used for odomentry alone.
     However, the data they provide can be used to assist with mapping, localisation, and provide velocity feedback.
 
     Other sensors considered for inclusion are outlined in table \ref{table:sensor_comparison} with their associated issues.
-    Factors for selecting sensors to be trialled were strengths and weaknesses in the context of orchard use, reported usage in literature, and availability at a sensible price.
-    This investigation highlighted both lidar and 2D cameras as offering the most functionality for navigation and object detection.
-    Time-of-flight cameras were a compelling option based on a cost-benefit analysis; especially if less expensive units work in sunlight.
-    Because localisation is such a key functionality, the performance of GPS has also been evaluated in a kiwifruit orchard.
-    The following sections detail our experiences while trialling these sensors.
+    Selection factors were strengths and weaknesses in the context of orchard use, reported usage in literature, and availability at a sensible price.
+    The investigation highlighted both lidar and 2D cameras as offering high functionality for navigation and object detection.
+    Time-of-flight cameras were a compelling option based on a cost-benefit analysis; especially if cheaper units work in sunlight.
+    Because localisation is such a key functionality, the performance of GPS has also been evaluated.
+    % The following sections detail our experiences while trialling these sensors.
 
     \begin{table}[htbp]
         \centering
@@ -511,7 +473,7 @@
         The testing procedure first involved planning a path through a single row of a kiwifruit orchard and plotting it on a satellite map.
         Waypoints were placed along the row at the location of posts used to hold the canopy's structure.
         Relative distances between these waypoints were measured with a tape measure and recorded.
-        The receivers were then tested separately over the course of approximately two hours \color{red} Jamie, does this sound about right? I'm assuming the time here \color{black}.
+        The receivers were then tested separately over the course of approximately two hours \color{red} Jamie, does this sound about right? I'm assuming the time here\color{black}.
         Before testing, each unit was powered up and given \SI{30}{\minute} to initialise in an open area near the kiwifruit orchard.
         During testing, each unit was walked slowly along the pre-determined path with stops at each waypoint to provide time for a positional fix.
         The path was approximately \SI{500}{\meter} in length and took approximately \SI{15}{\minute} to complete, including stops at each waypoint.
@@ -521,7 +483,7 @@
             \centering
             \includegraphics{imgs/gps_path/gps_path.pdf}
             \caption{
-                Aerial view of a path through a kiwifruit orchard and the associated GPS data.
+                Aerial view of the path taken through the test orchard and the captured GPS data.
             }
             \label{fig:gpsResults}
         \end{figure}
@@ -532,10 +494,10 @@
 
 
         The Omnistar receiver appears to track the approximate path well, but the data is sparse with regular loss of signal after entering the orchard.
-    	The Ublox receiver collected more data than the Omnistar unit, but was much less accurate.
-        It may be possible to use a unit such as the Omnistar, which provided more accurate but fewer readings, as a sanity check for an approximate location within an orchard.
-        Overall the units could not be relied on for localisation under the kiwifruit canopy.
-        Based on these results GPS is considered unsuitable for use in this environment.
+    	The Ublox receiver collected more data, but was much less accurate.
+        It may be possible to use a unit such as the Omnistar, which provided fewer but more accurate readings, as a sanity check for an approximate location within orchards.
+        Overall the units could not be relied on for localisation in this environment.
+        Based on these results, we consider GPS to be unsuitable for use in kiwifruit orchards.
 
     \subsubsection{In-orchard Lidar Evaluation}
         Three lidar were evaluated, two single-plane lidar and one multi-layer lidar.
@@ -555,7 +517,7 @@
 
         The intention was to use lidar as a means of detecting structure defining features of the orchard, such as posts, trunks and hedges.
         Detecting these features should allow for row boundary detection, or general mapping and localisation.
-        However, both single-plane lidar produced clouds of unstructured data amongst the structured features, as shown in Figure \ref{fig:canopyDataCloud}.
+        However, both single-plane lidar produced clouds of unstructured data amongst the structured features, as shown in figure \ref{fig:canopyDataCloud}.
         This was caused by the lidar's scan plane intercepting with the canopy whilst driving over convex terrain.
         Similarly this issue arose on concave terrain where the plane intercepted with the ground, as depicted in figure \ref{fig:concaveSlope}.
 
@@ -575,8 +537,8 @@
         Referring to figure \ref{fig:concaveSlope}, that would correspond to the dotted line above the horizontal (dashed) line which intercepts with a row defining feature (tree trunk).
 
         In this environment a single-plane lidar could still be used at relatively short range as an independent channel of processing for redundancy or obstacle detection.
-        It was decided that a multi-layer lidar would be best suited for navigation due to its ability to to see more distant features on undulating ground in kiwifruit orchards.
-        For the platform, a single-plane lidar has been fitted to the front of the vehicle an object detector for possible collisions, and a multi-layer lidar has been fitted for use in navigation and general object detection.
+        It was decided that a multi-layer lidar would be best suited for navigation due to its ability to to see more distant features while driving on undulating ground.
+        For the platform, a single-plane lidar has been fitted to the front of the vehicle as an object detector for possible collisions, and a multi-layer lidar has been fitted for use in navigation and general object detection.
 
 
     \subsubsection{In-orchard Camera Evaluation}
@@ -586,8 +548,8 @@
 
         The time-of-flight based camera was the Basler TOF640-20GM-850NM.
         It provides range, intensity, and confidence data at a resolution of 640 by 480 pixels.
-        This specific model of camera was chosen for testing as it had previously proved useful when collecting depth data of kiwifruit canopies.
-        It had been operated under different lighting conditions and exhibited minimal occurrences of data loss.
+        This specific model was chosen as it had previously proved useful when collecting depth data of kiwifruit canopies.
+        During that time it had been operated under different lighting conditions and exhibited minimal occurrences of data loss.
         However, these tests revealed that in both direct sunlight and overcast conditions there was significant data loss.
 
         The 3D stereo camera tested was an Intel RealSense R200.
@@ -600,20 +562,20 @@
         These were the Basler Dart daA1600-60uc, Flir CM3-U3-13S2C-CS, and Logitech C920 cameras.
         Like the lidar tests, each camera was driven through the orchard at a height of \SI{0.8}{\meter} from the ground.
         The Logitech C920 suffered from significant motion blur.
-        Being a consumer grade web-camera this was not surprising, it also does lacks a hardware trigger interface.
+        Being a consumer grade web-camera this was not surprising; it also does lacks a hardware trigger interface.
         A hardware trigger becomes important if the camera is used in stereo vision applications.
         The Basler and Flir cameras both produced images of sufficient quality.
         The Basler offering was favored for its later model image sensor.
 
-        Overall, traditional 2D camera images were deemed to be the most sited for object detection and classification.
+        Overall, traditional 2D camera images were deemed to be the most suited for object detection and classification.
         This was verified by processing the data using readily accessible detection algorithms such as convolutional neural networks discussed later.
 
 \subsection{Sensor Demonstration by Prototype Algorithm}
 
-    Basic tests indicated that multi-layer lidar and 2D cameras were the most appropriate for use as primary navigation sensors.
-    Further use with prototype navigation algorithms tested that these apparent sensor benefits translated into practical advantages.
-    The three goals for the navigation system are:
+    Basic tests indicated that multi-layer lidar and 2D cameras were best suited for use as primary in-orchard navigation sensors.
+    Further testing with prototype navigation algorithms ensured that these apparent sensor benefits translated into practical advantages.
 
+    The three goals for the navigation system are:
     \begin{itemize}
         \item object detection and classification,
         \item mapping and localisation, and
@@ -630,9 +592,9 @@
         % convolutional layers at the input and fully connected layers at the output.
     	FCN-8s performs semantic segmentation, which is per pixel classification of images.
 
-        To train the FCN-8s network, the same image dataset used to assess camera performance in section \ref{sect:camera_evaluation} was hand labeled.
+        To train the FCN-8s network, the same image dataset used to assess camera performance earlier was hand labeled.
     	Labeling involved drawing object outlines in each image, filling those outlines with colours corresponding to the object's type, and filling any non-labeled areas with black.
-        Each image was then converted to a pallet indexed format.
+        Each image was then converted to a indexed colour format.
     	An example of an original image and its corresponding label image is shown as figure \ref{fig:segImgLabelPair}.
 
         \begin{figure}[htb]
@@ -649,13 +611,13 @@
             \centering
             \includegraphics[width=\linewidth]{imgs/photos/semSegRowResults.png}
             \caption{
-                An example result from the FCN-8 network, segmenting a kiwifruit orchard row.
+                An inference result from the FCN-8 network, segmenting a kiwifruit orchard row.
             }
             \label{fig:semSegRowResults}
         \end{figure}
 
         Initially, individual trees and posts in the kiwifruit orchard were labeled.
-    	We eventually found that labeling the entire tree-line as a single class gave more robust results.
+    	It was sound found that labeling the entire tree-line as a single class gave more robust results.
     	Objects labeled for this algorithm are:
         \begin{enumerate}
         \item traversable space (labeled as red),
@@ -667,26 +629,26 @@
     	Sample output from the trained network is presented as figure \ref{fig:semSegRowResults}.
 
     \subsubsection{Mapping and Localisation}
-        An existing Simultaneous Localisation and Mapping (SLAM) package was used to test the multi-plane lidar.
-        The package was Gmapping \citep{Grisetti2007}, implemented as a ROS package \citep{Gerkey2010}.
+        An existing Simultaneous Localisation and Mapping (SLAM) package was used to test the multi-layer lidar (Velodyne VLP-16).
+        The package used was Gmapping \citep{Grisetti2007}, implemented as a ROS package \citep{Gerkey2010}.
     	Required input for Gmapping is odometry data and a single plane of lidar data.
-        The obometry data was provided by the platform's built-in wheel encoders and the Velodyne VLP-16 lidar was used as the lidar.
-    	As this lidar has 16 scanning layers, a conversion was necessary to produce the single plane of lidar data required by Gmapping.
-
+        The obometry data was provided by the platform's in-built wheel encoders.
+    	
         \begin{figure}[htb]
             \centering
             \includegraphics[width=\linewidth]{imgs/single_plane_extraction/single_plane_extraction.pdf}
             \caption{
                 Processing of multi-layer lidar data into a single plane equivalent.
-                Blue points are those selected by the algorithm for further processing, whereas red are rejected.
+                Blue points are those selected by the algorithm for further processing, whereas red points are rejected.
             }
             \label{fig:singlePlaneExtraction}
         \end{figure}
 
+        As the lidar has 16 scanning layers, a conversion was necessary to produce the single plane of lidar data required by Gmapping.
         The simplest conversion from multi-layer data to a single plane would be to select one of the available planes and discard the remaining data.
         However, using this approach the system would loose any benefit offered by the multiple scanning layers.
         Instead, filtering the multi-layer data into a single plane was done by examining data from the centre four layers at each azimuth.
-        If the difference between all four points at a single angle falls below a certain threshold, the closest point is returned.
+        With this algorithm, if the range difference between all four points at a single angle falls below a certain threshold, the closest point is returned.
         Alternatively, if the spread in points is above the threshold, no points are returned.
         This eliminates points from sloped or varying surfaces while still returning points from objects with vertical structure.
         The effect of this is that the orchard's structural elements remain visible, but ground and canopy information are removed.
@@ -702,7 +664,7 @@
             \label{fig:gmapmap}
         \end{figure}
 
-        The resulting points are then fed into Gmapping as a single plane of data along with the platform's wheel encoder data.
+        The resulting points are then fed into Gmapping as a single plane along with the platform's wheel encoder data.
         Figure~\ref{fig:singlePlaneExtraction} shows the mothod's ability to filter structural elements from data containing significant canopy and ground reflections.
         Using this method, a SLAM based map of the orchard was created and is presented as figure \ref{fig:gmapmap}.
 
@@ -711,16 +673,15 @@
         \label{sect:row_tracking}
 
         Our final navigation test requires interpreting the orchard's structure for path generation.
-        Using the single-plane lidar data extraction technique used for SLAM mapping, a row guidance system is developed and tested.
+        Using filtering technique used for SLAM mapping, a row guidance system is developed and tested.
         This algorithm also makes use of the on-board wheel encoders.
-        Details of the algorithm used for this row navigation are published elsewhere \citep{Bell2016}.
+        Details of the algorithm used for this are published separately \citep{Bell2016}.
         A key modification to that algorithm was the calculation of the angular offset of the robot's coordinate system from the row centre-line.
-        This was necessary due to the lidar being mounted offset to the centreline of the platform.
+        This was necessary due to the lidar being mounted offset to the centreline of the platform \color{red}is this right?\color{black}.
 
         A visualisation of data captured whilst navigating the kiwifruit orchard is presented as figure \ref{fig:lastLidarFrame}.
-        This algorithm was used to autonomously navigate \SI{20}{\kilo\meter} of kiwifruit orchards using this platform and two smaller test platforms.
         The method does not perform SLAM, so the visualised data represents only the current sensor input, i.e., previous sensor data is not considered.
-        Figure \ref{fig:lastLidarFrame} shows that while the algorithm is not perfect, it does a reasonable job at identifying orchard structure and generating valid headings.
+        Figure \ref{fig:lastLidarFrame} shows that while the algorithm is not perfect, it does perform reasonably well at identifying orchard structure and generating valid headings.
 
         \begin{figure}[htb]
             \centering
@@ -736,10 +697,10 @@
         \end{figure}
 
 \subsection{Sensor Selection Conclusions}
-    The results from our prototype algorithms indicate that the multi-layer lidar combined with encoder feedback are useful for performing mapping and localisation.
+    The results from prototyped algorithms indicate that the multi-layer lidar combined with encoder feedback are useful for performing mapping and localisation.
     This combination alone has proven successful for autonomous driving in kiwifruit orchards.
     A combination of 2D cameras and neural networking was suitable for object detection and classification.
-    The possibility of using this as a means of generating a path for row following is being tested and is likely to be published in future.
+    Further research for using this as a means of generating a path for row following is underway and shall be published in future.
 
 	% Object detection using a combination of colour cameras and neural networks in kiwifruit orchards .
 	% Based on these results it was decided to continue testing cameras and multi-plane lidar as the primary sensors for the navigation system.
@@ -774,6 +735,8 @@
         \label{fig:suzy_turning}
     \end{figure}
 
+    This algorithm has been used to autonomously navigate over \SI{20}{\kilo\meter} of kiwifruit orchards with this platform and two smaller test platforms.
+
 
 \section{Conclusion}
     In this work, a platform designed specifically for driving through pergola style kiwifruit orchards has been presented.
@@ -785,7 +748,7 @@
 
 \section*{Acknowledgements}
 This research was supported by the New Zealand Ministry for Business, Innovation and Employment (MBIE) on contract UOAX1414.
-The authors acknowledge contributions from Phillip Ross, Gordon Neshausen, Josh Barnett, and Erin Simms who were involved with the design and fabrication of the platform.
+The authors acknowledge contributions from Phillip Ross, Gordon Neshausen, Josh Barnett, and Erin Simms who were involved with the design and fabrication of the platform, and Nicky Penhall for assistance training neural networks.
 
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal sections
