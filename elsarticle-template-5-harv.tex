@@ -180,7 +180,7 @@
     % Therefore, to be truely autonomous, the harvesting module requires the platform it sits on to also be autonomous.
 
     It has been stated that ``since the robot development already includes a high complexity, the application itself should be of comparably low complexity'' \citep{Ruckelshausen2009}.
-    By separating development of the base platform from the task-specific modules, risk of over-complexity is reduced by way of separation.
+    By separating development of the base platform from the task-specific modules, risk of over-complicating is reduced by way of separation.
     The platform presented here simply needs to navigate autonomously through kiwifruit orchards.
 
     The development of autonomous vehicles in agriculture is not new, but much of the literature relates to manned vehicles converted to drive-by-wire.
@@ -206,7 +206,7 @@
         It also featured a camera based row guidance system.
         It was capable of spraying individual plants whilst autonomously driving at \SI{0.69}{\meter\per\second} (\SI{2.5}{\kilo\meter\per\hour}).
 
-        Three years later, two autonomous robots designed for weed mapping and control were published \citep{Pedersen2002,Astrand2002}.
+        Three years later, two autonomous robots designed for weed mapping and control were documented \citep{Pedersen2002,Astrand2002}.
         These platforms had relatively simple chassis and drive systems as they were both at a prototype stage.
         Both featured two-wheel steering and were designed specifically for field crops.
         While both were battery powered, the platform presented by \cite{Astrand2002} could also be fitted with a combustion engine.
@@ -231,7 +231,7 @@
         That work involved the creation of a hydraulically driven platform, with two-wheel steering, to which fruit harvesting arms were integrated.
         While that platform was designed to navigate kiwifruit orchards autonomously, its ability to do so was not tested.
         The platform had an internal combustion engine for on-board power generation.
-        Like the platform presented here, it was designed specifically for use in kiwifruit orchards.
+        Like the platform presented here, it was designed specifically for use in pergola style kiwifruit orchards.
 
         Most recently, \cite{Bawden2017} present their field crop robot - Agbot~II.
         For traction it uses two driven wheels in a differential drive configuration, with two castor wheels for support.
@@ -265,12 +265,12 @@
         \cite{Barawid2007} demonstrate the use of data from a single-plane lidar (Sick LMS-219) to guide a drive-by-wire tractor through an orchard.
         Their results show real-time processing of lidar data is sufficient to navigate an orchard at \SI{0.36}{\meter\per\second} (\SI{1.3}{\kilo\meter\per\hour}).
 
-        
-        In 2011, Two groups publish work on the generation of centre lines from camera data taken in orchard rows.
+
+        In 2011, two groups published work on the generation of centre lines from camera data taken in orchard rows.
         \cite{He2011} uses traditional machine vision, where \cite{Torres2011} makes use of neural network based image processing.
         Both methods generate valid paths, although He et~al.\@ note that theirs may not be suitable when the environment background becomes complex.
         The neural network based approach of \cite{Torres2011} appears to cope with variations in lighting and orchard row variations.
-        Also in 2011, \cite{Hansen2011} show the use of a single-plane lidar (Sick LMS-200) for vehicle localisation in an orchard.
+        Also in 2011, \cite{Hansen2011} showed the use of a single-plane lidar (Sick LMS-200) for vehicle localisation in an orchard.
 
         The work of \cite{Scarfe2012}, combined traditional camera based image processing techniques with a single-plane lidar (Sick LMS-111).
         The image based approach failed to cope with variability in lighting conditions, however the lidar proved useful for detecting the trunks and posts in kiwifruit orchards.
@@ -354,14 +354,14 @@
         The drive shafts of the three units are connected with a heavy-duty timing belt.
         The engine, compressor, and alternator can be controlled electronically from an embedded controller module.
         This power generation controller module is connected to the rest of the system via CAN bus.
-        
+
         Fuel and compressed air tanks sit over the right-hand rear wheel, visible in figure \ref{fig:suzy}.
-        Electrical energy from the power generation unit is fed directly into the battery modules in a series-hybrid configuration. 
-        The fuel tank can hold approximately \SI{60}{\litre} of petrol, allowing the platform to operate continuiously for an estimated period of up to \SI{48}{\hour} under light loads.
+        Electrical energy from the power generation unit is fed directly into the battery modules in a series-hybrid configuration.
+        The fuel tank can hold approximately \SI{60}{\litre} of petrol, allowing the platform to operate continuously for an estimated period of up to \SI{48}{\hour} under light loads.
         Two battery modules attached to the sides of the chassis each house fifteen lithium-iron-phosphate (LiFePO$_{\text{4}}$) batteries connected in series.
         The batteries (Winston/Thundersky WB-LYP90AHA) have a nominal voltage of \SI{3.2}{\volt} and a capacity of \SI{90}{\ampere\hour}.
         Together they provide a nominal bus voltage of \SI{96}{\volt} and a total electrical capacity of \SI{8.64}{\kilo\watt\hour}.
-        From this, on-board power supplies can continuously deliver \SI{2.8}{\kilo\watt} at \SI{12}{\volt}DC, \SI{3.8}{\kilo\watt} at \SI{24}{\volt}DC, and \SI{3.5}{\kilo\watt} at \SI{240}{\volt}AC, simultaniously, while driving.
+        From this, on-board power supplies can continuously deliver \SI{2.8}{\kilo\watt} at \SI{12}{\volt}DC, \SI{3.8}{\kilo\watt} at \SI{24}{\volt}DC, and \SI{3.5}{\kilo\watt} at \SI{240}{\volt}AC, simultaneously, while driving.
         A connection panel near the front of the platform holds the weather-sealed plugs through which these outputs are accessible.
 
         Unloaded, the machine has an estimated mass of \SI{850}{\kilo\gram}, including the power generation unit and batteries.
@@ -386,7 +386,7 @@
         That computer is connected to an on-board Ethernet network and CAN bus.
         Low-level sub-systems on the platform such as motor controllers and relays are connected to this `Platform PC' via CAN bus.
         Figure \ref{fig:system_diagram} shows a simplified arrangement of connections between each module.
-        
+
         A second computer dedicated to the processing of sensing data for autonomous navigation is connected to the platform PC via Ethernet.
         It too is an x86 based PC running Ubuntu, but uses a microATX form-factor motherboard with a Nvidia GTX 1070 graphics card.
         This PC is responsible for computing all aspects of autonomous navigation, such as connecting to sensors, filtering and processing data, generating drive commands, and communicating with the platform PC.
@@ -604,7 +604,7 @@
             \includegraphics[width=\linewidth]{imgs/photos/segImgLabelPair_trimmed.png}
             % \includegraphics[width=\linewidth]{imgs/photos/segImg_sideBySide.png}
             \caption{
-                An input image (top) and labelled output (bottom) used to train the semantic segmentation network.
+                An input image (top) and labeled output (bottom) used to train the semantic segmentation network.
             }
             \label{fig:segImgLabelPair}
         \end{figure}
@@ -627,15 +627,15 @@
         \item the end of the current row (labeled as tan).
         \end{enumerate}
         Traversable space was defined as the ground area that the platform could drive directly to without collision.
-        These labelled images were then used to train the FCN-8s network.
+        These labeled images were then used to train the FCN-8s network.
     	Sample output from the trained network is presented as figure \ref{fig:semSegRowResults}.
 
     \subsubsection{Mapping and Localisation}
         An existing Simultaneous Localisation And Mapping (SLAM) package was used to test the multi-layer lidar.
         The package used was Gmapping \citep{Grisetti2007}, implemented as a ROS package \citep{Gerkey2010}.
     	Required input for Gmapping is odometry data and a single plane of lidar data.
-        The obometry data was provided by the platform's in-built wheel encoders.
-    	
+        The odometry data was provided by the platform's in-built wheel encoders.
+
         \begin{figure}[htb]
             \centering
             \includegraphics[width=\linewidth]{imgs/single_plane_extraction/single_plane_extraction.pdf}
@@ -667,7 +667,7 @@
         \end{figure}
 
         The filtered points are then fed into Gmapping as a single plane with data from the platform's wheel encoders.
-        Figure~\ref{fig:singlePlaneExtraction} shows the mothod's ability to filter structural elements from data containing significant canopy and ground reflections.
+        Figure~\ref{fig:singlePlaneExtraction} shows the method's ability to filter structural elements from data containing significant canopy and ground reflections.
         Using this method, a SLAM based map of the orchard was created and is presented as figure \ref{fig:gmapmap}.
 
 
@@ -692,7 +692,7 @@
                 Row detection from multi-plane lidar data.
                 Red points indicate non-structured data that have been ignored.
                 Blue points indicate orchard structure data used for row navigation.
-                Grey lines link orchard structure points by their nearest neighbours.
+                Grey lines link orchard structure points by their nearest neighbors.
                 The black arrow represents the centreline of the row current row.
             }
             \label{fig:lastLidarFrame}
@@ -719,10 +719,10 @@
     Put simply, this equates to searching for a lack of canopy above the robot.
     This approach makes use of the multi-layer lidar, where layers above the horizontal are used as an `absence of canopy' detector.
 
-    Turns between rows are performed by driving a series of set curvature movements while simultaniously performing lidar based obstacle avoidance.
+    Turns between rows are performed by driving a series of set curvature movements while simultaneously performing lidar based obstacle avoidance.
     The series of set turns are recorded in a map file which are followed by the platform at the end of each row.
     A turn sequence sees the platform drive with a given steering angle for a given distance or until a given heading is achieved.
-    Each row turn can contain any number of these sub-manovours.
+    Each row turn can contain any number of these sub-maneuvers.
     On completion of a turn, row following behavior is resumed which guides the platform through the row to the next turn.
     Figure \ref{fig:suzy_turning} shows the platform performing a row-end turn while under autonomous control.
 
