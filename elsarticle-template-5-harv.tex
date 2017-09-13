@@ -162,20 +162,20 @@
 \label{sect:intro}
     Short-term labor requirements within New Zealand's kiwifruit industry peak twice a year corresponding with the pollination and harvesting of kiwifruit.
     The majority of employment during these peaks is filled by seasonal or casual workers \citep{Timmins2009}.
-    As kiwifruit is the country's largest horticultural export by value \citep{StatisticsNewZealand2015}, automation in this industry will promote economic growth.
+    As kiwifruit is the country's largest horticultural export by value \citep{StatisticsNewZealand2015}, effective automation in this industry will promote economic growth.
     % The New Zealand government aims to double exports from its primary industries between 2012 and 2025 and is actively investing in programmes to achieve this \citep{MinistryPrimaryIndustries2015}.
 
     Previous work on automated kiwifruit harvesting has been demonstrated \citep{Scarfe2012}.
     That work presented a mobile platform with four integrated robot arms that were capable of harvesting kiwifruit from pergola style orchards.
     The platform presented here is a second generation of that unit.
     It increases modularity by separating the platform from the tasks it performs, namely harvesting and pollination.
-    This work discusses only the base platform, where details of modules for pollination and harvesting are published separately \citep{williams2017,Seabright2017}.
+    This paper discusses only the base platform, where details of modules for pollination and harvesting are published separately \citep{williams2017,Seabright2017}.
 
-    Automation in kiwifruit harvesting and pollinating demands computer control, state-of-the-art manipulators, and convolutional neural networks.
+    Automation in kiwifruit harvesting and pollinating demands computer control, state-of-the-art manipulators, and advanced vision based detection systems.
     These systems are bulky and have specific geometric requirements dictated by the environment and the tasks they perform.
     They share the requirements of transport in and around orchards, electrical power, and air pressure.
     However, they differ in the way they move when in the orchard.
-    Pollinating modules, developed as part of a wider project, move at a well-known velocity with minimum changes in angle.
+    Pollinating modules, developed as part of a wider project, move at a well-known velocity with minimum changes in steering angle.
     This differs from a harvesting module, also developed as part of a wider project, that advances a set distance between stationary harvest cycles.
     % The duration of such harvesting cycles are determined by the number of fruit available during any particular cycle.
     These modules are designed to work autonomously and therefore the platform they are attached to must also be autonomous.
@@ -183,11 +183,13 @@
     % Therefore, to be truely autonomous, the harvesting module requires the platform it sits on to also be autonomous.
 
     It has been stated that ``since the robot development already includes a high complexity, the application itself should be of comparably low complexity'' \citep{Ruckelshausen2009}.
-    By separating the development of the platform from other task-specific modules, the risk of a single part becomming overly complex is reduced.
+    By separating the development of the platform from other task-specific modules, the risk of a single part becoming overly complex is reduced.
     The platform presented here simply needs to navigate autonomously through kiwifruit orchards.
+    The design can be instantiated in different sizes and forms, providing a flexible modular capability.
 
     The development of autonomous vehicles in agriculture is not new, but much of the literature relates to manned vehicles converted to drive-by-wire.
     This work details the development of a platform built specifically for navigating pergola style kiwifruit orchards.
+    Key requirements for this platform are to: be capable of carrying a \SI{1000}{\kilo\gram} mass, pivot about the centre of the rear wheels, maximise the area available to task specific modules, and drive autonomously through pergola style kiwifruit orchards.
 
     \begin{figure}[htb]
         \centering
@@ -198,13 +200,14 @@
         \label{fig:suzy}
     \end{figure}
 
+
 \section{Related Work}
 \label{sect:review}
 
     \subsection{Purpose-built Autonomous Vehicles in Agriculture}
 
         The introduction of computers and digital camera technology during the 1980s sparked research into autonomous vehicles for agricultural use \citep{Li2009}.
-        When publishing details of an autonomous vehicle in 1999, Tillett et~al.\@ cites difficulties dealing with variability in lighting and the environment as the reason no commercial ready vehicles were available at the time.
+        When publishing details of an autonomous vehicle in 1999, Tillett et~al.\@ cite difficulties dealing with variability in lighting and the environment as the reason no commercially ready vehicles were available at the time.
         Their vehicle combined wheel encoders, a compass, and accelerometers for odometry information.
         It also featured a camera based row guidance system.
         It was capable of spraying individual plants whilst autonomously driving at \SI{0.69}{\meter\per\second} (\SI{2.5}{\kilo\meter\per\hour}).
@@ -332,7 +335,8 @@
         Steering angles are controlled using the front two wheels which are actuated independently by brushless AC motors.
         The ability to actuate the angles individually simplifies the mechanical geometry needed to coordinate steering, particularly at extreme angles.
         Both steered wheels have the freedom to rotate \SI{330}{\degree}, artificially limited by mechanical stops.
-        This allows the vehicle to pivot about the centre of the rear wheels during tight turns, where its turning circle would be twice the vehicle's length.
+        This satisfies the requirement for the vehicle to pivot about the centre of the rear wheels during tight turns.
+        During such a turn, where the centre of rotation is between the rear wheels, its turning circle is equal to twice the vehicle's length.
         % This range in steering angle allows the vehicle to place the centre of rotation at the mid-point between its rear wheels during its tightest turn.
         % At this steering angle, .
         Implementing four wheel steering would allow the centre of rotation to move to the centre of the vehicle, halving the turning circle.
@@ -367,8 +371,11 @@
         From this, on-board power supplies can continuously deliver \SI{2.8}{\kilo\watt} at \SI{12}{\volt}DC, \SI{3.8}{\kilo\watt} at \SI{24}{\volt}DC, and \SI{3.5}{\kilo\watt} at \SI{240}{\volt}AC, simultaneously, while driving.
         A connection panel near the front of the platform holds the weather-sealed plugs through which these outputs are accessible.
 
+        The chassis is made of laser cut and folded steel sections that have been welded together and powder coated.
+        Finite element analysis was used during the design to identify weak areas  helped capability of supporting the target mass of \SI{1000}{\kilo\gram}.
         Unloaded, the machine has an estimated mass of \SI{850}{\kilo\gram}, including the power generation unit and batteries.
-        It is capable of carrying a \SI{1000}{\kilo\gram} payload.
+        Testing of the platform's drive system and chassis was done by driving around a test area with a \SI{1000}{\kilo\gram} mass strapped to the platform's module area.
+        The test included three instances of emergency stopping while driving down a \SI{10}{\degree} slope at a speed of \SI{10}{\kilo\meter\per\hour}.
         The mass of a standard bin of kiwifruit can be as much as \SI{400}{\kilo\gram}, leaving \SI{600}{\kilo\gram} for modules.
         % With that load, the platform's maneuverability and ability to brake or accelerate was not noticeably affected.
 
