@@ -137,8 +137,8 @@
     Systems for performing autonomous horticultural tasks usually require a means of locomotion through their environment.
     One approach is to directly integrate a drive system, at the expense of increasing overall complexity and development risk.
     We present a generalised mobile platform designed to carry task specific robots through pergola style kiwifruit orchards.
-    The platform is general in the sense that it does not perform tasks.
-    It is intended only to navigate through orchards and be capable of carrying task specific modules.
+    The platform is general in the sense that it itself does not perform tasks.
+    It is intended solely to navigate through orchards and be capable of carrying robotic modules.
 
     The selection of sensors best suited for autonomous navigation in this environment is discussed and presented with in-orchard test results.
     Details of the platform's software and hardware architecture are also discussed.
@@ -185,7 +185,7 @@
     It has been stated that ``since the robot development already includes a high complexity, the application itself should be of comparably low complexity'' \citep{Ruckelshausen2009}.
     By separating the development of the platform from other task-specific modules, the risk of a single part becoming overly complex is reduced.
     The platform presented here simply needs to navigate autonomously through kiwifruit orchards.
-    The design can be instantiated in different sizes and forms, providing a flexible modular capability.
+    The design can be instantiated in different sizes and forms, providing flexible and modular capabilities.
 
     The development of autonomous vehicles in agriculture is not new, but much of the literature relates to manned vehicles converted to drive-by-wire.
     This work details the development of a platform built specifically for navigating pergola style kiwifruit orchards.
@@ -193,7 +193,8 @@
 
     \begin{figure}[htb]
         \centering
-        \includegraphics[width=\linewidth]{imgs/photos/suzy_general.jpg}
+        % \includegraphics[width=\linewidth]{imgs/photos/suzy_general.jpg}
+        \includegraphics[width=\linewidth]{imgs/photos/suzy_general_small.jpg}
         \caption{
             The robot platform driving through a pergola style kiwifruit orchard.
         }
@@ -336,7 +337,7 @@
         The ability to actuate the angles individually simplifies the mechanical geometry needed to coordinate steering, particularly at extreme angles.
         Both steered wheels have the freedom to rotate \SI{330}{\degree}, artificially limited by mechanical stops.
         This satisfies the requirement for the vehicle to pivot about the centre of the rear wheels during tight turns.
-        During such a turn, where the centre of rotation is between the rear wheels, its turning circle is equal to twice the vehicle's length.
+        During such a turn, where the centre of rotation is between the rear wheels, the turning circle is equal to twice the vehicle's length.
         % This range in steering angle allows the vehicle to place the centre of rotation at the mid-point between its rear wheels during its tightest turn.
         % At this steering angle, .
         Implementing four wheel steering would allow the centre of rotation to move to the centre of the vehicle, halving the turning circle.
@@ -365,18 +366,22 @@
         Fuel and compressed air tanks sit over the right-hand rear wheel, visible in figure \ref{fig:suzy}.
         Electrical energy from the power generation unit is fed directly into the battery modules in a series-hybrid configuration.
         The fuel tank can hold approximately \SI{60}{\litre} of petrol, allowing the platform to operate continuously for an estimated period of up to \SI{48}{\hour} under light loads.
+
         Two battery modules attached to the sides of the chassis each house fifteen lithium-iron-phosphate (LiFePO$_{\text{4}}$) batteries connected in series.
-        The batteries (Winston/Thundersky WB-LYP90AHA) have a nominal voltage of \SI{3.2}{\volt} and a capacity of \SI{90}{\ampere\hour}.
-        Together they provide a nominal bus voltage of \SI{96}{\volt} and a total electrical capacity of \SI{8.64}{\kilo\watt\hour}.
-        From this, on-board power supplies can continuously deliver \SI{2.8}{\kilo\watt} at \SI{12}{\volt}DC, \SI{3.8}{\kilo\watt} at \SI{24}{\volt}DC, and \SI{3.5}{\kilo\watt} at \SI{240}{\volt}AC, simultaneously, while driving.
+        Together, the batteries (Winston/Thundersky WB-LYP90AHA) provide a nominal bus voltage of \SI{96}{\volt} and a total electrical capacity of \SI{8.64}{\kilo\watt\hour}.
+        The battery pack was `bottom-balanced' before being fitted and no battery monitoring system is present on the platform.
+        The maximum and minimum pack voltage was determined by monitoring individual cell voltages during charge and discharge cycles.
+        From this battery pack, on-board power supplies can continuously deliver \SI{2.8}{\kilo\watt} at \SI{12}{\volt}DC, \SI{3.8}{\kilo\watt} at \SI{24}{\volt}DC, and \SI{3.5}{\kilo\watt} at \SI{240}{\volt}AC, simultaneously, while driving.
         A connection panel near the front of the platform holds the weather-sealed plugs through which these outputs are accessible.
 
-        The chassis is made of laser cut and folded steel sections that have been welded together and powder coated.
-        Finite element analysis was used during the design to identify weak areas  helped capability of supporting the target mass of \SI{1000}{\kilo\gram}.
+        The chassis was assembled from laser cut and folded steel sections that were welded together and powder coated.
+        Finite element analysis was used during its design to help identify areas that required further strengthening.
+        This helped to ensure the platform met its target carrying capacity of \SI{1000}{\kilo\gram}.
+        This capacity was chosen as the mass of a standard bin of kiwifruit can be as much as \SI{400}{\kilo\gram}, which leaves \SI{600}{\kilo\gram} for carrying modules.
+
         Unloaded, the machine has an estimated mass of \SI{850}{\kilo\gram}, including the power generation unit and batteries.
-        Testing of the platform's drive system and chassis was done by driving around a test area with a \SI{1000}{\kilo\gram} mass strapped to the platform's module area.
+        Testing of the drive system and chassis was performed by driving with a \SI{1000}{\kilo\gram} mass strapped to the platform's module area.
         The test included three instances of emergency stopping while driving down a \SI{10}{\degree} slope at a speed of \SI{10}{\kilo\meter\per\hour}.
-        The mass of a standard bin of kiwifruit can be as much as \SI{400}{\kilo\gram}, leaving \SI{600}{\kilo\gram} for modules.
         % With that load, the platform's maneuverability and ability to brake or accelerate was not noticeably affected.
 
     \subsection{System Architecture}
@@ -397,9 +402,9 @@
         Low-level sub-systems on the platform such as motor controllers and relays are connected to this `Platform PC' via CAN bus.
         Figure \ref{fig:system_diagram} shows a simplified arrangement of connections between each module.
 
-        A second computer dedicated to the processing of sensing data for autonomous navigation is connected to the platform PC via Ethernet.
+        A second computer dedicated to the processing of sensing data for autonomous navigation is connected to the Platform PC via Ethernet.
         It too is an x86 based PC running Ubuntu, but uses a microATX form-factor motherboard with a Nvidia GTX 1070 graphics card.
-        This PC is responsible for computing all aspects of autonomous navigation, such as connecting to sensors, filtering and processing data, generating drive commands, and communicating with the platform PC.
+        This PC is responsible for computing all aspects of autonomous navigation, such as connecting to sensors, filtering and processing data, generating drive commands, and communicating with the Platform PC.
         The graphics card is used to accelerate neural network algorithms and some image processing functions.
 
         The open source Robotic Operating System (ROS) is used to facilitate communication between both computers and between software nodes within each machine.
@@ -411,13 +416,13 @@
         For instance, as figure \ref{fig:system_diagram_software} shows, the `Ackermann kinematics' node transforms steering input data to individual wheel velocities and positions based on Ackermann calculations.
         This node could easily be swapped out for a different translator node during run-time without disturbing the system.
 
-        Relay modules allow the platform PC to toggle power to on-board power supplies, motor controllers, park-brakes, and lights.
-        These modules also monitor the timing of synchronisation messages transmitted by the platform PC onto the CAN bus, which should occur every \SI{20}{\milli\second}.
+        Relay modules allow the Platform PC to toggle power to on-board power supplies, motor controllers, park-brakes, and lights.
+        These modules also monitor the timing of synchronisation messages transmitted by the Platform PC onto the CAN bus, which should occur every \SI{20}{\milli\second}.
         Once a module detects an absence of synchronisation messages for \SI{100}{\milli\second} or longer it enters a defined error state.
         % If the module does not receive a syncronisation message for \SI{100}{\milli\second} it will enter an error state.
         That state will result in the motor controllers and on-board power supplies being shut-off and the park brakes engaged.
         Since power is required to disengage the park brakes, this equates to `shutting-off' the brake release mechanism.
-        CAN bus monitoring ensures that the system is automatically shut down in a timely manner should the platform PC become unresponsive.
+        CAN bus monitoring ensures that the system is automatically shut down in a timely manner should the Platform PC become unresponsive.
 
         \begin{figure}[htb]
             \centering
@@ -493,7 +498,8 @@
 
         \begin{figure}[htb]
             \centering
-            \includegraphics{imgs/gps_path/gps_path.pdf}
+            % \includegraphics{imgs/gps_path/gps_path.pdf}
+            \includegraphics{imgs/gps_path/gps_path_small.png}
             \caption{
                 Aerial view of the path taken through the test orchard and the captured GPS data.
             }
@@ -598,7 +604,7 @@
     \subsubsection{Object Detection and Classification}
 
         % Object detection and classification was firstly prototyped fully on the camera data.
-        Based on existing success using Convolutional Neural Networks (CNN) for image processing tasks \citep{LeCun2015}, a camera based system was chosen for object detection and classification.
+        Based on existing success using convolutional neural networks for image processing tasks \citep{LeCun2015}, a camera based system was chosen for object detection and classification.
     	The network architecture chosen was FCN-8s \citep{long2015}.
         It is a neural network made of convolutional layers without fully connected layers.
         % convolutional layers at the input and fully connected layers at the output.
@@ -687,7 +693,7 @@
         Our final navigation test requires interpreting the orchard's structure for the purpose of path generation.
         For this, a row guidance system was developed and tested.
         It uses the multi-layer to single-plane data filtering technique discussed previously.
-        This algorithm also makes use of the on-board wheel encoders.
+        This algorithm also makes use of the platform's on-board wheel encoders.
         Details of this algorithm have been published separately \citep{Bell2016}.
         The key function of this algorithm is computing the angular offset of the platform from the row's centre-line.
 
@@ -738,7 +744,8 @@
 
     \begin{figure}[htb]
         \centering
-        \includegraphics[width=\linewidth]{imgs/photos/suzy_turning.jpg}
+        % \includegraphics[width=\linewidth]{imgs/photos/suzy_turning.jpg}
+        \includegraphics[width=\linewidth]{imgs/photos/suzy_turning_small.jpg}
         \caption{
             Photo of the platform performing a row-end turn in the headland area of a kiwifruit orchard while under autonomous control.
         }
