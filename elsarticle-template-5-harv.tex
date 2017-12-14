@@ -119,7 +119,7 @@
 
 %% Group authors per affiliation:
 \author[UoW]{Mark H. Jones\corref{mjemail}}
-\cortext[mjemail]{markj@waikato.ac.nz}
+\cortext[mjemail]{MarkHedleyJones@gmail.com}
 
 \author[UoA]{Jamie Bell\corref{jbemail}}
 \cortext[jbemail]{jamie977@gmail.com}
@@ -171,7 +171,7 @@
     It increases modularity by separating the platform from the tasks it performs, namely harvesting and pollination.
     This paper discusses only the base platform, where details of modules for pollination and harvesting are published separately \citep{williams2017,Seabright2017}.
 
-    Automation in kiwifruit harvesting and pollinating demands computer control, state-of-the-art manipulators, and advanced vision based detection systems.
+    Automation in kiwifruit harvesting and pollination demands computer control, state-of-the-art manipulators, and advanced vision based detection systems.
     These systems are bulky and have specific geometric requirements dictated by the environment and the tasks they perform.
     They share the requirements of transport in and around orchards, electrical power, and air pressure.
     However, they differ in the way they move when in the orchard.
@@ -189,12 +189,12 @@
 
     The development of autonomous vehicles in agriculture is not new, but much of the literature relates to manned vehicles converted to drive-by-wire.
     This work details the development of a platform built specifically for navigating pergola style kiwifruit orchards.
-    Key requirements for this platform are to: be capable of carrying a \SI{1000}{\kilo\gram} mass, pivot about the centre of the rear wheels, maximise the area available to task specific modules, and drive autonomously through pergola style kiwifruit orchards.
+    Key requirements for this platform are to: be capable of carrying a \SI{1000}{\kilo\gram} mass, have a high degree of maneuverability, maximise area available to task specific modules, and navigate autonomously through pergola style kiwifruit orchards for extended periods.
 
     \begin{figure}[htb]
         \centering
-        % \includegraphics[width=\linewidth]{imgs/photos/suzy_general.jpg}
-        \includegraphics[width=\linewidth]{imgs/photos/suzy_general_small.jpg}
+        \includegraphics[width=\linewidth]{imgs/photos/suzy_general.jpg}
+        % \includegraphics[width=\linewidth]{imgs/photos/suzy_general_small.jpg}
         \caption{
             The robot platform driving through a pergola style kiwifruit orchard.
         }
@@ -236,14 +236,14 @@
 
         Of particular relevance to this work is that of Scarfe et~al.\@ on an autonomous kiwifruit picking robot \citep{scarfe2009, Scarfe2012}.
         That work involved the creation of a hydraulically driven platform, with two-wheel steering, to which fruit harvesting arms were integrated.
-        While that platform was designed to navigate kiwifruit orchards autonomously, its ability to do so was not tested.
+        While that platform was designed to navigate kiwifruit orchards autonomously, its ability to do so was not tested due to an outbreak of \textit{Pseudomonas syringae pv. actinidiae} (PSA) that closed access to kiwifruit orchards.
         The platform had an internal combustion engine for on-board power generation.
         Like the platform presented here, it was designed specifically for use in pergola style kiwifruit orchards.
 
         Most recently, \cite{Bawden2017} present their field crop robot - Agbot~II.
         For traction it uses two driven wheels in a differential drive configuration, with two castor wheels for support.
         It is battery powered and designed to autonomously return to a shipping container sized shelter with in-built solar powered charging station.
-        Their platform is comprised of two side modules and a wide centrepiece that bridges the side modules.
+        Their platform is comprised of two side modules bridged by a wide centrepiece which contains instrumentation.
         These side modules contain the drive system, whereas the centrepiece is designed to be specific to the application.
         The choice of drive system has considerably reduced the robot's complexity and weight over designs previously discussed.
 
@@ -336,11 +336,12 @@
         Steering angles are controlled using the front two wheels which are actuated independently by brushless AC motors.
         The ability to actuate the angles individually simplifies the mechanical geometry needed to coordinate steering, particularly at extreme angles.
         Both steered wheels have the freedom to rotate \SI{330}{\degree}, artificially limited by mechanical stops.
-        This satisfies the requirement for the vehicle to pivot about the centre of the rear wheels during tight turns.
+        This allows the vehicle to pivot about the centre of the rear wheels during tight turns.
+        Because of this, it is able to turn between rows of kiwifruit vines planted as little as \SI{3}{\meter} apart, satisfying maneuverability requirements.
         During such a turn, where the centre of rotation is between the rear wheels, the turning circle is equal to twice the vehicle's length.
         % This range in steering angle allows the vehicle to place the centre of rotation at the mid-point between its rear wheels during its tightest turn.
         % At this steering angle, .
-        Implementing four wheel steering would allow the centre of rotation to move to the centre of the vehicle, halving the turning circle.
+        Implementing four-wheel-steering would shift the pivot point to the vehicle's centre, roughly halving the turning circle's radius.
         However, headlands in kiwifruit orchards are sized for tractors to turn between rows; tractors with two-wheel steering geometries.
         Implementing a two wheeled steering system removes the need to develop the ``non-trivial'' control strategies and increases the usable platform area.
         A differential drive, or skid steer, system was expected to cause ground damage to a level considered unacceptable to orchard owners.
@@ -351,7 +352,7 @@
         In future, the platform is expected to have the ability to pick and place bins autonomously while operating in an orchard.
 
         Other than its tires, the platform has no suspension.
-        It features a front pivoting axle that ensures a minimum of three wheels are always in contact with the ground.
+        It features a front pivoting axle which ensures that all four wheels are always in contact with the ground.
         Each wheel is mounted directly to a 40:1 fixed-ratio planetary gearbox connected to a permanent magnet brushless AC motor.
         This specific gearbox-motor combination limits the platform to a maximum speed of \SI{10}{\kilo\meter\per\hour}.
         The lack of suspension is not an issue when operating in orchards at this speed.
@@ -369,7 +370,7 @@
 
         Two battery modules attached to the sides of the chassis each house fifteen lithium-iron-phosphate (LiFePO$_{\text{4}}$) batteries connected in series.
         Together, the batteries (Winston/Thundersky WB-LYP90AHA) provide a nominal bus voltage of \SI{96}{\volt} and a total electrical capacity of \SI{8.64}{\kilo\watt\hour}.
-        The battery pack was `bottom-balanced' before being fitted and no battery monitoring system is present on the platform.
+        The battery packs were `bottom-balanced' before being fitted and no cell-level voltage monitoring is present.
         The maximum and minimum pack voltage was determined by monitoring individual cell voltages during charge and discharge cycles.
         From this battery pack, on-board power supplies can continuously deliver \SI{2.8}{\kilo\watt} at \SI{12}{\volt}DC, \SI{3.8}{\kilo\watt} at \SI{24}{\volt}DC, and \SI{3.5}{\kilo\watt} at \SI{240}{\volt}AC, simultaneously, while driving.
         A connection panel near the front of the platform holds the weather-sealed plugs through which these outputs are accessible.
@@ -383,6 +384,18 @@
         Testing of the drive system and chassis was performed by driving with a \SI{1000}{\kilo\gram} mass strapped to the platform's module area.
         The test included three instances of emergency stopping while driving down a \SI{10}{\degree} slope at a speed of \SI{10}{\kilo\meter\per\hour}.
         % With that load, the platform's maneuverability and ability to brake or accelerate was not noticeably affected.
+
+        The battery pack voltage (\SI{96}{\volt} DC) introduced an electrical hazard that required risk mitigation procedures to be followed when working on the unit.
+        While essential, these procedures added complexities and delays during development that could have been avoided.
+        The authors suggest a pack voltage of \SI{48}{\volt} as a sensible alternative during a development phase as it bears a reduced risk of injury from electric shock.
+        This voltage is supported across manufacturers of motors, motor controllers, and power converters.
+
+        The series hybrid configuration allows the vehicle to drive and provide power to subsystems without the petrol engine.
+        This is useful in testing scenarios, where people are in close proximity to the vehicle, as it eliminates exhaust fumes and reduces both noise and vibration.
+        However, both robotic modules and the bin lifting mechanism require pneumatic air pressure to operate.
+        As the air compressor is belt driven from the petrol engine, it is necessary to frequently run the engine to provide air to these systems.
+        An electric air compressor would allow for the system to run without the petrol engine for much longer periods.
+        While this is a less energy efficient way of generating pneumatic pressure, it would provide a more workable environment during testing and development.
 
     \subsection{System Architecture}
     \label{sect:architecture}
@@ -411,7 +424,7 @@
         Figure \ref{fig:system_diagram_software} shows a simplified passage of information entering through navigation sensors, being passed between various nodes, and finally being fed to the motor controllers.
         % For simplicity it omits interface nodes, those used solely to interface the device to the ROS network.
         To maximise code reusablility, each device on the platform has its own ROS node dedicated to publishing device data or subscribing to generated device commands.
-        Examples of such devices being interface adapters, motor controllers, wireless controllers, lidar, and encoders.
+        Interface adapters, motor controllers, wireless controllers, lidar, and encoders are examples of such devices.
         Nodes are also used to transform or perform calculations on data and pass it between nodes written in either C++ or Python.
         For instance, as figure \ref{fig:system_diagram_software} shows, the `Ackermann kinematics' node transforms steering input data to individual wheel velocities and positions based on Ackermann calculations.
         This node could easily be swapped out for a different translator node during run-time without disturbing the system.
@@ -422,7 +435,7 @@
         % If the module does not receive a syncronisation message for \SI{100}{\milli\second} it will enter an error state.
         That state will result in the motor controllers and on-board power supplies being shut-off and the park brakes engaged.
         Since power is required to disengage the park brakes, this equates to `shutting-off' the brake release mechanism.
-        CAN bus monitoring ensures that the system is automatically shut down in a timely manner should the Platform PC become unresponsive.
+        CAN bus monitoring ensures that the system is automatically shut down should the Platform PC become unresponsive.
 
         \begin{figure}[htb]
             \centering
@@ -498,8 +511,8 @@
 
         \begin{figure}[htb]
             \centering
-            % \includegraphics{imgs/gps_path/gps_path.pdf}
-            \includegraphics{imgs/gps_path/gps_path_small.png}
+            \includegraphics{imgs/gps_path/gps_path.pdf}
+            % \includegraphics{imgs/gps_path/gps_path_small.png}
             \caption{
                 Aerial view of the path taken through the test orchard and the captured GPS data.
             }
@@ -550,12 +563,12 @@
         \end{figure}
 
         This issue was reduced by the use of a multi-layer lidar and post-processing.
-        Because of the 16 layers, it is possible to select the scan layer that gives the most useful viewing range.
+        Having 16 layers available meant it was possible to select the scan layer that gives the most useful viewing range.
         Referring to figure \ref{fig:concaveSlope}, that would correspond to the dotted line above the horizontal (dashed) line which intercepts with a row defining feature (tree trunk).
 
         It was decided that a multi-layer lidar would be best suited for navigation due to its ability to to see more distant features while driving on undulating ground.
         A single-plane lidar could still be used at short range as an independent channel of processing for redundancy or obstacle detection.
-        For the platform, a single-plane lidar has been fitted to the front of the vehicle as an object detector for possible collisions, and a multi-layer lidar has been fitted for use in navigation and general object detection.
+        For the platform, a single-plane lidar has been fitted as an object detector for possible collisions, and a multi-layer lidar has been fitted for use in navigation and general object detection.
 
 
     \subsubsection{In-orchard Camera Evaluation}
@@ -567,7 +580,7 @@
         It provides range, intensity, and confidence data at a resolution of 640 by 480 pixels.
         This specific model was chosen as it had previously proved useful when collecting depth data of kiwifruit canopies.
         During that time it had been operated under different lighting conditions and exhibited minimal occurrences of data loss.
-        However, these tests revealed that in both direct sunlight and overcast conditions there was significant data loss.
+        However, these navigation based tests revealed that in both direct sunlight and overcast conditions there was significant data loss.
 
         The 3D stereo camera tested was an Intel RealSense R200.
         It combines a stereo pair of infra-red cameras with a colour camera.
@@ -584,8 +597,8 @@
         The Basler and Flir cameras both produced images of sufficient quality.
         The Basler offering was favored for its later model image sensor.
 
-        Overall, the more industrial 2D camera images were deemed suitable for object detection and classification.
-        This was verified by processing the data using readily accessible detection algorithms such as convolutional neural networks discussed next.
+        Overall, the more industrial 2D camera images (from the Basler and Flir cameras) were deemed suitable for object detection and classification.
+        This was verified by processing the data using readily accessible detection algorithms such as convolutional neural networks (discussed next).
         Both the time-of-flight and 3D stereoscopic camera systems were deemed unsuitable based on the occurrences of data loss while operating in sunlight or overcast conditions.
 
 \subsection{Sensor Demonstration by Prototype Algorithm}
@@ -629,7 +642,7 @@
             \centering
             \includegraphics[width=\linewidth]{imgs/photos/semSegRowResults.png}
             \caption{
-                An example inference result from the trained FCN-8 network.
+                An example inference result from the trained FCN-8s network.
             }
             \label{fig:semSegRowResults}
         \end{figure}
@@ -662,7 +675,7 @@
             \label{fig:singlePlaneExtraction}
         \end{figure}
 
-        As the lidar (Velodyne VLP-16) has 16 scanning layers, a conversion was necessary to produce the single plane of data required by Gmapping.
+        As the multi-layer lidar has 16 scanning layers, a conversion was necessary to produce the single plane of data required by Gmapping.
         The simplest conversion from multi-layer data to a single plane would be to select one of the available planes and discard the remaining data.
         However, that approach would loose any benefit offered by the multiple scanning layers.
         Instead, filtering the multi-layer data into a single plane was done by examining data from the centre four scan layers at each azimuth.
@@ -690,7 +703,7 @@
     \subsubsection{Kiwifruit Orchard Row Tracking}
         \label{sect:row_tracking}
 
-        Our final navigation test requires interpreting the orchard's structure for the purpose of path generation.
+        Our final navigation test required interpreting the orchard's structure for the purpose of path generation.
         For this, a row guidance system was developed and tested.
         It uses the multi-layer to single-plane data filtering technique discussed previously.
         This algorithm also makes use of the platform's on-board wheel encoders.
@@ -731,7 +744,7 @@
     Using the row following algorithm developed for sensor testing, map based autonomous navigation of a kiwifruit orchard was implemented.
     Two key additions were required for the platform to navigate the orchard unassisted: the detection of a row's end and a method for turning between rows.
 
-    The detection of a row's end is made by detecting a minimum volume of free space above the multi-layer lidar (Velodyne VLP-16).
+    The detection of a row's end is made by detecting a minimum volume of free space above the multi-layer lidar.
     Put simply, this equates to searching for a lack of canopy above the robot.
     This approach makes use of the multi-layer lidar, where layers above the horizontal are used as an `absence of canopy' detector.
 
@@ -744,15 +757,15 @@
 
     \begin{figure}[htb]
         \centering
-        % \includegraphics[width=\linewidth]{imgs/photos/suzy_turning.jpg}
-        \includegraphics[width=\linewidth]{imgs/photos/suzy_turning_small.jpg}
+        \includegraphics[width=\linewidth]{imgs/photos/suzy_turning.jpg}
+        % \includegraphics[width=\linewidth]{imgs/photos/suzy_turning_small.jpg}
         \caption{
             Photo of the platform performing a row-end turn in the headland area of a kiwifruit orchard while under autonomous control.
         }
         \label{fig:suzy_turning}
     \end{figure}
 
-    Using the approaches developed here the platform is routinely able to navigate the test orchard block unassisted.
+    Using the approaches developed here, the platform is routinely able to navigate the test orchard block unassisted.
     This block is over \SI{1}{\kilo\meter} in total traversable length, spread over 10 rows.
     The developed algorithm has been used to autonomously control this platform and two smaller platforms through \SI{20}{\kilo\meter} of kiwifruit orchards.
 
@@ -760,6 +773,7 @@
 \section{Conclusion}
     In this work, a platform designed specifically for driving through pergola style kiwifruit orchards has been presented.
     The platform has the capability of carrying a payload of up to \SI{1000}{\kilo\gram} through these orchards with minimal performance degradation.
+    We identify \SI{48}{\volt} as a sensible bus voltage on development vehicles such as this.
     Sensors suitable for autonomous navigation have been selected, trialled and demonstrated as being useful as a means of navigating in this environment.
     Convolutional neural networks applied to monocular images proved to be a promising technique for row navigation and further work in this area is under-way.
     By processing multi-layer lidar data the platform presented here can reliably navigate an orchard block without human intervention.
