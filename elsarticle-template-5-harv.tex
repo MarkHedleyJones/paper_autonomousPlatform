@@ -170,19 +170,20 @@
     % The New Zealand government aims to double exports from its primary industries between 2012 and 2025 and is actively investing in programmes to achieve this \citep{MinistryPrimaryIndustries2015}.
 
     Research towards automated kiwifruit harvesting on a purpose built platform has previously been demonstrated \citep{Scarfe2012}.
-    That work presented a platform designed to navigate autonomously and had four integrated robotic arms.
-    The unit was built to specifically to harvest kiwifruit from pergola style orchards.
-    Work presented here focuses on developing a platform independently from tasks such as harvesting.
-    This is made possible by breaking the design up into a base platform and separate modules.
-    Harvesting and pollination modules designed for use on the platform are published elsewhere \citep{williams2017,Seabright2017}.
+    That work presented a platform designed to autonomously navigate though pergola style kiwifruit orchards and featured four integrated harvesting arms.
+    The pergola is the most commonly used support structure used to grow kiwifruit in New Zealand.
+    Work presented here focuses on developing a platform independently from tasks such as harvesting and pollination.
+    This means increasing modularity by separating the task specific systems from the base platform.
+    Harvesting and pollination modules designed for use on the platform have been published elsewhere \citep{williams2017,Seabright2017}.
+    These task specific modules have been designed alongside the platform as part of a larger project on automation in kiwifruit orchards.
 
     % Automation in kiwifruit harvesting and pollination demands computer control, state-of-the-art manipulators, and machine-vision based identification systems.
     Automation in kiwifruit harvesting and pollination demands computer control, state-of-the-art manipulators, and machine-vision systems.
     Such systems are bulky and have specific geometric requirements dictated by the environment they operate in.
     They share the need for electrical power, air pressure, and a means of locomotion.
     However, they differ in the way they move when operating.
-    The pollinating module, developed as part of a wider project, moves at a well-known velocity with minimum changes in angle.
-    This differs from the harvesting module, also developed as part of a wider project, that advances a set distance between stationary harvest cycles.
+    The pollinating module moves at a well-known velocity with minimum changes in angle.
+    This differs from the harvesting module that advances a set distance between stationary harvest cycles.
     To enable the whole system to work autonomously, the base platform must be able to self-drive in a way appropriate for the modules it carries.
 
     It has been stated that ``since the robot development already includes a high complexity, the application itself should be of comparably low complexity'' \citep{Ruckelshausen2009}.
@@ -191,20 +192,21 @@
     % The design of the chassis can easily be instantiated in different sizes and forms, providing flexible and modular capabilities.
 
     The development of autonomous vehicles in agriculture is not new, but much of the literature relates to manned vehicles converted to drive-by-wire.
-    Because a pergola style kiwifruit orchard bearing fruit can droop as low as \SI{1.6}{\meter} to the ground, most standard vehicles are not suitable for use this environment.
-    Additionally, autonomous horticultural vehicles generally rely on satellite navigation, such as GPS, for guidance.
-    The dense foliage of a kiwifruit canopy and the surrounding shelter-belts make receiving satellite navigation signals unreliable.
-    This research presents a platform built specifically for use in pergola style orchards.
-    Requirements for the platform are to:
-    Capability requirements for the developed platform are to:
+    Because the canopy of a pergola style kiwifruit orchard can droop as low as \SI{1.6}{\meter} to the ground under full fruit loading, standard vehicles are unsuitable for use this environment.
+    Many autonomous vehicles designed for use in orchards, such as vineyards, rely on satellite navigation for guidance.
+    The dense foliage of a kiwifruit canopy and the surrounding shelter-belts make receiving satellite navigation signals unreliable at best.
+
+    This paper presents a modularised platform built specifically for use in pergola style orchards.
+    Capability requirements for the platform are to:
     \begin{enumerate}
-        \item support a mass of \SI{1000}{\kilo\gram},
+        \item support a total mass of \SI{1000}{\kilo\gram},
         \item be no more than \SI{1.4}{\meter} in height,
         \item operate continuously for eight hours,
+        \item have a maximum speed of \SI{10}{\kilo\meter\per\second},
         \item turn between rows in orchard headland areas,
         \item supply \SI{12}{\kilo\watt} of electrical power continuously,
         \item include a bin-lifting mechanism for carrying kiwifruit bins, and
-        \item provide a module mounting area \SI{300}{\milli\meter} from the ground.
+        \item provide a module mounting area \SI{400}{\milli\meter} from the ground.
     \end{enumerate}
     \begin{figure}[htb]
         \centering
@@ -232,9 +234,9 @@
 
 
         Four years later, two autonomous vehicles designed for weed mapping and control in open field crops were presented \citep{Pedersen2002,Astrand2002}.
-        These platforms had relatively simple chassis and drive systems as they were both at a prototype stage, i.e., neither were designed to carry modularised payloads.
-        The first vehicle, presented by Åstrand \& Baerveldt, featured two wheel steering and two wheel drive, had a camera based row guidance system, and was fitted with both batteries and a combustion engine, plus an air compressor.
-        While its appearance resembles that of a computer server rack on wheels, it contains most of the functionality required of a platform for kiwifruit harvesting and pollination modules.
+        These platforms had relatively simple chassis and drive systems as they were both at a prototype stage, i.e., neither were designed to carry heavy payloads.
+        The first vehicle, presented by Åstrand \& Baerveldt, featured two wheel steering and two wheel drive, had a camera based row guidance system, was fitted with batteries, a combustion engine, and an air compressor.
+        While its appearance resembles that of a computer server rack on wheels, it contained much of the functionality required of a platform for kiwifruit harvesting and pollination modules.
         The second unit, described by Pedersen et~al.\@, was four wheel drive with two wheel steering and used GPS as its primary navigation sensor.
         It was battery powered only and lacked any sort of row guidance sensor or power generation unit.
         The authors found that row-crop based navigation from GPS alone was not practical and proposed the integration of a row guidance sensor in their next design.
@@ -254,20 +256,20 @@
         % The use of a fibe-optic gyro, compass, and wheel encoders meant that accurate localisation was still possible in the event of GPS drop-out.
         The system also incorporated the row guidance sensor as proposed in earlier work, as well as a Real-Time Kinematic enabled GPS receiver, fiber-optic gyro, compass, and wheel encoders.
         The authors noted that the control strategy for the four independently controlled wheels was non-trivial.
-        While much more developed than the previous work of \citep{Tillett1998}, the platform was not designed to carry heavy payloads, or operate in the absence of satellite navigation, or power itself beyond its battery capacity.
+        While much more developed than the previous work of \citep{Pedersen2002}, the platform was not designed to: carry heavy payloads, operate in the absence of satellite navigation, or power itself beyond its battery capacity.
         Being designed for row-crops, the chassis sits relatively high from the ground with its payload sensors inspecting the ground below.
         % RTK-GPS is capable of providing positioning with accuracies of \SI{2}{\centi\meter}.
 
 
         In 2009, details of BoniRob were published by \cite{Ruckelshausen2009}.
-        Similar to the unit presented by \cite{Bak2004}, it featured a gyroscope, RTK-GPS for localisation, a CAN bus for communication, and four-wheel steering.
-        What makes BoniRob particularly interesting is its ability to alter its track width by actuating the arms to which its wheels were attached.
+        Similar to the previous unit presented by \cite{Bak2004}, it featured a gyroscope, RTK-GPS for localisation, a CAN bus for communication, and four-wheel steering.
+        What made BoniRob particularly interesting is its ability to alter its track width by actuating the arms to which its wheels were attached.
         A \SI{2.8}{\kilo\watt} petrol generator could be mounted to the chassis, additional to its on-board batteries.
-        It was capable of carrying a \SI{150}{\kilo\gram} payload in its dedicated module space, which interestingly was the gross weight of the vehicle presented by \citep{Bak2004}.
+        It was capable of carrying a \SI{150}{\kilo\gram} payload in its dedicated module space, which happens to be the gross weight of the vehicle presented by \cite{Bak2004}.
         Like the robots before it, BoniRob was designed for use on open field crops.
         It introduced the use of both single-plane and multi-layer laser range scanning, known as lidar, for perception and row detection.
         During the previous year, some of these authors published details of a much simpler robot named `Weedy' \citep{Klose2008}, also an open field crop based sensing platform.
-        BoniRob represents the first of the more general purpose platforms designed to carry modularised payloads, albeit with a \SI{150}{\kilo\gram} capacity.
+        BoniRob represents the first of the more general purpose platforms designed to carry modularised payloads, albeit with a limited capacity.
 
         Of particular relevance to this work is that of Scarfe et~al.\@ on an autonomous kiwifruit picking robot \citep{scarfe2009, Scarfe2012}.
         That work involved the creation of a hydraulically driven platform, with two-wheel steering and four wheel drive, to which four fruit harvesting arms were integrated.
@@ -280,18 +282,17 @@
         For traction it uses two driven wheels in a differential drive configuration, with two castor wheels for support.
         It is battery powered and designed to autonomously return to a shipping container based shelter with a in-built solar powered charging station.
         Their platform is comprised of two side modules bridged by a modular centrepiece containing instrumentation.
-        These side modules contain the drive system, whereas the centrepiece is specific to the application.
+        The side modules contain the drive system, whereas the centrepiece is specific to the application.
         The choice of a differential drive system has considerably reduced the robot's complexity and weight over other designs, such as those previously discussed.
         The platform is over \SI{3}{\meter} in width, making it unsuitable for turning between rows of a kiwifruit orchard.
         Hovever, the modularity of the chassis should facilitate easy modification to reduce the total width.
         With a payload capacity of \SI{200}{\kilo\gram} and lack of on-board power generation, the design does not meet the requirements for use in kiwifruit orchards.
 
         A trend with the platforms reviewed, all of which were designed for open field crops, was the favoring of four-wheeled over two-wheeled steering, with the exception of the Agbot II.
-        The maneuverability offered by
-        This configuration is not deemed necessary in kiwifruit orchards as headland areas are a fixed size and large enough for tractors to maneuver.
-        None of the platforms had the capacity for carrying bins, which is specific to kiwifruit and apple orchards.
+        The maneuverability offered by this configuration is not deemed necessary in kiwifruit orchards as headland areas are large enough for tractors to maneuver.
+        Only the platform of \cite{Scarfe2012} had the capacity for carrying fruit bins, which is specific to kiwifruit and apple orchards.
 
-        Finally, to aid development, the use of open source simulation tools allowed the creators of BoniRob to develop and test their mobility system independent from the physical hardware.
+        % Finally, to aid development, the use of open source simulation tools allowed the creators of BoniRob to develop and test their mobility system independent from the physical hardware.
 
         \cite{Blackmore2007} envisaged significant reductions in production costs for agricultural robotics by repurposing parts already in use in the agricultural and automotive industry.
         While not a physical component, the CAN bus is one such technology borrowed from these industries.
@@ -299,8 +300,10 @@
 
     \subsection{Sensors for Row Based Navigation in Orchards}
 
+        Since the vehicle is designed for autonomy, selecting appropriate sensors and developing the vehicle around these sensors is an important design consideration.
         Sensor combinations for orchard based row detection mostly fall into three categories; camera based, lidar based, or a combination of the two.
         The following section summarises a review of row detection efforts in orchards using these techniques.
+
         % Lidar come in two flavours: single-plane, and multi-layer.
 
         \cite{Subramanian2006} tested both camera and lidar (Sick LMS-200) based guidance systems in a citrus fruit orchard.
@@ -310,21 +313,21 @@
         The 2D camera based approach was favorable after this point.
         They suggest that combining the two systems would give more robust guidance as well as providing the ability to detect obstacles.
         No mention of the ability for the image based approach to cope with varying lighting conditions is made.
+        These results are promising for use in kiwifruit orchards, where the conditions are similar, and where the target speed is only \SI{1.39}{\meter\per\second} (\SI{5.0}{\kilo\meter\per\hour}).
 
         \cite{Barawid2007} demonstrate the use of data from a single-plane lidar (Sick LMS-219) to guide a drive-by-wire tractor through an orchard.
         Their results show real-time processing of lidar data is sufficient to navigate an orchard at \SI{0.36}{\meter\per\second} (\SI{1.3}{\kilo\meter\per\hour}).
 
-
         In 2011, two groups published work on the generation of centre lines from camera data taken in orchard rows.
         \cite{He2011} uses traditional machine vision, where \cite{Torres2011} makes use of neural network based image processing.
-        Both methods generate valid paths, although He et~al.\@ note that theirs may not be suitable when the environment background becomes complex.
-        The neural network based approach of \cite{Torres2011} appears to cope better with variations in lighting and row spacing.
+        Both methods generated valid paths, although He et~al.\@ note that theirs may not be suitable when the environment background becomes complex.
+        The neural network based approach of \cite{Torres2011} appeared to cope better with variations in lighting and row spacing.
         Also in 2011, \cite{Hansen2011} showed the use of a single-plane lidar (Sick LMS-200) for vehicle localisation in an orchard.
 
         The work of \cite{Scarfe2012}, combined traditional camera based image processing techniques with a single-plane lidar (Sick LMS-111).
         The image based approach failed to cope with variability in lighting conditions, however the lidar proved useful for detecting the trunks and posts in kiwifruit orchards.
 
-        \cite{Freitas2012} focused on the detection of people and bins in the rows of an apple orchard using lidar (Sick LMS-291), a low-cost inertial measurement unit, and wheel encoders.
+        \cite{Freitas2012} focused on the detection of people and bins within rows of an apple orchard using lidar (Sick LMS-291), a low-cost inertial measurement unit, and wheel encoders.
         Their algorithm was capable of detecting each obstacle class off-line using data captured from a test orchard.
 
         \cite{Zhang2014} used a lidar (Hokuyo UTM-30LX) to generate maps of an apple orchard with the aid of artificial landmarks.
