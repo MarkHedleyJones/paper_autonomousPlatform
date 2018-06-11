@@ -44,6 +44,7 @@
 
 %% The amssymb package provides various useful mathematical symbols
 \usepackage{amssymb}
+\usepackage{amsmath}
 %% The amsthm package provides extended theorem environments
 %% \usepackage{amsthm}
 \usepackage{color}
@@ -109,7 +110,7 @@
 %% \fntext[label3]{}
 
 % \title{An Autonomous Platform for Use in Kiwifruit Orchards}
-\title{A Platform for Autonomous Navigation in Kiwifruit Orchards}
+\title{A Modularised Platform for Autonomous Navigation in Kiwifruit Orchards}
 
 %% use optional labels to link authors explicitly to addresses:
 %% \author[label1,label2]{<author name>}
@@ -136,13 +137,14 @@
 
 \begin{abstract}
 %% Text of abstract
-    Robotic systems for horticulture generally require a means of locomotion through farms or orchards.
+    Horticutural robots designed for in-field use generally require a means of locomotion through farms or orchards.
+    % Robotic systems for horticulture use generally require a means of locomotion through farms or orchards.
     A common approach is to directly integrate a drive system at the expense of increasing the system's total complexity.
     While general purpose platforms have been reported previously, they are mostly developed for use with open field crops and not for carrying heavy payloads.
-    This paper presents a platform capable of carrying a \SI{1000}{\kilo\gram} payload through GNSS-denied autonomously.
+    This paper presents a platform capable of carrying a \SI{1000}{\kilo\gram} payload through GNSS-denied environments, autonomously.
     The platform is general in the sense that it itself does not perform tasks.
-    It is intended solely to navigate through pergola style orchards while being capable of carrying and supplying power to robotic modules.
-    Sensor selection and in-orchard validation test results through two test orchard blocks are presented.
+    It is intended solely to navigate through pergola style orchards while being capable of carrying and supplying power to mounted modules.
+    Navigation sensor selection and in-orchard validation test results through two test orchard blocks are presented.
 
 
 
@@ -186,11 +188,11 @@
     Work presented here focuses on developing a platform independently from tasks such as harvesting and pollination.
     This means increasing modularity by separating the task specific systems from the base platform.
     % Harvesting and pollination modules designed for use on the platform have been published elsewhere \citep{williams2017,Seabright2017}.
-    Details of harvesting and pollination modules designed for use on the platform will be published separately.
-    These task specific modules have been designed alongside the platform as part of a larger project on automation in kiwifruit orchards.
+    Details of harvesting and pollination modules designed for the platform will be published separately.
+    These task specific modules have been designed in parallel with the platform as part of a larger project focusing on automation in kiwifruit orchards.
 
     % Automation in kiwifruit harvesting and pollination demands computer control, state-of-the-art manipulators, and machine-vision based identification systems.
-    Automation in kiwifruit harvesting and pollination demands computer control, state-of-the-art manipulators, and machine-vision systems.
+    Automated kiwifruit harvesting and pollination demands computer control, state-of-the-art manipulators, and machine-vision systems.
     Such systems are bulky and have specific geometric requirements dictated by the environment they operate in.
     Both share the need for electrical power, air pressure, and a means of locomotion.
     However, they differ in the way they move when operating.
@@ -201,23 +203,23 @@
     It has been stated that ``since the robot development already includes a high complexity, the application itself should be of comparably low complexity'' \citep{Ruckelshausen2009}.
     By separating the development of the platform from other task-specific modules, the risk of a single part becoming overly complex is reduced.
     The platform presented here simply needs to navigate through orchards.
-    % The design of the chassis can easily be instantiated in different sizes and forms, providing flexible and modular capabilities.
 
     The development of autonomous vehicles in agriculture is not new, but much of the literature relates to manned vehicles converted to drive-by-wire.
-    Because the canopy of a pergola style kiwifruit orchard can droop as low as \SI{1.5}{\meter} to the ground under full fruit loading, standard vehicles are unsuitable for use this environment.
+    Because the canopy of a pergola style kiwifruit orchard can droop as low as \SI{1.5}{\meter} to the ground under fruit loading, most standard vehicles are unsuitable for use this environment.
     Many autonomous vehicles designed for use in orchards, such as vineyards, rely on satellite navigation for guidance.
     The dense foliage of a kiwifruit canopy and the surrounding shelter-belts make receiving satellite navigation signals unreliable at best.
 
     This paper presents a modularised platform built specifically for use in pergola style orchards.
     Capability requirements for the platform are to:
     \begin{enumerate}
+        \item be resistant to water and dust,
         \item support a total mass of \SI{1000}{\kilo\gram},
         \item be no more than \SI{1.4}{\meter} in height,
         \item supply \SI{12}{\kilo\watt} of electrical power,
-        \item operate continuously for eight hours,
+        \item power itself for at least eight hours,
         \item turn between rows in orchard headland areas,
         \item include a bin-lifting mechanism for carrying kiwifruit bins, and
-        \item provide a module mounting area \SI{400}{\milli\meter} from the ground.
+        \item provide a module mounting area no more than \SI{400}{\milli\meter} from the ground.
     \end{enumerate}
     \begin{figure}[htb]
         \centering
@@ -239,8 +241,11 @@
         When publishing details of an autonomous vehicle in 1998, Tillett et~al.\@ cite difficulties dealing with variability in lighting and the environment as the reason no commercial vehicles were available at the time \citep{Tillett1998}.
         Their vehicle combined wheel encoders, a compass, and accelerometers for odometry information.
         It also featured a camera based row guidance system.
-        The system as a whole was capable of spraying individual plants whilst driving autonomously at \SI{0.69}{\meter\per\second} (\SI{2.5}{\kilo\meter\per\hour}).
-        While their purpose built experimental vehicle proved capable of row following and targeted spraying, it was not designed as a modular unit for carrying heavy payloads or capable of operating for extended periods of time.
+        The system as a whole was capable of spraying individual plants whilst driving autonomously at \SI{0.7}{\meter\per\second} (\SI{2.5}{\kilo\meter\per\hour}).
+        % While their purpose built experimental vehicle proved capable of row following and targeted spraying, it was not designed as a modular unit for carrying heavy payloads.
+        While their purpose built experimental vehicle proved capable of row following and targeted spraying, it was not designed as a modular unit.
+
+
         % It was capable of spraying individual plants whilst autonomously driving at \SI{0.69}{\meter\per\second} (\SI{2.5}{\kilo\meter\per\hour}).
 
 
@@ -372,9 +377,9 @@
         Based on the increased reception requirements, we discount the use of an RTK-GPS system, but still consider the use of GPS in-orchard.
 
 \section{Platform Design}
-
-    \subsection{Vehicle Configuration}
-    \label{sect:mechanical}
+\label{sect:design}
+    % \subsection{Vehicle Configuration}
+    % \label{sect:mechanical}
 
         \begin{figure}[htb]
         \centering
@@ -385,107 +390,166 @@
 
         The vehicle's design is mostly influenced by the need to carry robotic modules and fruit bins through pergola style orchards.
         Existing commercial platforms suitable for use in horticulture exist, such as the Warthog from ClearPath Robotics, but the maximum payload, battey life, and vehicle geometry make it and similar offerings unsuitable.
-        A module can weigh as much as \SI{600}{\kilo\gram} and a bin of kiwifruit can weigh an additional \SI{400}{\kilo\gram}.
-        The canopy height in these orchards ranges from \SI{1.4}{\meter} to \SI{1.7}{\meter}, so the vehicle must have a low profile.
+        Robotic modules for pollination or harvesting can weigh as much as \SI{600}{\kilo\gram} and a bin of kiwifruit adds an additional \SI{400}{\kilo\gram}.
+        The canopy height in these orchards ranges from \SI{1.4}{\meter} to \SI{1.7}{\meter} so the vehicle must have a low profile.
         Modules carried by the platform require clearance from the canopy in addition to the height they occupy themselves.
         To maximise the space available to these modules the platform must be low-slung at the point they attach.
         Figure \ref{fig:AMMP} illustrates the platform's design, with module area allocated between markers `G' and `H' in the side view (top left).
         The top surface of the chassis in this region is \SI{360}{\milli\meter} above the ground.
 
+        The chassis is assembled from sections of laser-cut and folded steel.
+        The sections are welded together on jigs made from laser cut steel before being powder coated.
+        Finite element analysis was used during the design phase to help identify areas needing to be strengthened.
+        This helped to ensure the platform meets its target load capacity of \SI{1000}{\kilo\gram}.
+        Bin lifting forks sit in the area between the rear wheels.
+        The lifter is actuated by two vertically mounted pneumatic cylinders and is controlled by a standard pneumatic valve block.
+
+    \subsection{Steering}
+    \label{sub:steering}
 
         The angles of the vehicle's front wheels are actuated independently following the Ackermann steering geometry principle.
         Actuation is performed by brushless AC motors (Heinzmann PSM G100) mounted vertically above the drive wheels.
         Each motor can generate \SI{7.32}{\newton\meter} of torque with a maximum angular velocity of \SI{3000}{rev\per\minute}, they are rated to \SI{2.3}{\kilo\watt}.
         The output is fed through a fixed-ratio planetary gearbox with a 64:1 reduction, increasing torque to \SI{470}{\newton\meter} while reducing the maximum angular velocity to \SI{47}{rev\per\min}.
+
+        Torque requirements for the front steering motors were calculated as:
+        \begin{equation}
+        \label{eqn:steer_torque}
+        \tau = W u \sqrt{\frac{B^2}{8} + E^2}
+        \end{equation}
+        where $\tau$ is the required static torque, $W$ is the force transmitted through the wheel, $u$ is the coefficient of friction, $B$ is the nominal width of the tyre, and $E$ is the offset between the tyre's contact surface and its axis of rotation.
+        As the axis of steering rotation lies directly through the centre of the wheel, $E$ is 0.
+        A value of 0.75 was used as the coefficient of friction as a best guess representation of a tractor-grip tyre on dry concrete.
+        The weight of the vehicle (\SI{800}{\kilo\gram}), plus payload (\SI{1000}{\kilo\gram}), and fuel (\SI{60}{\kilo\gram}) gives a total mass of \SI{1860}{\kilo\gram}.
+        Allowing for uneven weight distribution on the vehicle and a safety margin, the per wheel mass supported is \SI{500}{\kilo\gram} giving a weight of \SI{4900}{\newton}.
+        The width of the tyres is \SI{0.28}{\meter}.
+        Combining these values in Equation~\ref{eqn:steer_torque} yields a required torque of \SI{388}{\newton} per wheel.
+
         Actuating the wheels independently removes the need for mechanical linkages between them allowing for more extreme steering angles and a simpler mechanical design.
-        Both steered wheels have the freedom to rotate \SI{330}{\degree} artificially limited by mechanical stops.
+        Both steered wheels have the freedom to rotate \SI{330}{\degree}, artificially limited by mechanical stops.
         At its most extreme steering angle the centre-point of the turn is located at the midpoint of the rear wheels.
-        During such a turn, the turning radius is equal to the vehicle's wheelbase.
-        This sees the vehicle turn between orchard rows spaced as little as \SI{3}{\meter} apart, satisfying maneuverability requirements.
+        During such a turn the turning radius is approximately equal to the vehicle's wheelbase.
+        This sees the vehicle turn between orchard rows spaced as little as \SI{3}{\meter} apart.
         % It is often possible for the vehicle to make a \SI{180}{\degree} turn mid-row, something not possible for most commercial vehicles designed for orchard use.
         % This range in steering angle allows the vehicle to place the centre of rotation at the mid-point between its rear wheels during its tightest turn.
         % At this steering angle, .
-
-        Implementing four-wheel-steering would shift the pivot point to the vehicle's centre, roughly halving the turning radius.
-        However, headlands in kiwifruit orchards are sized for tractors with much larger turning radii than the developed platform.
-        Implementing a two wheeled steering system removes the need to develop the ``non-trivial'' control strategies encoutered by \cite{Bak2004}.
-        It also increases the usable area at the rear of the vehicle due to the absense of clearances required around actuated wheels.
+        Implementing four-wheel-steering would shift the pivot point to the vehicle's centre, roughly halving the radius.
+        As headlands in kiwifruit orchards are sized for tractors with much larger turning radii than the developed platform this is unnecessary.
+        The two wheeled steering system removes the need to develop the ``non-trivial'' control strategies encoutered by \cite{Bak2004}.
+        It also increases the usable area at the rear of the vehicle by removing the need for clearances around actuated wheels.
         A differential drive, or skid steer, system was expected to cause ground damage to a level considered unacceptable to orchard owners when carrying heavy loads.
-
 
         \color{red} Add a drawing here of the proxy ring\color{black}
         The steering motors have incremental encoders, but no means of absolute positioning built-in.
         This means the front wheel angles must be homed at boot-up to find an absolute angle to reference from.
         Proxy sensors are used as a means of aligning the front wheels during the homing sequence.
 
-        Bin lifting forks are fitted to the area between the rear wheels.
-        This area is sized to accommodate a kiwifruit bin.
-        The lifter is actuated by two vertically mounted pneumatic cylinders and is controlled by a standard pneumatic valve block.
-        In future, the platform will be developed to pick and place bins autonomously while operating in an orchard.
+    \subsection{Drive system}
+    \label{sub:drive}
 
         The platform has no suspension other than what is provided by its tyres.
         As the intended operating speed within an orchard is \SI{5}{\kilo\meter\per\hour}, a dedicated suspension system is not required.
         A front pivoting axle ensures that all four wheels remain in contact with the ground.
-        Each wheel is mounted directly to a 40:1 fixed-ratio planetary gearbox connected to a permanent magnet brushless AC motor (Heinzmann PSM G120).
-        Each drive motor is rated for \SI{6.4}{\kilo\watt} at \SI{96}{\volt} with a maximum speed of \SI{3000}{rev\per\min} and a torque of \SI{20.4}{\newton\meter}.
-        At the output of the gearbox the available torque is \SI{816}{\newton\meter} with a maximum speed of \SI{75}{rev\per\minute}.
-        With a wheel diameter of \SI{705}{\milli\meter}, this limits the platform to a maximum speed of \SI{10}{\kilo\meter\per\hour}.
-        % This specific gearbox-motor combination limits the platform to a maximum speed of \SI{10}{\kilo\meter\per\hour}.
+        \color{red} Drawing of front pivoting axel\color{black}
 
-        The four drive wheels can continuously deliver \SI{25.6}{\kilo\watt} of traction power and \SI{3.26}{\kilo\newton\meter} of torque.
-        Based on these specifications it is capable of accelerating from a stand-still to its maximum speed at an incline of \SI{20}{\degree} whilst carrying a \SI{600}{\kilo\gram} payload in \SI{2.0}{\second}.
-        \color{red}Add drive system torque and power calculations here\color{black}
+        Estimation of the required torque is calculated by the following equations:
+        \begin{align}
+        \label{eqn_f_rolling}
+        F_{rolling} &= C_{rr} \times m\\
+        F_{grade} &= m \times G \times \sin(\alpha)\\
+        F_{accel} &= m \frac{\Delta v}{t}\\
+        \label{eqn_f_accel}
+        F_{total} &= F_{rr} + F_{gr} + F_{a}
+        \end{align}
+        Where $F_{roll}$ is the force due to rolling resistance; $F_{grade}$ is the a grade resistance force; and $F_{accel}$ is the force required to accelerate forward.
+        A rolling resistance coefficient ($C_{rr}$) of was 0.04 chosen based on values found in common automotive handbooks.
+        It represents the case of a pneumatic tyre on medium-hard soil.
+        Other variables used are: a vehicle mass ($m$) of \SI{1900}{\kilo\gram}, slope angle ($\alpha$) of \SI{20}{\degree}, velocity change ($\Delta t$) of \SI{2.78}{\metre\per\second} (\SI{10}{\kilo\meter\per\hour}), and an acceleration time ($t$) of \SI{6}{\second}.
+        Putting these values through Equations \ref{eqn_f_rolling}--\ref{eqn_f_accel} gives a total force requirement of \SI{7.99}{\kilo\newton}.
+        On a per wheel basis this is \SI{2.0}{\kilo\newton}, or \SI{729}{\newton\meter} when taking the wheel radius ($r$) of \SI{0.365}{\meter} into account.
+        The required power ($P$) is calculated as follows:
+        \begin{align}
+        \label{eqn_f_power}
+        \omega &= 2 \pi \times \frac{v}{2 \pi r} = \frac{v}{r}\\
+        P &= \tau \omega
+        \end{align}
+        where $\omega$ is the wheel's angular velocity, $v$ is the vehicle velocity, and $\tau$ is torque.
+        At a velocity of \SI{2.78}{\meter\per\second} (\SI{10}{\kilo\meter\per\hour}), the calculations give a power requirement of \SI{5.55}{\kilo\watt} per wheel.
 
-        There are a total of seven brushless AC motors on-board the platform: four drive motors, two steering motors, and a motor used for electrical power generation.
+        The selected motors are hub-mount permanent magnet brushless AC motors with integrated 40:1 fixed-radio plaentary gearboxes (Heinzmann PSM-G120).
+        Each motor rated for \SI{6.4}{\kilo\watt} at \SI{96}{\volt} with a maximum speed of \SI{3000}{rev\per\min} and a torque of \SI{20.4}{\newton\meter}.
+        At the output of the gearbox, the torque jumps to \SI{816}{\newton\meter} while the angular velocity drops to \SI{75}{rev\per\minute}.
+        This gives the platform a top speed of \SI{10.3}{\kilo\meter\per\hour}.
+
+        % Relevant references are \citep{Bosch2002} and \cite{Wong2001}.
+        % A rolling resistance coefficient $C_{rr}$ of 0.04 chosen based on values from various automotive handbooks \citep{Bosch2002}.
+
+        % Each wheel is mounted directly to a 40:1 fixed-ratio planetary gearbox connected to a permanent magnet brushless AC motor (Heinzmann PSM G120).
+        % Each drive motor is rated for \SI{6.4}{\kilo\watt} at \SI{96}{\volt} with a maximum speed of \SI{3000}{rev\per\min} and a torque of \SI{20.4}{\newton\meter}.
+        % At the output of the gearbox the available torque is \SI{816}{\newton\meter} with a maximum speed of \SI{75}{rev\per\minute}.
+        % With a wheel diameter of \SI{730}{\milli\meter}, this limits the platform to a maximum speed of \SI{10.3}{\kilo\meter\per\hour}.
+
+        % The four drive wheels can continuously deliver \SI{25.6}{\kilo\watt} of traction power and \SI{3.26}{\kilo\newton\meter} of torque.
+
+
+
+
+
+        % Based on these specifications the platform is capable of accelerating from a stand-still to its maximum speed at an incline of \SI{20}{\degree} whilst carrying a \SI{600}{\kilo\gram} payload in \SI{2.0}{\second}.
+        % \color{red}Add drive system torque and power calculations here\color{black}
+        In total there are seven brushless AC motors on-board the platform: four drive motors, two steering motors, and a motor used for electrical power generation.
         Each of the motors are connected to separate, but identical, motor controllers (Sevcon Gen4 Size 4).
-        These controllers are available in four bus voltage options: 24-36V, 36-48V, 72V-80V, and 96V-110V.
+        These controllers are available commercially in four bus voltage options: 24-36V, 36-48V, 72V-80V, and 96V-110V.
         The six motors used for traction and steering are together capable of consuming \SI{30.2}{\kilo\watt}.
         Using a \SI{48}{\volt} bus, this would equate to a current draw of \SI{630}{\ampere}.
-        Approximately \SI{18}{\meter} of high-power cabling is required to connect each motor to a common point on the vehicle.
-        A \SI{96}{\volt} bus was selected as this halves current carrying capacity required to each motor and controller.
+        As approximately \SI{20}{\meter} of cabling is required to connect the motors and controllers to a common point on the vehicle, a \SI{96}{\volt} bus was used to reduce the required gauge of that cable.
+
+        % Approximately \SI{18}{\meter} of high-power cabling is required to connect each motor to a common point on the vehicle.
+        % A \SI{96}{\volt} bus was selected as this halves current carrying capacity required to each motor and controller.
+
+
+
+    \subsection{Power distribution}
+    \label{sub:drive}
 
         Figure \ref{fig:power_system_diagram} illustrates how power is fed to each of the major system components, including the drive system.
-
 
         \begin{figure}[htb]
             \centering
             \includegraphics[width=\linewidth]{imgs/system_diagram/full-system-diagram_v1.pdf}
-            \caption{Power distribution level system diagram. Dashed lines in grey indicate control lines to contactors.}
+            \caption{Power distribution system diagram. Dashed lines in grey indicate control lines to contactors.
+                     The system is a series hybrid configuraton with respect to the engine and battery pack.}
             \label{fig:power_system_diagram}
         \end{figure}
 
         A power generation unit comprised of a petrol engine (Honda GX-690), air compressor (Rotorcomp NK-1), and electrical generator (Heinzmann PMSG-150) sits over the front pivoting axle.
         The drive shafts of the three units are connected with a heavy-duty timing belt.
-        The engine, compressor, and alternator are controlled and monitored electronically from a custom embedded module.
-        This controller module is connected to the vehicle via CAN bus.
+        The engine, compressor, and alternator are controlled and monitored electronically by a custom microcontroller based board.
+        This board connects to the Platform PC via the platform's CAN bus.
 
         Fuel and compressed air tanks sit over the right-hand rear wheel, visible in figure \ref{fig:suzy}.
         Electrical energy from the power generation unit is fed directly into the battery modules in a series-hybrid configuration.
-        The fuel tank can hold approximately \SI{60}{\litre} of petrol, providing enough energy to operate for approximately \SI{48}{\hour} under light load.
+        The fuel tank can hold approximately \SI{60}{\litre} of petrol, providing enough energy to operate for approximately \SI{24}{\hour}.
 
         Two battery modules attached to the sides of the chassis each house fifteen lithium-iron-phosphate (LiFePO$_{\text{4}}$) batteries connected in series.
         Together, the batteries (Winston/Thundersky WB-LYP90AHA) provide a nominal bus voltage of \SI{96}{\volt} and a total electrical capacity of \SI{8.64}{\kilo\watt\hour}.
         The battery packs were `bottom-balanced' before being fitted and no cell-level voltage monitoring is present.
         Maximum and minimum pack voltages were established by monitoring individual cells during charging and discharging.
-        At the point that any individual cell exceeds a safe maximum/minimum threshold, the maximum/minimum pack voltage is recorded at that point.
+        At the point that any individual cell exceeds a safe maximum/minimum threshold, the respective maximum/minimum pack voltage is recorded at that point.
+
         The platform and modules can run directly from the battery pack with no loss of functionality.
-        On-board DC-DC converters can continuously deliver \SI{2.8}{\kilo\watt} at \SI{12}{\volt}DC, \SI{3.8}{\kilo\watt} at \SI{24}{\volt}DC, and \SI{3.5}{\kilo\watt} at \SI{240}{\volt}AC, simultaneously, while the platform is driving.
+        On-board DC-DC converters can continuously deliver \SI{2.8}{\kilo\watt} at \SI{12}{\volt}DC, \SI{3.8}{\kilo\watt} at \SI{24}{\volt}DC, and \SI{3.5}{\kilo\watt} at \SI{240}{\volt}AC, simultaneously.
         A connection panel near the front of the platform houses the weather-sealed plugs through which these outputs are accessible.
 
-        The chassis is assembled from sections of laser-cut and folded steel.
-        The sections are welded together on jigs made from laser cut steel before being powder coated.
-        Finite element analysis was used during its design to help identify areas needing to be strengthened.
-        This helped to ensure the platform met its target carrying capacity of \SI{1000}{\kilo\gram}.
-
-        Unloaded, the machine has an estimated mass of \SI{850}{\kilo\gram}, including the power generation unit and batteries.
-        Testing of the drive system and chassis was performed by driving with a \SI{1000}{\kilo\gram} mass strapped to the platform's module area.
-        The test included three instances of emergency stopping while driving down a \SI{10}{\degree} slope at a speed of \SI{10}{\kilo\meter\per\hour}.
-        The vehicle stopped within a space of \SI{2.5}{\meter} under these conditions.
+    \subsection{Tests}
+        Tests of the drive system and chassis strength were conducted by stopping the vehicle from full speed down a \SI{10}{\degree} slope while carrying the target mass of \SI{1000}{\kilo\gram}.
+        Under three tests the vehicle stopped within a space of \SI{2.5}{\meter} in each case.
         % With that load, the platform's maneuverability and ability to brake or accelerate was not noticeably affected.
 
+    \subsection{Discussion}
 
         The \SI{96}{\volt} battery pack introduced an electrical hazard that required risk mitigation procedures to be followed when working on the unit.
-        While essential, these procedures added complexities and delays during development that could have been avoided.
+        While essential for safety, these procedures added complexities and delays during development that could have been avoided.
         The authors suggest a pack voltage of \SI{48}{\volt} as a safer alternative during development of such vehicles as it bears a reduced risk of injury from electric shock.
         Inputs of \SI{48}{\volt} are supported across a wider range of motors, motor controllers, and power converters, but cabling requirements are increased.
 
@@ -493,8 +557,7 @@
         This is useful in testing scenarios, where people are in close proximity to the vehicle, as it eliminates exhaust fumes and reduces both noise and vibration.
         However, robotic modules and the bin lifting mechanism require pneumatic air pressure to operate.
         As the air compressor is belt driven from the petrol engine, it is necessary to frequently run the engine to provide air to these systems.
-        An electric air compressor would allow for the system to run without the petrol engine for much longer periods.
-
+        An electric air compressor would allow for the system unassisted by the petrol engine for much longer periods.
 
 
     \subsection{System Architecture}
@@ -529,6 +592,14 @@
         For instance, as figure \ref{fig:system_diagram_software} shows, an `Ackermann kinematics' node transforms steering input data into individual wheel velocity and position/angle outputs.
         This node could easily be swapped out for a different translator node during run-time without disturbing the system.
 
+        In a starndard configuration, the motor controllers are interfaced using a combination of analog and digital inputs.
+        For example, the accelerator and steering inputs are set by potentiometers actuated by the vehicle's driver.
+        However, the controllers also provide an option for a multi-motor vehicle configuration.
+        In this configuration, inputs fed into a master controller are relayed to a second controller over a CAN interface.
+        By observing the communication protocol between a master and slave in operation, it was possible to implement a master node in software that runs on the Platform PC.
+        With this, all motor controllers on the platform are programmed as slave devices.
+        This forces them to accept drive commands via their CAN interafce which are generated from ROS nodes on the Platform PC.
+
         Relay modules allow the Platform PC to toggle power to on-board power supplies, motor controllers, park-brakes, and lights.
         These modules also monitor the timing of synchronisation messages transmitted by the Platform PC onto the CAN bus, which should occur every \SI{20}{\milli\second}.
         Once a module detects an absence of synchronisation messages for \SI{100}{\milli\second} or longer it enters a defined error state.
@@ -536,6 +607,8 @@
         That state will result in the motor controllers and on-board power supplies being shut-off and the park brakes engaged.
         Since power is required to disengage the park brakes, this equates to `shutting-off' the brake release mechanism.
         CAN bus monitoring ensures that the system is automatically shut down should the Platform PC become unresponsive.
+
+
 
         \begin{figure}[htb]
             \centering
