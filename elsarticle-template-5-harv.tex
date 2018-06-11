@@ -397,10 +397,11 @@
         Figure \ref{fig:AMMP} illustrates the platform's design, with module area allocated between markers `G' and `H' in the side view (top left).
         The top surface of the chassis in this region is \SI{360}{\milli\meter} above the ground.
 
-        The chassis is assembled from sections of laser-cut and folded steel.
+        The chassis is assembled from sections of \SI{3}{\milli\meter} laser-cut and folded mild-steel.
         The sections are welded together on jigs made from laser cut steel before being powder coated.
-        Finite element analysis was used during the design phase to help identify areas needing to be strengthened.
-        This helped to ensure the platform meets its target load capacity of \SI{1000}{\kilo\gram}.
+        Finite element analysis was used during the design phase to help identify areas needing to be strengthened and areas where material could be removed.
+        Much of the folded chassis structure contains triangular cut-outs, which reduces weight and has minimal impact on rigidity.
+        This helped to ensure the platform meets its target load capacity of \SI{1000}{\kilo\gram}, while the vehicle itself weighs only \SI{850}{\kilo\gram} (including petrol engine, batteries, electronics and fuel).
         Bin lifting forks sit in the area between the rear wheels.
         The lifter is actuated by two vertically mounted pneumatic cylinders and is controlled by a standard pneumatic valve block.
 
@@ -409,8 +410,8 @@
 
         The angles of the vehicle's front wheels are actuated independently following the Ackermann steering geometry principle.
         Actuation is performed by brushless AC motors (Heinzmann PSM G100) mounted vertically above the drive wheels.
-        Each motor can generate \SI{7.32}{\newton\meter} of torque with a maximum angular velocity of \SI{3000}{rev\per\minute}, they are rated to \SI{2.3}{\kilo\watt}.
-        The output is fed through a fixed-ratio planetary gearbox with a 64:1 reduction, increasing torque to \SI{470}{\newton\meter} while reducing the maximum angular velocity to \SI{47}{rev\per\min}.
+        Each motor can generate \SI{7.32}{\newton\meter} of torque with a maximum angular velocity of \SI{3000}{rev\per\minute} and are rated at \SI{2.3}{\kilo\watt}.
+        The outputs are fed through fixed-ratio planetary gearboxes with a 64:1 reduction, increasing torque to \SI{470}{\newton\meter} while reducing the maximum angular velocity to \SI{47}{rev\per\min}.
 
         Torque requirements for the front steering motors were calculated as:
         \begin{equation}
@@ -418,7 +419,7 @@
         \tau = W u \sqrt{\frac{B^2}{8} + E^2}
         \end{equation}
         where $\tau$ is the required static torque, $W$ is the force transmitted through the wheel, $u$ is the coefficient of friction, $B$ is the nominal width of the tyre, and $E$ is the offset between the tyre's contact surface and its axis of rotation.
-        As the axis of steering rotation lies directly through the centre of the wheel, $E$ is 0.
+        As the axis of steering rotation lies directly through the centre of the wheel, $E=0$.
         A value of 0.75 was used as the coefficient of friction as a best guess representation of a tractor-grip tyre on dry concrete.
         The weight of the vehicle (\SI{800}{\kilo\gram}), plus payload (\SI{1000}{\kilo\gram}), and fuel (\SI{60}{\kilo\gram}) gives a total mass of \SI{1860}{\kilo\gram}.
         Allowing for uneven weight distribution on the vehicle and a safety margin, the per wheel mass supported is \SI{500}{\kilo\gram} giving a weight of \SI{4900}{\newton}.
@@ -541,16 +542,26 @@
         On-board DC-DC converters can continuously deliver \SI{2.8}{\kilo\watt} at \SI{12}{\volt}DC, \SI{3.8}{\kilo\watt} at \SI{24}{\volt}DC, and \SI{3.5}{\kilo\watt} at \SI{240}{\volt}AC, simultaneously.
         A connection panel near the front of the platform houses the weather-sealed plugs through which these outputs are accessible.
 
-    \subsection{Tests}
-        Tests of the drive system and chassis strength were conducted by stopping the vehicle from full speed down a \SI{10}{\degree} slope while carrying the target mass of \SI{1000}{\kilo\gram}.
+    \subsection{Basic Tests}
+        Testing of the vehicle's steering and stopping performance as well as its structural integrity were tested.
+        In these situations a \SI{1100}{\kilo\gram} mass was strapped to the module area.
+        No visible deflection of the vehicle's chassis or steering system was observed while under load.
+
+
+
+        Loading of the chassis with a \SI{1100}{\kilo\gram} mass in its module area showed no observable deflection through the vehicle's structure.
+        No degretation in steering performance was observed during static tests on dry concrete while loaded with this mass.
+
+        Static steering tests done on a dry concrete while loaded with this mass also showed no observable difference in steering performance.
+        Stopping
+        Basic tests of the drive system and chassis strength were conducted by stopping the vehicle from full speed down a \SI{10}{\degree} slope while carrying the target mass of \SI{1100}{\kilo\gram}.
         Under three tests the vehicle stopped within a space of \SI{2.5}{\meter} in each case.
-        % With that load, the platform's maneuverability and ability to brake or accelerate was not noticeably affected.
 
     \subsection{Discussion}
 
         The \SI{96}{\volt} battery pack introduced an electrical hazard that required risk mitigation procedures to be followed when working on the unit.
-        While essential for safety, these procedures added complexities and delays during development that could have been avoided.
-        The authors suggest a pack voltage of \SI{48}{\volt} as a safer alternative during development of such vehicles as it bears a reduced risk of injury from electric shock.
+        While essential for safety, these procedures added complexities and delays during which could have been avoided by adopting a lower pack voltage.
+        The authors suggest a pack voltage of \SI{48}{\volt} as a safer alternative during vehicle development as it bears a reduced risk of injury from electric shock.
         Inputs of \SI{48}{\volt} are supported across a wider range of motors, motor controllers, and power converters, but cabling requirements are increased.
 
         The series hybrid configuration allows the vehicle to drive and provide power to subsystems without the petrol engine.
