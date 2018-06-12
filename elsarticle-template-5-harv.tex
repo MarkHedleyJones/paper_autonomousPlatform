@@ -498,8 +498,8 @@
     \subsection{Power Distribution}
     \label{sub:power}
         The system bus connects the batteries and generator to motor controllers and on-board power converters.
-        A series of heavy-duty contactors (TE Connectivity LEV200 Kilovac) control each device's connection to the bus, as well as the bus's connection to a power source.
-        Figure \ref{fig:power_system_diagram} illustrates how in which each component is connected.
+        A series of heavy-duty contactors (TE Connectivity Kilovac LEV200) control each device's connection to the bus, as well as the bus's connection to the power source.
+        Figure \ref{fig:power_system_diagram} illustrates the platform's power distribution layout.
 
         \begin{figure}[htb]
             \centering
@@ -514,14 +514,21 @@
         The battery packs were `bottom-balanced' before being fitted and no cell-level voltage monitoring is present.
         Maximum and minimum pack voltages were established by monitoring individual cells during charging and discharging.
         At the point that any individual cell exceeds a safe maximum/minimum threshold, the respective maximum/minimum pack voltage is recorded at that point.
-        A hermetically sealed disconnect switch (Gigivac HBD41) separates the batteries from the system.
-        Once closed, an auxiliary 24V bus becomes powered that powers componenets required to start the rest of the rest of the system, including the generator.
+        A hermetically sealed disconnect switch (Gigavac HBD41) separates the batteries from the system.
+        Once closed, an auxiliary 24V bus becomes powered that powers componenets required to start the rest of the rest of the system, including onboard power generation.
 
-        A power generation unit comprised of a petrol engine (Honda GX-690), air compressor (Rotorcomp NK-1), and electrical generator (Heinzmann PMSG-150) sits over the front pivoting axle.
+        A power generation unit comprised of a petrol engine (Honda GX-690), air compressor (Rotorcomp NK-1), and electrical generator is housed at the front of the vehicle.
         The drive shafts of the three units are connected via pullies and a heavy-duty timing belt.
-        The engine, compressor, and alternator can be controlled and monitored by microcontroller based control board.
+        The engine, compressor, and alternator are controlled and monitored by a microcontroller based control board.
         This board connects to the Platform PC via the platform's CAN bus.
         The engine is capable of producing \SI{16}{\kilo\watt}, where up to \SI{9.6}{\kilo\watt} is converted to electrical power and \SI{4.0}{\kilo\watt} to pneunatic power.
+
+        Energy conversion in the electrical generator is done using a brushless AC motor (Heinzmann PMSG-150) and motor controller.
+        The motor is a larger variant of those used for traction and steering, but no gearbox is fitted.
+        The same motor controller as is used elsewhere on the vehicle is used, but solely in regenerative braking mode.
+        This allows the system to control the amount of power delived by adjusting the braking effort required from the controller.
+        The controllers allow configuration of minimum and maximum battery voltage and currents, and offer the ability to reduce output effort gradually as the battery voltage approaches its maximum voltage.
+        These settings provide all the functionality of a general purpose lithium-ion battery charger, making this a cost effective charging solution.
 
         Electrical energy from the power generation unit is fed to the battery modules in a series-hybrid configuration.
         An external charging port is also fitted to allow charging of the batteries without using the petrol engine.
@@ -590,13 +597,13 @@
 
     \subsection{Testing}
     \label{sub:drivability_tests}
-        Tests of the vehicle's steering and stopping performance as well as its structural integrity was carried out.
+        Tests of the vehicle's structural integrity while under load and its steering and stopping performance were carried out.
         In each situation a \SI{1100}{\kilo\gram} mass was strapped to the module area.
         No deflection of the vehicle's chassis was evident upon application of the test mass.
         Deflection of between 1 and \SI{2}{\milli\meter} was measured between the front pivot and the wheel supports.
         Static steering tests conducted on a dry concrete surface showed no reduction in ability to turn under these conditions.
         Dynamic tests involved three instances of stopping whilst driving down a \SI{10}{\degree} slope.
-        During each test the vehicle came to a complete stop within a distance of \SI{2.4}{\meter}.
+        During each test the vehicle came to a complete stop within a distance of \SI{2.3}{\meter}.
 
 
     \subsection{Discussion}
@@ -625,12 +632,12 @@
 
     As the drive motors have built-in wheel encoders, basic odometry data is already available.
     Encoders on driven wheels will give false readings if wheel slip occurs so should not be used for odomentry alone.
-    However, the data they provide can be used to assist with mapping, localisation, and provide velocity feedback.
+    However, the data they provide can still be used to assist with mapping, localisation, and provide velocity feedback.
 
     Other sensors considered for inclusion are outlined in Table \ref{table:sensor_comparison} with their associated issues.
-    Factors considered were strengths and weaknesses in the context of orchard use, reported usage in literature, and availability at a suitable price.
-    The investigation highlighted both lidar and 2D cameras as offering high functionality for navigation and object detection.
-    Time-of-flight cameras were a compelling option based on a cost-benefit analysis; especially if cheaper units work in sunlight.
+    Factors considered were the strengths and weaknesses in the context of orchard use, reported usage in literature, and availability at a suitable price.
+    The review of previous works highlighted both lidar and 2D cameras as offering high functionality for navigation and object detection.
+    Time-of-flight cameras are a compelling option based on a cost-benefit analysis; especially if cheaper units work in sunlight.
     Because localisation is such a key function, the performance of two GNSS receivers have also been evaluated.
     % The following sections detail our experiences while trialling these sensors.
     \begin{table}[htbp]
