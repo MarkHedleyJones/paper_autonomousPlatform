@@ -913,40 +913,29 @@
 
     These algorithms were developed on smaller, commercially available, test robots while the target platform was under development.
     A laptop (Dell E6410) with integrated graphics processor (Nvidia M5000M) was used on these platforms to process the sensor data and generate steering commands.
-    Both approaches produced paths that led to reproducable row following behaviour.
+    Both approaches produced paths that led to reproducible row following behaviour.
     A method of conducting row-end turns was trialled on the Pioneer 3-AT robot using the lidar based approach.
     However, its drive system lacked the power required to turn into rows on uphill slopes.
 
     Both approaches were trialled on the target platform once validated on the smaller robots.
-    The small robots both used skid-steer geometries, whereas the target platform uses an ackermann based steering geometry.
+    The small robots both used skid-steer geometries, whereas the target platform uses an Ackermann based steering geometry.
     Operationally this has two implications.
-    The first is that when turning, the smaller robots pivot along an axis that passes through the mid-point of their chasses.
+    The first is that when turning, the smaller robots pivot along an axis that passes through the mid-point of their chassis.
     On the full-sized platform that axis instead passes through the centre of the rear wheels.
     Secondly, the full sized platform must change the angle its steering wheels before it can begin to change direction, which takes time.
-    A skid-steer geometry only needs to change the relative angluar velocities of its wheels, which can happen as fast as the traction motors allow.
+    A skid-steer geometry only needs to change the relative angular velocities of its wheels, which can happen as fast as the traction motors allow.
     These differences are minor when row following as only small changes in angle are required to keep the vehicle on track.
     Alterations were made to code responsible for generating steering angles to account for the difference in pivot point between the vehicles.
     No allowances were made for the time to actuate the front wheels before turning while row following.
 
     To determine when the robot is at the end of a row, the multi-layer lidar is used to detect the absence of canopy in a space above the front of the vehicle.
-    This method is used to initiate a row-end turn manouver for both the lidar and camera based approaches.
+    This method is used to initiate a row-end turn maneuver in the case of both the lidar and camera based approaches.
 
-
-
-
-
-    % Using the row following algorithm developed for sensor testing, map based autonomous navigation of a kiwifruit orchard was implemented.
-    Two key additions were required for the platform to navigate the orchard unassisted: the detection of a row's end and a method for turning between rows.
-
-    The detection of a row's end is made by detecting a minimum volume of free space above the multi-layer lidar.
-    Put simply, this equates to searching for a lack of canopy above the robot.
-    This approach makes use of the multi-layer lidar, where layers above the horizontal are used as an `absence of canopy' detector.
-
-    Turns between rows are performed by driving a series of set curvature movements while simultaneously performing lidar based obstacle avoidance.
-    The series of set turns are recorded in a map file which are followed by the platform at the end of each row.
-    A turn sequence sees the platform drive with a given steering angle for a given distance or until a given heading is achieved.
-    Each row turn can contain any number of these sub-maneuvers.
-    On completion of a turn, row following behavior is resumed which guides the platform through the row to the next turn.
+    A row-end turn sees the platform execute a series of maneuvers which have previously been recorded for the specific row and direction of turn.
+    Initially, a template maneuver is executed at each row-end and the vehicle is observed while executing the turn.
+    Manual adjustments are made to the recorded turn profile based on the vehicle's proximity to obstacles or nearby boundaries during the maneuver.
+    Turns are repeated and the profile adjusted until a satisfactory and reproducible turn is established.
+    A turn profile can contain any number of steps, with each step being a distance to travel or angle to turn through with a given radius.
     Figure \ref{fig:suzy_turning} shows the platform performing a row-end turn while under autonomous control.
 
     \begin{figure}[htb]
@@ -959,9 +948,21 @@
         \label{fig:suzy_turning}
     \end{figure}
 
-    Using the approaches developed here, the platform is routinely able to navigate two test orchards unassisted.
-    Our primary test area is over \SI{1}{\kilo\meter} in total traversable length, spread over 10 rows.
-    The developed algorithm has been used to autonomously control this platform and two smaller platforms through \SI{20}{\kilo\meter} of kiwifruit orchards.
+    Using the described approach, the platform is routinely able to navigate two test orchards using the described approach.
+    The first orchard block is \SI{1.15}{\kilo\meter} in total traversable length spread over 10 rows.
+    A second orchard block is \SI{670}{\meter} in total traversable length spread over 9 rows.
+    Using the recorded turn profiles the platform has navigated the first block consecutively 5 times, and 12 times in total out of 18 attempts.
+    The second block has been navigated 5 times, 3 times consecutively, out of a total of 8 attempts.
+    This equates to a total of \SI{17.2}{\kilo\meter} of successfully navigated orchard blocks.
+
+    Any time the vehicle had to be taken out of autonomous control during a block traversal are counted as failed attempts.
+    Of the nine traversals where an operator intervened, there were two causes for failure.
+    Seven, or \SI{77}{\percent}, of these were due to an imminent collision with a post during a row end-turn.
+    The remaining failures were due to the platform trying to initiate a row-end turn before reaching the end of the row.
+
+    Failures resulting in imminent collision during a turn are due to variability in the position at which the turn is initiated.
+    False detections of a row-end condition while not at a row's end were caused by an oversensitivity to a lack of canopy above the robot.
+    Both of these failure modes highlight issues around the detection of a row-end condition.
 
 \section{Discussion}
 \label{sect:discussion}
