@@ -137,8 +137,7 @@
 
 \begin{abstract}
 %% Text of abstract
-    Horticutural robots designed for in-field use generally require a means of locomotion through farms or orchards.
-    % Robotic systems for horticulture use generally require a means of locomotion through farms or orchards.
+    Horticultural robots designed for in-field use generally require a means of locomotion through farms or orchards.
     A common approach is to directly integrate a drive system at the expense of increasing overall complexity.
     While general purpose platforms have been reported previously, they are mostly developed for use with open field crops and not for carrying heavy payloads.
     This paper presents a platform capable of carrying a \SI{1000}{\kilo\gram} payload through GNSS-denied environments, autonomously.
@@ -200,14 +199,14 @@
     This differs from the harvesting module that advances a set distance between stationary harvest cycles.
     To enable the whole system to work autonomously, the base platform must be able to self-drive in a way appropriate for these modules.
 
-    It has been stated that ``since the robot development already includes a high complexity, the application itself should be of comparably low complexity'' \citep{Ruckelshausen2009}.
+    While publishing details of a general purpose robotics platform for field use, the authors stated that ``since the robot development already includes a high complexity, the application itself should be of comparably low complexity'' \citep{Ruckelshausen2009}.
     By separating the development of the platform from other task-specific modules, the risk of a single part becoming overly complex is reduced.
-    The presented platform simply needs to navigate through orchards while providing power to mounted modules.
+    The presented platform simply needs to navigate through orchards while providing power to removable modules.
 
     The development of autonomous vehicles in agriculture is not new, but much of the literature relates to manned vehicles converted to drive-by-wire.
     Because the canopy of a pergola style kiwifruit orchard can droop as low as \SI{1.4}{\meter} to the ground under fruit loading, most standard vehicles are unsuitable for use this environment.
     Many autonomous vehicles designed for use in orchards, such as vineyards, rely on satellite navigation for guidance.
-    The dense foliage of a kiwifruit canopy and the surrounding shelter-belts make receiving satellite navigation signals unreliable at best.
+    The dense foliage of a kiwifruit canopy and the surrounding shelter belts make receiving satellite navigation signals unreliable at best.
     This means the vehicle must perceive the environment using suitable sensors.
 
     This paper presents a modularised platform built specifically for use in pergola style orchards.
@@ -352,11 +351,11 @@
 
         \cite{Zhang2014} used a lidar (Hokuyo UTM-30LX) to generate maps of an apple orchard with the aid of artificial landmarks.
         They used an actuated single-plane lidar to generate multi-plane data for use in row and landmark based sensing.
-        Placing artificial land-marks in orchards was intended to reduce the effort required to create orchard maps for guidance systems.
+        Placing artificial landmarks in orchards was intended to reduce the effort required to create orchard maps for guidance systems.
 
         The following year, many of the same authors from  the paper presented by \cite{Zhang2014} write about their autonomous vehicle \citep{Bergerman2015}.
         It describes an electric utility vehicle converted to drive-by-wire with the addition wheel encoders for odometry and a single-plane lidar (Sick LMS-111).
-        While not demonstrated detecting obstacles in real-time, their previous work processing off-line data \citep{Freitas2012} has potential to be integrated on their platform with the addition of extra computing power.
+        While not demonstrated detecting obstacles in real-time, their previous work processing offline data \citep{Freitas2012} has potential to be integrated on their platform with the addition of extra computing power.
 
         Most recently, \cite{Sharifi2015} write about a method to generate centre-lines from 2D images of orchard rows.
         Like the work of \cite{He2011}, the technique offers a way to generate paths from a single camera image without resorting to neural networks.
@@ -373,7 +372,7 @@
         With regards to the use of RTK-GPS in guidance systems, Slaughter et~al.\@ points out the trade-off of requiring an ``unobstructed `view' of the sky from all parts of the field'' \citep{Slaughter2008}.
         % Additionally, multi-path signal propagation caused by nearby foliage or the geometry of the land itself presents its own mode of failure \citep{Durrant-Whyte2005}.
         % A feasibility analysis by \cite{Pedersen2006} highlighted the use of RTK-GPS systems as a significant cost in yearly subscriptions alone.
-        \cite{Durrant-Whyte2005} describe one failure mode of GPS being multi-path signal propagation caused by nearby foliage or the geometry of the land itself.
+        \cite{Durrant-Whyte2005} describe one failure mode of GPS being multipath signal propagation caused by nearby foliage or the geometry of the land itself.
         % This requirement can not be satisfied under the canopy of a kiwifruit orchard which are usually surrounded by tall wind-breaking hedges.
         % \cite{Torii2000} suggests a combination of both RTK-GPS and machine vision systems to be the most promising system going forward based on reductions in costs and increases in performance of these systems.
         % While \cite{Li2009} concludes that either GPS and machine vision, or GPS and lidar will be used together as a development trend.
@@ -393,7 +392,7 @@
         \end{figure}
 
         The vehicle's design is mostly influenced by the need to carry robotic modules and fruit bins through pergola style orchards.
-        Existing commercial platforms suitable for use in horticulture exist, such as the Warthog from ClearPath Robotics, but the maximum payload, battey life, and vehicle geometry make it and similar offerings unsuitable.
+        Existing commercial platforms suitable for use in horticulture exist, such as the Warthog from ClearPath Robotics, but the maximum payload, battery life, and vehicle geometry make it and similar offerings unsuitable.
         Robotic modules for pollination or harvesting can weigh as much as \SI{600}{\kilo\gram} and a bin of kiwifruit adds an additional \SI{400}{\kilo\gram}.
         The canopy height in these orchards ranges from \SI{1.4}{\meter} to \SI{1.7}{\meter} so the vehicle must have a low profile.
         Modules carried by the platform require clearance from the canopy in addition to the height they occupy themselves.
@@ -408,7 +407,7 @@
             \label{fig:AMMPChassis}
         \end{figure}
 
-        The chassis is assembled from sections of \SI{3}{\milli\meter} laser-cut and folded mild-steel.
+        The chassis is assembled from sections of \SI{3}{\milli\meter} laser-cut and folded mild steel.
         The sections are welded together on jigs, also made from laser-cut and folded steel, before being powder coated.
         Finite element analysis was used during the design phase to help identify areas needing to be strengthened and areas where material could be removed.
         Much of the folded chassis structure contains triangular cut-outs, which reduces weight and has minimal impact on rigidity.
@@ -449,7 +448,7 @@
         % At this steering angle, .
         Implementing four-wheel steering system would shift the pivot point to the vehicle's centre, roughly halving the radius.
         This is unnecessary as headlands in kiwifruit orchards are sized for tractors with much larger turning radii than the developed platform.
-        The two wheeled steering system removes the need to develop the ``non-trivial'' control strategies encoutered by \cite{Bak2004}.
+        The two wheeled steering system removes the need to develop the ``non-trivial'' control strategies encountered by \cite{Bak2004}.
         It also increases the usable area at the rear of the vehicle by removing the need for clearances around actuated wheels.
         A skid steer system was expected to cause ground damage to a level considered unacceptable to orchard owners when carrying heavy loads.
 
@@ -489,7 +488,7 @@
         where $\omega$ is the angular velocity of a wheel, $v$ is the vehicle velocity, and $\tau$ is torque.
         At a velocity of \SI{2.78}{\meter\per\second} (\SI{10}{\kilo\meter\per\hour}), the calculations give a power requirement of \SI{5.55}{\kilo\watt} per wheel.
 
-        The selected motors are hub-mounted permanent magnet brushless AC motors with integrated 40:1 fixed-radio plaentary gearboxes (Heinzmann PSM-G120).
+        The selected motors are hub-mounted permanent magnet brushless AC motors with integrated 40:1 fixed-radio planetary gearboxes (Heinzmann PSM-G120).
         Each motor is rated for \SI{6.4}{\kilo\watt} at \SI{96}{\volt} with a maximum speed of \SI{3000}{rev\per\min} and a torque of \SI{20.4}{\newton\meter}.
         At the output of the gearbox, the torque jumps to \SI{816}{\newton\meter} while the angular velocity drops to \SI{75}{rev\per\minute}.
         This gives the platform a top speed of \SI{10.3}{\kilo\meter\per\hour}.
@@ -527,10 +526,10 @@
         Once closed, an auxiliary 24V bus becomes powered which powers components required to bring the rest of the rest up.
 
         A power generation unit comprised of a petrol engine (Honda GX-690), air compressor (Rotorcomp NK-1), and electrical generator is housed at the front of the vehicle.
-        The drive shafts of the three units are connected via pullies and a heavy-duty timing belt.
+        The drive shafts of the three units are connected via pulleys and a heavy-duty timing belt.
         The engine, compressor, and alternator are controlled and monitored by a microcontroller based control board.
         This board connects to the Platform PC via a CAN bus.
-        The engine is capable of producing \SI{16}{\kilo\watt}, where up to \SI{9.6}{\kilo\watt} is converted to electrical power, artificially limited in software, and \SI{4.0}{\kilo\watt} is converted to pneunatic power.
+        The engine is capable of producing \SI{16}{\kilo\watt}, where up to \SI{9.6}{\kilo\watt} is converted to electrical power, artificially limited in software, and \SI{4.0}{\kilo\watt} is converted to pneumatic power.
 
         Electrical generation is done with a brushless AC motor/generator (Heinzmann PMSG-150) connected to the same model of motor controller used with the drive system.
         The motor is a larger variant of those used for traction and steering, but no gearbox is fitted.
@@ -582,7 +581,7 @@
 
         The open source Robotic Operating System (ROS) is used to facilitate communication between computers and software nodes running within each machine.
         Figure \ref{fig:system_diagram_software} shows a simplified passage of information flowing through the navigation system.
-        To maximise code reusablility, each device on the platform has its own ROS node dedicated to publishing device data or subscribing to generated device commands.
+        To maximise code reusability, each device on the platform has its own ROS node dedicated to publishing device data or subscribing to generated device commands.
         Interface adapters, motor controllers, wireless controllers, lidar, and encoders are such devices with dedicated interface nodes.
         Nodes are also used to transform or perform calculations on data and pass it between nodes written in either C++ or Python.
         For instance, as shown in figure \ref{fig:system_diagram_software}, an `Ackermann kinematics' node transforms steering input data into individual wheel velocity and position/angle outputs.
@@ -592,10 +591,10 @@
         For example, the accelerator and steering inputs are controlled by potentiometers actuated by the vehicle's driver.
         However, the controllers also provide an option for a multi-motor vehicle configuration.
         In this configuration, inputs fed into a master controller are relayed to a second controller over a CAN interface.
-        This interface is configured using a proprietry tool and is not intended for use other than between controllers configured with their software.
+        This interface is configured using a proprietary tool and is not intended for use other than between controllers configured with their software.
         By observing the communication protocol between a master and slave in operation, it was possible to implement a master node in software that runs on the Platform PC.
         With this, all motor controllers on the platform are programmed as slave devices.
-        This forces them to accept drive commands via their CAN interafce which are generated from ROS nodes on the Platform PC.
+        This forces them to accept drive commands via their CAN interface which are generated from ROS nodes on the Platform PC.
 
         Relay modules allow the Platform PC to toggle power to on-board power supplies, motor controllers, park-brakes, and lights.
         They also monitor the timing of synchronisation, or heartbeat, messages transmitted by the Platform PC onto the CAN bus.
@@ -674,13 +673,14 @@
         However, in both overcast and sunny conditions it suffered from a \emph{complete} loss of range data.
         \color{red}Any idea why?\color{black}
 
-        Traditinoal, 2-dimensional, cameras trialled were the Basler Dart daA1600-60uc, Flir CM3-U3-13S2C-CS, and a Logitech C920 web-camera.
+        Traditional, 2-dimensional, cameras trialled were the Basler Dart daA1600-60uc, Flir CM3-U3-13S2C-CS, and a Logitech C920 web-camera.
         % Each camera was driven through an orchard at a height of \SI{0.8}{\meter} while attached to the front of the vehicle.
         % This height was chosen as it is roughly halfway between the ground and the canopy.
         % Like the lidar tests, each camera was driven through the orchard at a height of \SI{0.8}{\meter} from the ground.
-        \color{red}Do you have any images showing the results?\color{black}
+
         The Logitech C920 suffered from significant motion blur that, being a consumer grade web-camera, was not surprising.
         It also lacked the functionality of a hardware trigger which is important if the camera is used in stereo vision applications.
+        \color{red}Do you have any images showing the results? A three-way comparison would be great.\color{black}
         The Basler and Flir cameras both produced images of sufficient quality.
         The Basler offering was favored for its later model image sensor and simpler software interface.
 
@@ -742,7 +742,7 @@
         Relative distances between these waypoints were measured with a tape measure and recorded.
         The receivers were then tested separately over the course of approximately two hours.
         Before testing, each unit was powered up and given \SI{30}{\minute} to initialise in an open area near the kiwifruit orchard.
-        During testing, each unit was walked slowly along the pre-determined path with stops at each waypoint to provide time for a positional fix.
+        During testing, each unit was walked slowly along the predetermined path with stops at each waypoint to provide time for a positional fix.
         The path was approximately \SI{500}{\meter} in length and took approximately \SI{15}{\minute} to complete, including stops at each waypoint.
         Waypoints were spaced at intervals of \SI{5.5}{\meter} along the row.
 
@@ -1025,8 +1025,8 @@
 
     Deflection observed through the steering mechanism while loaded with test mass indicates there are rigidity issues in this area.
     While this did not affect the ability of the vehicle to accelerate or turn during testing, subsequent issues have arisen in this area.
-    Signs of premature wear in the gearboxes of the steering motors has become aparent.
-    These gearboxes are used to support frontal half of the vehicles weight axially.
+    Signs of premature wear in the gearboxes of the steering motors has become apparent.
+    These gearboxes are used to support frontal half of the vehicle's weight axially.
 
 
 \section{Conclusion}
