@@ -48,6 +48,7 @@
 %% The amsthm package provides extended theorem environments
 %% \usepackage{amsthm}
 \usepackage{color}
+\usepackage{soul}  % Remove on submission
 \usepackage{siunitx}
 \usepackage{array}
 \usepackage{lineno}
@@ -664,26 +665,39 @@
         It provides range, intensity, and confidence data at a resolution of 640 by 480 pixels.
         This specific model was chosen as it had previously proved useful when collecting depth data of kiwifruit canopies.
         During that time it had been operated under a range of lighting conditions and exhibited minimal occurrences of data loss.
-        However, subsequent testing revealed that in both direct sunlight and overcast conditions there was significant data loss.
-        \color{red}Jamie, can you comment on this? Why do you think this happened?\color{black}
+        In those conditions the camera was mounted with its principal axis aligned vertically, pointing upwards to the canopy.
+        However, subsequent testing with the camera mounted with its principal axis aligned horizontally revealed significant data loss in both sunny and overcast conditions.
+        \color{blue}\st{This was likely due to excessive ambient light and low reflectivity of objects in the orchard rows.}
+        \color{black}
+        This is though to be the result of two factors.
+        The first is a lower reflectivity of objects in view of the camera when facing forwards, as opposed to facing up at a leafy canopy.
+        The second is due to a dramatic increase in distance between the camera and the scene's subject matter.
+        As the camera relies on active illumination of the scene, its ability to detect that illumination amongst ambient light drops sharply with distance.
 
         The 3D stereo camera tested was an Intel RealSense R200.
-        It combines a stereo pair of infra-red cameras with a colour camera.
-        Additionally, it features an infra-red projector as a means of adding texture to objects in its field of view to assist with stereo processing.
+        It combines a stereo pair of infrared cameras with a colour camera.
+        Additionally, it features an infrared projector as a means of adding texture to objects in its field of view to assist with stereo processing.
         The appealing characteristics of this sensor were its low cost and its claim of being long-range and able to work outdoors.
         However, in both overcast and sunny conditions it suffered from a \emph{complete} loss of range data.
-        \color{red}Any idea why?\color{black}
+        This appeared to be the result of ambient sunlight interferring with the infrared projector.
 
         Traditional, 2-dimensional, cameras trialled were the Basler Dart daA1600-60uc, Flir CM3-U3-13S2C-CS, and a Logitech C920 web-camera.
-        % Each camera was driven through an orchard at a height of \SI{0.8}{\meter} while attached to the front of the vehicle.
-        % This height was chosen as it is roughly halfway between the ground and the canopy.
-        % Like the lidar tests, each camera was driven through the orchard at a height of \SI{0.8}{\meter} from the ground.
-
         The Logitech C920 suffered from significant motion blur that, being a consumer grade web-camera, was not surprising.
-        It also lacked the functionality of a hardware trigger which is important if the camera is used in stereo vision applications.
-        \color{red}Do you have any images showing the results? A three-way comparison would be great.\color{black}
+        Latency of \SI{150}{\milli\second} was recorded when retrieving images form this camera.
+        It also lacked the functionality of a hardware trigger and sent images with significant latency, measured at \SI{150}{\milli\second}.
         The Basler and Flir cameras both produced images of sufficient quality.
         The Basler offering was favored for its later model image sensor and simpler software interface.
+        \color{red}Do you have any latency data either/both of these cameras\color{black}?
+
+        \begin{figure}[htb]
+            \centering
+            \includegraphics[width=\linewidth]{imgs/camera_comparison/camera_comparison.pdf}
+            \caption{
+                Example images captured from trialled 2D cameras.
+                Basler Dart daA1600-60uc (left), Flir CM3-U3-13S2C-CS (centre), Logitech C920 web-camera (right).
+            }
+            \label{fig:canopyDataCloud}
+        \end{figure}
 
         Overall, the more industrial 2D camera images (from the Basler and Flir cameras) were deemed suitable for object detection and classification.
         This was verified by processing the data using readily accessible detection algorithms such as convolutional neural networks.
@@ -766,7 +780,7 @@
     	The Ublox receiver collected more data, but was much less accurate.
         It may be possible to use a unit such as the Omnistar, which provided fewer but more accurate readings, as a sanity check for an approximate location within orchards.
         Overall, the units could not be relied on for localisation in this environment.
-        These results results, GNSS receivers with similar performance to those trialled are deemed unsuitable for use in kiwifruit orchards.
+        These results indicate GNSS receivers with similar performance to those trialled are unsuitable for use in kiwifruit orchards.
 
 
 
@@ -905,8 +919,8 @@
 
 \section{Autonomous Block Traversal}
 \label{sect:autonomous}
-    Two separate row following algorithms were developed based the sensor selection findings, with details of each published separately.
-    One method used the multi-layer lidar to detect individual trunks and posts of the pergola style orchard and follow a centre-line between them \citep{Bell2016}.
+    Two separate row following algorithms were developed based on the sensor selection findings, with details of each published separately.
+    One method used the multi-layer lidar to detect individual trunks and posts of the pergola style orchard row and follow a centre-line between them \citep{Bell2016}.
     The second method used a single camera combined with a convolutional neural network to segment features in the image such as traversable space, tree-lines, and row-ends \citep{Bell2017}.
     A centreline was then fitted to the areas marked as traversable that was used to generate steering commands for the vehicle.
 
@@ -914,7 +928,7 @@
     A laptop (Dell E6410) with integrated graphics processor (Nvidia M5000M) was used on these platforms to process the sensor data and generate steering commands.
     Both approaches produced paths that led to reproducible row following behaviour.
     A method of conducting row-end turns was trialled on the Pioneer 3-AT robot using the lidar based approach.
-    However, its drive system lacked the power required to turn into rows on uphill slopes.
+    However, the robot's drive system lacked the power required to turn into rows on uphill slopes.
 
     Both approaches were transferred to the target platform once validated on the smaller robots.
     Differences in the geometry between these platform meant some adjustments were necessary.
@@ -928,7 +942,7 @@
     Alterations were made to code responsible for generating steering angles to account for the difference in pivot point between the vehicles.
     No allowances were made for the time to actuate the front wheels during row following.
 
-    To determine when the robot is at the end of a row, the multi-layer lidar is used to detect the absence of canopy in a space above the front of the vehicle.
+    To determine when the robot is at the end of a row, the multi-layer lidar is used to detect the absence of canopy in a volume above the front and to the sides of the vehicle.
     This method was used to initiate a row-end turn maneuver in the case of both the lidar and camera based approaches.
 
     A row-end turn sees the platform execute a series of maneuvers which have previously been recorded for the specific row and direction of turn.
@@ -936,6 +950,7 @@
     Manual adjustments are made to the recorded turn profile based on the vehicle's proximity to obstacles or nearby boundaries during the maneuver.
     Turns are repeated and the profile adjusted until a satisfactory and reproducible turn at the given location is established.
     A turn profile can contain any number of steps, with each step being a distance to travel or angle to turn through with a given radius.
+    If the lidar system detects an object in the path of the vehicle during a turn, the steering is adjusted to avoid the object.
 
 
 \section{Testing}
@@ -963,17 +978,28 @@
     Dynamic tests involved three instances of stopping whilst driving down a \SI{10}{\degree} slope.
     During each test the vehicle came to a complete stop within a distance of \SI{2.3}{\meter}.
 
-    Using the described approach, the platform was routinely able to navigate two test orchards using the described approach.
+    The platform was routinely able to navigate two test orchards using the described approach.
     The first orchard block is \SI{1.15}{\kilo\meter} in total traversable length spread over 10 rows.
     A second orchard block is \SI{670}{\meter} in total traversable length spread over 9 rows.
-    Using the recorded turn profiles the platform has navigated the first block consecutively 5 times, and 12 times in total out of 18 attempts.
-    The second block has been navigated 5 times, 3 times consecutively, out of a total of 8 attempts.
-    This equates to a total of \SI{17.2}{\kilo\meter} of successfully navigated orchard rows.
+    After tuning of the row end turn maneuvers, the platform successfully navigated the first block consecutively 7 times.
+    After tuning the row end turns in the second block, this block was navigated 3 times consecutively.
+    This equates to a total of \SI{10}{\kilo\meter} of successfully navigated orchard rows.
+    \color{red}Need something here to quantify how many attempts were made\color{black}
 
-    Any time the vehicle had to be taken out of autonomous control during a block traversal are counted as failed attempt.
-    Of the nine traversals where an operator intervened, there were two causes for failure.
-    Seven, or \SI{77}{\percent}, of these were due to an imminent collision with a post during a row end-turn.
-    The remaining failures were due to the platform trying to initiate a row-end turn before reaching the end of the row.
+
+    % Any time the vehicle had to be taken out of autonomous control during a block traversal are counted as failed attempt.
+    The key weakness of the current navigation system is the need to tune the row end turns manually for each site.
+    The tuning required for the first orchard block amounted to 6 traversals of the entire block.
+    For the second block, 5 complete traversals were required for tuning.
+    This creates a significant resource overhead for deployment to any new sites.
+    If the row end turns are not sufficiently tuned, two failure cases may occur.
+    The most common case is that the vehicle turns through a row end too tightly or not tightly enough and the object avoidance system is not sufficiently responsive to avoid a collision.
+    There were nine traversals where an operator intervened during row end turning.
+    Seven, or \SI{77}{\percent}, of these were due to an imminent collision with a post during a row end turn.
+    The remaining failures during row end turning were due to the platform trying to recommence row following before facing the new target row.
+    In this case the most feasible path for row following was detected through the headland area, instead of the target row.
+    Row end turning was a manual process that involved observing an autonomously driven turn and subsequently adjusting the length or radius of the turn's segments.
+    Once tuned, the row end turns were robust \color{red} Need to quantify this\color{black}.
     Figure \ref{fig:suzy_turning} shows the platform performing a row-end turn while under autonomous control.
 
     \begin{figure}[htb]
@@ -986,9 +1012,9 @@
         \label{fig:suzy_turning}
     \end{figure}
 
-    Failures resulting in imminent collision during a turn were due to variability in the position at which the turn is initiated.
-    False detections of a row-end condition while not at a row's end were caused by an oversensitivity to a lack of canopy above the robot.
-    Both of these failure modes highlight issues around the detection of a row-end condition.
+    % Failures resulting in imminent collision during a turn were due to variability in the position at which the turn is initiated.
+    % False detections of a row-end condition while not at a row's end were caused by an oversensitivity to a lack of canopy above the robot.
+    % Both of these failure modes highlight issues around the detection of a row-end condition.
 
 
 \section{Discussion}
@@ -998,13 +1024,13 @@
     However, during these operations the vehicle was primarily operated under manual control.
     This was due to the need to control the vehicle outside of its autonomous operating behaviour.
     In most cases it was driven as close as possible to a row's edge on two passes through each row.
-    This was necessary to give mounted modules access the full canopy area whilst performing their tasks.
-    The need to dive close to row boundaries was unexpected as the modules were expected to require only a single pass per row.
+    This was necessary to give mounted modules access to the full canopy area whilst performing their tasks.
+    The need to drive close to row boundaries was unexpected as the modules were expected to require only a single pass per row.
 
     The results from testing of navigation algorithms indicate that the multi-layer lidar and wheel encoder feedback are enough for mapping, localisation, and row following tasks.
     This combination alone has proven successful for autonomous driving in two kiwifruit orchards.
-    A combination of 2D cameras and neural networking was suitable for object detection and classification, and for generating headings for row following.
-    The two approaches for row following proved reliable, however the method for turning between rows calles for further work.
+    A combination of 2D cameras and neural networks was suitable for object detection and classification, and for generating headings for row following.
+    The two approaches for row following proved reliable, however the method for turning between rows calls for further work.
     Future work will focus on enabling the system to plan row-end turns based on sensor data, without a manually created map.
 
     During installation and testing of the platform's electrical system, the \SI{96}{\volt} battery pack introduced a significant electrical hazard.
