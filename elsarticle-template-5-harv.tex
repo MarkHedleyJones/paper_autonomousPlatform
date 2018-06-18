@@ -171,7 +171,7 @@
 
 \end{frontmatter}
 
-\linenumbers
+% \linenumbers
 % \linenumbers
 
 %% main text
@@ -207,7 +207,7 @@
     The development of autonomous vehicles in agriculture is not new, but much of the literature relates to manned vehicles converted to drive-by-wire.
     Because the canopy of a pergola style kiwifruit orchard can droop as low as \SI{1.4}{\meter} to the ground under fruit loading, most standard vehicles are unsuitable for use this environment.
     Many autonomous vehicles designed for use in orchards, such as vineyards, rely on satellite navigation for guidance.
-    The dense foliage of a kiwifruit canopy and the surrounding shelter belts make receiving satellite navigation signals unreliable at best.
+    The dense foliage of a kiwifruit canopy and the surrounding shelterbelts make receiving satellite navigation signals unreliable at best.
     This means the vehicle must perceive the environment using suitable sensors.
 
     This paper presents a modularised platform built specifically for use in pergola style orchards.
@@ -656,19 +656,17 @@
     \subsubsection{In-orchard Camera Evaluation}
         \label{sect:camera_evaluation}
 
-        Three varieties of camera were tested: time-of-flight, 3D stereoscopic, and traditional 2D cameras.
+        Three types of camera were tested: time-of-flight, 3D stereoscopic, and traditional 2D cameras.
         Smaller platforms (Clearpath Husky and Adept MobileRobots Pioneer P3-AT) were used to gather data used for evaluation.
         Cameras were mounted to these platforms \SI{0.8}{\meter} above the ground, which is roughly mid-way between the ground and the canopy.
 
-        The time-of-flight based camera was the Basler TOF640-20GM-850NM.
+        The time-of-flight camera was a Basler TOF640-20GM-850NM.
         It provides range, intensity, and confidence data at a resolution of 640 by 480 pixels.
         This specific model was chosen as it had previously proved useful when collecting depth data of kiwifruit canopies.
         During that time it had been operated under a range of lighting conditions and exhibited minimal occurrences of data loss.
         In those conditions the camera was mounted with its principal axis aligned vertically, pointing upwards to the canopy.
         However, subsequent testing with the camera mounted with its principal axis aligned horizontally revealed significant data loss in both sunny and overcast conditions.
-        \color{blue}\st{This was likely due to excessive ambient light and low reflectivity of objects in the orchard rows.}
-        \color{black}
-        This is though to be the result of two factors.
+        This is thought to be the result of two factors.
         The first is a lower reflectivity of objects in view of the camera when facing forwards, as opposed to facing up at a leafy canopy.
         The second is due to a dramatic increase in distance between the camera and the scene's subject matter.
         As the camera relies on active illumination of the scene, its ability to detect that illumination amongst ambient light drops sharply with distance.
@@ -678,11 +676,10 @@
         Additionally, it features an infrared projector as a means of adding texture to objects in its field of view to assist with stereo processing.
         The appealing characteristics of this sensor were its low cost and its claim of being long-range and able to work outdoors.
         However, in both overcast and sunny conditions it suffered from a \emph{complete} loss of range data.
-        This appeared to be the result of ambient sunlight interferring with the infrared projector.
+        This appeared to be the result of ambient light interfering with the infrared projector’s signal.
 
         Traditional, 2-dimensional, cameras trialled were the Basler Dart daA1600-60uc, Flir CM3-U3-13S2C-CS, and a Logitech C920 web-camera.
         The Logitech C920 suffered from significant motion blur that, being a consumer grade web-camera, was not surprising.
-        Latency of \SI{150}{\milli\second} was recorded when retrieving images form this camera.
         It also lacked the functionality of a hardware trigger and sent images with significant latency, measured at \SI{150}{\milli\second}.
         The Basler and Flir cameras both produced images of sufficient quality.
         The Basler offering was favored for its later model image sensor and simpler software interface.
@@ -998,7 +995,6 @@
     The remaining failures during row end turning were due to the platform trying to recommence row following before facing the new target row.
     In this case the most feasible path for row following was detected through the headland area, instead of the target row.
     Row end turning was a manual process that involved observing an autonomously driven turn and subsequently adjusting the length or radius of the turn's segments.
-    Once tuned, the row end turns were robust \color{red} Need to quantify this\color{black}.
     Figure \ref{fig:suzy_turning} shows the platform performing a row-end turn while under autonomous control.
 
     \begin{figure}[htb]
