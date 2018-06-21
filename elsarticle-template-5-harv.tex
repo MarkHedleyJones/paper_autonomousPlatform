@@ -973,7 +973,17 @@
     Turns are repeated and the profile adjusted until a satisfactory and reproducible turn is established.
     A turn profile can contain any number of steps, with each step being a distance to travel or angle to turn through with a given radius.
     If an object is detected in the vehicle's path during a turn, the steering is adjusted to avoid the object.
+    Figure \ref{fig:suzy_turning} shows the platform performing a row-end turn while under autonomous control.
 
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=\linewidth]{imgs/photos/suzy_turning.jpg}
+        % \includegraphics[width=\linewidth]{imgs/photos/suzy_turning_small.jpg}
+        \caption{
+            The platform performing a row-end turn in the headland area of a kiwifruit orchard while under autonomous control.
+        }
+        \label{fig:suzy_turning}
+    \end{figure}
 
 \section{Testing}
 \label{sub:testing}
@@ -1000,23 +1010,32 @@
     Dynamic tests involved three instances of stopping whilst driving down a \SI{10}{\degree} slope at a speed of \SI{10}{\kilo\meter\per\hour}.
     During each test the vehicle came to a complete stop within a distance of \SI{2.4}{\meter}.
 
-    The platform was routinely able to navigate two test orchards using the lidar based navigation approach approach.
-    The first orchard block is \SI{1.15}{\kilo\meter} in total traversable length spread over 10 rows.
-    A second orchard block is \SI{670}{\meter} in total traversable length spread over 9 rows.
-    After tuning of the row end turn maneuvers, the platform navigated the first block consecutively 7 times.
+    The platform was routinely able to navigate two test blocks, denoted Block A and Block B, from separate orchards using the lidar based navigation approach approach.
+    Block A is \SI{1.15}{\kilo\meter} in total traversable length spread over 10 rows.
+    Block B is \SI{670}{\meter} in total traversable length spread over 9 rows.
+    After tuning of the row end turn maneuvers, the platform navigated Block A consecutively 7 times.
+    Figure \ref{fig:block_traversal_bateman} shows the number of interventions per traversal while under tuning in Block A, 18 traversals in total.
     After tuning the row end turns in the second block, this block was navigated 3 times consecutively.
+    Figure \ref{fig:block_traversal_newnham} shows the number of interventions per traversal while under tuning in Block B, 9 traversals in total.
     This equates to a total of \SI{10}{\kilo\meter} of successfully navigated orchard rows.
 
 
     \begin{figure}[htb]
         \centering
         \includegraphics{imgs/tuning_graphs/bateman.pdf}
+        \caption{
+            Number of interventions during tuning of row-end turns throughout Block A.
+        }
+        \label{fig:block_traversal_bateman}
+    \end{figure}
+
+    \begin{figure}[htb]
+        \centering
         \includegraphics{imgs/tuning_graphs/newnham.pdf}
         \caption{
-            Plot showing the number of interventions during tuning of row-end turns.
-            In most cases an intervention resulted in additional tuning of aborted row end turns.
+            Number of interventions during tuning of row-end turns throughout Block B.
         }
-        \label{fig:block_traversal}
+        \label{fig:block_traversal_newnham}
     \end{figure}
 
 
@@ -1031,17 +1050,6 @@
     Seven of these were due to an imminent collision with a post during a row end turn.
     The remaining failures during row end turning were due to the platform trying to recommence row following before facing the new target row.
     In this case the most feasible path for row following was detected through the headland area, instead of the target row.
-    Figure \ref{fig:suzy_turning} shows the platform performing a row-end turn while under autonomous control.
-
-    \begin{figure}[htb]
-        \centering
-        \includegraphics[width=\linewidth]{imgs/photos/suzy_turning.jpg}
-        % \includegraphics[width=\linewidth]{imgs/photos/suzy_turning_small.jpg}
-        \caption{
-            The platform performing a row-end turn in the headland area of a kiwifruit orchard while under autonomous control.
-        }
-        \label{fig:suzy_turning}
-    \end{figure}
 
     % Simulation of the software responsible the Ackermann steering geometry revealed software bugs.
     % These bugs were

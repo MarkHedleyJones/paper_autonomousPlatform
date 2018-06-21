@@ -12,8 +12,8 @@ plt.rc('font', family='serif', serif='STIXGeneral')
 # plt.rc('figure', autolayout=True)
 # plt.rc('figure', figsize=(7.2, 4.5))
 
-bateman = [7, 6, 6, 4, 3, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
-newnham = [9, 6, 4, 4, 3, 2, 1, 0, 0, 0, 0, 0]
+bateman = [7, 6, 6, 4, 3, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+newnham = [9, 6, 4, 4, 3, 2, 1, 0, 0, 0]
 
 
 dimensions = [390*0.01384,195*0.01384]
@@ -54,7 +54,7 @@ plt.savefig("bateman.pdf")
 plt.clf()
 
 
-dimensions = [300*0.01384,195*0.01384]
+dimensions = [230*0.01384,195*0.01384]
 params = {'figure.figsize': dimensions}
 plt.rcParams.update(params)
 fig, ax = plt.subplots(1)
