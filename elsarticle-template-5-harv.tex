@@ -140,11 +140,24 @@
 %% Text of abstract
     Horticultural robots designed for in-field use generally require a means of locomotion through farms or orchards.
     A common approach is to directly integrate a drive system at the expense of increasing overall complexity.
-    While general purpose platforms have been reported previously, they are mostly developed for use with open field crops and not for carrying heavy payloads.
-    This paper presents a low-slung platform capable of carrying a \SI{1000}{\kilo\gram} payload through GNSS-denied environments, autonomously.
-    The platform is general in the sense that it itself does not perform tasks.
-    It is intended solely to navigate through pergola style orchards while being capable of carrying and supplying power to mounted modules.
-    Navigation sensor selection with in-orchard validation tests are presented.
+    Modular platforms reported previously are designed to carry relatively light payloads orientated toward ground based crops.
+    This paper presents a modularised platform capable of carrying modules of up to \SI{1000}{\kilo\gram} under pergola style kiwifruit orchards.
+    Sensors suitable for autonomous navigation are evaluated in-orchard and tested using a prototyped navigation algorithm.
+    It is found that GNSS based navigation is not suitable in this environment, but perception based navigation sees the vehicle complete a number of block traversals unassisted.
+    The design of the platform's structure, drive system and software architecture is also discussed.
+
+    % It is shown that some perception based sensors are suitable for nav
+    % It is shown that some perception based navigation sensors are suitable, but GNSS based systems
+    % environment due to a lack of GNSS signal reception under canopy.
+
+    % It is shown that GNSS based navigation is inadaquate, but perception based systems
+
+    % It is found that GNSS based systems are not suitable as navigation sensors in this environment
+
+    % % This paper presents a low-slung platform capable of carrying a \SI{1000}{\kilo\gram} payload through GNSS-denied environments, autonomously.
+    % The platform is general in the sense that it itself does not perform tasks.
+    % It is intended solely to navigate through pergola style orchards while being capable of carrying and supplying power to mounted modules.
+    % Navigation sensor selection with in-orchard validation tests are presented.
 
 
 
@@ -694,9 +707,10 @@
         Traditional, 2-dimensional, cameras trialled were the Basler Dart daA1600-60uc, Flir CM3-U3-13S2C-CS, and a Logitech C920 web-camera.
         The Logitech C920 suffered from significant motion blur that, being a consumer grade web-camera, was not surprising.
         It also lacked the functionality of a hardware trigger and sent images with significant latency, measured at \SI{150}{\milli\second}.
-        The Basler and Flir cameras both produced images of sufficient quality.
-        The Basler offering was favored for its later model image sensor and simpler software interface.
-        \color{red}Do you have any latency data either/both of these cameras\color{black}?
+        The Basler and Flir cameras both produced images of sufficient quality and featured hardware triggering.
+        The Basler camera had a USB3 interface and had a image retrieval time of \SI{14}{\milli\second}.
+        The Flir camera had a USB2 interface with an image retrieval time of \SI{65}{\milli\second}.
+        The Basler offering was favored for its later model image sensor, simpler software interface, and lower-latency.
 
         \begin{figure}[htb]
             \centering
@@ -773,7 +787,6 @@
         \begin{figure}[htb]
             \centering
             \includegraphics{imgs/gps_path/gps_path.pdf}
-            % \includegraphics{imgs/gps_path/gps_path_small.png}
             \caption{
                 Aerial view of the path taken through the test orchard and the captured GPS data.
                 Dashes representing the approximate path are spaced at intervals of \SI{5.5}{\meter}.
@@ -993,13 +1006,24 @@
     After tuning of the row end turn maneuvers, the platform navigated the first block consecutively 7 times.
     After tuning the row end turns in the second block, this block was navigated 3 times consecutively.
     This equates to a total of \SI{10}{\kilo\meter} of successfully navigated orchard rows.
-    \color{red}Need something here to quantify how many attempts were made\color{black}
+
+
+    \begin{figure}[htb]
+        \centering
+        \includegraphics{imgs/tuning_graphs/bateman.pdf}
+        \includegraphics{imgs/tuning_graphs/newnham.pdf}
+        \caption{
+            Plot showing the number of interventions during tuning of row-end turns.
+            In most cases an intervention resulted in additional tuning of aborted row end turns.
+        }
+        \label{fig:block_traversal}
+    \end{figure}
 
 
     % Any time the vehicle had to be taken out of autonomous control during a block traversal are counted as failed attempt.
     The key weakness of the current navigation system is the need to tune the row end turns manually for each site.
-    The tuning required for the first orchard block amounted to 6 traversals of the entire block.
-    For the second block, 5 complete traversals were required for tuning.
+    The tuning required for the first orchard block amounted to six traversals of the entire block.
+    For the second block, five complete traversals were required for tuning.
     This creates a significant resource overhead for deployment to any new sites.
     If the row end turns are not sufficiently tuned, two failure cases may occur.
     The most common case is that the vehicle turns through a row end too tightly or not tightly enough and the object avoidance system is not sufficiently responsive to avoid a collision.
