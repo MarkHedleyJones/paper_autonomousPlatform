@@ -137,7 +137,6 @@
 
 
 \begin{abstract}
-%% Text of abstract
     Horticultural robots designed for in-field use generally require a means of transport around farms or orchards.
     A common approach is to directly integrate a drive system at the expense of increasing overall complexity.
     Alternatively, the robots can be modularised and attached to general purpose platforms.
@@ -194,19 +193,13 @@
     Short-term labor requirements within New Zealand's kiwifruit industry peak twice a year corresponding with the pollination and harvesting of kiwifruit.
     The majority of employment during these peaks is filled by seasonal or casual workers \citep{Timmins2009}.
     As kiwifruit is the country's largest horticultural export by value \citep{StatisticsNewZealand2015}, effective automation in this industry will promote economic growth.
-    % The New Zealand government aims to double exports from its primary industries between 2012 and 2025 and is actively investing in programmes to achieve this \citep{MinistryPrimaryIndustries2015}.
-
     Development of an automated kiwifruit harvesting system with integrated drive system has been done before \citep{Scarfe2012}.
     That work presented a platform designed to autonomously navigate though pergola style kiwifruit orchards and had four integrated harvesting arms.
-    % The pergola is the most commonly used support structure used to grow kiwifruit in New Zealand.
     Work presented here focuses on creating a platform that operates independently from orchard related tasks, such as fruit harvesting and pollination.
     Utilisation of that base platform will be increased by allowing it to be used during harvesting \emph{and} pollination seasons.
-    % This means increasing modularity by separating the task specific systems from the base platform.
-    % Harvesting and pollination modules designed for use on the platform have been published elsewhere \citep{williams2017,Seabright2017}.
     Details of modules developed for use on the platform will be published separately.
     These modules have been built as part of a larger project focusing on automation in kiwifruit orchards.
 
-    % Automation in kiwifruit harvesting and pollination demands computer control, state-of-the-art manipulators, and machine-vision based identification systems.
     Automated kiwifruit harvesting and pollination demands computer control, state-of-the-art manipulators, and machine-vision systems.
     Such systems are bulky and have specific geometric requirements dictated by the environment they operate in.
     Both share the need for electrical power, air pressure, and a means of locomotion.
@@ -224,8 +217,6 @@
     Many autonomous vehicles designed for use in orchards, such as vineyards, rely on satellite navigation for guidance.
     The dense foliage of a kiwifruit canopy and the surrounding shelterbelts make receiving Global Navigation Satellite System (GNSS) signals unreliable at best.
     This means the vehicle must navigate through its environment using perception based sensors.
-    % This paper presents a modularised platform built specifically for use in pergola style orchards.
-    % To operate in this environment it must able to:
     Seven requirements have been identified for the platform's use with the pollination and harvesting modules in kiwfiruit orchards.
     These are to:
     \begin{enumerate}
@@ -258,11 +249,7 @@
         Their vehicle combined wheel encoders, a compass, and accelerometers for odometry information.
         It also featured a camera based row guidance system.
         The system as a whole was capable of spraying individual plants whilst driving autonomously at \SI{0.7}{\meter\per\second} (\SI{2.5}{\kilo\meter\per\hour}).
-        % While their purpose built experimental vehicle proved capable of row following and targeted spraying, it was not designed as a modular unit for carrying heavy payloads.
         While their purpose built experimental vehicle proved capable of row following and targeted spraying, it was not designed for modularity.
-
-
-        % It was capable of spraying individual plants whilst autonomously driving at \SI{0.69}{\meter\per\second} (\SI{2.5}{\kilo\meter\per\hour}).
 
 
         Four years later, two autonomous vehicles designed for weed mapping and control in open field crops were presented \citep{Pedersen2002,Astrand2002}.
@@ -274,24 +261,12 @@
         The authors found that row-crop based navigation from GPS alone was not practical and proposed the integration of a row guidance sensor in their next design.
         They also proposed a revised drive system with four wheel steering and a Controller Area Network (CAN) bus for low-level system communication as opposed to using serial links.
 
-
-        % Both featured two-wheel steering and were designed specifically for field crops.
-        % While both were battery powered, the platform presented by \cite{Astrand2002} could also be fitted with a combustion engine.
-        % The vehicle presented by \cite{Pedersen2002} was designed to follow pre-defined GPS based paths through row crops, but the authors found that this was impractical without a dedicated row guidance sensor.
-        % They proposed a revised design that featured a row guidance sensor, a revised drive system with four-wheel steering, and a Controller Area Network (CAN) bus for low-level communication.
-
         Two years later, the revised design proposed by \cite{Pedersen2002} was presented by \cite{Bak2004}.
-        % The revised design proposed by \cite{Pedersen2002} was presented two years later by \cite{Bak2004}.
         Its drive system was modularised with four identical drive/steering modules mounted to the chassis for locomotion.
         This revised chassis featured a three-point suspension system that ensured all four wheels stayed in contact with the ground.
-        % The GPS receiver on this platform utilised Real Time Kinematic (RTK) corrections from a base station.
-        % The use of a fibe-optic gyro, compass, and wheel encoders meant that accurate localisation was still possible in the event of GPS drop-out.
         The system also incorporated the row guidance sensor as proposed in earlier work, as well as a Real-Time Kinematic enabled GPS receiver (RTK-GPS), fiber-optic gyro, compass, and wheel encoders.
         The authors noted that the control strategy for the four independently controlled wheels was non-trivial.
         While much more developed than the previous work of \cite{Pedersen2002}, the platform was not designed to: carry heavy payloads, operate in the absence of satellite navigation, or power itself beyond its battery capacity.
-        % Being designed for row-crops, the chassis sits relatively high from the ground with its payload sensors inspecting the ground below.
-        % RTK-GPS is capable of providing positioning with accuracies of \SI{2}{\centi\meter}.
-
 
         In 2009, details of BoniRob were published by \cite{Ruckelshausen2009}.
         Similar to the previous unit presented by \cite{Bak2004}, it featured a gyroscope, an RTK-GPS receiver, a CAN bus for communication, and four-wheel steering.
@@ -322,7 +297,6 @@
         None were designed for harvesting operations and therefore were not capable of carrying bins.
         Referring back to the statement from \cite{Ruckelshausen2009} that ``the application itself should be of comparably low complexity'', one can see why research thus far has focused on simpler tasks such as inspection or weeding.
         However, once designs move past these applications it becomes advantageous to accommodate other shared features.
-        % Inclusion of a fork lifting mechanism is a good example of this as its purpose is general enough that most orchard related tasks are benefited by it.
         A fork lifting mechanism is general enough that most orchard related tasks can benefit from it.
         For example, with a harvesting module mounted it can be used to hold a bin in which harvested fruit is collected.
         With a pollination module mounted, it can hold the tank of water used to spray a liquid pollen solution.
@@ -336,12 +310,9 @@
 
     \subsection{Sensors for Row Based Navigation in Orchards}
 
-        % Since the platform is designed for autonomy, selecting appropriate sensors and developing the vehicle around these sensors is an important design consideration.
         As the platform is designed for autonomy, selecting appropriate navigation sensors is an important design consideration.
         Sensor combinations for orchard based row detection mostly fall into three categories; camera based, lidar based, or a combination of the two.
         The following section summarises a review of row detection efforts in orchards using these sensors.
-
-        % Lidar come in two flavours: single-plane, and multi-layer.
 
         \cite{Subramanian2006} tested both camera and lidar (Sick LMS-200) based guidance systems in a citrus fruit orchard.
         Sensors were trialled separately on a tractor retrofitted with a drive-by-wire system.
@@ -380,30 +351,18 @@
         However, their future work focuses on increasing robustness to variations in lighting conditions, which indicates issues in this area.
         They state their system has use in being complementary to lidar based navigation.
 
-        % The experiences of \cite{Scarfe2012}, and others, indicate that a lidar outputs data that requires less post-processing to be robust.
         The reviewed work suggests two navigation sensor approaches as being suitable for use in orchards.
         First, the use of lidar saw two of the reported vehicles navigate autonomously through orchard environments, which is encouraging.
         Second, when combining cameras with neural network based processing, robustness to environmental complexities such as light or clutter was improved.
         Reports and previous experience suggest traditional image based processing for navigation failed when the scene became complex or significant variations in lighting occured.
 
-        % Common among these vehicles is the use of sensor fusion, whereby data from multiple sensors is merged and filtered.
-        % This provides a way to combine the advantages of multiple sensor types, and the benefit of redundancy  into a single computation space.
-
         With regards to the use of RTK based GNSS guidance, Slaughter et~al.\@ points out the trade-off of requiring an ``unobstructed `view' of the sky from all parts of the field'' \citep{Slaughter2008}.
-        % Additionally, multi-path signal propagation caused by nearby foliage or the geometry of the land itself presents its own mode of failure \citep{Durrant-Whyte2005}.
-        % A feasibility analysis by \cite{Pedersen2006} highlighted the use of RTK-GPS systems as a significant cost in yearly subscriptions alone.
         \cite{Durrant-Whyte2005} describe one failure mode of GPS being multipath signal propagation caused by nearby foliage or the geometry of the land itself.
-        % This requirement can not be satisfied under the canopy of a kiwifruit orchard which are usually surrounded by tall wind-breaking hedges.
-        % \cite{Torii2000} suggests a combination of both RTK-GPS and machine vision systems to be the most promising system going forward based on reductions in costs and increases in performance of these systems.
-        % While \cite{Li2009} concludes that either GPS and machine vision, or GPS and lidar will be used together as a development trend.
         \cite{Li2009} conclude that the use of either GPS and machine vision, or GPS and lidar will become a development trend.
         Based on the increased reception requirements, we discount the use of RTK based systems, but still consider the use of general purpose GNSS receivers as a secondary input.
 
 \section{Platform Design}
 \label{sect:design}
-    % \subsection{Vehicle Configuration}
-    % \label{sect:mechanical}
-
         \begin{figure}[htb]
             \centering
             \includegraphics[width=\linewidth]{imgs/profile_views/AMMP-All-Labelled.pdf}
@@ -446,9 +405,6 @@
         These motors can generate \SI{7.32}{\newton\meter} of torque with a maximum angular velocity of \SI{3000}{rev\per\minute} and are rated at \SI{2.3}{\kilo\watt}.
         Their outputs are fed through fixed-ratio planetary gearboxes with a 64:1 reduction, increasing torque to \SI{470}{\newton\meter} while reducing the maximum angular velocity to \SI{47}{rev\per\min}.
 
-        % These calculations represent the vehicle loaded with a \SI{1000}{\kilo\gram} mass, sitting on concrete, overcoming the static friction between the tyres and the ground.
-        % Torque requirements for the front steering motors were calculated as follows:
-
         Torque requirements for the steering motors are based on a static friction scenario with the vehicle loaded with a \SI{1000}{\kilo\gram} mass, sitting on concrete.
         This is represented by:
         \begin{equation}
@@ -469,9 +425,6 @@
         At the tightest steering angle of \SI{90}{\degree}, the centre-point of the turn is located at the midpoint of the rear wheels.
         The turning radius in this case is roughly equal to the vehicle's wheelbase.
         This sees the vehicle turn between adjacent rows spaced as little as \SI{3}{\meter} apart.
-        % It is often possible for the vehicle to make a \SI{180}{\degree} turn mid-row, something not possible for most commercial vehicles designed for orchard use.
-        % This range in steering angle allows the vehicle to place the centre of rotation at the mid-point between its rear wheels during its tightest turn.
-        % At this steering angle
         Implementing a four-wheel steering system would shift the pivot point to the vehicle's centre, roughly halving the turn radius, but this was deemed unnecessary.
 
         Headlands in kiwifruit orchards are sized for tractors with much larger turning radii than the developed platform so there is plenty of space for turning.
@@ -490,16 +443,7 @@
         A three point suspension system is used to ensure that all four wheels are in contact with the ground.
         This is achieved with a front pivoting axle, which can be seen in  Figure~\ref{fig:AMMPChassis}.
         As the operating speed for the vehicle is \SI{1.39}{\meter\per\second} (\SI{5.0}{\kilo\meter\per\hour}), the tyres were expected to provide sufficient shock absorption.
-        % Shock absorption is provided only by the vehicles tyres
-        % The platform has no suspension other than what is provided by its tyres.
-        % As the intended operating speed within an orchard is \SI{1.39}{\meter\per\second} (\SI{5}{\kilo\meter\per\hour}), a dedicated suspension system is not considered to be necessary.
-        % A three point
-        % A front pivoting axle ensures all wheels remain in contact with the ground,  is visible in Figure~\ref{fig:AMMPChassis}.
 
-        % Estimation of the required torque is calculated by the following equations:
-        % Calculation of the requirements for the drive system during acceleration up-hill is as follows:
-
-        % Calculation of the drive system's requirements for during up-hill acceleration are as follows:
         Performance requirements for the vehicle's traction system during up-hill acceleration while under load were calculated as follows:
         \begin{align}
         \label{eqn_f_rolling}
@@ -528,9 +472,6 @@
         Each motor is rated for \SI{6.4}{\kilo\watt} at \SI{96}{\volt} with a maximum angular velocity of \SI{3000}{rev\per\min} and a torque of \SI{20.4}{\newton\meter}.
         At the output of the gearbox, the torque jumps to \SI{816}{\newton\meter} while the angular velocity drops to \SI{75}{rev\per\minute}.
         This gives the platform a top speed of \SI{10.3}{\kilo\meter\per\hour}.
-
-        % Relevant references are \citep{Bosch2002} and \cite{Wong2001}.
-        % A rolling resistance coefficient $C_{rr}$ of 0.04 chosen based on values from various automotive handbooks \citep{Bosch2002}.
 
         In total there are seven brushless AC motors on-board the platform: four drive motors, two steering motors, and a motor used for electrical power generation.
         Each are connected to individual AC motor controllers (Sevcon Gen4 DC Size 4).
@@ -596,7 +537,6 @@
             \label{fig:system_diagram}
         \end{figure}
 
-        % This section briefly explains the hardware and software architecture of the platform.
         The platform is centrally controlled by an x86 based small-form-factor PC (Intel NUC) running Ubuntu 16.04 server edition, referred to as the ``Platform PC''.
         This computer communicates with most sub-systems via a CAN bus interfaced using a USB adaptor (IXXAT USB-to-CANV2).
 
@@ -617,7 +557,6 @@
 
         The open source Robotic Operating System (ROS) is used to facilitate communication between computers and software nodes running within each computer.
         Nodes written using this framework follow either a publish-subscribe or service-client pattern depending on the application.
-        % Figure \ref{fig:system_diagram_software} shows a simplified passage of information flowing through the navigation system.
         To maximise code reusability, each device on the platform has its own ROS node dedicated to publishing device data or subscribing to generated device commands.
         Interface adapters, motor controllers, wireless controllers, lidar, and encoders are some devices with dedicated interface nodes.
         Nodes are also used to transform or perform calculations on data while passsing it between nodes written in either C++ or Python.
@@ -651,10 +590,6 @@
             The `velocity controller' node could implemented using as many as ten or mode separate nodes during development.}
             \label{fig:system_diagram_software}
         \end{figure}
-
-        % Figure \ref{fig:system_diagram} shows a simplified arrangement of connections between each devices.
-        % Low-level hardware devices on the platform, such as motor controllers and relays, are connected to the Platform PC via CAN bus.
-        % Standardised protocols and software frameworks are employed where possible, supplemented with custom solutions only when needed.
 
 
 \section{Navigation Sensor Selection}
@@ -790,8 +725,6 @@
         It is capable of receiving only GPS signals.
 
         The testing procedure first involved planning a path through a single row of a kiwifruit orchard and plotting this on a satellite map.
-        % Waypoints were placed along the row at the location of posts used to hold the canopy's structure.
-        % Relative distances between these waypoints were measured with a tape measure and recorded.
         The receivers were then tested separately over the course of approximately two hours by walking them along the planned path.
         Before testing, each unit was powered up and given \SI{30}{\minute} to initialise in an open area near the kiwifruit orchard.
         During testing, each unit was walked slowly along the predetermined path with stops at each waypoint to provide time for a positional fix.
@@ -818,140 +751,6 @@
         Overall, the units could not be relied on for localisation in this environment.
         These results indicate GNSS receivers with similar performance to those trialled are unsuitable for use in kiwifruit orchards.
 
-
-
-% \subsection{Data Collection and Inspection}
- %    The sensors that seemed important to test, based on both the literature survey and the cost-benefit analysis were lidar, cameras and GPS.
-    % In addition, time of flight cameras were considered, because they seemed to be a compelling option based on the cost-benefit analysis; especially if some of the less expensive models were found to work well in sunlight.
-    % It was also decided that encoders would be tested in favour of using an IMU because the encoders were built into the AMMP motors.
-    % Some data was collected from each sensor in order to decide which sensors to prototype algorithms for.
-
-
-    % \subsection{Sensor Demonstration by Prototype Algorithm}
-
-    %     Basic tests indicated that multi-layer lidar and 2D cameras were best suited for use as primary in-orchard navigation sensors.
-    %     Further testing with prototype navigation algorithms ensured that these apparent sensor benefits translated into practical advantages.
-
-    %     The three goals for the navigation system are:
-    %     \begin{itemize}
-    %         \item object detection and classification,
-    %         \item mapping and localisation, and
-    %         \item orchard row tracking.
-    %     \end{itemize}
-    %     To validate that the sensors could perform these functions, three prototype navigation algorithms have been created.
-
-    %     \subsubsection{Object Detection and Classification}
-
-    %         % Object detection and classification was firstly prototyped fully on the camera data.
-    %         Based on existing success using convolutional neural networks for image processing tasks \citep{LeCun2015}, a camera based system was chosen for object detection and classification.
-    %     	The network architecture chosen was FCN-8s \citep{long2015}.
-    %         It is a neural network made of convolutional layers without fully connected layers.
-    %         % convolutional layers at the input and fully connected layers at the output.
-    %     	FCN-8s performs semantic segmentation, which refers to the per-pixel classification of images.
-
-    %         To train the FCN-8s network, the same image dataset used to assess camera performance earlier was hand labeled.
-    %     	Labeling involved drawing object outlines in each image, filling those outlines with colours corresponding to the object's type, and filling any non-labeled areas with black.
-    %         Each image was then converted to an indexed colour file format.
-    %     	An example of an original image and its corresponding label image is shown as figure \ref{fig:segImgLabelPair}.
-
-    %         \begin{figure}[htb]
-    %             \centering
-    %             \includegraphics[width=\linewidth]{imgs/photos/segImgLabelPair_trimmed.png}
-    %             % \includegraphics[width=\linewidth]{imgs/photos/segImg_sideBySide.png}
-    %             \caption{
-    %                 An input image (top) and labeled output (bottom) used to train the semantic segmentation network.
-    %             }
-    %             \label{fig:segImgLabelPair}
-    %         \end{figure}
-
-    %         \begin{figure}[htb]
-    %             \centering
-    %             \includegraphics[width=\linewidth]{imgs/photos/semSegRowResults.png}
-    %             \caption{
-    %                 An example inference result from the trained FCN-8s network.
-    %             }
-    %             \label{fig:semSegRowResults}
-    %         \end{figure}
-
-    %         Initially, individual trees and posts in the kiwifruit orchard were labeled.
-    %     	It was later found that labeling the entire tree-line as a single class gave more robust results.
-    %     	Objects labeled for this algorithm are:
-    %         \begin{enumerate}
-    %         \item traversable space (labeled as red),
-    %         \item treelines (labeled as green), and
-    %         \item the end of the current row (labeled as tan).
-    %         \end{enumerate}
-    %         Traversable space was defined as the ground area that the platform could drive directly to without collision.
-    %         These labeled images were then used to train the FCN-8s network.
-    %     	Sample output from the trained network is presented as figure \ref{fig:semSegRowResults}.
-
-    % \subsubsection{Mapping and Localisation}
-    %     An existing Simultaneous Localisation And Mapping (SLAM) package was used to test the multi-layer lidar.
-    %     The package used was Gmapping \citep{Grisetti2007}, implemented as a ROS package \citep{Gerkey2010}.
-    % 	Required input for Gmapping is odometry data and a single plane of lidar data.
-    %     Odometry information was provided by the platform's in-built wheel encoders.
-
-    %     \begin{figure}[htb]
-    %         \centering
-    %         \includegraphics[width=\linewidth]{imgs/single_plane_extraction/single_plane_extraction.pdf}
-    %         \caption{
-    %             Processing of multi-layer lidar data into a single plane equivalent.
-    %             Blue points are those selected by the algorithm for further processing, whereas red points are rejected.
-    %         }
-    %         \label{fig:singlePlaneExtraction}
-    %     \end{figure}
-
-    %     As the multi-layer lidar has 16 scanning layers, a conversion was necessary to produce the single plane of data required by Gmapping.
-    %     The simplest conversion from multi-layer data to a single plane would be to select one of the available planes and discard the remaining data.
-    %     However, that approach would loose any benefit offered by the multiple scanning layers.
-    %     Instead, filtering the multi-layer data into a single plane was done by examining the centre four scan layers at each azimuth.
-    %     With this algorithm, if the range difference between all four points at a single angle falls below a certain threshold, the closest point is returned.
-    %     Alternatively, if the spread in points is above the threshold, no points are returned.
-    %     This eliminates points from sloped or varying surfaces while still returning points from objects with vertical structure.
-    %     The effect of this is that the orchard's structural elements remain visible, but ground and canopy information are removed.
-
-    %     \begin{figure}[htb]
-    %         \centering
-    %         \includegraphics{imgs/gmapmap/gmapmap.pdf}
-    %         \caption{
-    %             A resulting SLAM based map of a kiwifruit orchard created using Gmapping.
-    %             Data for the map was collected by traversing four of the orchard's ten rows.
-    %             Odometry information has been taken from wheel encoders and a multi-layer lidar (Velodyle VLP-16).
-    %         }
-    %         \label{fig:gmapmap}
-    %     \end{figure}
-
-    %     The filtered points are then fed into Gmapping as a single plane with data from the platform's wheel encoders.
-    %     Figure~\ref{fig:singlePlaneExtraction} shows the method's ability to filter structural elements from data containing significant canopy and ground reflections.
-    %     Using this method, a SLAM based map of the orchard was created and is presented as figure \ref{fig:gmapmap}.
-
-
-    % \subsubsection{Kiwifruit Orchard Row Tracking}
-    %     \label{sect:row_tracking}
-
-    %     Our final navigation test required interpreting the orchard's structure for the purpose of path generation.
-    %     For this, a row guidance system was developed and tested.
-    %     It uses the multi-layer to single-plane data filtering technique discussed previously.
-    %     This algorithm also makes use of the platform's on-board wheel encoders.
-    %     Details of this algorithm have been published separately \citep{Bell2016}.
-    %     The key function of this algorithm is computing the angular offset of the platform from the row's centre-line.
-
-    %     A visualisation of data captured whilst navigating the kiwifruit orchard is presented as figure \ref{fig:lastLidarFrame}.
-    %     The method does not perform SLAM, so the visualised data represents only the sensor's current input, i.e., previous sensor data is not considered.
-    %     Figure \ref{fig:lastLidarFrame} shows that while the algorithm is not perfect, it does perform reasonably well at identifying orchard structure and generating valid headings.
-
-    %     \begin{figure}[htb]
-    %         \centering
-    %         \includegraphics[width=\linewidth]{imgs/row_following/row_following_narrow.pdf}
-    %         \caption{
-    %             Row detection from multi-plane lidar data.
-    %             Red points indicate non-structured data that have been ignored.
-    %             Blue points indicate orchard structure data used for row navigation.
-    %             Grey lines link orchard structure points by their nearest neighbors (performed algorithmically).
-    %             The black arrow represents the centreline of the row current row.
-    %         }
-    %         \label{fig:lastLidarFrame}
-    %     \end{figure}
 
 \section{Autonomous Block Traversal}
 \label{sect:autonomous}
@@ -1003,10 +802,6 @@
 \section{Testing}
 \label{sub:testing}
 
-    % Low-level software to control the platform's drive system was tested in simulation before deployment onto physical hardware.
-    % As was the case during development of BoniRob, the open source robot simulation package Gazebo was used.
-    % Tests revealed bugs in some of the geometry calculations that were amended before deployment on hardware.
-
     Structural integrity testing was carried out by strapping a \SI{1100}{\kilo\gram} mass to the vehicle's module area.
     No deflection of the vehicle's chassis structure was evident upon application of the test mass.
     Deflection of approximately \SI{1.5}{\milli\meter} was measured between the front pivot and the wheel supports.
@@ -1053,8 +848,6 @@
         \label{fig:block_traversal_newnham}
     \end{figure}
 
-
-    % Any time the vehicle had to be taken out of autonomous control during a block traversal are counted as failed attempt.
     The key weakness of the current navigation system is the need to tune the row end turns manually for each site.
     The tuning required for the first orchard block amounted to six traversals of the entire block.
     For the second block, five complete traversals were required for tuning.
@@ -1065,11 +858,6 @@
     Seven of these were due to an imminent collision with a post during a row end turn.
     The remaining failures during row end turning were due to the platform trying to recommence row following before facing the new target row.
     In this case the most feasible path for row following was detected through the headland area, instead of the target row.
-
-    % Simulation of the software responsible the Ackermann steering geometry revealed software bugs.
-    % These bugs were
-    % The open source robotics simulation package Gazebo was used to simulate the vehicle, which allowed driving it using a game controller.
-
 
 \section{Discussion}
 \label{sect:discussion}
@@ -1114,8 +902,6 @@
     For instance, it is possible to display the angle of the front steering wheels based on encoder feedback while the platform is being driven.
     It is also possible to place a lidar in the model and have the point-cloud data displayed in the vehicle's coordinate frame.
 
-
-
 \section{Conclusion}
     This work presented a platform designed specifically for autonomous driving through pergola style kiwifruit orchards.
     The platform is capable of carrying modules with twice the mass of than those previously reported in the literature.
@@ -1132,88 +918,8 @@ This research was supported by the New Zealand Ministry for Business, Innovation
 The authors acknowledge contributions from Phillip Ross, Gordon Neshausen, Josh Barnett, and Erin Simms who were involved with the design and fabrication of the platform.
 
 
-%% The Appendices part is started with the command \appendix;
-%% appendix sections are then done as normal sections
-%% \appendix
-
-%% \section{}
-%% \label{}
-
-%% References
-%%
-%% Following citation commands can be used in the body text:
-%%
-%%  \citet{key}  ==>>  Jones et al. (1990)
-%%  \citep{key}  ==>>  (Jones et al., 1990)
-%%
-%% Multiple citations as normal:
-%% \citep{key1,key2}         ==>> (Jones et al., 1990; Smith, 1989)
-%%                            or  (Jones et al., 1990, 1991)
-%%                            or  (Jones et al., 1990a,b)
-%% \cite{key} is the equivalent of \citet{key} in author-year mode
-%%
-%% Full author lists may be forced with \citet* or \citep*, e.g.
-%%   \citep*{key}            ==>> (Jones, Baker, and Williams, 1990)
-%%
-%% Optional notes as:
-%%   \citep[chap. 2]{key}    ==>> (Jones et al., 1990, chap. 2)
-%%   \citep[e.g.,][]{key}    ==>> (e.g., Jones et al., 1990)
-%%   \citep[see][pg. 34]{key}==>> (see Jones et al., 1990, pg. 34)
-%%  (Note: in standard LaTeX, only one note is allowed, after the ref.
-%%   Here, one note is like the standard, two make pre- and post-notes.)
-%%
-%%   \citealt{key}          ==>> Jones et al. 1990
-%%   \citealt*{key}         ==>> Jones, Baker, and Williams 1990
-%%   \citealp{key}          ==>> Jones et al., 1990
-%%   \citealp*{key}         ==>> Jones, Baker, and Williams, 1990
-%%
-%% Additional citation possibilities
-%%   \citeauthor{key}       ==>> Jones et al.
-%%   \citeauthor*{key}      ==>> Jones, Baker, and Williams
-%%   \citeyear{key}         ==>> 1990
-%%   \citeyearpar{key}      ==>> (1990)
-%%   \citetext{priv. comm.} ==>> (priv. comm.)
-%%   \citenum{key}          ==>> 11 [non-superscripted]
-%% Note: full author lists depends on whether the bib style supports them;
-%%       if not, the abbreviated list is printed even when full requested.
-%%
-%% For names like della Robbia at the start of a sentence, use
-%%   \Citet{dRob98}         ==>> Della Robbia (1998)
-%%   \Citep{dRob98}         ==>> (Della Robbia, 1998)
-%%   \Citeauthor{dRob98}    ==>> Della Robbia
-
-
-%% References with bibTeX database:
-
 \bibliographystyle{model5-names}
 \bibliography{bibliography_jamie,bibliography_mark}
 
 
-%% Authors are advised to submit their bibtex database files. They are
-%% requested to list a bibtex style file in the manuscript if they do
-%% not want to use model5-names.bst.
-
-%% References without bibTeX database:
-
-% \begin{thebibliography}{00}
-
-%% \bibitem must have one of the following forms:
-%%   \bibitem[Jones et al.(1990)]{key}...
-%%   \bibitem[Jones et al.(1990)Jones, Baker, and Williams]{key}...
-%%   \bibitem[Jones et al., 1990]{key}...
-%%   \bibitem[\protect\citeauthoryear{Jones, Baker, and Williams}{Jones
-%%       et al.}{1990}]{key}...
-%%   \bibitem[\protect\citeauthoryear{Jones et al.}{1990}]{key}...
-%%   \bibitem[\protect\astroncite{Jones et al.}{1990}]{key}...
-%%   \bibitem[\protect\citename{Jones et al., }1990]{key}...
-%%   \harvarditem[Jones et al.]{Jones, Baker, and Williams}{1990}{key}...
-%%
-
-% \bibitem[ ()]{}
-
-% \end{thebibliography}
-
 \end{document}
-
-%%
-%% End of file `elsarticle-template-5-harv.tex'.
