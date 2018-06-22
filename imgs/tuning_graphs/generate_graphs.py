@@ -33,12 +33,12 @@ plt.rcParams.update(params)
 
 fig, ax = plt.subplots(1)
 datasource = bateman
-ax.bar(range(len(datasource)), datasource, color='b', edgecolor="none", align="center", width=0.7)
-ax.set_xlim(-0.7,max(datasource))
+ax.bar(range(1, len(datasource)+1), datasource, color='b', edgecolor="none", align="center", width=0.7)
+ax.set_xlim(1,len(datasource))
 ax.set_ylim(0,10)
 
 plt.yticks(range(11))
-plt.xticks(range(len(datasource)))
+plt.xticks(range(len(datasource)+1))
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 ax.yaxis.set_ticks_position('left')
@@ -60,12 +60,12 @@ plt.rcParams.update(params)
 fig, ax = plt.subplots(1)
 
 datasource = newnham
-ax.bar(range(len(datasource)), datasource, color='b', edgecolor="none", align="center", width=0.7)
-ax.set_xlim(-0.7,max(datasource))
+ax.bar(range(1, len(datasource)+1), datasource, color='b', edgecolor="none", align="center", width=0.7)
+ax.set_xlim(1,len(datasource))
 ax.set_ylim(0,10)
 
 plt.yticks(range(11))
-plt.xticks(range(len(datasource)))
+plt.xticks(range(len(datasource)+1))
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 ax.yaxis.set_ticks_position('left')

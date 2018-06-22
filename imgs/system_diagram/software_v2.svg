@@ -25,15 +25,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8284271"
-     inkscape:cx="242.45303"
-     inkscape:cy="84.249973"
+     inkscape:zoom="4"
+     inkscape:cx="209.52993"
+     inkscape:cy="152.99741"
      inkscape:document-units="px"
      inkscape:current-layer="g6387"
      showgrid="true"
      showborder="true"
-     inkscape:window-width="2560"
-     inkscape:window-height="1440"
+     inkscape:window-width="3840"
+     inkscape:window-height="2160"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
@@ -187,7 +187,7 @@
              id="tspan4350-1-1-5"
              sodipodi:role="line"
              x="2220.9124"
-             y="1273.2334">Lidar</tspan></text>
+             y="1273.2334">lidar</tspan></text>
       </g>
       <rect
          y="1179.4711"
@@ -216,7 +216,7 @@
              sodipodi:role="line"
              x="2410.3845"
              y="1229.0428"
-             id="tspan4331-0">Sensor</tspan><tspan
+             id="tspan4331-0">sensor</tspan><tspan
              id="tspan4285"
              sodipodi:role="line"
              x="2410.3845"
@@ -249,7 +249,7 @@
              id="tspan4350-1-1-5-6"
              sodipodi:role="line"
              x="2217.4961"
-             y="1202.0062">Lidar</tspan></text>
+             y="1202.0062">lidar</tspan></text>
       </g>
       <rect
          y="1224.2194"
@@ -285,7 +285,7 @@
              sodipodi:role="line"
              x="2297.2395"
              y="1133.2778"
-             id="tspan4331-8">Encoder</tspan><tspan
+             id="tspan4331-8">encoder</tspan><tspan
              sodipodi:role="line"
              x="2297.2395"
              y="1143.6035"
@@ -325,7 +325,7 @@
              sodipodi:role="line"
              x="2303.0525"
              y="1190.4932"
-             id="tspan4331-2-0">Path</tspan><tspan
+             id="tspan4331-2-0">velocity</tspan><tspan
              id="tspan4464"
              sodipodi:role="line"
              x="2303.0525"
@@ -351,7 +351,7 @@
              id="tspan4464-9"
              sodipodi:role="line"
              x="2303.0525"
-             y="1190.4932">Map</tspan><tspan
+             y="1190.4932">map</tspan><tspan
              id="tspan4495"
              sodipodi:role="line"
              x="2303.0525"
@@ -494,7 +494,7 @@
              id="tspan4563-8-32-7"
              sodipodi:role="line"
              x="2302.9739"
-             y="1190.4932">Motor</tspan><tspan
+             y="1190.4932">motor</tspan><tspan
              id="tspan4604-0-9"
              sodipodi:role="line"
              x="2302.9739"
@@ -520,7 +520,7 @@
              id="tspan4563-8-5-3"
              sodipodi:role="line"
              x="2302.9739"
-             y="1190.4932">Motor</tspan><tspan
+             y="1190.4932">motor</tspan><tspan
              id="tspan4604-4-7"
              sodipodi:role="line"
              x="2302.9739"
@@ -546,7 +546,7 @@
              id="tspan4563-8-9-2"
              sodipodi:role="line"
              x="2302.9739"
-             y="1190.4932">Motor</tspan><tspan
+             y="1190.4932">motor</tspan><tspan
              id="tspan4604-3-8"
              sodipodi:role="line"
              x="2302.9739"
@@ -572,7 +572,7 @@
              id="tspan4563-8-7-6"
              sodipodi:role="line"
              x="2302.9739"
-             y="1190.4932">Motor</tspan><tspan
+             y="1190.4932">motor</tspan><tspan
              id="tspan4604-44-1"
              sodipodi:role="line"
              x="2302.9739"
@@ -601,7 +601,7 @@
                y="1190.4932"
                x="2302.9739"
                sodipodi:role="line"
-               id="tspan4563-8-1">Motor</tspan><tspan
+               id="tspan4563-8-1">motor</tspan><tspan
                y="1200.8188"
                x="2302.9739"
                sodipodi:role="line"
@@ -628,7 +628,7 @@
              id="tspan4563-8-3-4"
              sodipodi:role="line"
              x="2705.2324"
-             y="1215.0576">Motor</tspan><tspan
+             y="1215.0576">motor</tspan><tspan
              id="tspan4604-6-5"
              sodipodi:role="line"
              x="2705.2324"
@@ -690,7 +690,7 @@
              id="tspan4604-8-1-3"
              sodipodi:role="line"
              x="2302.9739"
-             y="1190.4932">Velocity</tspan><tspan
+             y="1190.4932">speed</tspan><tspan
              id="tspan4731-4-2"
              sodipodi:role="line"
              x="2302.9739"
@@ -716,7 +716,7 @@
              id="tspan4495-7-5"
              sodipodi:role="line"
              x="2303.0525"
-             y="1190.4932">Ackermann</tspan><tspan
+             y="1190.4932">ackermann</tspan><tspan
              id="tspan4573-6"
              sodipodi:role="line"
              x="2303.0525"
@@ -772,7 +772,7 @@
                  id="tspan4817-4"
                  sodipodi:role="line"
                  x="2566.5605"
-                 y="1024.532">Wireless</tspan><tspan
+                 y="1024.532">wireless</tspan><tspan
                  id="tspan4890"
                  sodipodi:role="line"
                  x="2566.5605"
@@ -807,7 +807,7 @@
                id="tspan4331-2-0-6"
                y="1190.4932"
                x="2303.0525"
-               sodipodi:role="line">Wireless</tspan><tspan
+               sodipodi:role="line">wireless</tspan><tspan
                y="1200.8188"
                x="2303.0525"
                sodipodi:role="line"
@@ -834,7 +834,7 @@
              id="tspan4604-8-1-3-9"
              sodipodi:role="line"
              x="2302.9739"
-             y="1190.4932">Velocity</tspan><tspan
+             y="1190.4932">speed</tspan><tspan
              id="tspan4731-4-2-3"
              sodipodi:role="line"
              x="2302.9739"
@@ -860,7 +860,7 @@
              id="tspan4604-8-1-3-6"
              sodipodi:role="line"
              x="2302.9739"
-             y="1190.4932">Velocity</tspan><tspan
+             y="1190.4932">speed</tspan><tspan
              id="tspan4731-4-2-1"
              sodipodi:role="line"
              x="2302.9739"
@@ -886,7 +886,7 @@
              id="tspan4604-8-1-3-2"
              sodipodi:role="line"
              x="2302.9739"
-             y="1190.4932">Velocity</tspan><tspan
+             y="1190.4932">speed</tspan><tspan
              id="tspan4731-4-2-37"
              sodipodi:role="line"
              x="2302.9739"
@@ -915,7 +915,7 @@
                y="1190.4932"
                x="2302.9739"
                sodipodi:role="line"
-               id="tspan4563-8-1-6">Angle</tspan><tspan
+               id="tspan4563-8-1-6">angle</tspan><tspan
                y="1200.8188"
                x="2302.9739"
                sodipodi:role="line"
@@ -945,7 +945,7 @@
                y="1190.4932"
                x="2302.9739"
                sodipodi:role="line"
-               id="tspan4563-8-1-6-8">Angle</tspan><tspan
+               id="tspan4563-8-1-6-8">angle</tspan><tspan
                y="1200.8188"
                x="2302.9739"
                sodipodi:role="line"
