@@ -54,7 +54,11 @@
 \usepackage{lineno}
 \usepackage[utf8]{inputenc}
 \newcommand{\rpm}{\raisebox{.2ex}{$\scriptstyle\pm$}}
+
 \inputencoding{utf8}
+
+\newcommand{\code}{\texttt}
+
 %% The lineno packages adds line numbers. Start line numbering with
 %% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
 %% for the whole article with \linenumbers after \end{frontmatter}.
@@ -348,7 +352,7 @@
         The canopy height in these orchards ranges from \SI{1.4}{\meter} to \SI{1.7}{\meter} so the vehicle must have a low profile.
         Modules carried by the platform require clearance from the canopy in addition to the height they occupy themselves.
         To maximise the space available to these modules the platform must be low-slung at the point they attach.
-        Figure \ref{fig:AMMP} illustrates the platform's design, with module area allocated between markers `G' and `H' in the side view (top left).
+        Figure~\ref{fig:AMMP} illustrates the platform's design, with module area allocated between markers `G' and `H' in the side view (top left).
         The top surface of the chassis in this region sits \SI{360}{\milli\meter} above the ground.
 
         \begin{figure}[htb]
@@ -363,11 +367,11 @@
         Much of the folded chassis structure contains triangular cut-outs, reducing weight while having minimal impact on rigidity.
         Finite element analysis was used during the design phase to help identify areas needing to be strengthened and areas where material could be removed.
         This helped to ensure the platform meets its target load capacity of \SI{1000}{\kilo\gram}, while the structural chassis weighs only \SI{190}{\kilo\gram}.
-        A drawing of the structural chassis is shown as Figure \ref{fig:AMMPChassis}.
+        A drawing of the structural chassis is shown as Figure~\ref{fig:AMMPChassis}.
 
         Lifting forks occupy the area between the rear wheels.
         The lifter is actuated by two vertically mounted pneumatic cylinders and is controlled by a standard pneumatic valve block.
-        Fuel and compressed air tanks sit over the right-hand rear wheel, while not shown in Figure \ref{fig:AMMP} they can be seen in Figure \ref{fig:suzy}.
+        Fuel and compressed air tanks sit over the right-hand rear wheel, while not shown in Figure~\ref{fig:AMMP} they can be seen in Figure~\ref{fig:suzy}.
 
     \subsection{Steering}
     \label{sub:steering}
@@ -457,7 +461,7 @@
     \label{sub:power}
         The system bus connects the batteries and generator to motor controllers and on-board power converters.
         A series of heavy-duty contactors (TE Connectivity Kilovac LEV200) control each device's connection to the bus, as well as the bus's connection to the power source.
-        Figure \ref{fig:power_system_diagram} illustrates the distribution of power on the platform.
+        Figure~\ref{fig:power_system_diagram} illustrates the distribution of power on the platform.
 
         \begin{figure}[htb]
             \centering
@@ -532,7 +536,7 @@
         To maximise code reusability, each device on the platform has its own ROS node dedicated to publishing device data or subscribing to generated device commands.
         Interface adapters, motor controllers, wireless controllers, lidar, and encoders are some devices with dedicated interface nodes.
         Nodes are also used to transform or perform calculations on data while passing it between nodes written in either C++ or Python.
-        For instance, as shown in Figure \ref{fig:system_diagram_software}, an `ackermann kinematics' node transforms steering input data into individual wheel velocity and position/angle outputs.
+        For instance, as shown in Figure~\ref{fig:system_diagram_software}, an `ackermann kinematics' node transforms steering input data into individual wheel velocity and position/angle outputs.
         Among other things, ROS offers the ability to monitor and record all communication passing through it which can be replayed at a later date.
 
         A manufacturer's configuration of the motor controllers require them to be interfaced using a combination of analogue and digital inputs.
@@ -605,7 +609,7 @@
 
         Three types of camera were tested: time-of-flight, 3D stereoscopic, and traditional 2D cameras.
         Smaller platforms (Clearpath Husky and Adept MobileRobots Pioneer P3-AT) were used to gather data used for evaluation.
-        Cameras were mounted to these platforms \SI{0.8}{\meter} above the ground, which is roughly mid-way between the ground and the canopy.
+        Cameras were mounted \SI{0.8}{\meter} above the ground, roughly mid-way between the ground and the canopy, facing forward.
 
         The time-of-flight camera was a Basler TOF640-20GM-850NM.
         It provides range, intensity, and confidence data at a resolution of 640 by 480 pixels.
@@ -629,8 +633,8 @@
         The Logitech C920 suffered from significant motion blur that, being a consumer grade web-camera, was not surprising.
         It also lacked the functionality of a hardware trigger and sent images with significant latency, measured at \SI{150}{\milli\second}.
         The Basler and Flir cameras both produced images of sufficient quality and featured hardware triggering.
-        The Basler camera had a USB3 interface and had a image retrieval time of \SI{14}{\milli\second}.
-        The Flir camera had a USB2 interface with an image retrieval time of \SI{65}{\milli\second}.
+        The Basler camera had a USB3 interface and an average image transfer time of \SI{14}{\milli\second}.
+        The Flir camera had a USB2 interface and an average image trasfer time of \SI{65}{\milli\second}.
         The Basler offering was favoured for its later model image sensor, simpler software interface, and lower-latency.
 
         \begin{figure}[htb]
@@ -643,11 +647,13 @@
             \label{fig:canopyDataCloud}
         \end{figure}
 
+        Both the time-of-flight and 3D stereoscopic camera systems were deemed unsuitable based on the occurrences of data loss.
         Images from the industrial 2D cameras (from Basler and Flir) were deemed suitable for object detection and classification.
         This was verified by processing the data using readily accessible detection algorithms such as convolutional neural networks.
-        Both the time-of-flight and 3D stereoscopic camera systems were deemed unsuitable based on the occurrences of data loss.
-        Another option is to use a pair of the industrial cameras with stereo matching algorithms.
-        This is outside the scope of this work, but is something considered for future work.
+        Using two of these 2D cameras it is also possible to build a stereoscopic pair.
+        This provides the same functionality of the 3D stereoscopic camera from Intel, but without requiring the infrared projector that prevented it working outdoors.
+        Stereo pairs of industrial cameras have since proven useful on modularised harvesting and pollination modules for localising fruit and flowers.
+
 
     \subsubsection{In-orchard Lidar Evaluation}
         Three lidar were evaluated, two single-plane and one multi-layer.
@@ -715,7 +721,7 @@
             \label{fig:gpsResults}
         \end{figure}
 
-        The path followed, together with coordinates collected from the receivers, are presented in Figure \ref{fig:gpsResults}.
+        The path followed, together with coordinates collected from the receivers, are presented in Figure~\ref{fig:gpsResults}.
         It should be noted that data has been recorded for the round-trip so represents two passes along the path.
         It was noticed during testing that the signal quality lights on both receivers regularly indicated a loss of signal.
 
@@ -728,50 +734,89 @@
 
 \section{Autonomous Block Traversal}
 \label{sect:autonomous}
-    Two separate row following algorithms were developed based on the sensor selection findings, with details of each published separately.
-    One method used multi-layer lidar to detect trunks and posts and follow a centre-line between them \citep{Bell2016}.
-    The second method used a single camera combined with a convolutional neural network to segment features in the image such as traversable space, tree-lines, and row-ends \citep{Bell2017}.
+    Two row following strategies were developed for implementation on the platform.
+    Specific details and results of each have been published separately.
+    One method used multi-layer lidar to detect the trunks and posts of the orchard and follow a centre-line between them \citep{Bell2016}.
+    The second method used a single camera combined with a convolutional neural network to segment parts of the image.
+    These features were traversable space, tree-lines, and row-ends \citep{Bell2017}.
     A centreline was then fitted to the areas marked as traversable and used to generate a control vector.
 
-    Both algorithms were developed on smaller, commercially available, test robots while the target platform was under development.
-    A laptop (Dell E6410) with integrated graphics processor (Nvidia M5000M) was used on those platforms to process the sensor data and generate drive commands.
+    Both algorithms were developed on smaller, commercially available, test platforms while the target platform was under construction.
+    A laptop (Dell E6410) with integrated graphics processor (Nvidia M5000M) was used on those platforms to process sensor data and generate drive vectors.
     Both approaches produced paths that led to reproducible row following behaviour.
     A method of conducting row-end turns was trialled on the Pioneer 3-AT robot using the lidar based approach.
-    However, the robot's drive system lacked the power required to turn into rows on uphill slopes.
+    However, the platform's drive system lacked the power required to turn into rows on uphill slopes.
+    To determine when the vehicle was at the end of a row, the multi-layer lidar was used to detect the absence of canopy in a volume above the front and to the sides of the vehicle.
+    The camera based method was unable to detect this end-of-row condition which is necessary for initiating the turn.
+    It also lacked the ability to locate obstacles which is important on the target platform due to its size and power.
+    Finally, the lidar based approach required much less computational power to achieve similar performance.
+    While it would be possible to combine the approaches, only the lidar based method was adapted for use on the target platform.
 
-    Both approaches were transferred to the target platform once validated on the smaller robots.
-    Differences in the geometry between these platforms meant adjustments were needed.
-    The small robots both used skid-steer geometries, whereas the target platform uses Ackermann.
-    Operationally this has two implications.
-    The first is that when turning, the smaller robots pivot along an axis that passes through the mid-point of their chassis.
-    On the full-sized platform, that axis instead passes through the centre of the rear wheels.
-    Secondly, the full-sized platform must change the angle of its steering wheels before it can begin changing direction, adding a delay.
-    A skid-steer geometry only needs to change the relative angular velocities of its wheels.
-    These differences are minor when row following as only small changes in angle are required to keep the vehicle on track.
-    Alterations were made to account for new pivot axis, but not for actuation delay.
+    Differences in the geometry meant adjustments were needed when implementing on the target platform.
+    The multi-layer lidar was mounted horizontally above the front-right steering motor, visible in Figure~\ref{fig:suzy} and later in Figure~\ref{fig:suzy_turning}.
+    The smaller platforms used a skid-steer geometry, whereas the target platform uses an Ackermann geometry.
+    % Operationally this has two implications.
+    This means that when turning, the a skid-steered platform pivots along a lateral axis passing between the front and rear wheels.
+    On the target platform, that axis instead passes through the centre of the rear wheels.
+    The software was modified to account for the change in pivot axis and mounting location of the lidar.
+    % Secondly, the full-sized platform must change the angle of its steering wheels before it can begin changing direction, adding a delay.
+    % A skid-steer geometry only needs to change the relative angular velocities of its wheels.
+    % Because only minor angle adjustments are required when row following, these differences are considered negligible in this context.
+    % Alterations were made to account for the change in pivoting axis, but not for actuation delay.
 
-    To determine when the robot is at the end of a row, the multi-layer lidar is used to detect the absence of canopy in a volume above the front and to the sides of the vehicle.
-    This method was used to initiate a row-end turn manoeuvre in the case of both the lidar and camera based approaches.
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=\linewidth]{imgs/turning_diagrams/flowchart.pdf}
+        \caption{
+            Flow-chart of the developed autonomous block traversal algorithm.
+        }
+        \label{fig:turn_diagram}
+    \end{figure}
 
-    \color{red} This is where the row end turn stuff gets added!!!!!!!!!!!!!!! \color{black}
+    % The lidar is used to determine the presence of canopy.
+    % the vehicle is said to be either {\tt in\_row} or {\tt out\_of\_row}.
+    % This state variable determines when the algorithm begins executing the row-end turn for both the lidar and camera based approaches.
 
-    A row-end turn sees the platform execute a series of manoeuvre which have previously been recorded for the specific row and direction of turn.
-    Initially, a template manoeuvre is executed at each row-end and the vehicle is observed while executing the turn.
-    Manual adjustments are made to the recorded turn profile based on the vehicle's proximity to obstacles or nearby boundaries during the manoeuvre.
-    Turns are repeated and the profile adjusted until a satisfactory and reproducible turn is established.
-    A turn profile can contain any number of steps, with each step being a distance to travel or angle to turn through with a given radius.
-    If an object is detected in the vehicle's path during a turn, the steering is adjusted to avoid the object.
-    Figure \ref{fig:suzy_turning} shows the platform performing a row-end turn while under autonomous control.
+    Figure~\ref{fig:turn_diagram} depicts the steps taken when traversing a block, including execution of the row-end turns.
+    The multi-layer lidar is used to detect whether the vehicle is \textit{in\_row} or \textit{out\_of\_row} based on the presence of canopy.
+    A row-end turn sees the platform execute a series of turn-segments which have previously been tuned for the specific row and direction of turn.
+    Initially, a template set of turn-segments is executed at each row's end while under observation.
+    If the vehicle gets too close to obstacles or nearby boundaries during execution, the operator would intervene before collision occurs.
+    % Manual adjustments are made to the turn-segments based on the vehicle's proximity to obstacles or nearby boundaries during execution.
+    A row end turn can contain any number of segments, with each representing a turn vector and distance that must be covered before proceeding.
+    Once the operator intervenes, he/she will tweak relevant parameters of the turn.
+    This can be widening or tightening as well as lengthening or shortening the distance of the segment.
+    Finally, if an object is detected in the vehicle's path during a turn, the steering is automatically adjusted to avoid the object.
+    This happens independently from the parameters contained in the map file.
+    Figure~\ref{fig:suzy_turning} shows the platform performing a row-end turn while under autonomous control.
 
     \begin{figure}[htb]
         \centering
         \includegraphics[width=\linewidth]{imgs/photos/suzy_turning.jpg}
         % \includegraphics[width=\linewidth]{imgs/photos/suzy_turning_small.jpg}
         \caption{
-            The platform performing a row-end turn in the headland area of a kiwifruit orchard while under autonomous control.
+            A row end turn being performed autonomously by the platform.
+            The multi-layer lidar (Velodyne VLP-16) is visible above the front-right steering motor.
         }
         \label{fig:suzy_turning}
     \end{figure}
+
+    % \begin{table}[htbp]
+    %     \centering
+    %     \footnotesize
+    %     \begin{tabular}{r | l l l l l l l}
+    %         \textbf{Row \#}        & 1      & 1       & 1        & 1        & 1       & 2         \\
+    %         \textbf{Sequence \#}   & 1      & 2       & 3        & 4        & 5       & 0         \\
+    %         % \textbf{State}       & FOLLOW & END     & END      & END      & END & SEARCH \\
+    %         \textbf{Speed}         & 1.0    & 0.3     & 0.3      & 0.3      & 0.3     & 0.3       \\
+    %         \textbf{End Criteria}  & CANOPY & HEDGE   & DISTANCE & DISTANCE & CANOPY  & DISTANCE  \\
+    %         \textbf{End Parameter} & 5      & 2.3     & 2.5      & 2.75     & 5       & 5.1       \\
+    %         \textbf{Turn radius}   &  -     &  -      & 2.0      & 1.95     & 1.95    &  -        \\
+
+    %     \end{tabular}
+    %     \caption{Row turn profile}
+    %     \label{table:turn_profile}
+    % \end{table}
 
 \section{Testing}
 \label{sub:testing}
@@ -779,17 +824,15 @@
     Structural integrity testing was carried out by strapping a \SI{1100}{\kilo\gram} mass to the vehicle's module area.
     No deflection of the vehicle's chassis structure was evident upon application of the test mass.
     Deflection of approximately \SI{1.5}{\milli\meter} was measured between the front pivot and the wheel supports.
-
-    \begin{figure}[htb]
-        \centering
-        \includegraphics[width=\linewidth]{imgs/photos/stopTesting.jpg}
-        % \includegraphics[width=\linewidth]{imgs/photos/suzy_turning_small.jpg}
-        \caption{
-            Stop testing down a \SI{10}{\degree} slope with a \SI{1100}{\kilo\gram} mass strapped to the module area.
-        }
-        \label{fig:suzy_testing}
-    \end{figure}
-
+    % \begin{figure}[htb]
+    %     \centering
+    %     \includegraphics[width=\linewidth]{imgs/photos/stopTesting.jpg}
+    %     % \includegraphics[width=\linewidth]{imgs/photos/suzy_turning_small.jpg}
+    %     \caption{
+    %         Stop testing down a \SI{10}{\degree} slope with a \SI{1100}{\kilo\gram} mass strapped to the module area.
+    %     }
+    %     \label{fig:suzy_testing}
+    % \end{figure}
     Static steering tests conducted on a dry concrete surface showed no reduction in ability to turn while supporting the test mass.
     Dynamic tests involved three instances of stopping whilst driving down a \SI{10}{\degree} slope at a speed of \SI{10}{\kilo\meter\per\hour}.
     During each test the vehicle came to a complete stop within a distance of \SI{2.4}{\meter}.
@@ -798,9 +841,9 @@
     Block A is \SI{1.15}{\kilo\meter} in total traversable length spread over 10 rows.
     Block B is \SI{670}{\meter} in total traversable length spread over 9 rows.
     After tuning of the row end turn manoeuvres, the platform navigated Block A consecutively 7 times.
-    Figure \ref{fig:block_traversal_bateman} shows the number of interventions per traversal while under tuning in Block A, 18 traversals in total.
+    Figure~\ref{fig:block_traversal_bateman} shows the number of interventions per traversal while under tuning in Block A, 18 traversals in total.
     After tuning the row end turns in the second block, this block was navigated 3 times consecutively.
-    Figure \ref{fig:block_traversal_newnham} shows the number of interventions per traversal while under tuning in Block B, 9 traversals in total.
+    Figure~\ref{fig:block_traversal_newnham} shows the number of interventions per traversal while under tuning in Block B, 9 traversals in total.
     This equates to a total of \SI{10}{\kilo\meter} of successfully navigated orchard rows.
 
 
@@ -879,13 +922,18 @@
 \section{Conclusion}
     This work presented a platform designed specifically for autonomous driving through pergola style kiwifruit orchards.
     The platform is capable of carrying modules with twice the mass of than those previously reported in the literature.
+
     Sensors suitable for autonomous navigation have been selected, trialled, and demonstrated as being useful as a means of navigating in this environment.
-    Tests suggest either multi-layer lidar or a combination of 2D-camera and neural network based processing are sensible choices as primary navigation sensors.
-    These results echo those previously reported when navigating in orchard environments.
-    Using a map of manually adjusted row end turns the platform has navigated over \SI{10}{\kilo\meter} of orchard blocks without intervention.
-    Further work will focus on improving the the mechanism used to trigger the commencement of a row end turn.
+    Tests suggest either multi-layer lidar or a combination of 2D-camera and neural network based processing are sensible choices as row following sensors.
+    Multi-layer proved to the most versatile sensor for navigation in general, owing to its wide field of view.
+    One particularly useful aspect was the ability to detect the presence of canopy above the vehicle.
+    Using a map of manually adjusted row end turns the platform has navigated over \SI{10}{\kilo\meter} of orchard blocks without intervention using only lidar and wheel encoders.
+    A significant amount of work was required to tune the row end turns, which has implications for commercial deployment.
+
     During development, a \SI{48}{\volt} battery pack was identified as being ideal for development vehicles of this size due to safety and component availability.
     The use of smaller, commercially available, robots were valuable as a means to develop navigation software before deployment on full scale platforms.
+    Future work will focus on improving turns between rows.
+    This will involve developing a system whereby the vehicle can plan its own turns without the need for manual tuning.
 
 \section*{Acknowledgements}
 This research was supported by the New Zealand Ministry for Business, Innovation and Employment (MBIE) on contract UOAX1414.
