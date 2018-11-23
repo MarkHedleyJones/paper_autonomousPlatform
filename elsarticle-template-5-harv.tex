@@ -115,7 +115,7 @@
 %% \fntext[label3]{}
 
 % \title{An Autonomous Platform for Use in Kiwifruit Orchards}
-\title{A Modular Platform for Autonomous Navigation in Kiwifruit Orchards}
+\title{A Heavy-Duty Platform for Autonomous Navigation in Kiwifruit Orchards}
 
 %% use optional labels to link authors explicitly to addresses:
 %% \author[label1,label2]{<author name>}
@@ -157,7 +157,7 @@
 
 %% MSC codes here, in the form: \MSC code \sep code
 %% or \MSC[2008] code \sep code (2000 is the default)
-    Agricultural automation \sep autonomous navigation \sep orchard robotics
+    Agricultural automation \sep autonomous navigation \sep sensor selection
 \end{keyword}
 
 \end{frontmatter}
@@ -219,7 +219,7 @@
 \section{Related Work}
 \label{sect:review}
 
-    \subsection{Purpose-built Autonomous Vehicles in Agriculture}
+    % \subsection{Purpose-built Autonomous Vehicles in Agriculture}
 
         The introduction of computers and digital camera technology during the 1980s sparked research into autonomous vehicles for agricultural use \citep{Li2009}.
         When publishing details of an autonomous vehicle in 1998, Tillett et~al.\@ cite difficulties dealing with variability in lighting and the environment as the reason no commercial vehicles were available at the time \citep{Tillett1998}.
@@ -273,7 +273,7 @@
         With the exception of the platform presented by \cite{Scarfe2012}, all of the reviewed platforms are designed for open field crops.
         None were designed for harvesting operations and therefore were not capable of carrying bins.
         Referring back to the statement from \cite{Ruckelshausen2009} that ``the application itself should be of comparably low complexity'', one can see why research thus far has focused on simpler tasks such as inspection or weeding.
-        However, once designs move past these applications it becomes advantageous to accommodate other shared features.
+        However, once designs move past these applications it becomes necessary to accommodate other shared requirements.
         A fork lifting mechanism is general enough that most orchard related tasks can benefit from it.
         For example, with a harvesting module mounted it can be used to hold a bin in which harvested fruit is collected.
         With a pollination module mounted it can hold the tank of liquid pollen solution.
@@ -285,57 +285,93 @@
         While not a physical component, the CAN bus is another example of technology borrowed from the automotive industry.
         Most of the more recent platforms made use of this for low-level communication.
 
-    \subsection{Sensors for Row Based Navigation in Orchards}
-
-        Sensor combinations for orchard based row detection mostly fall into three categories; camera based, lidar based, or a combination of the two.
-        The following section summarises a review of row detection efforts in orchards using these sensors.
-
-        \cite{Subramanian2006} tested both camera and lidar (Sick LMS-200) based guidance systems in a citrus fruit orchard.
-        Sensors were trialled separately on a tractor retrofitted with a drive-by-wire system.
-        Their vehicle was able to navigate a small and simplified path using both machine vision and lidar based approaches at speeds of up to \SI{4.4}{\meter\per\second} (\SI{15}{\kilo\meter\per\hour}).
-        They found that lidar proved more accurate until its data transfer rate became a limiting factor.
-        The 2D camera based approach was favourable after this point.
-        They suggest that combining the two systems would give more robust guidance as well as providing the ability to detect obstacles.
-        No mention of the ability for the image based approach to cope with varying lighting conditions is made.
-        These results are promising for use in kiwifruit orchards, where the conditions are similar and where the target operating speed is only \SI{1.39}{\meter\per\second} (\SI{5.0}{\kilo\meter\per\hour}).
-
-        \cite{Barawid2007} demonstrate the use of data from a single-plane lidar (Sick LMS-219) to guide a drive-by-wire tractor through an orchard.
-        Their results show real-time processing of lidar data is sufficient to navigate an orchard at \SI{0.36}{\meter\per\second} (\SI{1.3}{\kilo\meter\per\hour}).
-
-        In 2011, two groups published work on the generation of centre lines from camera data taken in orchard rows.
-        \cite{He2011} uses traditional machine vision, where \cite{Torres2011} makes use of neural network based image processing.
-        Both methods generated valid paths, although He et~al.\@ note that theirs may not be suitable when the environment background becomes complex.
-        The neural network based approach of \cite{Torres2011} appeared to cope better with variations in lighting and row spacing.
-        Also in 2011, \cite{Hansen2011} showed the use of a single-plane lidar (Sick LMS-200) for vehicle localisation in an orchard.
-
-        The work of \cite{Scarfe2012}, combined traditional camera based image processing techniques with a single-plane lidar (Sick LMS-111).
-        The image based approach failed to cope with variability in lighting conditions, however the lidar proved useful for detecting the trunks and posts in kiwifruit orchards.
-
-        \cite{Freitas2012} focused on the detection of people and bins within rows of an apple orchard using lidar (Sick LMS-291), a low-cost inertial measurement unit, and wheel encoders.
-        Their algorithm was capable of detecting each obstacle class off-line using data captured from a test orchard.
-
-        \cite{Zhang2014} used a lidar (Hokuyo UTM-30LX) to generate maps of an apple orchard with the aid of artificial landmarks.
-        They used an actuated single-plane lidar to generate multi-plane data for use in row and landmark based sensing.
-        Placing artificial landmarks in orchards was intended to reduce the effort required to create orchard maps for guidance systems.
-
-        The following year, many of the same authors from  the paper presented by \cite{Zhang2014} write about their autonomous vehicle \citep{Bergerman2015}.
-        It describes an electric utility vehicle converted to drive-by-wire with the addition wheel encoders for odometry and a single-plane lidar (Sick LMS-111).
-        While not demonstrated detecting obstacles in real-time, their previous work processing off-line data \citep{Freitas2012} has potential to be integrated on their platform with the addition of extra computing power.
-
-        Most recently, \cite{Sharifi2015} write about a method to generate centre-lines from 2D images of orchard rows.
-        Like the work of \cite{He2011}, the technique offers a way to generate paths from a single camera image without resorting to neural networks.
-        However, their future work focuses on increasing robustness to variations in lighting conditions, which indicates issues in this area.
-        They state their system has use in being complementary to lidar based navigation.
-
-        The reviewed work suggests two navigation sensor approaches as being suitable for use in orchards.
-        First, the use of lidar saw two of the reported vehicles navigate autonomously through orchard environments, which is encouraging.
-        Second, when combining cameras with neural network based processing, robustness to environmental complexities such as light or clutter was improved.
-        Reports and previous experience suggest traditional image based processing for navigation failed when the scene became complex or significant variations in lighting occurred.
-
         With regards to the use of RTK based GNSS guidance, Slaughter et~al.\@ points out the trade-off of requiring an ``unobstructed `view' of the sky from all parts of the field'' \citep{Slaughter2008}.
         \cite{Durrant-Whyte2005} describe one failure mode of GPS being multipath signal propagation caused by nearby foliage or the geometry of the land itself.
         \cite{Li2009} conclude that the use of either GPS and machine vision, or GPS and lidar will become a development trend.
-        Based on the increased reception requirements, we discount the use of RTK based systems, but still consider the use of general purpose GNSS receivers as a secondary input.
+        Based on the increased reception requirements, we discount the use of RTK based systems, but still consider the use of general purpose GNSS receivers as a navigation input.
+    % \subsection{Sensors for Row Based Navigation in Orchards}
+
+
+    %     Sensor combinations for orchard row detection in orchards mostly fall into three categories; camera based, lidar based, or a combination of the two.
+    %     The following section summarises a review of row detection efforts in orchards using these sensors.
+
+    %     When evaluating the use of both lidar and camera based row following systems, both \cite{Subramanian2006} and \cite{Scarfe2012} favoured the use of a single plane lidar over camera based systems.
+    %     Scarfe cited difficulties in dealing with variability in lighting conditions using camera based systems.
+    %     Subramanian et~al.\@ found lidar to be more accurate generally.
+    %     Lidar was used by \cite{Barawid2007} to guide a drive-by-wire tractor through an orchard at \SI{0.36}{\meter\per\second} (\SI{1.3}{\kilo\meter\per\hour}).
+
+    %     \cite{Barawid2007} demonstrate the use of data from a single-plane lidar to guide a drive-by-wire tractor through an orchard at \SI{0.36}{\meter\per\second} (\SI{1.3}{\kilo\meter\per\hour}).
+    %     \cite{Hansen2011} show the use of a single-plane lidar for vehicle localisation in an orchard.
+    %     \cite{Freitas2012} demonstrated off-line obstacle detection of people and bins within rows of an apple orchard using a single plane lidar.
+    %     The following year, many of the same authors write about their autonomous vehicle \citep{Bergerman2015}.
+    %     It is capable of row following and executing programmed row end turns in orchards using lidar and encoders.
+
+    %     Work using cameras to generate centre lines for row following suggest that cameras alone are unsuitable when the environment becomes complex \citep{He2011,Sharifi2015}.
+    %     Improvements to complex lighting conditions can be had when combining traditional cameras with neural networks \cite{Torres2011}.
+
+    %     Previous work suggests two navigation sensor approaches as being suitable for use in orchards.
+    %     Lidar saw three of the reported vehicles navigate autonomously through orchard environments, which is encouraging.
+    %     Second, when combining cameras with neural network based processing, robustness to environmental complexities such as light or clutter was improved.
+
+    %     With regards to the use of RTK based GNSS guidance, Slaughter et~al.\@ points out the trade-off of requiring an ``unobstructed `view' of the sky from all parts of the field'' \citep{Slaughter2008}.
+    %     \cite{Durrant-Whyte2005} describe one failure mode of GPS being multipath signal propagation caused by nearby foliage or the geometry of the land itself.
+    %     \cite{Li2009} conclude that the use of either GPS and machine vision, or GPS and lidar will become a development trend.
+    %     Based on the increased reception requirements, we discount the use of RTK based systems, but still consider the use of general purpose GNSS receivers as a secondary input.
+
+
+        % ORIGINAL REVIEW OF SENSORS
+
+
+
+        % Sensor combinations for orchard based row detection mostly fall into three categories; camera based, lidar based, or a combination of the two.
+        % The following section summarises a review of row detection efforts in orchards using these sensors.
+
+        % \cite{Subramanian2006} tested both camera and lidar (Sick LMS-200) based guidance systems in a citrus fruit orchard.
+        % Sensors were trialled separately on a tractor retrofitted with a drive-by-wire system.
+        % Their vehicle was able to navigate a small and simplified path using both machine vision and lidar based approaches at speeds of up to \SI{4.4}{\meter\per\second} (\SI{15}{\kilo\meter\per\hour}).
+        % They found that lidar proved more accurate until its data transfer rate became a limiting factor.
+        % The 2D camera based approach was favourable after this point.
+        % They suggest that combining the two systems would give more robust guidance as well as providing the ability to detect obstacles.
+        % No mention of the ability for the image based approach to cope with varying lighting conditions is made.
+        % These results are promising for use in kiwifruit orchards, where the conditions are similar and where the target operating speed is only \SI{1.39}{\meter\per\second} (\SI{5.0}{\kilo\meter\per\hour}).
+
+        % \cite{Barawid2007} demonstrate the use of data from a single-plane lidar (Sick LMS-219) to guide a drive-by-wire tractor through an orchard.
+        % Their results show real-time processing of lidar data is sufficient to navigate an orchard at \SI{0.36}{\meter\per\second} (\SI{1.3}{\kilo\meter\per\hour}).
+
+        % In 2011, two groups published work on the generation of centre lines from camera data taken in orchard rows.
+        % \cite{He2011} uses traditional machine vision, where \cite{Torres2011} makes use of neural network based image processing.
+        % Both methods generated valid paths, although He et~al.\@ note that theirs may not be suitable when the environment background becomes complex.
+        % The neural network based approach of \cite{Torres2011} appeared to cope better with variations in lighting and row spacing.
+        % Also in 2011, \cite{Hansen2011} showed the use of a single-plane lidar (Sick LMS-200) for vehicle localisation in an orchard.
+
+        % The work of \cite{Scarfe2012}, combined traditional camera based image processing techniques with a single-plane lidar (Sick LMS-111).
+        % The image based approach failed to cope with variability in lighting conditions, however the lidar proved useful for detecting the trunks and posts in kiwifruit orchards.
+
+        % \cite{Freitas2012} focused on the detection of people and bins within rows of an apple orchard using lidar (Sick LMS-291), a low-cost inertial measurement unit, and wheel encoders.
+        % Their algorithm was capable of detecting each obstacle class off-line using data captured from a test orchard.
+
+        % \cite{Zhang2014} used a lidar (Hokuyo UTM-30LX) to generate maps of an apple orchard with the aid of artificial landmarks.
+        % They used an actuated single-plane lidar to generate multi-plane data for use in row and landmark based sensing.
+        % Placing artificial landmarks in orchards was intended to reduce the effort required to create orchard maps for guidance systems.
+
+        % The following year, many of the same authors from  the paper presented by \cite{Zhang2014} write about their autonomous vehicle \citep{Bergerman2015}.
+        % It describes an electric utility vehicle converted to drive-by-wire with the addition wheel encoders for odometry and a single-plane lidar (Sick LMS-111).
+        % While not demonstrated detecting obstacles in real-time, their previous work processing off-line data \citep{Freitas2012} has potential to be integrated on their platform with the addition of extra computing power.
+
+        % Most recently, \cite{Sharifi2015} write about a method to generate centre-lines from 2D images of orchard rows.
+        % Like the work of \cite{He2011}, the technique offers a way to generate paths from a single camera image without resorting to neural networks.
+        % However, their future work focuses on increasing robustness to variations in lighting conditions, which indicates issues in this area.
+        % They state their system has use in being complementary to lidar based navigation.
+
+        % The reviewed work suggests two navigation sensor approaches as being suitable for use in orchards.
+        % First, the use of lidar saw two of the reported vehicles navigate autonomously through orchard environments, which is encouraging.
+        % Second, when combining cameras with neural network based processing, robustness to environmental complexities such as light or clutter was improved.
+        % Reports and previous experience suggest traditional image based processing for navigation failed when the scene became complex or significant variations in lighting occurred.
+
+        % With regards to the use of RTK based GNSS guidance, Slaughter et~al.\@ points out the trade-off of requiring an ``unobstructed `view' of the sky from all parts of the field'' \citep{Slaughter2008}.
+        % \cite{Durrant-Whyte2005} describe one failure mode of GPS being multipath signal propagation caused by nearby foliage or the geometry of the land itself.
+        % \cite{Li2009} conclude that the use of either GPS and machine vision, or GPS and lidar will become a development trend.
+        % Based on the increased reception requirements, we discount the use of RTK based systems, but still consider the use of general purpose GNSS receivers as a secondary input.
 
 \section{Platform Design}
 \label{sect:design}
@@ -394,31 +430,31 @@
         The mass of the vehicle (\SI{800}{\kilo\gram}), plus payload (\SI{1000}{\kilo\gram}), and fuel (\SI{60}{\kilo\gram}) adds to \SI{1860}{\kilo\gram}.
         Allowing for uneven weight distribution on the vehicle and a safety margin, the per wheel mass supported is \SI{500}{\kilo\gram}, or a weight of \SI{4900}{\newton}.
         The width of the tyres is \SI{0.28}{\meter}.
-        Combining these values in Equation~\ref{eqn:steer_torque} yields a torque of \SI{388}{\newton} to overcome static friction when actuating the steering steering mechanism.
+        Combining these values in Equation~\ref{eqn:steer_torque} yields a torque of \SI{388}{\newton} to overcome static friction when actuating the steering motors.
 
         Actuating the wheels independently removes the need for mechanical linkages between them, allowing for more extreme steering angles and a simpler mechanical design.
         Both steered wheels have the freedom to rotate \SI{330}{\degree}, artificially limited by mechanical stops.
         At the tightest steering angle of \SI{90}{\degree}, the centre-point of the turn is located at the midpoint of the rear wheels.
         The turning radius in this case is roughly equal to the vehicle's wheelbase.
         This sees the vehicle turn between adjacent rows spaced as little as \SI{3}{\meter} apart.
-        Implementing a four-wheel steering system would shift the pivot point to the vehicle's centre, roughly halving the turn radius, but this was deemed unnecessary.
 
+        Implementing a four-wheel steering system would shift the pivot point to the vehicle's centre, roughly halving the turn radius, but this was deemed unnecessary.
         Headlands in kiwifruit orchards are sized for tractors with much larger turning radii than the developed platform so there is plenty of space for turning.
         Use of a two-wheeled steering system removes the need to develop the ``non-trivial'' control strategies encountered by \cite{Bak2004}.
         It also increases the usable area at the rear of the vehicle by removing the need for clearances around actuated wheels.
         A skid steer system was expected to cause ground damage to a level considered unacceptable to orchard owners when carrying heavy loads.
 
         The steering motors have incremental encoders, but no means of absolute positioning built-in.
-        This means the front wheels angles must aligned before use.
+        This means the front wheel angles must aligned before use.
         A homing sequence at boot-up is used to find an absolute angle as a reference for incremental data.
         Inductive proxy sensors are used as a means of detecting the position of the wheels during the homing sequence.
 
     \subsection{Drive system}
     \label{sub:drive}
 
-        A three point suspension system is used to ensure that all four wheels are in contact with the ground.
-        This is achieved with a front pivoting axle, which can be seen in  Figure~\ref{fig:AMMPChassis}.
-        As the operating speed for the vehicle is \SI{1.39}{\meter\per\second} (\SI{5.0}{\kilo\meter\per\hour}), the tyres were expected to provide sufficient shock absorption.
+        A three point suspension system ensures all wheels remain in contact with the ground.
+        This is realised with a front pivoting axle, which can be seen in  Figure~\ref{fig:AMMPChassis}.
+        As the operating speed for the vehicle is \SI{1.39}{\meter\per\second} (\SI{5.0}{\kilo\meter\per\hour}), the tyres were expected to provide sufficient capacity for shock absorption.
 
         Performance requirements for the vehicle's traction system during up-hill acceleration while under load were calculated as follows:
         \begin{align}
@@ -429,7 +465,7 @@
         \label{eqn_f_accel}
         F_{total} &= F_{rolling} + F_{grade} + F_{accel}
         \end{align}
-        Where $F_{rolling}$ is the force due to rolling resistance; $F_{grade}$ is the a grade, or incline, force; and $F_{accel}$ is the force required for mass acceleration.
+        Where $F_{rolling}$ is the force due to rolling resistance; $F_{grade}$ is the grade (or incline) force; and $F_{accel}$ is the force required for mass acceleration.
         A rolling resistance coefficient ($C_{rr}$) of 0.04 was chosen based on values found in automotive handbooks.
         It represents the case of a pneumatic tyre on medium-hard soil.
         Other variables used are: a vehicle mass ($m$) of \SI{1900}{\kilo\gram}, slope angle ($\alpha$) of \SI{20}{\degree}, velocity change ($\Delta t$) of \SI{2.78}{\metre\per\second} (\SI{10}{\kilo\meter\per\hour}), and an acceleration time ($t$) of \SI{6}{\second}.
@@ -477,10 +513,10 @@
         At the point that any individual cell exceeds a safe maximum/minimum threshold, the respective maximum/minimum pack voltage is determined.
 
         A hermetically sealed disconnect switch (Gigavac HBD41) separates the batteries from the system.
-        Once closed, an auxiliary 24V bus becomes powered which powers components required to bring the rest of the rest up.
+        Once closed, an auxiliary \SI{24}{\volt} bus becomes active that powers components required to bring the rest of the rest on-line.
 
         A power generation unit comprised of a petrol engine (Honda GX-690), air compressor (Rotorcomp NK-1), and electrical generator is housed at the front of the vehicle.
-        The drive shafts of the three units are connected via pulleys and a heavy-duty timing belt.
+        The drive shafts of these units are connected via pulleys and a heavy-duty timing belt.
         The engine, compressor, and alternator are controlled and monitored by a micro-controller based control board.
         This board connects to the Platform PC via the system CAN bus.
         The engine is capable of producing \SI{16}{\kilo\watt}, where up to \SI{9.6}{\kilo\watt} is converted to electrical power, artificially limited in software, and \SI{4.0}{\kilo\watt} is converted to pneumatic power.
@@ -534,9 +570,9 @@
         The open source Robotic Operating System (ROS) is used to facilitate communication between computers and software nodes running within each computer.
         Nodes written using this framework follow either a publish-subscribe or service-client pattern depending on the application.
         To maximise code reusability, each device on the platform has its own ROS node dedicated to publishing device data or subscribing to generated device commands.
-        Interface adapters, motor controllers, wireless controllers, lidar, and encoders are some devices with dedicated interface nodes.
+        Interface adapters, motor controllers, wireless controllers, lidar, and encoders are such devices with dedicated interface nodes.
         Nodes are also used to transform or perform calculations on data while passing it between nodes written in either C++ or Python.
-        For instance, as shown in Figure~\ref{fig:system_diagram_software}, an `ackermann kinematics' node transforms steering input data into individual wheel velocity and position/angle outputs.
+        For instance, as shown in Figure~\ref{fig:system_diagram_software}, an `Ackermann kinematics' node transforms steering input data into individual wheel velocity and position/angle outputs.
         Among other things, ROS offers the ability to monitor and record all communication passing through it which can be replayed at a later date.
 
         A manufacturer's configuration of the motor controllers require them to be interfaced using a combination of analogue and digital inputs.
@@ -576,7 +612,7 @@
 
     Other sensors considered for inclusion are outlined in Table \ref{table:sensor_comparison} along with their associated issues.
     Factors considered were the strengths and weaknesses in the context of orchard use, reported usage in literature, and availability at a suitable price.
-    The review of previous works highlighted both lidar and 2D cameras as offering high functionality for navigation and object detection.
+    A review of previous works highlighted both lidar and 2D cameras as offering high functionality for navigation and object detection.
     Time-of-flight cameras are a compelling option based on a cost-benefit analysis; especially if cheaper units work outdoors in the presence of sunlight.
     Because localisation is such a key function, the performance of two GNSS receivers has also been evaluated.
 
@@ -634,7 +670,7 @@
         It also lacked the functionality of a hardware trigger and sent images with significant latency, measured at \SI{150}{\milli\second}.
         The Basler and Flir cameras both produced images of sufficient quality and featured hardware triggering.
         The Basler camera had a USB3 interface and an average image transfer time of \SI{14}{\milli\second}.
-        The Flir camera had a USB2 interface and an average image trasfer time of \SI{65}{\milli\second}.
+        The Flir camera had a USB2 interface and an average image transfer time of \SI{65}{\milli\second}.
         The Basler offering was favoured for its later model image sensor, simpler software interface, and lower-latency.
 
         \begin{figure}[htb]
@@ -650,9 +686,9 @@
         Both the time-of-flight and 3D stereoscopic camera systems were deemed unsuitable based on the occurrences of data loss.
         Images from the industrial 2D cameras (from Basler and Flir) were deemed suitable for object detection and classification.
         This was verified by processing the data using readily accessible detection algorithms such as convolutional neural networks.
-        Using two of these 2D cameras it is also possible to build a stereoscopic pair.
-        This provides the same functionality of the 3D stereoscopic camera from Intel, but without requiring the infrared projector that prevented it working outdoors.
-        Stereo pairs of industrial cameras have since proven useful on modularised harvesting and pollination modules for localising fruit and flowers.
+        Using a pair of these 2D cameras it is also possible to build a stereoscopic pair.
+        This provides the same functionality of the 3D stereoscopic camera from Intel, but without requiring the infrared projector.
+        Stereo pairs of industrial cameras have since proven useful on modularised harvesting and pollination modules for localising fruit and flowers, but were not tested for row navigation.
 
 
     \subsubsection{In-orchard Lidar Evaluation}
@@ -735,7 +771,7 @@
 \section{Autonomous Block Traversal}
 \label{sect:autonomous}
     Two row following strategies were developed for implementation on the platform.
-    Specific details and results of each have been published separately.
+    Further details and results of each have been published separately.
     One method used multi-layer lidar to detect the trunks and posts of the orchard and follow a centre-line between them \citep{Bell2016}.
     The second method used a single camera combined with a convolutional neural network to segment parts of the image.
     These features were traversable space, tree-lines, and row-ends \citep{Bell2017}.
@@ -746,6 +782,7 @@
     Both approaches produced paths that led to reproducible row following behaviour.
     A method of conducting row-end turns was trialled on the Pioneer 3-AT robot using the lidar based approach.
     However, the platform's drive system lacked the power required to turn into rows on uphill slopes.
+
     To determine when the vehicle was at the end of a row, the multi-layer lidar was used to detect the absence of canopy in a volume above the front and to the sides of the vehicle.
     The camera based method was unable to detect this end-of-row condition which is necessary for initiating the turn.
     It also lacked the ability to locate obstacles which is important on the target platform due to its size and power.
@@ -756,8 +793,8 @@
     The multi-layer lidar was mounted horizontally above the front-right steering motor, visible in Figure~\ref{fig:suzy} and later in Figure~\ref{fig:suzy_turning}.
     The smaller platforms used a skid-steer geometry, whereas the target platform uses an Ackermann geometry.
     % Operationally this has two implications.
-    This means that when turning, the a skid-steered platform pivots along a lateral axis passing between the front and rear wheels.
-    On the target platform, that axis instead passes through the centre of the rear wheels.
+    This means that when turning, a skid-steered platform pivots along a lateral axis passing midway between the front and rear wheels.
+    On the target platform, that axis instead passes through the rear axle.
     The software was modified to account for the change in pivot axis and mounting location of the lidar.
     % Secondly, the full-sized platform must change the angle of its steering wheels before it can begin changing direction, adding a delay.
     % A skid-steer geometry only needs to change the relative angular velocities of its wheels.
@@ -783,6 +820,7 @@
     Initially, a template set of turn-segments is executed at each row's end while under observation.
     If the vehicle gets too close to obstacles or nearby boundaries during execution, the operator would intervene before collision occurs.
     % Manual adjustments are made to the turn-segments based on the vehicle's proximity to obstacles or nearby boundaries during execution.
+
     A row end turn can contain any number of segments, with each representing a turn vector and distance that must be covered before proceeding.
     Once the operator intervenes, he/she will tweak relevant parameters of the turn.
     This can be widening or tightening as well as lengthening or shortening the distance of the segment.
@@ -821,7 +859,7 @@
 \section{Testing}
 \label{sub:testing}
 
-    Structural integrity testing was carried out by strapping a \SI{1100}{\kilo\gram} mass to the vehicle's module area.
+    Structural integrity testing was carried out by loading a \SI{1100}{\kilo\gram} mass to the vehicle's module area.
     No deflection of the vehicle's chassis structure was evident upon application of the test mass.
     Deflection of approximately \SI{1.5}{\milli\meter} was measured between the front pivot and the wheel supports.
     % \begin{figure}[htb]
@@ -835,17 +873,16 @@
     % \end{figure}
     Static steering tests conducted on a dry concrete surface showed no reduction in ability to turn while supporting the test mass.
     Dynamic tests involved three instances of stopping whilst driving down a \SI{10}{\degree} slope at a speed of \SI{10}{\kilo\meter\per\hour}.
-    During each test the vehicle came to a complete stop within a distance of \SI{2.4}{\meter}.
+    During each test the vehicle came to a complete stop within \SI{2.0}{\meter}.
 
-    The platform was routinely able to navigate two test blocks, denoted Block A and Block B, from separate orchards using the lidar based navigation approach approach.
-    Block A is \SI{1.15}{\kilo\meter} in total traversable length spread over 10 rows.
-    Block B is \SI{670}{\meter} in total traversable length spread over 9 rows.
-    After tuning of the row end turn manoeuvres, the platform navigated Block A consecutively 7 times.
-    Figure~\ref{fig:block_traversal_bateman} shows the number of interventions per traversal while under tuning in Block A, 18 traversals in total.
-    After tuning the row end turns in the second block, this block was navigated 3 times consecutively.
-    Figure~\ref{fig:block_traversal_newnham} shows the number of interventions per traversal while under tuning in Block B, 9 traversals in total.
+    Two orchards were used for navigation testing, where a single block was used at each.
+    These blocks are referred to as Block A and Block B.
+    Block A was \SI{1.15}{\kilo\meter} in total traversable length spread over 10 rows, while Block B was \SI{670}{\meter} in total traversable length spread over 9 rows.
+    After tuning of the row end turning manoeuvres, the platform navigated Block A consecutively 7 times.
+    Figure~\ref{fig:block_traversal_bateman} shows the number of interventions per traversal while under tuning in Block A, 19 traversals in total.
+    After tuning the row end turns in Block B, it was navigated 3 times consecutively.
+    Figure~\ref{fig:block_traversal_newnham} shows the number of interventions per traversal while under tuning in Block B, 10 traversals in total.
     This equates to a total of \SI{10}{\kilo\meter} of successfully navigated orchard rows.
-
 
     \begin{figure}[htb]
         \centering
@@ -866,15 +903,15 @@
     \end{figure}
 
     The key weakness of the current navigation system is the need to tune the row end turns manually for each site.
-    The tuning required for the first orchard block amounted to six traversals of the entire block.
-    For the second block, five complete traversals were required for tuning.
+    The tuning required for the first orchard block amounted to eight traversals of the entire block.
+    For the second block, seven complete traversals were required for tuning.
     This creates a significant resource overhead for deployment to any new sites.
     If the row end turns are not sufficiently tuned, two failure cases may occur.
     The most common case is that the vehicle turns through a row end too tightly or not tightly enough and the object avoidance system is not sufficiently responsive to avoid a collision.
-    There were nine traversals where an operator intervened during row end turning.
-    Seven of these were due to an imminent collision with a post during a row end turn.
-    The remaining failures during row end turning were due to the platform trying to recommence row following before facing the new target row.
+    All but four interventions were due to an imminent collision with a post during a row end turn.
+    Three interventions during row end turning were due to the platform trying to recommence row following before facing the new target row.
     In this case the most feasible path for row following was detected through the headland area, instead of the target row.
+    One intervention, attempt 12 of Block A, was caused by the canopy detection system triggering a row-end turn mid-row.
 
 \section{Discussion}
 \label{sect:discussion}
@@ -883,13 +920,13 @@
     However, during these operations the vehicle was primarily operated under manual control.
     This was due to the need to control the vehicle outside of its autonomous operating behaviour.
     In most cases it was driven as close as possible to a row's edge on two passes through each row.
-    This was necessary to give mounted modules access to the full canopy area whilst performing their tasks.
-    The need to drive close to row boundaries was unexpected as the modules were expected to require only a single pass per row.
+    This was needed to give mounted modules access to the full canopy area whilst performing their tasks.
+    The need to drive close to row boundaries was a consequence of limitations with the separately developed modules.
+     % as the modules were expected to require only a single pass per row.
 
-    The results from testing of navigation algorithms indicate that the multi-layer lidar and wheel encoder feedback are enough row following tasks.
-    This combination alone has proven successful for autonomous driving in two kiwifruit orchards.
-    A combination of 2D cameras and neural networks was suitable for object detection and classification, and for generating headings for row following.
-    The two approaches for row following proved reliable, however the method for turning between rows calls for further work.
+    The results from testing of navigation algorithms indicate that the multi-layer lidar with wheel encoder feedback are sufficient for row following tasks.
+    % This combination alone has proven successful for autonomous driving in two kiwifruit orchards.
+    The method for turning between rows calls for further work.
     Row end turning was a manual process that involved observing an autonomously driven turn and manually adjusting the length or radius of the turn's segments.
     Future work will focus on enabling the system to plan row-end turns based on sensor data, without a manually created map.
 
@@ -906,12 +943,12 @@
     An electric air compressor would allow the system to run unassisted by the petrol engine for much longer periods.
     The authors suggest that efficiency losses from frequently running the engine to maintain pneumatic pressure outweigh conversion losses associated with running an electric air compressor.
 
-    The use of more general purpose robots to test navigation algorithms enabled the navigation system to be developed in parallel with the physical hardware.
+    The use of more general purpose platforms to test navigation algorithms enabled the navigation system to be developed in parallel with the physical hardware.
     Their smaller size eliminated the risk of serious injury and led to a speed up in development and test cycles.
     It also meant that navigation testing could continue while the platform was engaged in other activities.
 
-    Deflection observed through the steering mechanism while the vehicle was loaded with a \SI{1100}{\kilo\gram} mass indicates rigidity issues in this area.
-    While this did not affect the ability of the vehicle to accelerate or turn during testing, subsequent stress related issues have arisen in this area.
+    % Deflection observed through the steering mechanism while the vehicle was loaded with a \SI{1100}{\kilo\gram} mass indicates rigidity issues in this area.
+    % While this did not affect the ability of the vehicle to accelerate or turn during testing, subsequent stress related issues have arisen in this area.
 
     Simulation of the robot hardware proved useful for finding software issues before implementation on hardware.
     Most of the time spent developing the simulation went into the creation of a geometric model of the platform.
@@ -923,11 +960,11 @@
     This work presented a platform designed specifically for autonomous driving through pergola style kiwifruit orchards.
     The platform is capable of carrying modules with twice the mass of than those previously reported in the literature.
 
-    Sensors suitable for autonomous navigation have been selected, trialled, and demonstrated as being useful as a means of navigating in this environment.
-    Tests suggest either multi-layer lidar or a combination of 2D-camera and neural network based processing are sensible choices as row following sensors.
-    Multi-layer proved to the most versatile sensor for navigation in general, owing to its wide field of view.
+    % Sensors suitable for autonomous navigation have been selected, trialled, and demonstrated as being useful as a means of navigating in this environment.
+    % Tests suggest either multi-layer lidar or a combination of 2D-camera and neural network based processing are sensible choices as row following sensors.
+    Multi-layer lidar proved to the most versatile sensor for navigation in general, owing to its wider field of view.
     One particularly useful aspect was the ability to detect the presence of canopy above the vehicle.
-    Using a map of manually adjusted row end turns the platform has navigated over \SI{10}{\kilo\meter} of orchard blocks without intervention using only lidar and wheel encoders.
+    Using a map of manually adjusted row-end turns, the platform has navigated over \SI{10}{\kilo\meter} of orchard blocks using wheel encoders and a single multi-layer lidar.
     A significant amount of work was required to tune the row end turns, which has implications for commercial deployment.
 
     During development, a \SI{48}{\volt} battery pack was identified as being ideal for development vehicles of this size due to safety and component availability.
