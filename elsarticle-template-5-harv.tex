@@ -233,8 +233,8 @@
         A drawing of the structural chassis is shown as Figure~\ref{fig:AMMPChassis}.
 
         Lifting forks occupy the area between the rear wheels.
-        The lifter is actuated by two vertically mounted pneumatic cylinders (SMC CP96D100-320) and is controlled by a standard pneumatic valve block.
-        Each cylinder is capable of exerting \SI{4700}{\newton} at \SI{600}{\kilo\pascal}.
+        The lifter is actuated by two vertically mounted double acting pneumatic cylinders (SMC CP96D100-320) and is controlled by a standard pneumatic valve block.
+        Each cylinder is capable of exerting \SI{4700}{\newton} at \SI{600}{\kilo\pascal} or \SI{6300}{\newton} at \SI{800}{\kilo\pascal}.
         Fuel and compressed air tanks sit over the right-hand rear wheel as can be seen in Figure~\ref{fig:suzy}.
 
     \subsection{Steering}
@@ -347,7 +347,8 @@
         The drive shafts of these units are connected via pulleys and a heavy-duty timing belt.
         The engine, compressor, and alternator are controlled and monitored by a micro-controller based control board.
         This board connects to the Platform PC via the system CAN bus.
-        The engine is capable of producing \SI{16}{\kilo\watt}, where up to \SI{9.6}{\kilo\watt} is converted to electrical power, artificially limited in software, and \SI{4.0}{\kilo\watt} is converted to pneumatic power.
+        The engine is capable of producing \SI{16}{\kilo\watt}, where up to \SI{9.6}{\kilo\watt} is converted to electrical power, limited in software, and \SI{4.0}{\kilo\watt} is converted to pneumatic power.
+        The system maintains a pneumatic tank pressure of \SIrange{600}{800}{\kilo\pascal}.
 
         Electrical generation is done with a brushless AC motor/generator (Heinzmann PMSG-150) connected to the same model of motor controller used with the drive system.
         This motor is a larger variant of those used for traction and steering, but with no gearbox fitted.
@@ -687,6 +688,22 @@
     The final angle was adjusted using odometry information to ensure the total angle was within \SI[separate-uncertainty=true]{180(3)}{\degree}.
     A marker was then drawn on the ground at the front of the vehicle at this position.
     The distance between the markers was measured at \SI{6.45}{\meter}, giving a turning radius of \SI{3.23}{\meter}.
+
+  \subsection{Bin Lifter}
+
+    Basic testing of the bin lifting mechanism with a mass mounted to a wooden pallet was made.
+    The total mass, including the pallet was approximately \SI{370}{\kilo\gram}.
+    The test was performed by manually activating a valve block until the pallet sat \SI{250}{\milli\meter} above the ground.
+    To raise the load, pneumatic pressure of \SI{800}{\kilo\pascal} was applied to one port of each cylinder while the other port was opened to atmosphere.
+    Lowering was done by simply opening both ports to atmosphere, allowing the load to descend under its own weight.
+    The test load was lifted and lowered a total of five times under observation.
+    A drivability test was also made, which saw the vehicle driven for \SI{300}{\meter} which included an \SI{8}{\degree} incline for \SI{30}{\meter}.
+
+    The lifting capacity of the mechanism was sufficient to raise the load gently to its target height.
+    At its lower position, signs of imbalance between the two cylinders was evident which caused minor shuddering.
+    The cause was likely to be the plastic sleeve bearings in the linkages being too tight.
+    This was also evident when hand actuating the lifter.
+
 
   \subsection{Navigation}
 
