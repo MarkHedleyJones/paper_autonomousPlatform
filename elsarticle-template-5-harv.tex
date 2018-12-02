@@ -706,18 +706,18 @@
     The shuddering was due to excessive and unmatched static friction on each side of the four-bar mechanism caused by overly tight sleeve bearings.
     This behaviour was also evident when hand actuating the lifter.
     During the drivability test the load dropped by between \SIrange{60}{70}{\milli\meter} from its initial height.
-    The drop and variation in subsequent resting position was caused by a combination of the static friction in the mechanism and vibrations during driving.
+    This drop and variation in resting position was caused by static friction in the mechanism and vibrations whilst driving.
 
-  \subsection{Inter-row turning}
+  \subsection{Turning Between Rows}
 
-    Two orchards were used for navigation testing, where a single block was used at each.
+    Two orchards were used for row-turn testing, where a single block was used at each.
     These blocks are referred to as Block A and Block B.
     Block A was \SI{1.15}{\kilo\meter} in total traversable length spread over 10 rows, while Block B was \SI{670}{\meter} in total traversable length spread over 9 rows.
     After tuning of the row end turning manoeuvres, the platform navigated Block A consecutively 7 times.
     Figure~\ref{fig:block_traversal_bateman} shows the number of interventions per traversal while under tuning in Block A, 19 traversals in total.
     After tuning the row end turns in Block B, it was navigated 3 times consecutively.
     Figure~\ref{fig:block_traversal_newnham} shows the number of interventions per traversal while under tuning in Block B, 10 traversals in total.
-    This equates to a total of \SI{10}{\kilo\meter} of successfully navigated orchard rows.
+    % This equates to a total of \SI{10}{\kilo\meter} of successfully navigated orchard rows.
 
     \begin{figure}[htb]
         \centering
@@ -747,6 +747,68 @@
     Three interventions during row end turning were due to the platform trying to recommence row following before facing the new target row.
     In this case the most feasible path for row following was detected through the headland area, instead of the target row.
     One intervention, attempt 12 of Block A, was caused by the canopy detection system triggering a row-end turn mid-row.
+
+  \subsection{Row Following}
+    Row following repeatability tests were made by running the vehicle down the same row for a total of five runs.
+    Each run saw the vehicle start from a position marked out on the grass using pegs.
+    A custom row following algorithm was used to guide the vehicle through the row, and also stopped the vehicle once it detected it was near the end of the row.
+    Specific implementation details of the algorithm are sensitive, but test results from its use are presented.
+    The tests were conducted at \SI{1.39}{\meter\per\second} (\SI{5}{\kilo\meter\per\hour}) in each case, i.e., the row following algorithm controlled only the steering angle and the stopping position.
+
+    To determine the vehicle's trajectory, recordings of the lidar and IMU were made which where run through a SLAM package offline.
+    The SLAM package used was Google Cartographer (version 1.0) used as a ROS package that produced both the map and the trajectory information \citep{Hess2016}.
+    % The maps and tradjectories were exported from RVIZ as images, which were then post-processed using a vector graphic program (Inkscape version 0.91).
+    % The tradjectories were traced and measured using the program's built-in path-length measurement tool.
+
+
+
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=\linewidth]{imgs/slam/paths.pdf}
+        \caption{
+            Five paths taken during a sequence of row-following repeatability tests.
+        }
+        \label{fig:row_following_paths}
+    \end{figure}
+
+    \begin{table}[htbp]
+      \centering
+      \footnotesize
+      \begin{tabular}{ l l}
+
+          \textbf{Test number}      &\textbf{Path length} \\ \hline
+          1 & \SI{107.23}{\meter}\\
+          2 & \SI{107.78}{\meter}\\
+          3 & \SI{107.98}{\meter}\\
+          4 & \SI{107.60}{\meter}\\
+          5 & \SI{107.79}{\meter}\\
+      \end{tabular}
+      \caption{Total path length for each row-following test. The average length is \SI{107.78}{\meter} and the range is \SI{0.75}{\meter} (\SI{0.70}{\percent}).}
+      \label{table:row_follow_path_lenghts}
+    \end{table}
+
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=\linewidth]{imgs/slam/end_positions.pdf}
+        \caption{
+            Displacements of each row following end points, relative to the mean of the five end-points.
+        }
+        \label{fig:row_following_end_points}
+    \end{figure}
+
+    Figure \ref{fig:row_following_paths} shows the resulting orchard map and five trajectories overlaid on top of each other.
+    While differences in start position are estimated to be less than \SI{0.1}{\meter}, the trajectories show a spread in the initial position by as much as \SI{0.44}{\meter}.
+    Table \ref{table:row_follow_path_lenghts} lists the total path lengths, and Figure \ref{fig:row_following_end_points} shows the spread of resting positions.
+    The maximum displacement between resting positions is \SI{0.56}{\meter}.
+
+    An interesting point occurs approximately one-third of the way through each run where the paths diverge briefly.
+    This location is visible in Figure \ref{fig:row_following_paths} in the enlarged box that shows the divergence.
+    Replaying the captured sensor data through the row-following algorithm revealed a cluster of transient points at the edge of the row.
+    These points, most likely the result of weeds, interfered with the localisation of a single post due to their close proximity.
+    The algorithm uses the positions of these posts to determine row centre-points, which was unstable at this location.
+
+    Wheel odometry provided by the drive motors was not used during row following as signs of slippage were apparent.
+    Quick measurements conducted on grass showed that an imbalance of approximately \SI{5}{\percent} between the rear wheels depending on the slope angle (which was not measured).
 
 \section{Discussion}
 \label{sect:discussion}
