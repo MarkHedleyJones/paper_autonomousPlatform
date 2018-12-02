@@ -750,9 +750,9 @@
 
   \subsection{Row Following}
     Row following repeatability tests were made by running the vehicle down the same row for a total of five runs.
-    Each run saw the vehicle start from a position marked out on the grass using pegs.
+    Each test run had the vehicle start from a position that had previously been marked out on the grass.
     A custom row following algorithm was used to guide the vehicle through the row, and also stopped the vehicle once it detected it was near the end of the row.
-    Specific implementation details of the algorithm are sensitive, but test results from its use are presented.
+    This algorithm is different to that used to test the row turning and lacks the ability to avoid obstacles.
     The tests were conducted at \SI{1.39}{\meter\per\second} (\SI{5}{\kilo\meter\per\hour}) in each case, i.e., the row following algorithm controlled only the steering angle and the stopping position.
 
     To determine the vehicle's trajectory, recordings of the lidar and IMU were made which where run through a SLAM package offline.
@@ -804,22 +804,22 @@
     The algorithm uses the positions of these posts to determine row centre-points, one of which was unstable at this location.
 
     Wheel odometry provided by the drive motors was not used during row following as signs of slippage were apparent.
-    Quick measurements conducted on grass showed an imbalance of approximately \SI{5}{\percent} between the rear wheels depending on the slope angle (which was not measured).
+    Quick measurements conducted on grass showed an imbalance of approximately \SI{5}{\percent} between the rear wheels depending on the slope angle (which was not measured, but estimated to be about 5 degrees).
 
 \section{Discussion}
 \label{sect:discussion}
 
-    The reported platform achieves the requirements outlined during the introduction and has proved its usefulness during two pollination and harvesting seasons.
-    However, during these operations the vehicle was primarily operated under manual control.
-    This was due to the need to control the vehicle outside of its autonomous operating behaviour.
-    In most cases it was driven as close as possible to a row's edge on two passes through each row.
-    This was needed to give mounted modules access to the full canopy area whilst performing their tasks.
-    The need to drive close to row boundaries was a consequence of limitations with the separately developed modules.
+    The reported platform meets the requirements and has proved its usefulness during three pollination and harvesting seasons.
+    During these operations the vehicle was operated under manual control, because of the need to drive so close to row boundaries.
+    The width of the vehicle and modules meant it is necessary to perform two passes down each row to access the full canopy area.
 
-    The results from testing of navigation algorithms indicate that the multi-layer lidar with wheel encoder feedback are sufficient for row following tasks.
+    The results from testing of navigation algorithms indicate that the multi-layer lidar with wheel encoder feedback are sufficient for row turning tasks, while an IMU and multi-layer lidar are sufficient for row following tasks.
+    Wheel slippage meant that the encoder information from driven wheels was less suitable for long-term odometry than the odometry information provided from SLAM packages processing lidar and IMU data.
     The method for turning between rows calls for further work.
     Row end turning was a manual process that involved observing an autonomously driven turn and manually adjusting the length or radius of the turn's segments.
     Future work will focus on enabling the system to plan row-end turns based on sensor data, without a manually created map.
+    The repeatability of row following based navigation was acceptable, however the algorithm lacks the ability to avoid obstacles.
+    The ability to avoid obstacles will be required for longer term use.
 
     During installation and testing of the platform's electrical system, the \SI{96}{\volt} battery pack introduced a significant electrical hazard.
     While essential for safety, risk mitigation procedures added complexities and delays that could have been avoided by selecting a lower pack voltage.
