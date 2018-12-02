@@ -681,10 +681,10 @@
   \subsection{Turning Circle}
 
     Measurement of the vehicle's turning radius were performed at speeds of \SI{5.0}{\kilo\meter\per\hour} and \SI{10.0}{\kilo\meter\per\hour} on both dry tarmac and damp grassland.
-    These speeds were calculated at the mid-point between the two front wheels, at the centre of the pivot.
-    Having a wheelbase of \SI{2.67}{\meter}, these turning speeds of equate to angular velocities of \SI{0.520}{\radian\per\second} and \SI{1.04}{\radian\per\second} respectively.
+    These speeds were calculated at the mid-point between the two front wheels.
+    Having a wheelbase of \SI{2.67}{\meter}, these speeds of equate to angular velocities of \SI{0.520}{\radian\per\second} and \SI{1.04}{\radian\per\second} respectively.
 
-    In each case, a line was drawn on the ground in front of the vehicle to mark its starting position.
+    In each test, a line was drawn on the ground in front of the vehicle to mark its starting position.
     The vehicle was then turned through an angle of \SI[separate-uncertainty=true]{180(10)}{\degree} under manual control with the steering angle set at \SI{90}{\degree}.
     The final angle was adjusted using odometry information to ensure the total angle was within \SI[separate-uncertainty=true]{180(3)}{\degree}.
     A marker was then drawn on the ground at the front of the vehicle at this position.
@@ -757,10 +757,6 @@
 
     To determine the vehicle's trajectory, recordings of the lidar and IMU were made which where run through a SLAM package offline.
     The SLAM package used was Google Cartographer (version 1.0) used as a ROS package that produced both the map and the trajectory information \citep{Hess2016}.
-    % The maps and tradjectories were exported from RVIZ as images, which were then post-processed using a vector graphic program (Inkscape version 0.91).
-    % The tradjectories were traced and measured using the program's built-in path-length measurement tool.
-
-
 
     \begin{figure}[htb]
         \centering
@@ -805,10 +801,10 @@
     This location is visible in Figure \ref{fig:row_following_paths} in the enlarged box that shows the divergence.
     Replaying the captured sensor data through the row-following algorithm revealed a cluster of transient points at the edge of the row.
     These points, most likely the result of weeds, interfered with the localisation of a single post due to their close proximity.
-    The algorithm uses the positions of these posts to determine row centre-points, which was unstable at this location.
+    The algorithm uses the positions of these posts to determine row centre-points, one of which was unstable at this location.
 
     Wheel odometry provided by the drive motors was not used during row following as signs of slippage were apparent.
-    Quick measurements conducted on grass showed that an imbalance of approximately \SI{5}{\percent} between the rear wheels depending on the slope angle (which was not measured).
+    Quick measurements conducted on grass showed an imbalance of approximately \SI{5}{\percent} between the rear wheels depending on the slope angle (which was not measured).
 
 \section{Discussion}
 \label{sect:discussion}
