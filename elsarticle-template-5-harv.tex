@@ -66,9 +66,8 @@
     Alternatively, the robots can be modularised and attached to general purpose platforms.
     General purpose platforms reported previously are designed to carry relatively light payloads orientated toward ground based crops.
     This paper presents a modularised platform capable of carrying modules of up to \SI{1000}{\kilo\gram} under \SI{1.5}{\meter} high pergola style kiwifruit canopies.
-    Sensors suitable for autonomous navigation are evaluated in-orchard and tested using a prototype navigation algorithm.
-    It is found that GNSS based navigation is not feasible under kiwifruit canopies, but perception based navigation sees the platform complete a number of block traversals unassisted.
-    The design of the vehicle's structure, drive system, and software architecture is discussed.
+    Sensors suitable for autonomous navigation are evaluated in-orchard and tested using prototype navigation algorithms.
+    It is found that GNSS based navigation is not feasible under kiwifruit canopies, but perception based navigation sees the platform complete a number of block traversals autonomously.
 
 \end{abstract}
 
@@ -85,20 +84,20 @@
     Short-term labor requirements within New Zealand's kiwifruit industry peak twice a year corresponding with the pollination and harvesting of kiwifruit.
     The majority of employment during these peaks is filled by seasonal or casual workers \citep{Timmins2009}.
     As kiwifruit is the country's largest horticultural export by value \citep{StatisticsNewZealand2015}, effective automation in this industry will promote economic growth.
-    Development of an automated kiwifruit harvesting system with an integrated drive system has previously been published \citep{Scarfe2012}.
+    Development of an automated kiwifruit harvesting system with integrated drive system has previously been published \citep{Scarfe2012}.
     That work presented a platform designed to autonomously navigate though pergola style kiwifruit orchards and had four integrated harvesting arms.
     Work presented here focuses on creating a platform that operates independently from orchard related tasks, such as fruit harvesting and pollination.
-    Utilisation of a base platform will be increased by allowing it to be used during harvesting \emph{and} pollination seasons.
-    Details of modules developed for use on the platform will be published separately.
-    These modules have been built as part of a larger project focusing on automation in kiwifruit orchards.
+    Utilisation of a generalised base platform is increased by using it during harvesting \emph{and} pollination seasons.
+    Details of modules developed for use on the vehicle are published separately.
+    The modules have been built as part of a larger project focusing on automation in kiwifruit orchards.
 
     Automated kiwifruit harvesting and pollination demands computer control, state-of-the-art manipulators, and machine-vision systems.
-    Such systems are bulky and have specific geometric requirements dictated by the environment they operate in.
-    Both share the need for electrical power, air pressure, and a means of locomotion.
+    The systems are generally bulky and have specific geometric requirements dictated by the kiwifruit growing systems.
+    They share the need for electrical power, air pressure, and a means of locomotion.
     However, they differ in the way they move when operating.
     The pollinating module moves at a well-known speed with minimum changes in angle.
     This differs from the harvesting module that advances a set distance between stationary harvest cycles.
-    To enable the whole system to work autonomously, the base platform must be able to self-drive in a way appropriate for these modules.
+    To enable the whole system to work autonomously, the base platform must be able to self-drive in a way appropriate for both modules.
 
     While publishing details of BoniRob, a general purpose robotics platform for field use, the authors stated that ``since the robot development already includes a high complexity, the application itself should be of comparably low complexity'' \citep{Ruckelshausen2009}.
     By separating the development of the platform from other task-specific modules, the risk of a single part becoming overly complex is reduced.
@@ -107,9 +106,8 @@
     Because the canopy of a pergola style kiwifruit orchard can droop as low as \SI{1.4}{\meter} to the ground under fruit loading, most standard vehicles are not suited to this environment.
     Many autonomous vehicles designed for use in orchards, such as vineyards, rely on satellite navigation for guidance.
     The dense foliage of a kiwifruit canopy and the surrounding shelter-belts make receiving Global Navigation Satellite System (GNSS) signals unreliable at best.
-    This means the vehicle must navigate through its environment using perception based sensors.
-    Seven requirements have been identified for the platform's use with the pollination and harvesting modules in kiwifruit orchards.
-    These are to:
+    The presented vehicle must navigate through kiwifruit orchards by relying only on perception based sensors.
+    Other requirements for the vehicle are:
     \begin{enumerate}
         \item support a mass of \SI{1000}{\kilo\gram},
         \item fit under a \SI{1.4}{\meter} high ceiling,
@@ -123,7 +121,7 @@
         \centering
         \includegraphics[width=\linewidth]{imgs/photos/suzy_general.jpg}
         \caption{
-            The platform driving through a row of pergola style kiwifruit orchard while carrying a kiwifruit bin.
+            The presented platform driving through a row of pergola style kiwifruit orchard during winter.
         }
         \label{fig:suzy}
     \end{figure}
@@ -143,7 +141,7 @@
         Four years later, two autonomous vehicles designed for weed mapping and control in open field crops were presented \citep{Pedersen2002,Astrand2002}.
         These platforms had relatively simple chassis and drive systems as they were both at a prototype stage, i.e., neither were designed to carry heavy payloads.
         The first vehicle, presented by Åstrand \& Baerveldt, featured: two-wheel steering, two-wheel drive, a camera based row guidance system, batteries, a combustion engine, and an air compressor.
-        While its appearance resembled that of a computer server rack on wheels, it contained most of the components required of a platform for use with modularised fruit harvesting and pollination modules.
+        While its appearance was basic, it contained most of the functionality required for use with modularised fruit handling modules.
         The second unit, described by Pedersen et~al.\@, was four-wheel drive with two-wheel steering and used GPS as its primary navigation sensor.
         It was battery powered only and lacked any sort of row guidance sensor or power generation unit.
         The authors found that row-crop based navigation from GPS alone was not practical and proposed the integration of a row guidance sensor in their next design.
@@ -157,11 +155,11 @@
         While much more developed than the previous work of \cite{Pedersen2002}, the platform was not designed to: carry heavy payloads, operate in the absence of satellite navigation, or power itself beyond its battery capacity.
 
         In 2009, details of BoniRob were published by \cite{Ruckelshausen2009}.
-        Similar to the previous unit presented by \cite{Bak2004}, it featured a gyroscope, an RTK-GPS receiver, a CAN bus for communication, and four-wheel steering.
+        Similar to the previous unit presented by \cite{Bak2004}, it featured a gyroscope, RTK-GPS receiver, CAN bus, and four-wheel steering.
         It introduced the use of both single-plane and multi-layer laser range scanning, known as lidar, for perception and row detection.
         A \SI{2.8}{\kilo\watt} petrol engine could be mounted to the chassis, additional to its on-board batteries.
-        It was capable of carrying a \SI{150}{\kilo\gram} payload in its dedicated module space, which happens to be the gross weight of the vehicle presented by \cite{Bak2004}.
-        What made BoniRob particularly interesting is its ability to alter its track width by actuating the arms to which its wheels were attached.
+        It was capable of carrying a \SI{150}{\kilo\gram} payload in its dedicated module space; the gross weight of the vehicle presented by \cite{Bak2004}.
+        What made BoniRob particularly interesting was its ability to alter its track width by actuating the arms to which its wheels were mounted.
         Like the robots before it, BoniRob was designed for use on open field crops.
         During the previous year, some of these authors published details of a much simpler robot named `Weedy' \citep{Klose2008}, also an open field crop based sensing platform.
         BoniRob represents the first of the more general purpose platforms designed to carry modularised payloads.
@@ -179,15 +177,15 @@
         That work involved the creation of a hydraulically driven platform, with two-wheel steering and four-wheel drive, to which four fruit harvesting arms and a bin lifting mechanism were integrated.
         While that platform was designed to navigate through kiwifruit orchards autonomously, its ability to do so was not tested due to an outbreak of \textit{Pseudomonas syringae pv. actinidiae} (PSA) that closed access to kiwifruit orchards.
         The platform had a petrol engine and made use of camera and lidar based row guidance sensors.
-        It had sufficient carrying capacity, however it lacked the modularity of a general purpose platform, meaning it could only be used to harvest kiwifruit.
+        It had sufficient carrying capacity for other roles, however it lacked modularity -- restricting its use to kiwifruit harvesting.
 
-        With the exception of the platform presented by \cite{Scarfe2012}, all of the reviewed platforms are designed for open field crops.
+        With the exception of the platform presented by \cite{Scarfe2012}, all of the reviewed platforms were designed for use with open field crops.
         None were designed for harvesting operations and therefore were not capable of carrying bins.
         Referring back to the statement from \cite{Ruckelshausen2009} that ``the application itself should be of comparably low complexity'', one can see why research thus far has focused on simpler tasks such as inspection or weeding.
         However, once designs move past these applications it becomes necessary to accommodate other shared requirements.
-        A fork lifting mechanism is general enough that most orchard related tasks can benefit from it.
-        For example, with a harvesting module mounted it can be used to hold a bin in which harvested fruit is collected.
-        With a pollination module mounted it can hold the tank of liquid pollen solution.
+        A fork-lift mechanism is general enough that most orchard related tasks can benefit from it.
+        For example, during harvesting it can hold a fruit collection bin.
+        During a pollination season it can hold the tank of liquid pollen solution.
         The ability to pick up a standard pallet has broad applications in and around orchards too.
 
         \cite{Blackmore2007} envisaged significant reductions in production costs for agricultural robotics by repurposing parts already in use in the agricultural and automotive industry.
@@ -212,8 +210,8 @@
 
         The vehicle's design is mostly influenced by the need to carry modularised robotic systems and fruit bins.
         Existing commercial platforms suitable for use in horticulture exist, such as the Warthog from ClearPath Robotics, but the maximum payload, battery life, and vehicle geometry make it and similar offerings unsuitable.
-        The mass of modules for pollination or harvesting can be as much as \SI{600}{\kilo\gram} and a bin of kiwifruit adds an additional \SI{400}{\kilo\gram}.
-        The canopy height in these orchards ranges from \SI{1.4}{\meter} to \SI{1.7}{\meter} so the vehicle must have a low profile.
+        The mass of robotic modules for pollination or harvesting can be as much as \SI{600}{\kilo\gram} and a bin of kiwifruit adds an additional \SI{400}{\kilo\gram}.
+        The canopy height in typical commercial orchards range from \SI{1.4}{\meter} to \SI{1.7}{\meter}, so the vehicle must also have a low profile.
         Modules carried by the platform require clearance from the canopy in addition to the height they occupy themselves.
         To maximise the space available to these modules the platform must be low-slung at the point they attach.
         Figure~\ref{fig:AMMP} illustrates the platform's design, with module area allocated between markers `G' and `H' in the side view (top left).
@@ -227,22 +225,22 @@
         \end{figure}
 
         The chassis is assembled from sections of \SI{3}{\milli\meter} laser-cut and folded mild steel.
-        The sections are welded together on jigs, also made from laser-cut and folded steel, before being powder coated.
+        The sections are welded together on jigs, also made from laser-cut and folded steel, before being powder coated and assembled.
         Much of the folded chassis structure contains triangular cut-outs, reducing weight while having minimal impact on rigidity.
         Finite element analysis was used during the design phase to help identify areas needing to be strengthened and areas where material could be removed.
-        This helped to ensure the platform meets its target load capacity of \SI{1000}{\kilo\gram}, while the structural chassis weighs only \SI{190}{\kilo\gram}.
-        A drawing of the structural chassis is shown as Figure~\ref{fig:AMMPChassis}.
+        This helped to ensure the platform meets its target load capacity of \SI{1000}{\kilo\gram}, while the bare chassis weighs only \SI{190}{\kilo\gram}.
+        A drawing of the chassis is shown in Figure~\ref{fig:AMMPChassis}.
 
-        Lifting forks occupy the area between the rear wheels.
-        The lifter is actuated by two vertically mounted double acting pneumatic cylinders (SMC CP96D100-320) and is controlled by a standard pneumatic valve block.
+        Bin lifting forks occupy the area between the rear wheels.
+        Fuel and compressed air tanks sit over the right-hand rear wheel, which can be seen in Figure~\ref{fig:suzy}.
+        The bin lifter is actuated by two vertically mounted double-acting pneumatic cylinders (SMC CP96D100-320) which are controlled by a pneumatic valve block.
         Each cylinder is capable of exerting \SI{4700}{\newton} at \SI{600}{\kilo\pascal} or \SI{6300}{\newton} at \SI{800}{\kilo\pascal}.
-        Fuel and compressed air tanks sit over the right-hand rear wheel as can be seen in Figure~\ref{fig:suzy}.
+
 
     \subsection{Steering}
     \label{sub:steering}
 
-        The angles of the vehicle's front wheels are actuated independently following the Ackermann steering geometry principle.
-        Actuation is performed by brushless AC motors (Heinzmann PSM G100) mounted vertically above each drive wheel.
+        The steering geometry is Ackermann based, with the front two wheels being actuated by brushless AC motors (Heinzmann PSM G100).
         These motors can generate \SI{7.32}{\newton\meter} of torque with a maximum angular velocity of \SI{3000}{rev\per\minute} and are rated at \SI{2.3}{\kilo\watt}.
         Their outputs are fed through fixed-ratio planetary gearboxes with a 64:1 reduction, increasing torque to \SI{470}{\newton\meter} while reducing the maximum angular velocity to \SI{47}{rev\per\min}.
 
@@ -259,16 +257,15 @@
         The mass of the vehicle (\SI{800}{\kilo\gram}), plus payload (\SI{1000}{\kilo\gram}), and fuel (\SI{60}{\kilo\gram}) adds to \SI{1860}{\kilo\gram}.
         Allowing for uneven weight distribution on the vehicle and a safety margin, the per wheel mass supported is \SI{500}{\kilo\gram}, or a weight of \SI{4900}{\newton}.
         The width of the tyres is \SI{0.28}{\meter}.
-        Combining these values in Equation~\ref{eqn:steer_torque} yields a torque of \SI{388}{\newton} to overcome static friction when actuating the steering motors.
+        By combining these values as per Equation~\ref{eqn:steer_torque}, a torque of \SI{388}{\newton} is required to overcome static friction when actuating the steering motors.
 
         Actuating the wheels independently removes the need for mechanical linkages between them, allowing for more extreme steering angles and a simpler mechanical design.
-        Both steered wheels have the freedom to rotate \SI{330}{\degree}, artificially limited by mechanical stops.
+        Both steered wheels have the freedom to rotate \SI{330}{\degree}, artificially limited by software and mechanical stops.
         At the tightest steering angle of \SI{90}{\degree}, the centre-point of the turn is located at the midpoint of the rear wheels.
-        The turning radius in this case is roughly equal to the vehicle's wheelbase.
-        This sees the vehicle turn between adjacent rows spaced as little as \SI{3}{\meter} apart.
+        The turning radius in this case should be equal to the distance between the front bumper and the rear wheels (\SI{3.18}{\meter}).
 
         Implementing a four-wheel steering system would shift the pivot point to the vehicle's centre, roughly halving the turn radius, but this was deemed unnecessary.
-        Headlands in kiwifruit orchards are sized for tractors with much larger turning radii than the developed platform so there is plenty of space for turning.
+        Headlands in kiwifruit orchards are sized for tractors with much larger turning radii than that of the platform.
         Use of a two-wheeled steering system removes the need to develop the ``non-trivial'' control strategies encountered by \cite{Bak2004}.
         It also increases the usable area at the rear of the vehicle by removing the need for clearances around actuated wheels.
         A skid steer system was expected to cause ground damage to a level considered unacceptable to orchard owners when carrying heavy loads.
@@ -281,9 +278,19 @@
     \subsection{Drive system}
     \label{sub:drive}
 
-        A three point suspension system ensures all wheels remain in contact with the ground.
-        This is realised with a front pivoting axle, which can be seen in  Figure~\ref{fig:AMMPChassis}.
-        As the operating speed for the vehicle is \SI{1.39}{\meter\per\second} (\SI{5.0}{\kilo\meter\per\hour}), the tyres were expected to provide sufficient capacity for shock absorption.
+        The vehicle's three-point suspension system ensures all wheels remain in contact with the ground.
+        It uses a front pivoting axle, as shown in Figure~\ref{fig:AMMPChassis}.
+        As the operating speed for the vehicle is \SI{1.39}{\meter\per\second} (\SI{5.0}{\kilo\meter\per\hour}), the tyres alone were expected to provide sufficient capacity for shock absorption.
+
+        % \begin{figure}[htb]
+        %     \centering
+        %     \includegraphics[width=0.8\linewidth]{imgs/photos/RVIZ.png}
+        %     \caption{3D Model showing placement of the lidar and IMU at the front of the vehicle.}
+        %     \label{fig:rviz}
+        % \end{figure}
+
+        % Potentially useful picture above
+        %%% Mark: Editing checkpoint (from beginning)
 
         Performance requirements for the vehicle's traction system during up-hill acceleration while under load were calculated as follows:
         \begin{align}
