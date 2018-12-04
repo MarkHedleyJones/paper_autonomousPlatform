@@ -25,7 +25,7 @@ runs =  [
 # 3.386985136 54.6647440489
 # 2.9453047454  54.6037885306
 
-dimensions = [390*0.01384,195*0.01384]
+dimensions = [390*0.01384*0.7,195*0.01384]
 params = {'backend': 'ps',
           'axes.labelsize': 10,
           'text.fontsize': 10,

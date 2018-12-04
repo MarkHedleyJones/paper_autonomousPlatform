@@ -279,7 +279,7 @@
     \label{sub:drive}
 
         The vehicle's three-point suspension system ensures all wheels remain in contact with the ground.
-        It uses a front pivoting axle, as shown in Figure~\ref{fig:AMMPChassis}.
+        It uses a front pivoting axle to do this, which is depicted in Figure~\ref{fig:AMMPChassis}.
         As the operating speed for the vehicle is \SI{1.39}{\meter\per\second} (\SI{5.0}{\kilo\meter\per\hour}), the tyres alone were expected to provide sufficient capacity for shock absorption.
 
         % \begin{figure}[htb]
@@ -302,7 +302,7 @@
         F_{total} &= F_{rolling} + F_{grade} + F_{accel}
         \end{align}
         Where $F_{rolling}$ is the force due to rolling resistance; $F_{grade}$ is the grade (or incline) force; and $F_{accel}$ is the force required for mass acceleration.
-        A rolling resistance coefficient ($C_{rr}$) of 0.04 was chosen based on values found in automotive handbooks.
+        A rolling resistance coefficient ($C_{rr}$) of 0.04 was chosen based on values found in an automotive handbook \citep{RobertBoschGmbH2002}.
         It represents the case of a pneumatic tyre on medium-hard soil.
         Other variables used are: a vehicle mass ($m$) of \SI{1900}{\kilo\gram}, slope angle ($\alpha$) of \SI{20}{\degree}, velocity change ($\Delta t$) of \SI{2.78}{\metre\per\second} (\SI{10}{\kilo\meter\per\hour}), and an acceleration time ($t$) of \SI{6}{\second}.
         Putting these values through Equations \ref{eqn_f_rolling}--\ref{eqn_f_accel} gives a total force requirement of \SI{7.99}{\kilo\newton}.
@@ -317,9 +317,8 @@
         At a velocity of \SI{2.78}{\meter\per\second} (\SI{10}{\kilo\meter\per\hour}), the calculations give a power requirement of \SI{5.55}{\kilo\watt} per wheel.
 
         The selected motors are hub-mounted permanent magnet brushless AC motors with integrated 40:1 fixed-radio planetary gearboxes (Heinzmann PSM-G120).
-        Each motor is rated for \SI{6.4}{\kilo\watt} at \SI{96}{\volt} with a maximum angular velocity of \SI{3000}{rev\per\min} and a torque of \SI{20.4}{\newton\meter}.
-        At the output of the gearbox, the torque jumps to \SI{816}{\newton\meter} while the angular velocity drops to \SI{75}{rev\per\minute}.
-        This gives the platform a top speed of \SI{10.3}{\kilo\meter\per\hour}.
+        Each motor is rated for \SI{6.4}{\kilo\watt} at \SI{96}{\volt} with a maximum angular velocity of \SI{3000}{rev\per\min} and torque of \SI{20.4}{\newton\meter}.
+        At the output of the gearbox the torque jumps to \SI{816}{\newton\meter} while the angular velocity drops to \SI{75}{rev\per\minute}; giving the platform a top speed of \SI{10.3}{\kilo\meter\per\hour}.
 
         In total there are seven brushless AC motors on-board the platform: four drive motors, two steering motors, and a motor used for electrical power generation.
         Each are connected to individual AC motor controllers (Sevcon Gen4 DC Size 4).
@@ -344,11 +343,11 @@
 
         Two battery modules attached to the sides of the chassis each house fifteen lithium-iron-phosphate (LiFePO$_{\text{4}}$) batteries connected in series.
         Together, the batteries (Winston/Thundersky WB-LYP90AHA) provide a nominal bus voltage of \SI{96}{\volt} and a total electrical capacity of \SI{8.64}{\kilo\watt\hour}.
-        The battery packs were `bottom-balanced' before being fitted and no cell-level voltage monitoring is present.
+        The battery packs were manually `bottom-balanced' before being fitted and no cell-level voltage monitoring is present.
         Maximum and minimum pack voltages were established by monitoring individual cells during charging and discharging.
         At the point that any individual cell exceeds a safe maximum/minimum threshold, the respective maximum/minimum pack voltage is determined.
 
-        A hermetically sealed disconnect switch (Gigavac HBD41) separates the batteries from the system.
+        A hermetically sealed disconnect switch (Gigavac HBD41) isolates the batteries from the system.
         Once closed, an auxiliary \SI{24}{\volt} bus becomes active that powers components required to bring the rest of the rest on-line.
 
         A power generation unit comprised of a petrol engine (Honda GX-690), air compressor (Rotorcomp NK-1), and electrical generator is housed at the front of the vehicle.
@@ -359,13 +358,13 @@
         The system maintains a pneumatic tank pressure of \SIrange{600}{800}{\kilo\pascal}.
 
         Electrical generation is done with a brushless AC motor/generator (Heinzmann PMSG-150) connected to the same model of motor controller used with the drive system.
-        This motor is a larger variant of those used for traction and steering, but with no gearbox fitted.
+        This motor is a larger variant of those used for traction and steering, but without a gearbox.
         Its controller is configured only to have regenerative braking functionality.
         This configuration allows the system to control the power output by adjusting the braking effort required from the controller.
         The controllers offer configuration of battery voltage and current limits as well as the ability to reduce output effort as the battery voltage approaches its maximum.
-        These settings provide all the functionality of a general purpose lithium-ion battery charger, making this a cost effective charging solution.
+        These settings provide all the functionality of a general purpose lithium-ion battery charger, making this a cost effective and versatile charging solution.
         Electrical energy from the power generation unit is fed to the batteries in a series-hybrid configuration.
-        An external charging port is also fitted to allow charging of the batteries without using the petrol engine.
+        An external charging port is also fitted to allow charging of the batteries directly.
 
         A fuel tank is fitted over the rear right-hand wheel, visible in Figure~\ref{fig:suzy}.
         It can hold \SI{60}{\litre} of petrol, allowing the vehicle to operate continuously for over \SI{24}{\hour}.
@@ -391,10 +390,10 @@
 
         A second, externally mounted, computer is responsible for higher level control of the vehicle.
         It is used to connect to navigation sensors, send drive commands to the platform, and perform processing tasks relevant to autonomous navigation.
-        It too is an x86 based PC running Ubuntu, but uses a commodity microATX form-factor motherboard with a discrete graphics card (Nvidia GTX 1080).
+        It too is an x86 based PC running Ubuntu, but uses a commodity microATX form-factor motherboard with a discrete graphics card (Nvidia GTX 1080Ti).
         The graphics card is used to accelerate neural network algorithms and some image processing functions.
-        An Ethernet network connects this PC to mounted modules and sensors, whereas a direct serial connection is used to communicate with the Platform PC.
-        Figure~\ref{fig:system_diagram} illustrates how these devices are linked together.
+        An Ethernet network connects this PC to the mounted payload modules, while a RS422 serial link is used to communicate with the Platform PC.
+        Figure~\ref{fig:system_diagram} illustrates this arrangement.
 
         In addition to the drive commands generated by the Navigation PC, a wireless controller (HBC Radiomatic Eco) lets the operator issue drive commands via joystick.
         The receiver module contains relays that are directly controllable from the remote control.
@@ -405,21 +404,21 @@
         This engages the mechanical park brakes, removes all tractive effort from the motor controllers, and de-powers mounted modules.
 
         The open source Robotic Operating System (ROS) is used to facilitate communication between computers and software nodes running within each computer.
-        Nodes written using this framework follow either a publish-subscribe or service-client pattern depending on the application.
-        To maximise code reusability, each device on the platform has its own ROS node dedicated to publishing device data or subscribing to generated device commands.
-        Interface adapters, motor controllers, wireless controllers, lidar, and encoders are such devices with dedicated interface nodes.
+        Nodes written using this framework follow either a publish-subscribe or service-client pattern.
+        To maximise code reusability, each device on the platform has its own ROS-compatible node dedicated to publishing device data or subscribing to generated device commands.
+        Interface adapters, motor controllers, wireless controllers, lidar, and encoders are examples of devices with dedicated interface nodes.
         Nodes are also used to transform or perform calculations on data while passing it between nodes written in either C++ or Python.
         For instance, as shown in Figure~\ref{fig:system_diagram_software}, an `Ackermann kinematics' node transforms steering input data into individual wheel velocity and position/angle outputs.
-        Among other things, ROS offers the ability to monitor and record all communication passing through it which can be replayed at a later date.
+        Among other things, ROS offers the ability to monitor and record all communication passing through it which can be replayed and interrogated at a later date.
 
-        A manufacturer's configuration of the motor controllers require them to be interfaced using a combination of analogue and digital inputs.
+        The manufacturer's configuration of the motor controllers require them to be interfaced using a combination of analogue and digital inputs.
         For example, the accelerator and steering inputs are controlled by potentiometers actuated by the vehicle's driver.
         However, the controllers also provide an option for a multi-motor vehicle configuration.
-        In this configuration, inputs fed into a master controller are relayed to a second controller over a CAN interface.
+        In this configuration, the analog inputs fed into a master controller are relayed to a second controller over a CAN interface.
         This interface is configured using a proprietary tool and is not intended for use other than between controllers configured with their software.
         By observing the communication protocol between a master and slave in operation, it was possible to implement a master node in software that runs on the Platform PC.
         With this, all motor controllers on the platform are programmed as slave devices.
-        This forces them to accept drive commands via CAN interface, allowing them to be directly controlled by ROS nodes.
+        This allows them to accept drive commands via CAN interface, allowing them to be directly controlled by ROS nodes.
 
         Relay modules allow the Platform PC to toggle power to on-board power supplies, motor controllers, park-brakes, and lights.
         They also monitor the timing of synchronisation messages transmitted by the Platform PC onto the CAN bus.
@@ -435,8 +434,7 @@
         \begin{figure}[htb]
             \centering
             \includegraphics[width=\linewidth]{imgs/system_diagram/software_v2.pdf}
-            \caption{Simplified diagram showing connectivity between ROS nodes used for manual and autonomous platform control.
-            The `velocity controller' node could implemented using as many as ten or mode separate nodes during development.}
+            \caption{Simplified diagram showing connectivity between ROS nodes used for manual and autonomous platform control.}
             \label{fig:system_diagram_software}
         \end{figure}
 
@@ -444,7 +442,7 @@
 \section{Navigation Sensor Selection}
 \label{sect:sensors}
     The choice of sensors incorporated into a vehicle determines which algorithmic approaches are available for navigation and object detection.
-    The use of lidar, cameras, and GNSS receivers have been considered.
+    Lidar, cameras, and GNSS receivers have been considered.
     Each sensor's ability to capture relevant data is evaluated by in-orchard trials.
 
     Other sensors considered for inclusion are outlined in Table \ref{table:sensor_comparison} along with their associated issues.
@@ -473,7 +471,7 @@
     \end{table}
 
     As the drive motors have built-in wheel encoders, basic odometry data is already available.
-    Encoders on driven wheels will give false readings if wheel slip occurs so are not be used for odometry alone.
+    Encoders on driven wheels will give false readings if wheel slippage occurs so are not be used for odometry alone.
     However, the data provided can still be used to assist with mapping, localisation, and provide velocity feedback.
 
 
@@ -525,7 +523,7 @@
         This was verified by processing the data using readily accessible detection algorithms such as convolutional neural networks.
         Using a pair of these 2D cameras it is also possible to build a stereoscopic pair.
         This provides the same functionality of the 3D stereoscopic camera from Intel, but without requiring the infrared projector.
-        Stereo pairs of industrial cameras have since proven useful on modularised harvesting and pollination modules for localising fruit and flowers, but were not tested for row navigation.
+        Stereo pairs of industrial cameras have since proven useful on modularised harvesting and pollination modules for localising fruit and flowers, but were not tested for row following.
 
 
     \subsubsection{In-orchard Lidar Evaluation}
@@ -549,20 +547,21 @@
         Detecting these features should allow for row boundary detection and general mapping and localisation.
         However, both single-plane lidar produced clouds of unstructured data amongst the structured features, as shown in Figure~\ref{fig:canopyDataCloud}.
         This was caused by the lidar scan plane intercepting with the canopy whilst driving over convex terrain.
-        Similarly this issue arose on concave terrain where the plane intercepted with the ground, as depicted in Figure~\ref{fig:concaveSlope}.
+        Similarly this issue arose on concave terrain where the plane intercepted with the ground.
+        This situation is depicted in Figure~\ref{fig:concaveSlope}.
 
         \begin{figure}[htb]
             \centering
             \includegraphics[width=\linewidth]{imgs/concave_slope/concave_slope_v4.pdf}
             \caption{
-                On concave slopes the lidar scan plane intercepts with the ground instead of trunks or posts.
+                On concave slopes the lidar scan plane can intercept with the ground before striking row features.
                 The dashed line shows a horizontal plane coming from the the lidar.
                 Dotted lines represent the upper and lower layers taken from the multi-layer lidar.
             }
             \label{fig:concaveSlope}
         \end{figure}
 
-        This issue was reduced by the use of a multi-layer lidar and post-processing.
+        The issue was reduced by the use of a multi-layer lidar and post-processing.
         Having sixteen layers available meant it was possible to select a scan layer that gives the most useful viewing range.
         Referring again to Figure~\ref{fig:concaveSlope}, that would correspond to the dotted line above the horizontal (dashed) line which intercepts with a row defining feature (a tree trunk).
 
@@ -571,11 +570,11 @@
 
     \subsubsection{In-orchard GNSS Evaluation}
         Two GNSS receivers were evaluated: a Ublox Neo-M8N module and an OmniSTAR 5120VBS with AX0 series antenna.
-    	Both were connected to a single board computer (Beaglebone Black) via serial connection.
+        Both were connected to a single board computer (Beaglebone Black).
         The Ublox module was selected for its high sensitivity and internal low-noise amplifier.
-        It is capable of receiving GPS, Galileo, GLONASS, and BeiDou GNSS signals concurrently.
+        It was capable of receiving GPS, Galileo, GLONASS, and BeiDou GNSS signals concurrently.
         The OmniSTAR receiver was chosen for its external high-gain antenna (34 dB) which claims multi-path rejection.
-        It is capable of receiving only GPS signals.
+        It was capable of receiving only GPS signals.
 
         The testing procedure first involved planning a path through a single row of a kiwifruit orchard and plotting this on a satellite map.
         The receivers were then tested separately over the course of approximately two hours by walking them along the planned path.
@@ -687,7 +686,7 @@
 
   \subsection{Turning Circle}
 
-    Measurement of the vehicle's turning radius were performed at speeds of \SI{5.0}{\kilo\meter\per\hour} and \SI{10.0}{\kilo\meter\per\hour} on both dry tarmac and damp grassland.
+    Measurement of the vehicle's turning radius were performed at speeds of \SI{1.39}{\meter\per\second} (\SI{5.0}{\kilo\meter\per\hour}) and \SI{2.78}{\meter\per\second} (\SI{10.0}{\kilo\meter\per\hour}) on both dry tarmac and damp grassland.
     These speeds were calculated at the mid-point between the two front wheels.
     Having a wheelbase of \SI{2.67}{\meter}, these speeds of equate to angular velocities of \SI{0.520}{\radian\per\second} and \SI{1.04}{\radian\per\second} respectively.
 
@@ -695,25 +694,25 @@
     The vehicle was then turned through an angle of \SI[separate-uncertainty=true]{180(10)}{\degree} under manual control with the steering angle set at \SI{90}{\degree}.
     The final angle was adjusted using odometry information to ensure the total angle was within \SI[separate-uncertainty=true]{180(3)}{\degree}.
     A marker was then drawn on the ground at the front of the vehicle at this position.
-    The distance between the markers was measured at \SI{6.45}{\meter} for both surface types and at both test speeds.
-    This gives a turning radius of \SI{3.23}{\meter}.
+    The distance between the markers was measured at \SI{6.45}{\meter} for both surface types and both test speeds.
+    This gives a turning radius of \SI{3.23}{\meter}, \SI{0.05}{\meter} wider than the estimates from kinematic calculations.
 
   \subsection{Bin Lifter}
 
-    Testing of the bin lifting mechanism was done using a mass mounted to a wooden pallet.
-    The total mass, including the pallet was approximately \SI{370}{\kilo\gram}.
-    The test was performed by manually activating a valve block until the pallet sat \SI{250}{\milli\meter} above the ground.
+    A pallet mounted mass of \SI{370}{\kilo\gram} was used to test the bin lifter.
+    The lifter's pneumatic valve block was manually activated until the pallet sat \SI{250}{\milli\meter} above the ground.
     To raise the load, pneumatic pressure of \SI{800}{\kilo\pascal} was applied to one port of each double acting cylinder while the other port was opened to atmosphere.
-    Lowering was done by simply opening both ports to atmosphere, allowing the load to descend under its own weight.
-    The test load was lifted and lowered a total of five times.
-    A drivability test was also made, which saw the vehicle driven for \SI{300}{\meter} which included an \SI{8}{\degree} incline for \SI{30}{\meter}.
+    Lowering was done by simply opening both ports to atmosphere and allowing the load to descend under its own weight.
+    The load was lifted and lowered a total of five times.
+    The vehicle was driven for \SI{300}{\meter} with the load, which included an \SI{8}{\degree} incline for \SI{30}{\meter}.
 
     The lifting capacity of the mechanism was sufficient to raise the load gently to its target height.
     At its lower position, signs of imbalance between the two cylinders was evident which caused shuddering.
-    The shuddering was due to excessive and unmatched static friction on each side of the four-bar mechanism caused by overly tight sleeve bearings.
-    This behaviour was also evident when hand actuating the lifter.
-    During the drivability test the load dropped by between \SIrange{60}{70}{\milli\meter} from its initial height.
-    This drop and variation in resting position was caused by static friction in the mechanism and vibrations whilst driving.
+    The shuddering was due to excessive and unbalanced static-friction on each side of the four-bar mechanism.
+    This friction was caused by overly tight-fitting sleeve bearings.
+    The behaviour was also evident when hand actuating the lifter.
+    Whilst driving, the load dropped by between \SIrange{60}{70}{\milli\meter} from its initial height.
+    This drop, and the variation in resting position, was thought to be caused by the combination of static friction and driving related vibrations.
 
   \subsection{Turning Between Rows}
 
@@ -753,17 +752,17 @@
     All but four interventions were due to an imminent collision with a post during a row end turn.
     Three interventions during row end turning were due to the platform trying to recommence row following before facing the new target row.
     In this case the most feasible path for row following was detected through the headland area, instead of the target row.
-    One intervention, attempt 12 of Block A, was caused by the canopy detection system triggering a row-end turn mid-row.
+    One intervention, attempt 12 of Block A, was caused by the canopy detection system triggering a row-end turn whilst still inside a row.
 
   \subsection{Row Following}
-    Row following repeatability tests were made by running the vehicle down the same row for a total of five runs.
-    Each test run had the vehicle start from a position that had previously been marked out on the grass.
-    A custom row following algorithm was used to guide the vehicle through the row, and also stopped the vehicle once it detected it was near the end of the row.
-    This algorithm is different to that used to test the row turning and lacks the ability to avoid obstacles.
-    The tests were conducted at \SI{1.39}{\meter\per\second} (\SI{5}{\kilo\meter\per\hour}) in each case, i.e., the row following algorithm controlled only the steering angle and the stopping position.
+    Row following repeatability testing was done by allowing the platform to self-drive through a row, from the same starting point, five times.
+    The algorithm used was similar to that reported in \cite{Bell2016}, but had a couple of minor differences.
+    It used only a multi-layer lidar (Velodyne VLP-16) and IMU (LPMS-USBAL2), but made no attempt to avoid obstacles.
+    It's end-of-row detector was based on the vehicle's proximity to the row's last pair of posts instead of detecting the presence of canopy above.
 
+    Each test was conducted at the vehicle's target operating speed of \SI{1.39}{\meter\per\second} (\SI{5}{\kilo\meter\per\hour}).
     To determine the vehicle's trajectory, recordings of the lidar and IMU were made which where run through a SLAM package offline.
-    The SLAM package used was Google Cartographer (version 1.0) used as a ROS package that produced both the map and the trajectory information \citep{Hess2016}.
+    The SLAM package used was Google Cartographer (version 1.0) used as a ROS package that produced both the map and the vehicle's trajectory information \citep{Hess2016}.
 
     \begin{figure}[htb]
         \centering
@@ -773,6 +772,10 @@
         }
         \label{fig:row_following_paths}
     \end{figure}
+
+    %% TODO;
+    % It would be quite good to do some analysis on the drive path and show how the path tracks a row centre line and show the result in a graph.
+
 
     \begin{table}[htbp]
       \centering
@@ -792,7 +795,7 @@
 
     \begin{figure}[htb]
         \centering
-        \includegraphics[width=\linewidth]{imgs/slam/end_positions.pdf}
+        \includegraphics{imgs/slam/end_positions.pdf}
         \caption{
             Displacements of each row following end points, relative to the mean of the five end-points.
         }
@@ -804,14 +807,14 @@
     Table \ref{table:row_follow_path_lenghts} lists the total path lengths, and Figure \ref{fig:row_following_end_points} shows the spread of resting positions.
     The maximum displacement between resting positions is \SI{0.56}{\meter}.
 
-    An interesting point occurs approximately one-third of the way through each run where the paths diverge briefly.
-    This location is visible in Figure \ref{fig:row_following_paths} in the enlarged box that shows the divergence.
-    Replaying the captured sensor data through the row-following algorithm revealed a cluster of transient points at the edge of the row.
-    These points, most likely the result of weeds, interfered with the localisation of a single post due to their close proximity.
-    The algorithm uses the positions of these posts to determine row centre-points, one of which was unstable at this location.
+    An interesting point occurs approximately one-third of the way through each run where each of the paths diverge briefly.
+    The location is visible in Figure \ref{fig:row_following_paths} in the enlarged box.
+    Replaying the captured sensor data through the row-following algorithm revealed a cluster of transient points from a patch of weeds near a trunk.
+    These points interfered with the localisation of the trunk due to their close proximity.
+    The algorithm uses the positions of these posts to determine row the centre-points, where some instability was evident at this location.
 
     Wheel odometry provided by the drive motors was not used during row following as signs of slippage were apparent.
-    Quick measurements conducted on grass showed an imbalance of approximately \SI{5}{\percent} between the rear wheels depending on the slope angle (which was not measured, but estimated to be about 5 degrees).
+    Quick measurements conducted on grass showed an imbalance of approximately \SI{5}{\percent} between the rear wheels depending on the slope angle.
 
 \section{Discussion}
 \label{sect:discussion}
@@ -821,18 +824,20 @@
     The width of the vehicle and modules meant it is necessary to perform two passes down each row to access the full canopy area.
 
     The results from testing of navigation algorithms indicate that the multi-layer lidar with wheel encoder feedback are sufficient for row turning tasks, while an IMU and multi-layer lidar are sufficient for row following tasks.
-    Wheel slippage meant that the encoder information from driven wheels was less suitable for long-term odometry than the odometry information provided from SLAM packages processing lidar and IMU data.
+    Wheel slippage meant that the encoder information from driven wheels was less suitable for long-term odometry than the odometry information provided by the SLAM package, which was based on processed lidar and IMU data.
+    Future work is to combine the lidar, imu, and encoder based odometry outputs into a single measurement that combines the benefits of each.
     The method for turning between rows calls for further work.
     Row end turning was a manual process that involved observing an autonomously driven turn and manually adjusting the length or radius of the turn's segments.
     Future work will focus on enabling the system to plan row-end turns based on sensor data, without a manually created map.
-    The repeatability of row following based navigation was acceptable, however the algorithm lacks the ability to avoid obstacles.
-    The ability to avoid obstacles will be required for longer term use.
+    The repeatability of row following based navigation was acceptable, however the algorithm lacked the ability to avoid obstacles.
+    The ability to avoid obstacles will be required before the vehicle can be used commercially.
+    Observationally, detecting the end of row based on the vehicle's proximity to the last posts proved more reliable than detecting the presence/absence of canopy above.
 
-    During installation and testing of the platform's electrical system, the \SI{96}{\volt} battery pack introduced a significant electrical hazard.
-    While essential for safety, risk mitigation procedures added complexities and delays that could have been avoided by selecting a lower pack voltage.
-    The authors suggest a pack voltage of \SI{48}{\volt} as a safer alternative during vehicle development as it bears a reduced risk of injury from electric shock.
+    The platform's \SI{96}{\volt} battery pack and electrical system introduced a electrical hazard during development.
+    While essential for safety, risk mitigation procedures added complexities and delays that could have been avoided by simply selecting a lower operating voltage.
+    The authors suggest a pack voltage of \SI{48}{\volt} as an alternative during vehicle development as it bears a reduced risk of injury from electric shock.
     Inputs of \SI{48}{\volt} are supported across a wider range of motors, motor controllers, and power converters, but cabling requirements are increased.
-    The benefit of using a lower gauge of cable has not outweighed the extra safety procedures required.
+    The cost benefit of using a lower gauge of cable did not outweighed the extra safety procedures required during development.
 
     The series-hybrid configuration allows the vehicle to drive and provide power to subsystems without running the petrol engine.
     This is useful in testing scenarios, where people are in close proximity to the vehicle, as it eliminates exhaust fumes and reduces noise and vibration.
@@ -846,19 +851,17 @@
     It also meant that navigation testing could continue while the platform was engaged in other activities.
 
     Simulation of the robot hardware proved useful for finding software issues before implementation on hardware.
-    Most of the time spent developing the simulation went into the creation of a geometric model of the platform.
-    This model has also proved useful for visualising the state of the vehicle, using Rviz, in real-time or when replaying recorded sensor data.
-    For instance, it is possible to display the angle of the front steering wheels based on encoder feedback while the platform is being driven.
-    It is also possible to place a lidar in the model and have the point-cloud data displayed in the vehicle's coordinate frame.
+    Much of the time developing the simulation went into the creation of a geometric model of the platform.
+    The model also proved useful for visualising the state of the vehicle and sensor outputs, using Rviz, in real-time or when replaying recorded sensor data.
 
 \section{Conclusion}
-    This work presented a platform designed specifically for autonomous driving through pergola style kiwifruit orchards.
-    The platform is capable of carrying modules with twice the mass of than those previously reported in the literature.
+    This work presented a platform designed specifically for autonomously transporting task-specific modules through pergola style kiwifruit orchards.
+    The platform proved capable of carrying twice the mass of platforms previously reported in the literature.
 
-    Multi-layer lidar proved to the most versatile sensor for navigation in general, owing to its wider field of view.
-    One particularly useful aspect was the ability to detect the presence of canopy above the vehicle.
+    Multi-layer lidar proved to be the most versatile sensor for orchard based navigation owing to its wider field-of-view and being simpler to interpret that image data.
     Using a map of manually adjusted row-end turns, the platform has navigated over \SI{10}{\kilo\meter} of orchard blocks using wheel encoders and a single multi-layer lidar.
     A significant amount of work was required to tune the row end turns, which has implications for commercial deployment.
+    Row following based only on lidar and an IMU
 
     During development, a \SI{48}{\volt} battery pack was identified as being ideal for development vehicles of this size due to safety and component availability.
     The use of smaller, commercially available, robots were valuable as a means to develop navigation software before deployment on full scale platforms.
