@@ -671,15 +671,15 @@
     Structural integrity testing was carried out by loading a \SI{1100}{\kilo\gram} mass to the vehicle's module area.
     No deflection of the vehicle's chassis structure was evident upon application of the test mass.
     Deflection of approximately \SI{1.5}{\milli\meter} was measured between the front pivot and the wheel supports.
-    % \begin{figure}[htb]
-    %     \centering
-    %     \includegraphics[width=\linewidth]{imgs/photos/stopTesting.jpg}
-    %     % \includegraphics[width=\linewidth]{imgs/photos/suzy_turning_small.jpg}
-    %     \caption{
-    %         Stop testing down a \SI{10}{\degree} slope with a \SI{1100}{\kilo\gram} mass strapped to the module area.
-    %     }
-    %     \label{fig:suzy_testing}
-    % \end{figure}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=\linewidth]{imgs/photos/stopTesting.jpg}
+        % \includegraphics[width=\linewidth]{imgs/photos/suzy_turning_small.jpg}
+        \caption{
+            Stop testing down a \SI{10}{\degree} slope with a \SI{1100}{\kilo\gram} mass strapped to the module area.
+        }
+        \label{fig:suzy_testing}
+    \end{figure}
     Static steering tests conducted on a dry concrete surface showed no reduction in ability to turn while supporting the test mass.
     Dynamic tests involved three instances of stopping whilst driving down a \SI{10}{\degree} slope at a speed of \SI{10}{\kilo\meter\per\hour}.
     During each test the vehicle came to a complete stop within \SI{2.0}{\meter}.
@@ -784,21 +784,23 @@
       \begin{tabular}{ l l}
 
           \textbf{Test number}      &\textbf{Path length} \\ \hline
-          1 & \SI{107.23}{\meter}\\
-          2 & \SI{107.78}{\meter}\\
-          3 & \SI{107.98}{\meter}\\
-          4 & \SI{107.60}{\meter}\\
-          5 & \SI{107.79}{\meter}\\
+          1 & \SI{106.66}{\meter}\\
+          2 & \SI{103.70}{\meter}\\
+          3 & \SI{104.13}{\meter}\\
+          4 & \SI{104.47}{\meter}\\
+          5 & \SI{104.37}{\meter}\\
       \end{tabular}
-      \caption{Total path length for each row-following test. The average length is \SI{107.78}{\meter} and the range is \SI{0.75}{\meter} (\SI{0.70}{\percent}).}
+      \caption{Total path length for each row-following test. The average length is \SI{104.67}{\meter} and the range is \SI{2.96}{\meter} (\SI{2.82}{\percent}).}
       \label{table:row_follow_path_lenghts}
     \end{table}
 
     \begin{figure}[htb]
         \centering
-        \includegraphics{imgs/slam/end_positions.pdf}
+        \includegraphics{imgs/slam/row_tracking_averages.pdf}
         \caption{
-            Displacements of each row following end points, relative to the mean of the five end-points.
+            Distance between vehicle's tracking point and the mid-point of post/trunk pairs along the row.
+            The average width of the row was \SI{4.35}{\meter}, which is the range of the y-axis.
+            The resolution of the generated SLAM map contributes $\pm$\SI{0.274}{\meter} of error.
         }
         \label{fig:row_following_end_points}
     \end{figure}
