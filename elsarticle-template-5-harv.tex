@@ -81,7 +81,7 @@
 
 \section{Introduction}
 \label{sect:intro}
-    Short-term labor requirements within New Zealand's kiwifruit industry peak twice a year corresponding with the pollination and harvesting of kiwifruit.
+    Short-term labour requirements within New Zealand's kiwifruit industry peak twice a year corresponding with the pollination and harvesting of kiwifruit.
     The majority of employment during these peaks is filled by seasonal or casual workers \citep{Timmins2009}.
     As kiwifruit is the country's largest horticultural export by value \citep{StatisticsNewZealand2015}, effective automation in this industry will promote economic growth.
     Development of an automated kiwifruit harvesting system with integrated drive system has previously been published \citep{Scarfe2012}.
@@ -414,7 +414,7 @@
         The manufacturer's configuration of the motor controllers require them to be interfaced using a combination of analogue and digital inputs.
         For example, the accelerator and steering inputs are controlled by potentiometers actuated by the vehicle's driver.
         However, the controllers also provide an option for a multi-motor vehicle configuration.
-        In this configuration, the analog inputs fed into a master controller are relayed to a second controller over a CAN interface.
+        In this configuration, the analogue inputs fed into a master controller are relayed to a second controller over a CAN interface.
         This interface is configured using a proprietary tool and is not intended for use other than between controllers configured with their software.
         By observing the communication protocol between a master and slave in operation, it was possible to implement a master node in software that runs on the Platform PC.
         With this, all motor controllers on the platform are programmed as slave devices.
@@ -494,8 +494,8 @@
         As the camera relies on active illumination of the scene, its ability to detect that illumination amongst ambient light will drop sharply with distance.
 
         The 3D stereo camera tested was an Intel RealSense R200.
-        It combines a stereo pair of infrared cameras with a colour camera.
-        Additionally, it features an infrared projector as a means of adding texture to objects in its field of view to assist with stereo processing.
+        It combines a stereo pair of infra-red cameras with a colour camera.
+        Additionally, it features an infra-red projector as a means of adding texture to objects in its field of view to assist with stereo processing.
         The appealing characteristics of this sensor were its low cost and its claim of being long-range and able to work outdoors.
         However, in both overcast and sunny conditions it suffered from a \emph{complete} loss of range data.
         This appeared to be the result of ambient light interfering with the infrared projector’s signal.
@@ -522,7 +522,7 @@
         Images from the industrial 2D cameras (from Basler and Flir) were deemed suitable for object detection and classification.
         This was verified by processing the data using readily accessible detection algorithms such as convolutional neural networks.
         Using a pair of these 2D cameras it is also possible to build a stereoscopic pair.
-        This provides the same functionality of the 3D stereoscopic camera from Intel, but without requiring the infrared projector.
+        This provides the same functionality of the 3D stereoscopic camera from Intel, but without requiring the infra-red projector.
         Stereo pairs of industrial cameras have since proven useful on modularised harvesting and pollination modules for localising fruit and flowers, but were not tested for row following.
 
 
@@ -581,7 +581,7 @@
         Before testing, each unit was powered up and given \SI{30}{\minute} to initialise in an open area near the kiwifruit orchard.
         During testing, each unit was walked slowly along the predetermined path with stops at each waypoint to provide time for a positional fix.
         The path was approximately \SI{500}{\meter} in length and took approximately \SI{15}{\minute} to complete, including stops at each waypoint.
-        Waypoints were spaced at intervals of \SI{5.5}{\meter} along the row.
+        Way-points were spaced at intervals of \SI{5.5}{\meter} along the row.
 
         \begin{figure}[htb]
             \centering
@@ -598,7 +598,7 @@
         It was noticed during testing that the signal quality lights on both receivers regularly indicated a loss of signal.
 
         The Omnistar unit appears to track the approximate path well, but the data is sparse with regular loss of signal after entering the orchard.
-    	The Ublox unit collected more data, but was much less accurate.
+        The Ublox unit collected more data, but was much less accurate.
         It may be possible to use a unit such as the Omnistar, which provided fewer but more accurate readings, as a sanity check for an approximate location within orchards.
         Overall, the units could not be relied on for localisation in this environment.
         These results indicate GNSS receivers with similar performance to those trialled are unsuitable for use in kiwifruit orchards.
@@ -755,14 +755,17 @@
     One intervention, attempt 12 of Block A, was caused by the canopy detection system triggering a row-end turn whilst still inside a row.
 
   \subsection{Row Following}
-    Row following repeatability testing was done by allowing the platform to self-drive through a row, from the same starting point, five times.
-    The algorithm used was similar to that reported in \cite{Bell2016}, but had a couple of minor differences.
-    It used only a multi-layer lidar (Velodyne VLP-16) and IMU (LPMS-USBAL2), but made no attempt to avoid obstacles.
-    It's end-of-row detector was based on the vehicle's proximity to the row's last pair of posts instead of detecting the presence of canopy above.
+    Row following repeatability tests were made by allowing the platform to self-drive through a row, from the same starting point, five times.
+    The algorithm used was similar to that reported in \cite{Bell2016}, but had a couple of alterations.
+    It used only a multi-layer lidar (Velodyne VLP-16) and an IMU (LPMS-USBAL2), but made no attempt to avoid obstacles.
+    It's end-of-row detector was based on the vehicle's proximity to the row's last pair of posts, as opposed to detecting the presence of canopy above.
 
     Each test was conducted at the vehicle's target operating speed of \SI{1.39}{\meter\per\second} (\SI{5}{\kilo\meter\per\hour}).
-    To determine the vehicle's trajectory, recordings of the lidar and IMU were made which where run through a SLAM package offline.
+    To determine the vehicle's trajectory, recordings of the lidar and IMU were made and run through a SLAM package off-line.
     The SLAM package used was Google Cartographer (version 1.0) used as a ROS package that produced both the map and the vehicle's trajectory information \citep{Hess2016}.
+    The spacial resolution of the SLAM map was \SI{0.05}{\meter\per pixel}.
+    Wheel odometry provided by the drive motors was not used during row following as signs of slippage were apparent.
+    Quick measurements conducted on grass showed an imbalance of approximately \SI{5}{\percent} between the rear wheels depending on the slope angle.
 
     \begin{figure}[htb]
         \centering
@@ -772,11 +775,6 @@
         }
         \label{fig:row_following_paths}
     \end{figure}
-
-    %% TODO;
-    % It would be quite good to do some analysis on the drive path and show how the path tracks a row centre line and show the result in a graph.
-    % Update the writing of the repeatability measurements to match the more recent tests (including updating or maybe replacing figure 16).
-
 
     \begin{table}[htbp]
       \centering
@@ -798,78 +796,120 @@
         \centering
         \includegraphics{imgs/slam/row_tracking_averages.pdf}
         \caption{
-            Distance between vehicle's tracking point and the mid-point of post/trunk pairs along the row.
-            The average width of the row was \SI{4.35}{\meter}, which is the range of the y-axis.
-            The resolution of the generated SLAM map contributes $\pm$\SI{0.274}{\meter} of error.
+            Deviation between vehicle's tracking point and each post/trunk pair midpoint over five trials.
+            The y-axis is scaled to the mean row width (\SI{4.35}{\meter}).
+            % The resolution of the generated SLAM map contributes $\pm$\SI{0.274}{\meter} of error.
+        }
+        \label{fig:row_following_performance_analysis}
+    \end{figure}
+
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=\linewidth]{imgs/slam/row_tracking_segmented.pdf}
+        \caption{
+            Row-following paths shown relative to row boundaries.
+            Boundary lines are linked with blue lines.
+        }
+        \label{fig:row_following_paths_segmented}
+    \end{figure}
+
+    \begin{figure}[htb]
+        \centering
+        \includegraphics{imgs/slam/row_tracking_repeatability.pdf}
+        \caption{
+        Repeatability analysis of the five row-following trials.
+        The whiskers represent the maximum deviations in both the positive and negative directions.
+        Each trial has a sample size of 40 points.
+        }
+        \label{fig:row_following_repeatability}
+    \end{figure}
+
+
+    \begin{figure}[htb]
+        \centering
+        \includegraphics{imgs/slam/paths_end_points.pdf}
+        \caption{
+            Graph showing row-following end positions relative to tracked row features.
+            Grey dotted lines connect row feature pairs, with squares indicating their mid-points.
         }
         \label{fig:row_following_end_points}
     \end{figure}
 
-    Figure \ref{fig:row_following_paths} shows the resulting orchard map and five trajectories overlaid on top of each other.
-    While differences in start position are estimated to be less than \SI{0.1}{\meter}, the trajectories show a spread in the initial position by as much as \SI{0.44}{\meter}.
-    Table \ref{table:row_follow_path_lenghts} lists the total path lengths, and Figure \ref{fig:row_following_end_points} shows the spread of resting positions.
-    The maximum displacement between resting positions is \SI{0.56}{\meter}.
+    Figure~\ref{fig:row_following_paths} shows the resulting orchard map and five trajectories overlaid on top of each other.
+    While differences in start position are estimated to be less than \SI{0.1}{\meter}, the trajectories show a spread of \SI{1.69}{\meter}.
+    The total path length for each run is listed in Table \ref{table:row_follow_path_lenghts}.
+    Figure~\ref{fig:row_following_performance_analysis} shows an analysis of the path following performance.
+    This involved measuring the midpoints between each post/trunk pair manually using vector drawing software and comparing these midpoints to each path.
+    Sources of error were $\pm$\SI{1} pixel at either end of the midpoint measurement lines as well as rounding errors.
+    Figure~\ref{fig:row_following_repeatability} quantifies the divergence of each path from the average location recorded between each trunk/post pair.
+    Figure~\ref{fig:row_following_end_points} shows the end-points for each run relative to the row features at the end of the row.
 
-    An interesting point occurs approximately one-third of the way through each run where each of the paths diverge briefly.
-    The location is visible in Figure \ref{fig:row_following_paths} in the enlarged box.
-    Replaying the captured sensor data through the row-following algorithm revealed a cluster of transient points from a patch of weeds near a trunk.
-    These points interfered with the localisation of the trunk due to their close proximity.
-    The algorithm uses the positions of these posts to determine row the centre-points, where some instability was evident at this location.
+    The analysis of the tracking performance is particularly difficult as the positioning of the posts/trunks show obvious signs of deviation, evident in Figure~\ref{fig:row_following_paths_segmented}.
+    For example, the dip at post/trunk pair twenty-two in Figure~\ref{fig:row_following_performance_analysis} corresponds with the post/trunk pair near the \SI{58}{\meter} mark in Figure~\ref{fig:row_following_paths_segmented}.
+    Similarly, the peak at position 26 corresponds to the post/trunk pair near the \SI{70}{\meter} mark.
+    Without significant corrections to the data, which would be subjective, the analysis describes more about the linearity of the orchard's row defining features than the path tracking performance.
+    It is apparent however from Figure~\ref{fig:row_following_paths_segmented} that the vehicle's path is relatively straight and remains unperturbed by the non-linearity in positioning of the row's features.
 
-    Wheel odometry provided by the drive motors was not used during row following as signs of slippage were apparent.
-    Quick measurements conducted on grass showed an imbalance of approximately \SI{5}{\percent} between the rear wheels depending on the slope angle.
+    Figure~\ref{fig:row_following_repeatability} quantifies the deviation between each trial relative to the mean path taken over the five trials.
+    It shows that the worst case repeatability less than $\pm$\SI{75}{\milli\meter}.
+
+    Finally, Figure~\ref{fig:row_following_end_points} shows the end position of each path.
+    The path-following algorithm determines the end position based on its proximity to the last post within it's detection range.
+    Notice that the last post in each row are spaced slightly further than is usual inside the row.
+    This is visible along the left hand side of the SLAM map shown in Figure~\ref{fig:row_following_paths} and in the photo of Figure~\ref{fig:suzy_turning}.
+    That extra spacing places the final post pair near the cut-off region used to identify post/trunk pairs.
+    Stopping slightly earlier results in the last post/trunk pair not being detected, as is the case in path groups A and B.
+    Additionally, there is ambiguity in the position of the second-to-last post/trunk pair because vines have been planted in close proximity to the posts.
+    Analysis of the recorded sensor data shows this to be the cause of the separation in end-positions between points A and B.
 
 \section{Discussion}
 \label{sect:discussion}
 
-    The reported platform meets the requirements and has proved its usefulness during three pollination and harvesting seasons.
-    During these operations the vehicle was operated under manual control, because of the need to drive so close to row boundaries.
-    The width of the vehicle and modules meant it is necessary to perform two passes down each row to access the full canopy area.
+    The reported platform meets the specification requirements and has proved its usefulness during three pollination and harvesting seasons.
+    During these operations the vehicle was operated under manual control because of the need to drive close to row boundaries.
+    The width of the modules meant it was necessary to perform two passes through each row in order to access the full canopy area.
 
-    The results from testing of navigation algorithms indicate that the multi-layer lidar with wheel encoder feedback are sufficient for row turning tasks, while an IMU and multi-layer lidar are sufficient for row following tasks.
+    Results from navigation tests indicate that multi-layer lidar with wheel encoder feedback are sufficient for row turning tasks.
+    For row following, an IMU and multi-layer lidar based algorithm produced paths which were sufficiently repeatable and close to the row's centre-line.
     Wheel slippage meant that the encoder information from driven wheels was less suitable for long-term odometry than the odometry information provided by the SLAM package, which was based on processed lidar and IMU data.
-    Future work is to combine the lidar, imu, and encoder based odometry outputs into a single measurement that combines the benefits of each.
+    Future work will combine the lidar, IMU, and encoder based odometry outputs into a single output for longer term accuracy.
     The method for turning between rows calls for further work.
     Row end turning was a manual process that involved observing an autonomously driven turn and manually adjusting the length or radius of the turn's segments.
     Future work will focus on enabling the system to plan row-end turns based on sensor data, without a manually created map.
-    The repeatability of row following based navigation was acceptable, however the algorithm lacked the ability to avoid obstacles.
-    The ability to avoid obstacles will be required before the vehicle can be used commercially.
-    Observationally, detecting the end of row based on the vehicle's proximity to the last posts proved more reliable than detecting the presence/absence of canopy above.
+    Observationally, detecting the a row's end-point based on the vehicle's proximity to the last post pair proved more reliable than detecting the presence/absence of canopy above.
 
     The platform's \SI{96}{\volt} battery pack and electrical system introduced a electrical hazard during development.
     While essential for safety, risk mitigation procedures added complexities and delays that could have been avoided by simply selecting a lower operating voltage.
-    The authors suggest a pack voltage of \SI{48}{\volt} as an alternative during vehicle development as it bears a reduced risk of injury from electric shock.
+    The authors suggest a pack voltage of \SI{48}{\volt} as an alternative as it bears a reduced risk of injury from shock.
     Inputs of \SI{48}{\volt} are supported across a wider range of motors, motor controllers, and power converters, but cabling requirements are increased.
-    The cost benefit of using a lower gauge of cable did not outweighed the extra safety procedures required during development.
 
     The series-hybrid configuration allows the vehicle to drive and provide power to subsystems without running the petrol engine.
     This is useful in testing scenarios, where people are in close proximity to the vehicle, as it eliminates exhaust fumes and reduces noise and vibration.
-    However, robotic modules and the bin lifting mechanism require pneumatic air pressure to operate.
-    As the air compressor is belt driven from the petrol engine, it is necessary to frequently run the engine to provide air to these systems.
-    An electric air compressor would allow the system to run unassisted by the petrol engine for much longer periods.
-    The authors suggest that efficiency losses from frequently running the engine to maintain pneumatic pressure outweigh conversion losses associated with running an electric air compressor.
+    However, robotic modules and the bin-lifting mechanism require pneumatic pressure.
+    As the air-compressor is belt driven from the petrol engine it is necessary to frequently run the engine.
+    An electric air-compressor would allow the system to run without the petrol engine for much longer periods.
 
     The use of more general purpose platforms to test navigation algorithms enabled the navigation system to be developed in parallel with the physical hardware.
     Their smaller size eliminated the risk of serious injury and led to a speed up in development and test cycles.
-    It also meant that navigation testing could continue while the platform was engaged in other activities.
+    It also meant that navigation testing could continue while the full-size platform was engaged in other activities.
 
     Simulation of the robot hardware proved useful for finding software issues before implementation on hardware.
     Much of the time developing the simulation went into the creation of a geometric model of the platform.
-    The model also proved useful for visualising the state of the vehicle and sensor outputs, using Rviz, in real-time or when replaying recorded sensor data.
+    The model also proved useful for visualising the state of the vehicle and sensor outputs, using Rviz, in real-time and when replaying recorded sensor data.
 
 \section{Conclusion}
-    This work presented a platform designed specifically for autonomously transporting task-specific modules through pergola style kiwifruit orchards.
+    This work presents a platform designed specifically for autonomously transporting task-specific modules through pergola style kiwifruit orchards.
     The platform proved capable of carrying twice the mass of platforms previously reported in the literature.
 
-    Multi-layer lidar proved to be the most versatile sensor for orchard based navigation owing to its wider field-of-view and being simpler to interpret that image data.
+    Multi-layer lidar proved to be the most versatile sensor for orchard based navigation owing to its wide field-of-view and robust outputs.
     Using a map of manually adjusted row-end turns, the platform has navigated over \SI{10}{\kilo\meter} of orchard blocks using wheel encoders and a single multi-layer lidar.
-    A significant amount of work was required to tune the row end turns, which has implications for commercial deployment.
-    Row following based only on lidar and an IMU
+    A significant amount of work was required to tune the row-end-turns, which has implications for commercial deployment.
+    Row following based only on lidar and an IMU proved to be repeatable to within $\pm$\SI{75}{\milli\meter}.
 
-    During development, a \SI{48}{\volt} battery pack was identified as being ideal for development vehicles of this size due to safety and component availability.
-    The use of smaller, commercially available, robots were valuable as a means to develop navigation software before deployment on full scale platforms.
-    Future work will focus on improving turns between rows.
-    This will involve developing a system whereby the vehicle can plan its own turns without the need for manual tuning.
+    The authors recommend a system voltage of \SI{48}{\volt} for development platforms due to safety and component availability.
+    The use of smaller, commercially available, robots proved valuable when developing navigation software due to their safety and portability.
+
+    Future work will focus on developing the navigation system so that the vehicle can plan row-end turns, and avoid obstacles whilst row following.
 
 \section*{Acknowledgements}
 This research was supported by the New Zealand Ministry for Business, Innovation and Employment (MBIE) on contract UOAX1414.
