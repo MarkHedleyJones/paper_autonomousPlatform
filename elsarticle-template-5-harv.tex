@@ -318,7 +318,7 @@
 
         The selected motors are hub-mounted permanent magnet brushless AC motors with integrated 40:1 fixed-radio planetary gearboxes (Heinzmann PSM-G120).
         Each motor is rated for \SI{6.4}{\kilo\watt} at \SI{96}{\volt} with a maximum angular velocity of \SI{3000}{rev\per\min} and torque of \SI{20.4}{\newton\meter}.
-        At the output of the gearbox the torque jumps to \SI{816}{\newton\meter} while the angular velocity drops to \SI{75}{rev\per\minute}; giving the platform a top speed of \SI{10.3}{\kilo\meter\per\hour}.
+        At the output of the gearbox the torque jumps to \SI{816}{\newton\meter} while the angular velocity drops to \SI{75}{rev\per\minute}; giving the platform a top speed of \SI{2.86}{\meter\per\second} (\SI{10.3}{\kilo\meter\per\hour}).
 
         In total there are seven brushless AC motors on-board the platform: four drive motors, two steering motors, and a motor used for electrical power generation.
         Each are connected to individual AC motor controllers (Sevcon Gen4 DC Size 4).
@@ -684,6 +684,33 @@
     Dynamic tests involved three instances of stopping whilst driving down a \SI{10}{\degree} slope at a speed of \SI{10}{\kilo\meter\per\hour}.
     During each test the vehicle came to a complete stop within \SI{2.0}{\meter}.
 
+  \subsection{Drive System}
+
+    \begin{figure}[htb]
+        \centering
+        \includegraphics{imgs/drive_system/graph_acceleration.pdf}
+        \caption{
+            Acceleration of the platform on flat ground (red) and up a \SI{3.5}{\degree} incline (blue).
+        }
+        \label{fig:acceleration}
+    \end{figure}
+
+    Acceleration testing saw the platform accelerated from stand-still to a commanded speed of \SI{2.78}{\meter\per\second} (\SI{10}{\kilo\meter\per\hour}) on both flat ground and up a \SI{3.5}{\degree} incline.
+    The acceleration was measured using an Inertial Measurement Unit (IMU, LPMS-USBAL2).
+    Figure~\ref{fig:acceleration} shows the acceleration profile of the platform in both cases.
+    The platform's weight during the test was estimated to be \SI[separate-uncertainty=true]{850(50)}{\kilo\gram}.
+
+    In both instances the vehicle reached a top speed of \SI{2.5}{\meter\per\second} (\SI{9.0}{\kilo\meter\per\hour}), \SI{0.28}{\meter\per\second} short of the target speed.
+    Based on the specifications of the motors and controllers, there should be little difference in acceleration profile between flat and a \SI{3.5}{\degree} slope,
+    however there is a clear deviation.
+    % During the flat and climb acceleration tests a peak power output of \SI{2.90}{\kilo\watt} and \SI{2.17}{\kilo\watt} were calculated.
+    During the flat acceleration test a peak power of between \SI{684}{\watt} and \SI{770}{\watt}, and torque of between \SI{930}{\newton\meter} and \SI{1046}{\newton\meter} was calculated per wheel.
+    During the climb acceleration test a peak power of between \SI{542}{\watt} and \SI{610}{\watt}, and torque of between \SI{779}{\newton\meter} and \SI{876}{\newton\meter} was calculated per wheel.
+    The torque calculations suggest the motors are developing their specified output of \SI{816}{\newton\meter}.
+    The motor controllers are configured to supply extra torque for short bursts, which could explain why the calculated torque on flat ground is higher than this value.
+    The climb test began with the vehicle being held stationary using torque-control, which may have affected the controller's ability to produce the higher peak torque in this case.
+    The lower than expected top speed in both cases suggest there are configuration issues with the motor controllers.
+
   \subsection{Turning Circle}
 
     Measurement of the vehicle's turning radius were performed at speeds of \SI{1.39}{\meter\per\second} (\SI{5.0}{\kilo\meter\per\hour}) and \SI{2.78}{\meter\per\second} (\SI{10.0}{\kilo\meter\per\hour}) on both dry tarmac and damp grassland.
@@ -704,7 +731,7 @@
     To raise the load, pneumatic pressure of \SI{800}{\kilo\pascal} was applied to one port of each double acting cylinder while the other port was opened to atmosphere.
     Lowering was done by simply opening both ports to atmosphere and allowing the load to descend under its own weight.
     The load was lifted and lowered a total of five times.
-    The vehicle was driven for \SI{300}{\meter} with the load, which included an \SI{8}{\degree} incline for \SI{30}{\meter}.
+    The vehicle was driven for \SI{300}{\meter} with the load, which included an \SI{3.5}{\degree} incline for \SI{30}{\meter}.
 
     The lifting capacity of the mechanism was sufficient to raise the load gently to its target height.
     At its lower position, signs of imbalance between the two cylinders was evident which caused shuddering.
