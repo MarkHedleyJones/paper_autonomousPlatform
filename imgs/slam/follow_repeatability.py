@@ -104,7 +104,7 @@ with open('tracking.csv', 'r') as f:
 
 # sys.exit()
 
-dimensions = [390*0.01384*0.5,195*0.01384]
+dimensions = [390*0.01384*0.5,195*0.01384 * 0.8]
 params = {'backend': 'ps',
           'axes.labelsize': 10,
           'text.fontsize': 10,
