@@ -104,7 +104,7 @@ with open('tracking.csv', 'r') as f:
 
 # sys.exit()
 
-dimensions = [390*0.01384*0.75,195*0.01384]
+dimensions = [390*0.01384*1.0,195*0.01384]
 params = {'backend': 'ps',
           'axes.labelsize': 10,
           'text.fontsize': 10,
@@ -136,10 +136,11 @@ print(errs)
 for run in range(1,6):
   print(run)
   # ax.plot(xs,data['distance_from_average']['run'+str(run)]['meas'])
-  ax.errorbar(xs,list(map(lambda x: x/1000, data['distance_from_centre']['run'+str(run)]['meas'])), xerr=None, yerr=0.546703/2, barsabove=True, fmt="x", capsize=2)
+  ax.errorbar(xs,list(map(lambda x: x/1000, data['distance_from_centre']['run'+str(run)]['meas'])), xerr=None, yerr=0.546703/2, barsabove=True, fmt="-x", capsize=2)
 # ax.bar(range(1, len(datasource)+1), datasource, color='b', edgecolor="none", align="center", width=0.7)
 ax.set_xlim(0, 41)
-ax.set_ylim(-4.370/2,4.370/2)
+# ax.set_ylim(-4.370/2,4.370/2)
+ax.set_ylim(-1.0, 1.0)
 
 # plt.yticks(range(11))
 # plt.xticks(range(len(datasource)+1))

@@ -15,8 +15,9 @@ plt.rc('font', family='serif', serif='STIXGeneral')
 bateman = [7, 6, 6, 4, 3, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
 newnham = [9, 6, 4, 4, 3, 2, 1, 0, 0, 0]
 
+scale = 0.8
 
-dimensions = [390*0.01384,195*0.01384]
+dimensions = [390*0.01384*scale,195*0.01384]
 params = {'backend': 'ps',
           'axes.labelsize': 10,
           'text.fontsize': 10,
@@ -54,7 +55,7 @@ plt.savefig("bateman.pdf")
 plt.clf()
 
 
-dimensions = [230*0.01384,195*0.01384]
+dimensions = [230*0.01384*scale,195*0.01384]
 params = {'figure.figsize': dimensions}
 plt.rcParams.update(params)
 fig, ax = plt.subplots(1)

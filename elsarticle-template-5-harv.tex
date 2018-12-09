@@ -65,7 +65,7 @@
     A common approach is to directly integrate a drive system at the expense of increasing overall complexity.
     Alternatively, the robots can be modularised and attached to general purpose platforms.
     General purpose platforms reported previously are designed to carry relatively light payloads orientated toward ground based crops.
-    This paper presents a modularised platform capable of carrying modules of up to \SI{1000}{\kilo\gram} under \SI{1.5}{\meter} high pergola style kiwifruit canopies.
+    This paper presents a modularised platform capable of carrying modules of up to \SI{1000}{\kilo\gram} under \SI{1.4}{\meter} high pergola style kiwifruit canopies.
     Sensors suitable for autonomous navigation are evaluated in-orchard and tested using prototype navigation algorithms.
     It is found that GNSS based navigation is not feasible under kiwifruit canopies, but perception based navigation sees the platform complete a number of block traversals autonomously.
 
@@ -670,7 +670,7 @@
   \subsection{Mass Loading}
     Structural integrity testing was carried out by loading a \SI{1100}{\kilo\gram} mass to the vehicle's module area.
     No deflection of the vehicle's chassis structure was evident upon application of the test mass.
-    Deflection of approximately \SI{1.5}{\milli\meter} was measured between the front pivot and the wheel supports.
+    Deflection of \SI{1.5}{\milli\meter} was measured between the front pivot and the wheel supports.
     % \begin{figure}[htb]
     %     \centering
     %     \includegraphics[width=\linewidth]{imgs/photos/stopTesting.jpg}
@@ -681,7 +681,7 @@
     %     \label{fig:suzy_testing}
     % \end{figure}
     Static steering tests conducted on a dry concrete surface showed no reduction in ability to turn while supporting the test mass.
-    Dynamic tests involved three instances of stopping whilst driving down a \SI{10}{\degree} slope at a speed of \SI{10}{\kilo\meter\per\hour}.
+    Dynamic tests involved three instances of stopping at a \SI{10}{\degree} descent at a speed of \SI{10}{\kilo\meter\per\hour}.
     During each test the vehicle came to a complete stop within \SI{2.0}{\meter}.
 
   \subsection{Drive System}
@@ -695,21 +695,21 @@
         \label{fig:acceleration}
     \end{figure}
 
-    Acceleration testing saw the platform accelerated from stand-still to a commanded speed of \SI{2.78}{\meter\per\second} (\SI{10}{\kilo\meter\per\hour}) on both flat ground and up a \SI{3.5}{\degree} incline.
+    Drive system testing had the platform accelerated from a stand-still under manual control to its maximum speed on both flat ground and a \SI{3.5}{\degree} incline.
     The acceleration was measured using an Inertial Measurement Unit (IMU, LPMS-USBAL2).
     Figure~\ref{fig:acceleration} shows the acceleration profile of the platform in both cases.
-    The platform's weight during the test was estimated to be \SI[separate-uncertainty=true]{850(50)}{\kilo\gram}.
+    The platform's weight during the test was estimated to have been \SI[separate-uncertainty=true]{850(50)}{\kilo\gram} in each case.
 
     In both instances the vehicle reached a top speed of \SI{2.5}{\meter\per\second} (\SI{9.0}{\kilo\meter\per\hour}), \SI{0.28}{\meter\per\second} short of the target speed.
-    Based on the specifications of the motors and controllers, there should be little difference in acceleration profile between flat and a \SI{3.5}{\degree} slope,
-    however there is a clear deviation.
+    % Based on the specifications of the motors and controllers, there should be little difference in acceleration profile between flat and a \SI{3.5}{\degree} slope,
+    % however there is a clear deviation.
     % During the flat and climb acceleration tests a peak power output of \SI{2.90}{\kilo\watt} and \SI{2.17}{\kilo\watt} were calculated.
-    During the flat acceleration test a peak power of between \SI{684}{\watt} and \SI{770}{\watt}, and torque of between \SI{930}{\newton\meter} and \SI{1046}{\newton\meter} was calculated per wheel.
-    During the climb acceleration test a peak power of between \SI{542}{\watt} and \SI{610}{\watt}, and torque of between \SI{779}{\newton\meter} and \SI{876}{\newton\meter} was calculated per wheel.
+    During the flat acceleration test a peak power of between \SIrange{684}{770}{\watt}, and torque of between \SIrange{930}{1046}{\newton\meter} was calculated per wheel.
+    During the climb acceleration test a peak power of between \SIrange{542}{610}{\watt}, and torque of between \SIrange{779}{876}{\newton\meter} was calculated per wheel.
     The torque calculations suggest the motors are developing their specified output of \SI{816}{\newton\meter}.
     The motor controllers are configured to supply extra torque for short bursts, which could explain why the calculated torque on flat ground is higher than this value.
     The climb test began with the vehicle being held stationary using torque-control, which may have affected the controller's ability to produce the higher peak torque in this case.
-    The lower than expected top speed in both cases suggest there are configuration issues with the motor controllers.
+    The lower than expected top speed in both cases suggest there are configuration issues with the motor controller's speed setting.
 
   \subsection{Turning Circle}
 
@@ -824,7 +824,8 @@
         \includegraphics{imgs/slam/row_tracking_averages.pdf}
         \caption{
             Deviation between vehicle's tracking point and each post/trunk pair midpoint over five trials.
-            The y-axis is scaled to the mean row width (\SI{4.35}{\meter}).
+            The mean row width was \SI{4.35}{\meter}.
+            % The y-axis is scaled to the mean row width (\SI{4.35}{\meter}).
             % The resolution of the generated SLAM map contributes $\pm$\SI{0.274}{\meter} of error.
         }
         \label{fig:row_following_performance_analysis}
@@ -892,9 +893,10 @@
 \section{Discussion}
 \label{sect:discussion}
 
-    The reported platform meets the specification requirements and has proved its usefulness during three pollination and harvesting seasons.
-    During these operations the vehicle was operated under manual control because of the need to drive close to row boundaries.
-    The width of the modules meant it was necessary to perform two passes through each row in order to access the full canopy area.
+    The reported platform meets the previously specified requirements and has proved its usefulness during three pollination and harvesting seasons.
+    However, during these operations the vehicle was operated under manual control because of the need to drive close to row boundaries.
+    The width of the vehicle and modules meant it was necessary to perform two passes through each row in order to access the full canopy area.
+    The vehicle's overall height is \SI{1.25}{\meter}, leaving \SI{0.15}{\meter} between it and the target ceiling height.
 
     Results from navigation tests indicate that multi-layer lidar with wheel encoder feedback are sufficient for row turning tasks.
     For row following, an IMU and multi-layer lidar based algorithm produced paths which were sufficiently repeatable and close to the row's centre-line.
@@ -907,7 +909,7 @@
 
     The platform's \SI{96}{\volt} battery pack and electrical system introduced a electrical hazard during development.
     While essential for safety, risk mitigation procedures added complexities and delays that could have been avoided by simply selecting a lower operating voltage.
-    The authors suggest a pack voltage of \SI{48}{\volt} as an alternative as it bears a reduced risk of injury from shock.
+    The authors suggest a voltage of \SI{48}{\volt} as it bears a reduced risk of injury from shock.
     Inputs of \SI{48}{\volt} are supported across a wider range of motors, motor controllers, and power converters, but cabling requirements are increased.
 
     The series-hybrid configuration allows the vehicle to drive and provide power to subsystems without running the petrol engine.
@@ -926,21 +928,24 @@
 
 \section{Conclusion}
     This work presents a platform designed specifically for autonomously transporting task-specific modules through pergola style kiwifruit orchards.
-    The platform proved capable of carrying twice the mass of platforms previously reported in the literature.
+    The platform proved capable of carrying over twice the mass of similar platforms reported previously.
+    The four wheel drive system with two individually actuated steering wheels is well suited for use in kiwifruit orchards.
+    The authors deem the use of a four-wheel steering configuration in this environment to be unnecessary.
 
+    Various navigation sensors were trialled in the kiwifruit orchard environment.
     Multi-layer lidar proved to be the most versatile sensor for orchard based navigation owing to its wide field-of-view and robust outputs.
-    Using a map of manually adjusted row-end turns, the platform has navigated over \SI{10}{\kilo\meter} of orchard blocks using wheel encoders and a single multi-layer lidar.
+    Using a map of manually adjusted row-end turns, the platform has navigated over \SI{10}{\kilo\meter} of orchard blocks using only wheel-encoders and a single multi-layer lidar.
     A significant amount of work was required to tune the row-end-turns, which has implications for commercial deployment.
-    Row following based only on lidar and an IMU proved to be repeatable to within $\pm$\SI{75}{\milli\meter}.
+    Row following tests using an algorithm based only on multi-layer lidar and IMU inputs proved to be repeatable to within $\pm$\SI{75}{\milli\meter} over five trials.
 
-    The authors recommend a system voltage of \SI{48}{\volt} for development platforms due to safety and component availability.
+    % The authors recommend a system voltage of \SI{48}{\volt} for development platforms due to safety and component availability, which this platform did not use.
     The use of smaller, commercially available, robots proved valuable when developing navigation software due to their safety and portability.
+    Future work will focus on developing the navigation system so that the vehicle can plan row-end turns and avoid obstacles whilst row following.
 
-    Future work will focus on developing the navigation system so that the vehicle can plan row-end turns, and avoid obstacles whilst row following.
 
 \section*{Acknowledgements}
 This research was supported by the New Zealand Ministry for Business, Innovation and Employment (MBIE) on contract UOAX1414.
-The authors acknowledge contributions from Phillip Ross, Gordon Neshausen, Josh Barnett, and Erin Simms who were involved with the design and fabrication of the platform.
+The authors acknowledge contributions from Phillip Ross, Gordon Neshausen, Josh Barnett, and Erin Simms who were involved with design and fabrication.
 
 \bibliographystyle{model5-names}
 \bibliography{bibliography_jamie,bibliography_mark}
