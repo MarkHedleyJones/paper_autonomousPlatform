@@ -752,37 +752,37 @@
     % TODO{Mark}: Re-read from here onwards
   \subsection{Bin Lifter}
 
-    A pallet mounted mass of \SI{370}{\kilo\gram} was used to test the bin lifter.
+    A pallet-mounted mass of \SI{370}{\kilo\gram} was used to test the bin lifter.
     The lifter's pneumatic valve block was manually activated until the pallet sat \SI{250}{\milli\meter} above the ground.
-    To raise the load, pneumatic pressure of \SI{800}{\kilo\pascal} was applied to one port of each double acting cylinder while the other port was opened to atmosphere.
-    Lowering was done by simply opening both ports to atmosphere and allowing the load to descend under its own weight.
-    The load was lifted and lowered a total of five times.
-    The vehicle was driven for \SI{300}{\meter} with the load, which included an \SI{3.5}{\degree} incline for \SI{30}{\meter}.
+    To raise the load, pneumatic pressure of \SI{800}{\kilo\pascal} was applied to one port of each double acting cylinder while the other port was open to atmosphere.
+    Lowering was done by opening both ports to atmosphere and allowing the load to descend under its own weight.
+    This process was repeated five times.
+    Additionally, the vehicle was driven \SI{300}{\meter} with the load, including an \SI{3.5}{\degree} incline for \SI{30}{\meter}.
 
     The lifting capacity of the mechanism was sufficient to raise the load gently to its target height.
-    At its lower position, signs of imbalance between the two cylinders was evident, which caused shuddering.
-    The shuddering was due to excessive and unbalanced static-friction on each side of the four-bar mechanism.
-    This friction was caused by overly tight-fitting sleeve bearings.
+    At its lower position, signs of imbalance between the two cylinders was evident that caused shuddering.
+    This shuddering was caused by excessive and unbalanced static-friction between both sides of the four-bar mechanism, caused from over-tight sleeve bearings.
     The behaviour was also evident when hand actuating the lifter.
     Whilst driving, the load dropped by between \SIrange{60}{70}{\milli\meter} from its initial height.
     This drop, and the variation in resting position, was thought to be caused by the combination of static friction and driving related vibrations.
 
   \subsection{Turning Between Rows}
 
-    Two orchards were used for row-turn testing, where a single block was used at each.
-    These blocks are referred to as Block A and Block B.
-    Block A was \SI{1.15}{\kilo\meter} in total traversable length spread over 10 rows, while Block B was \SI{670}{\meter} in total traversable length spread over 9 rows.
-    After tuning of the row end turning manoeuvres, the platform navigated Block A consecutively 7 times.
-    Figure~\ref{fig:block_traversal_bateman} shows the number of interventions per traversal while under tuning in Block A, 19 traversals in total.
-    After tuning the row end turns in Block B, it was navigated 3 times consecutively.
-    Figure~\ref{fig:block_traversal_newnham} shows the number of interventions per traversal while under tuning in Block B, 10 traversals in total.
+    Two orchard blocks (from different orchards) were used for row-turn testing.
+    These blocks will be referred to as blocks A and B.
+    Block~A was \SI{1.15}{\kilo\meter} in total traversable length spread over 10 rows, while block B was \SI{670}{\meter} in total traversable length spread over 9 rows.
+    After tuning the row-end turning manoeuvres, our platform navigated block~A consecutively 7 times.
+    Figure~\ref{fig:block_traversal_bateman} shows the number of interventions per traversal within block~A.
+    A total of 19 traversals were used to tune the turns in this orchard.
+    After tuning the row end-turns in block~B, it was navigated 3 times consecutively.
+    Figure~\ref{fig:block_traversal_newnham} shows the number of interventions per traversal while under tuning in block~B, with 10 traversals in total.
     % This equates to a total of \SI{10}{\kilo\meter} of successfully navigated orchard rows.
 
     \begin{figure}[htb]
         \centering
         \includegraphics{imgs/tuning_graphs/bateman.pdf}
         \caption{
-            Number of interventions during tuning of row-end turns throughout Block A.
+            Number of interventions during tuning of row-end turns throughout block A.
         }
         \label{fig:block_traversal_bateman}
     \end{figure}
@@ -791,21 +791,21 @@
         \centering
         \includegraphics{imgs/tuning_graphs/newnham.pdf}
         \caption{
-            Number of interventions during tuning of row-end turns throughout Block B.
+            Number of interventions during tuning of row-end turns throughout block B.
         }
         \label{fig:block_traversal_newnham}
     \end{figure}
 
-    The key weakness of the current navigation system is the need to tune the row end turns manually for each site.
+    The key weakness of the current navigation system is the need to tune the row-end turns manually for each site.
     The tuning required for the first orchard block amounted to eight traversals of the entire block.
     For the second block, seven complete traversals were required for tuning.
     This creates a significant resource overhead for deployment to any new sites.
-    If the row end turns are not sufficiently tuned, two failure cases may occur.
-    The most common case is that the vehicle turns through a row end too tightly or not tightly enough and the object avoidance system is not sufficiently responsive to avoid a collision.
-    All but four interventions were due to an imminent collision with a post during a row end turn.
-    Three interventions during row end turning were due to the platform trying to recommence row following before facing the new target row.
-    In this case the most feasible path for row following was detected through the headland area, instead of the target row.
-    One intervention, attempt 12 of Block A, was caused by the canopy detection system triggering a row-end turn whilst still inside a row.
+    If the turns are not sufficiently tuned, two types of failure occur.
+    The most common case is that the vehicle turns between rows too tightly or not tightly enough and the object avoidance system is not sufficiently responsive to avoid a collision.
+    All but four interventions were due to an imminent collision with a post during a row-end turn.
+    Three interventions during row-end turning were due to the platform trying to recommence row following before facing the new target row.
+    In this case the most feasible path for row following was detected along the headland area - instead of through the target row.
+    One intervention, attempt 12 of block~A, was caused by the canopy detection system triggering a row-end turn whilst still inside a row.
 
   \subsection{Row Following}
     Row following repeatability tests were made by allowing the platform to self-drive through a row, from the same starting point, five times.
@@ -814,17 +814,18 @@
     Its end-of-row detector was based on the vehicle's proximity to the row's last pair of posts, as opposed to detecting the absence of canopy above.
 
     Each test was conducted at the vehicle's target operating speed of \SI{1.39}{\meter\per\second} (\SI{5}{\kilo\meter\per\hour}).
-    To determine the vehicle's trajectory, recordings of the lidar and IMU were made and run through a SLAM package off-line.
-    The SLAM package used was Cartographer (version 1.0) used as a ROS package that produced both the map and the vehicle's trajectory information \citep{Hess2016}.
+    To determine the vehicle's trajectory, recordings of the lidar and IMU were made and post-processed using a SLAM package off-line.
+    The SLAM package used was Cartographer (version 1.0) used as a ROS package.
+    It produced both the map and the vehicle's trajectory information \citep{Hess2016}.
     The spacial resolution of the SLAM map was \SI{0.05}{\meter\per pixel}.
     Wheel odometry provided by the drive motors was not used during row following as signs of slippage were apparent.
-    Quick measurements conducted on grass showed an imbalance of approximately \SI{5}{\percent} between the rear wheels depending on ground slope.
+    Quick measurements conducted on grass showed a velocity imbalance of approximately \SI{5}{\percent} between the rear wheels whilst driving forward.
 
     \begin{figure}[htb]
         \centering
         \includegraphics[width=\linewidth]{imgs/slam/paths2.pdf}
         \caption{
-            Five paths taken during a sequence of row-following repeatability tests.
+            Five trajectories recorded during five row-following repeatability tests.
         }
         \label{fig:row_following_paths}
     \end{figure}
@@ -901,7 +902,7 @@
     Analysis of the tracking performance is particularly difficult as the positioning of the posts/trunks show obvious signs of deviation, evident in Figure~\ref{fig:row_following_paths_segmented}.
     For example, the dip at post/trunk pair twenty-two in Figure~\ref{fig:row_following_performance_analysis} corresponds with the post/trunk pair near the \SI{58}{\meter} mark in Figure~\ref{fig:row_following_paths_segmented}.
     Similarly, the peak at position 26 corresponds to the post/trunk pair near the \SI{70}{\meter} mark.
-    Without significant corrections to the data, which would be subjective, the analysis describes more about the linearity of the orchard's row defining features than the path tracking performance.
+    Without significant corrections to the data, which would be subjective, the analysis describes more about the linearity of the orchard than the trajectory.
     It is apparent however from Figure~\ref{fig:row_following_paths_segmented} that the vehicle's path is relatively straight and remains unperturbed by the non-linearity in positioning of the row's features.
 
     Figure~\ref{fig:row_following_repeatability} quantifies the deviation between each trial relative to the mean path taken over the five trials.
@@ -910,7 +911,7 @@
     Finally, Figure~\ref{fig:row_following_end_points} shows the end position of each path.
     The path-following algorithm determines the end position based on its proximity to the last post-pair within its detection range.
     Notice that the last post in each row is spaced slightly further than is usual inside the row.
-    This is visible along the left hand side of the SLAM map shown in Figure~\ref{fig:row_following_paths} and in the photo of Figure~\ref{fig:suzy_turning}.
+    This is visible along the left hand side of the SLAM map shown in Figure~\ref{fig:row_following_paths}.
     That extra spacing places the final post-pair near the software-defined cut-off region used to identify post/trunk pairs.
     Stopping slightly earlier results in the last post/trunk pair not being detected, as is the case in path groups A and B.
     Additionally, there is ambiguity in the position of the second-to-last post/trunk pair because vines have been planted in close proximity to the posts.
@@ -919,8 +920,9 @@
 \section{Discussion}
 \label{sect:discussion}
 
-    The reported platform meets the previously specified requirements and has proved its usefulness during three pollination and harvesting seasons.
-    However, during these operations the vehicle was operated under manual control because of the need to drive close to row boundaries.
+    The reported platform meets the specified requirements and has proved its usefulness during three pollination and harvesting seasons.
+    However, during these operations the vehicle was mostly operated under manual control because of the need to drive close to row boundaries.
+    % TODO{Mark}: Continue proof-reading from here.
     The width of the vehicle and modules meant it was necessary to perform two passes through each row in order to access the full canopy area.
     The vehicle's overall height is \SI{1.25}{\meter}, leaving \SI{0.15}{\meter} between it and the target ceiling height of \SI{1.4}{\meter}.
 
