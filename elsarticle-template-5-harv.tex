@@ -922,17 +922,18 @@
 
     The reported platform meets the specified requirements and has proved its usefulness during three pollination and harvesting seasons.
     However, during these operations the vehicle was mostly operated under manual control because of the need to drive close to row boundaries.
-    % TODO{Mark}: Continue proof-reading from here.
     The width of the vehicle and modules meant it was necessary to perform two passes through each row in order to access the full canopy area.
     The vehicle's overall height is \SI{1.25}{\meter}, leaving \SI{0.15}{\meter} between it and the target ceiling height of \SI{1.4}{\meter}.
 
-    Results from navigation tests indicate that multi-layer lidar with wheel encoder feedback are sufficient for row turning tasks.
-    For row following, an IMU and multi-layer lidar based algorithm produced paths which were sufficiently repeatable and close to the row's centre-line.
-    Wheel slippage meant that the encoder information from driven wheels was less suitable for long-term odometry than the odometry information provided by the SLAM package, which was based on processed lidar and IMU data.
-    Future work will combine the lidar, IMU, and encoder based odometry outputs into a single output for longer term accuracy.
+    Results from navigation tests indicate that multi-layer lidar with wheel-encoder feedback is sufficient for row turning tasks.
+    For row following, an IMU and multi-layer lidar based algorithm produced paths that were sufficiently repeatable and close to the row's centre-line.
+    Wheel slippage meant encoder information was less suitable for long-term odometry than the odometry information provided by the SLAM package, which was based on processed lidar and IMU data.
+    While more accurate for longer-term path tracking, the short-term response is not as accurate as encoder or IMU based odometry.
+    Future work will combine all three sources into a single output with improved short and long-term accuracy.
+
     The method for turning between rows calls for further work.
-    Row end turning was a manual process that involved observing an autonomously driven turn and manually adjusting the length or radius of the turn's segments.
-    Future work will focus on enabling the system to plan row-end turns based on sensor data -- without a manually created map.
+    Row end turning was a manual process that involved observing an autonomously driven turn and manually adjusting the length or radius of path segments.
+    Future work will focus on enabling the system to plan row-end turns based on perception based sensor data -- without a manually created map.
     Observationally, detecting row end-points based on the vehicle's proximity to the last post-pair proved more reliable than detecting the presence/absence of canopy.
 
     The platform's \SI{96}{\volt} battery pack and electrical system introduced a electrical hazard during development.
@@ -940,13 +941,13 @@
     The authors suggest a voltage of \SI{48}{\volt} as it bears a reduced risk of injury from shock.
     Inputs of \SI{48}{\volt} are supported across a wider range of motors, motor controllers, and power converters, but cabling requirements are increased.
 
-    The series-hybrid configuration allowed the vehicle to drive and provide power to subsystems without running the petrol engine.
+    The series-hybrid electrical configuration allowed the vehicle to drive and provide power to subsystems without running the petrol engine.
     This was useful in testing scenarios, where people are in close proximity to the vehicle, as it eliminated exhaust fumes and reduced noise and vibration.
     However, robotic modules and the bin-lifting mechanism required pneumatic pressure to function.
     As the air-compressor was belt driven from the petrol engine it was necessary to frequently run the engine.
     An electric air-compressor would allow the system to run without the petrol engine for much longer periods.
 
-    The use of more general purpose platforms to test navigation algorithms enabled the navigation system to be developed in parallel with the physical hardware.
+    The use of more general purpose platforms to test navigation algorithms enabled the navigation software to be developed in parallel with the physical hardware.
     Their smaller size eliminated the risk of serious injury and led to a speed up in development and test cycles.
     It also meant that navigation testing could continue while the full-size platform was engaged in other activities.
 
@@ -956,13 +957,13 @@
 
 \section{Conclusion}
     This work presents a platform designed specifically for autonomously transporting task-specific modules through pergola-style kiwifruit orchards.
-    The platform proved capable of carrying over twice the mass of similar platforms reported previously.
-    The four wheel drive system with two individually-actuated steering wheels proved to be well suited for use in and around kiwifruit orchards.
+    The platform is capable of carrying over twice the mass of similar platforms reported previously.
+    The four wheel drive system with two individually-actuated steering wheels was well suited for use in and around kiwifruit orchards.
     The authors deem the use of a four-wheel steering configuration in this environment to be unnecessary.
 
     Various navigation sensors were trialled in the kiwifruit orchard environment.
     Multi-layer lidar proved to be the most versatile sensor for orchard based navigation owing to its wide field-of-view and robust outputs.
-    Using a map of manually adjusted row-end turns, the platform has navigated over \SI{10}{\kilo\meter} of orchard blocks using only wheel-encoders and a single multi-layer lidar.
+    Using a map of manually adjusted row-end turns, the platform has navigated over \SI{10}{\kilo\meter} of orchard rows using only wheel-encoders and a single multi-layer lidar.
     A significant amount of work was required to tune the row-end-turns, which has implications for commercial deployment.
     Row following tests using an algorithm based only on multi-layer lidar and IMU inputs proved to be repeatable to within $\pm$\SI{75}{\milli\meter}.
 
