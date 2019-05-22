@@ -22,6 +22,9 @@
 %% $URL: http://lenova.river-valley.com/svn/elsbst/trunk/elsarticle-template-5-harv.tex $
 %%
 
+% This is for Sublime-text with LaTeXTools to compile the nomenclature table
+\immediate\write18{makeindex -s nomencl.ist -o "\jobname.nls" "\jobname.nlo"}
+
 \documentclass[preprint,authoryear,12pt]{elsarticle}
 
 \usepackage{amssymb}
@@ -33,6 +36,12 @@
 \usepackage{lineno}
 \usepackage[utf8]{inputenc}
 \newcommand{\rpm}{\raisebox{.2ex}{$\scriptstyle\pm$}}
+
+\usepackage{framed} % Framing content
+\usepackage{multicol} % Multiple columns environment
+\usepackage{nomencl} % Nomenclature package
+\makenomenclature
+\setlength{\nomitemsep}{-\parskip} % Baseline skip between items
 
 \inputencoding{utf8}
 
@@ -68,7 +77,7 @@
     This paper presents a modularised platform capable of carrying modules of up to \SI{1000}{\kilo\gram} beneath \SI{1.4}{\meter} high pergola-style kiwifruit canopies.
     The electrical and software architecture is discussed as well as vehicle's mechanical design.
     Sensors suitable for autonomous navigation are evaluated in-orchard and tested with prototype navigation algorithms.
-    It is found that GNSS based navigation is not feasible under kiwifruit canopies, but perception based navigation sees the platform complete a number of block traversals autonomously.
+    It is found that global navigation satellite system (GNSS) based navigation is not feasible under kiwifruit canopies, but perception based navigation sees the platform complete a number of block traversals autonomously.
 
 
 \end{abstract}
@@ -80,6 +89,42 @@
 \end{frontmatter}
 
 \linenumbers
+
+\begin{table*}
+  \small
+   \begin{framed}
+     \printnomenclature
+   \end{framed}
+\end{table*}
+
+\nomenclature{$\alpha$}{Slope angle (deg)}
+\nomenclature{$\Delta~v$}{Change in velocity (\SI{}{\meter\per\second})}
+\nomenclature{$\omega$}{Angular velocity (\SI{}{\radian\per\second})}
+\nomenclature{$\tau$}{Torque (\SI{}{\newton\meter})}
+\nomenclature{$B$}{Nominal width of a tyre (\SI{}{\meter})}
+\nomenclature{$C_{rr}$}{Rolling resistance coefficient (unitless)}
+\nomenclature{$E$}{Offset between a tyre and its axis of rotation (\SI{}{\meter})}
+\nomenclature{$F_{accel}$}{Force required to accelerate (\SI{}{\newton})}
+\nomenclature{$F_{grade}$}{Force due to a gradient (\SI{}{\newton})}
+\nomenclature{$F_{roll}$}{Force due to rolling resistance (\SI{}{\newton})}
+\nomenclature{$F_{total}$}{Total force (\SI{}{\newton})}
+\nomenclature{$G$}{Acceleration due to gravity (\SI{}{\meter\per\second\squared})}
+% \nomenclature{$m$}{Mass (\SI{}{\kilo\gram})}
+% \nomenclature{$P$}{Power (\SI{}{\watt})}
+\nomenclature{$r$}{Radius of a wheel (\SI{}{\meter})}
+\nomenclature{$u$}{Friction coefficient (unitless)}
+% \nomenclature{$v$}{Velocity (\SI{}{\meter\per\second})}
+\nomenclature{$W$}{Force transmitted through a wheel (\SI{}{\newton})}
+\nomenclature{CAN}{Controller Area Network}
+\nomenclature{GLONASS}{A GNSS service operated by the Russian Federation}
+\nomenclature{GNSS}{Global Navigation Satellite System}
+\nomenclature{GPS}{An GNSS service operated by the United States}
+\nomenclature{IMU}{Inertial Measurement Unit}
+\nomenclature{PSA}{Pseudomonas syringae pv. actinidiae (type of bacteria)}
+\nomenclature{ROS}{Robot Operating System}
+\nomenclature{RTK-GPS}{Realtime Kinematic GPS}
+\nomenclature{SLAM}{Simultaneous Localisation And Mapping}
+
 
 \section{Introduction}
 \label{sect:intro}
@@ -295,14 +340,14 @@
 
         Performance requirements for the vehicle's traction system during up-hill acceleration while under load were calculated as follows:
         \begin{align}
-        \label{eqn_f_rolling}
-        F_{rolling} &= C_{rr} \times m\\
+        \label{eqn_f_roll}
+        F_{roll} &= C_{rr} \times m\\
         F_{grade} &= m \times G \times \sin(\alpha)\\
         F_{accel} &= m \frac{\Delta v}{t}\\
         \label{eqn_f_accel}
-        F_{total} &= F_{rolling} + F_{grade} + F_{accel}
+        F_{total} &= F_{roll} + F_{grade} + F_{accel}
         \end{align}
-        Where $F_{rolling}$ is the force due to rolling-resistance; $F_{grade}$ is the grade (or incline) force; and $F_{accel}$ is the force required for mass acceleration.
+        Where $F_{roll}$ is the force due to rolling-resistance; $F_{grade}$ is the grade (or incline) force; and $F_{accel}$ is the force required for mass acceleration.
         A rolling-resistance coefficient ($C_{rr}$) of 0.04 was chosen based on values found in an automotive handbook \citep{RobertBoschGmbH2002}.
         It represents the case of a pneumatic tyre on medium-hard soil.
         Other variables used are: a vehicle mass ($m$) of \SI{1900}{\kilo\gram}, slope angle ($\alpha$) of \SI{20}{\degree}, velocity change ($\Delta t$) of \SI{2.78}{\metre\per\second} (\SI{10}{\kilo\meter\per\hour}), and an acceleration time ($t$) of \SI{6}{\second}.
@@ -391,7 +436,7 @@
 
         A second, externally mounted, computer, known as the ``Navigation PC'', is responsible for higher level control of the vehicle.
         It is used to connect to navigation sensors, send drive commands to the platform, and perform processing tasks relevant to autonomous navigation.
-        It too is an x86 based PC running Ubuntu, but uses a commodity microATX form-factor motherboard with a discrete graphics card (Nvidia GTX 1080Ti).
+        It too is an x86 based PC running Ubuntu, but uses a commodity motherboard with a discrete graphics card (Nvidia GTX 1080Ti).
         The graphics card is used to accelerate neural network algorithms and some image processing functions.
         An Ethernet network connects this PC to the mounted payload modules, while a RS422 serial link is used to communicate with the Platform PC.
         Figure~\ref{fig:system_diagram} illustrates this arrangement.

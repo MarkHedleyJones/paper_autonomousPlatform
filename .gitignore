@@ -4,5 +4,9 @@
 *.fdb_latexmk
 *.fls
 *.log
+*.ilg
+*.ind
+*.nlo
+*.nls
 *.synctex.gz
 elsarticle-template-5-harv.pdf
