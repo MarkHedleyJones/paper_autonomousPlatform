@@ -97,7 +97,7 @@
     These systems are bulky and have specific geometric requirements dictated by kiwifruit growing systems.
     They share the need for electrical power, air pressure, and a means of locomotion.
     However, they differ in the way they move when operating.
-    The pollinating module moves at a well-known speed with minimum changes in angle.
+    The pollinating module moves at a fixed speed with minimum changes in angle.
     % This differs from the harvesting module, which advances a set distance between stationary harvesting cycles.
     This differs from the harvesting module, which advances a set distance between periods of being stationary.
     To enable the whole system to work autonomously, the platform must be able to self-drive in a way appropriate for both modules.
@@ -213,7 +213,7 @@
         The vehicle's design is mostly influenced by the need to carry modularised robotic systems and fruit bins.
         Existing commercial platforms suitable for use in horticulture already exist, such as the Warthog from ClearPath Robotics, but the maximum payload, battery life, and vehicle geometry make them unsuitable for kiwifruit harvesting.
         The mass of robotic modules for pollination or harvesting can be as much as \SI{600}{\kilo\gram} and a bin of kiwifruit adds an additional \SI{400}{\kilo\gram}.
-        The canopy height in typical commercial orchards range from \SI{1.4}{\meter} to \SI{1.7}{\meter}, so the vehicle must also have a low profile.
+        The minimum canopy height in typical commercial orchards range from \SI{1.4}{\meter} to \SI{1.7}{\meter}, so the vehicle must also have a low profile.
         Modules carried by the platform require clearance from the canopy in addition to the height they occupy themselves.
         To maximise the space available to these modules the platform must be low-slung at the point they attach.
         Figure~\ref{fig:AMMP} illustrates the platform's design, with module area allocated between markers `G' and `H' in the side-view (top left).
@@ -275,7 +275,7 @@
         The steering motors have incremental encoders, but no means of absolute positioning built-in.
         This means that the front-wheel angles must aligned before use.
         A homing sequence at boot-up is used to find an absolute angle as a reference point for relative rotation data.
-        Inductive proxy sensors are used as a means of detecting the position of the wheels during this sequence.
+        Inductive proximity sensors are used as a means of detecting the position of the wheels during this sequence.
 
     \subsection{Drive system}
     \label{sub:drive}
@@ -306,7 +306,7 @@
         A rolling-resistance coefficient ($C_{rr}$) of 0.04 was chosen based on values found in an automotive handbook \citep{RobertBoschGmbH2002}.
         It represents the case of a pneumatic tyre on medium-hard soil.
         Other variables used are: a vehicle mass ($m$) of \SI{1900}{\kilo\gram}, slope angle ($\alpha$) of \SI{20}{\degree}, velocity change ($\Delta t$) of \SI{2.78}{\metre\per\second} (\SI{10}{\kilo\meter\per\hour}), and an acceleration time ($t$) of \SI{6}{\second}.
-        Putting these values through Equations \ref{eqn_f_rolling}--\ref{eqn_f_accel} gives a total force requirement of \SI{7.99}{\kilo\newton}.
+        Putting these values into Equations \ref{eqn_f_rolling}--\ref{eqn_f_accel} gives a total force requirement of \SI{7.99}{\kilo\newton}.
         On a per-wheel basis this is \SI{2.0}{\kilo\newton}, or \SI{729}{\newton\meter} when taking the wheel radius ($r$) of \SI{0.365}{\meter} into account.
         Required traction power ($P$) is then calculated as follows:
         \begin{align}
@@ -389,7 +389,7 @@
         The platform is centrally controlled by an x86 based small-form-factor PC (Intel NUC) running Ubuntu 16.04 server edition, referred to as the ``Platform PC''.
         This computer communicates with most sub-systems via a CAN bus interfaced using a USB adaptor (IXXAT USB-to-CANV2).
 
-        A second, externally mounted, computer is responsible for higher level control of the vehicle.
+        A second, externally mounted, computer, known as the ``Navigation PC'', is responsible for higher level control of the vehicle.
         It is used to connect to navigation sensors, send drive commands to the platform, and perform processing tasks relevant to autonomous navigation.
         It too is an x86 based PC running Ubuntu, but uses a commodity microATX form-factor motherboard with a discrete graphics card (Nvidia GTX 1080Ti).
         The graphics card is used to accelerate neural network algorithms and some image processing functions.
@@ -404,7 +404,7 @@
         If this switch is closed during operation, or the controller goes out of range, power to the bus is cut within \SI{500}{\milli\second}.
         This engages the mechanical park brakes, removes all tractive effort from the motors, and de-powers mounted modules.
 
-        The open source Robotic Operating System (ROS) is used to facilitate communication between computers and software nodes running within each computer.
+        The open source Robotic Operating System (ROS) is used to facilitate communication between computers and software nodes running within each computer (\cite{quigley2009}).
         Nodes written using this framework follow either a publish-subscribe or service-client pattern.
         To maximise code reusability, each device on the platform has its own ROS-compatible node dedicated to publishing device data or subscribing to generated device commands.
         Interface adapters, motor controllers, wireless controllers, lidar, and encoders are examples of devices on the platform with dedicated interface nodes.
@@ -415,7 +415,7 @@
         The manufacturer's configuration of the motor controllers require them to be interfaced using a combination of analogue and digital inputs.
         For example, the accelerator and steering inputs are controlled by potentiometers actuated by the vehicle's driver.
         However, the controllers also provide an option for a multi-motor vehicle configuration.
-        In this configuration, the analogue inputs fed into a master controller are relayed to a second controller over a CAN interface.
+        In this configuration, the analogue inputs fed into a master controller are relayed to a second (slave) controller over a CAN interface.
         This interface is configured using a proprietary tool and is not intended for use other than between controllers configured with their software.
         By observing the communication protocol between a master and slave in operation, it was possible to implement a master node in software that runs on the Platform PC.
         With this, all motor controllers on the platform are programmed as slave devices.
