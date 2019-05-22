@@ -106,7 +106,7 @@
 \nomenclature{$E$}{Offset between a tyre and its axis of rotation (\SI{}{\meter})}
 \nomenclature{$F_{accel}$}{Force required to accelerate (\SI{}{\newton})}
 \nomenclature{$F_{grade}$}{Force due to a gradient (\SI{}{\newton})}
-\nomenclature{$F_{rolling}$}{Force due to rolling resistance (\SI{}{\newton})}
+\nomenclature{$F_{roll}$}{Force due to rolling resistance (\SI{}{\newton})}
 \nomenclature{$F_{total}$}{Total force (\SI{}{\newton})}
 \nomenclature{$G$}{Acceleration due to gravity (\SI{}{\meter\per\second\squared})}
 % \nomenclature{$m$}{Mass (\SI{}{\kilo\gram})}
@@ -340,18 +340,18 @@
 
         Performance requirements for the vehicle's traction system during up-hill acceleration while under load were calculated as follows:
         \begin{align}
-        \label{eqn_f_rolling}
-        F_{rolling} &= C_{rr} \times m\\
+        \label{eqn_f_roll}
+        F_{roll} &= C_{rr} \times m\\
         F_{grade} &= m \times G \times \sin(\alpha)\\
         F_{accel} &= m \frac{\Delta v}{t}\\
         \label{eqn_f_accel}
-        F_{total} &= F_{rolling} + F_{grade} + F_{accel}
+        F_{total} &= F_{roll} + F_{grade} + F_{accel}
         \end{align}
-        Where $F_{rolling}$ is the force due to rolling-resistance; $F_{grade}$ is the grade (or incline) force; and $F_{accel}$ is the force required for mass acceleration.
+        Where $F_{roll}$ is the force due to rolling-resistance; $F_{grade}$ is the grade (or incline) force; and $F_{accel}$ is the force required for mass acceleration.
         A rolling-resistance coefficient ($C_{rr}$) of 0.04 was chosen based on values found in an automotive handbook \citep{RobertBoschGmbH2002}.
         It represents the case of a pneumatic tyre on medium-hard soil.
         Other variables used are: a vehicle mass ($m$) of \SI{1900}{\kilo\gram}, slope angle ($\alpha$) of \SI{20}{\degree}, velocity change ($\Delta t$) of \SI{2.78}{\metre\per\second} (\SI{10}{\kilo\meter\per\hour}), and an acceleration time ($t$) of \SI{6}{\second}.
-        Putting these values through Equations \ref{eqn_f_rolling}--\ref{eqn_f_accel} gives a total force requirement of \SI{7.99}{\kilo\newton}.
+        Putting these values through Equations \ref{eqn_f_roll}--\ref{eqn_f_accel} gives a total force requirement of \SI{7.99}{\kilo\newton}.
         On a per-wheel basis this is \SI{2.0}{\kilo\newton}, or \SI{729}{\newton\meter} when taking the wheel radius ($r$) of \SI{0.365}{\meter} into account.
         Required traction power ($P$) is then calculated as follows:
         \begin{align}
