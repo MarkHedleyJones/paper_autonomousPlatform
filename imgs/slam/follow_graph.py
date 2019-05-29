@@ -158,7 +158,7 @@ leg = ax.legend(scatterpoints=1, fancybox=True, loc=4)
 
 ax = plt.gca()
 plt.grid()
-plt.ylabel('Displacement from mid-point (m)')
+plt.ylabel('Displacement from \npost/trunk mid-point (m)')
 plt.xlabel('Post/trunk pair')
 plt.tight_layout()
 plt.savefig("row_tracking_averages.pdf")
