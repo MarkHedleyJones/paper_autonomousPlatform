@@ -853,7 +853,7 @@
     One intervention, attempt 12 of block~A, was caused by the canopy detection system triggering a row-end turn whilst still inside a row.
 
   \subsection{Row Following}
-    Row following repeatability tests were made by allowing the platform to self-drive through a row, from the same starting point, five times.
+    Row-following repeatability trials saw the platform self-drive through a single row from the same starting point, five times.
     The algorithm used was similar to that reported in \cite{Bell2016}, but had a couple of alterations.
     It used only a multi-layer lidar (Velodyne VLP-16) and an IMU (LPMS-USBAL2), but made no attempt to avoid obstacles.
     Its end-of-row detector was based on the vehicle's proximity to the row's last pair of posts, as opposed to detecting the absence of canopy above.
@@ -936,13 +936,13 @@
 
     Figure~\ref{fig:row_following_paths} shows the resulting orchard SLAM map with the five test trajectories overlaid.
     While differences in start position are estimated to be less than \SI{0.1}{\meter}, the trajectories show a spread of \SI{1.69}{\meter}.
-    We attribute this to a higher localisation uncertainty caused by limited sensor data at the beginning of each run.
+    This is due to a higher localisation uncertainty caused by limited sensor data at the beginning of each run.
     The total path distance travelled in each run is given in Table \ref{table:row_follow_path_lenghts}.
 
     Figure~\ref{fig:row_following_performance_analysis} presents an analysis of the path following performance.
     It shows the vehicle's deviation from the row's centre while accounting for the non-linearity of the row.
     This involved calculating the midpoints between post/trunk pairs on the generated SLAM map and measuring the distance between these midpoints and each of the five trajectories.
-    Sources of error were $\pm$\SI{1} pixel at each end of midpoint lines as well as measurement rounding errors (shown as error bars).
+    Sources of error were $\pm$\SI{1} pixel at each end of midpoint lines as well as measurement rounding errors, which are shown as error bars on the graph.
 
     Figure~\ref{fig:row_following_repeatability} quantifies the divergence of each path from the average location recorded between each trunk/post pair.
     Figure~\ref{fig:row_following_end_points} shows the end-points for each run relative to the row features at the end of the row.
