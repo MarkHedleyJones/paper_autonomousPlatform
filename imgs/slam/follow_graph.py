@@ -14,26 +14,31 @@ data = {
       'meas':[],
       'max': [],
       'min': [],
+      'color': 'black' # good
     },
     'run2': {
       'meas':[],
       'max': [],
       'min': [],
+      'color': 'green'
     },
     'run3': {
       'meas':[],
       'max': [],
       'min': [],
+      'color': 'red'
     },
     'run4': {
       'meas':[],
       'max': [],
       'min': [],
+      'color': '#FF9955'
     },
     'run5': {
       'meas':[],
       'max': [],
       'min': [],
+      'color': 'blue'
     }
   },
   'distance_from_average': {
@@ -136,7 +141,7 @@ print(errs)
 for run in range(1,6):
   print(run)
   # ax.plot(xs,data['distance_from_average']['run'+str(run)]['meas'])
-  ax.errorbar(xs,list(map(lambda x: x/1000, data['distance_from_centre']['run'+str(run)]['meas'])), xerr=None, yerr=0.546703/2, barsabove=True, fmt="-x", capsize=2)
+  ax.errorbar(xs,list(map(lambda x: x/1000, data['distance_from_centre']['run'+str(run)]['meas'])), xerr=None, yerr=0.546703/2, barsabove=True, fmt="-x", capsize=2, color=data['distance_from_centre']['run'+str(run)]['color'])
 # ax.bar(range(1, len(datasource)+1), datasource, color='b', edgecolor="none", align="center", width=0.7)
 ax.set_xlim(0, 41)
 # ax.set_ylim(-4.370/2,4.370/2)
@@ -153,7 +158,7 @@ leg = ax.legend(scatterpoints=1, fancybox=True, loc=4)
 
 ax = plt.gca()
 plt.grid()
-plt.ylabel('Displacement from mid-point (m)')
+plt.ylabel('Displacement from \npost/trunk mid-point (m)')
 plt.xlabel('Post/trunk pair')
 plt.tight_layout()
 plt.savefig("row_tracking_averages.pdf")
