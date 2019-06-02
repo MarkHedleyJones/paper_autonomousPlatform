@@ -129,7 +129,7 @@
 \nomenclature{PSA}{Pseudomonas syringae pv. actinidiae (type of bacteria)}
 \nomenclature{ROS}{Robot Operating System}
 \nomenclature{RTK-GPS}{Realtime Kinematic GPS}
-\nomenclature{SLAM}{Simultaneous Localisation And Mapping}
+\nomenclature{SLAM}{Simultaneous Localisation And Mapping (name of an algorithm)}
 
 
 \section{Introduction}
@@ -859,24 +859,29 @@
     One intervention, attempt 12 of block~A, was caused by the canopy detection system triggering a row-end turn whilst still inside a row.
 
   \subsection{Row Following}
-    Row-following repeatability trials saw the platform self-drive through a single row from the same starting point, five times.
+    Row-following repeatability trials saw the platform self-drive through a single row, from approximately the same starting point, five times.
     The algorithm used was similar to that reported in \cite{Bell2016}, but had a couple of alterations.
     It used only a multi-layer lidar (Velodyne VLP-16) and an IMU (LPMS-USBAL2), but made no attempt to avoid obstacles.
+
+    % TODO{Mark}: Add more details of how the row-following algorithm works
+
     Its end-of-row detector was based on the vehicle's proximity to the row's last pair of posts, as opposed to detecting the absence of canopy above.
 
     Each test was conducted at the vehicle's target operating speed of \SI{1.39}{\meter\per\second} (\SI{5}{\kilo\meter\per\hour}).
-    To determine the vehicle's trajectory, recordings of the lidar and IMU were made and post-processed using a SLAM package off-line.
-    The SLAM package used was Cartographer (version 1.0) used as a ROS package.
-    It produced both the map and the vehicle's trajectory information \citep{Hess2016}.
+    To determine the vehicle's trajectory, recordings of the lidar and IMU were taken and post-processed using a SLAM package off-line.
+    The SLAM package used was Cartographer (version 1.0) that was integrated into a ROS package (cartographer\_ros).
+    It was used to calculate the vehicle's trajectory and a 2D map of the surrounding environment \citep{Hess2016}.
     The spacial resolution of the SLAM map was \SI{0.05}{\meter\per pixel}.
-    Wheel odometry provided by the drive motors was not used during row following as signs of slippage were apparent.
-    Quick measurements conducted on grass showed a velocity imbalance of approximately \SI{5}{\percent} between the rear wheels whilst driving forward.
+    Wheel odometry provided by the drive motors was not used during the trials as signs of wheel slippage were apparent.
+    Quick measurements conducted on grass showed an imbalance in angular velocity of approximately \SI{5}{\percent} between the rear wheels.
 
     \begin{figure}[htb]
         \centering
         \includegraphics[width=\linewidth]{imgs/slam/paths2.pdf}
         \caption{
-            Five trajectories recorded during five row-following repeatability tests.
+            Trajectories recorded during five row-following repeatability trials.
+            The trajectories are overlaid onto the generated SLAM map, which depicts the trial orchard block.
+            Each colour represents one of five trials.
         }
         \label{fig:row_following_paths}
     \end{figure}
@@ -899,17 +904,6 @@
 
     \begin{figure}[htb]
         \centering
-        \includegraphics{imgs/slam/row_tracking_averages.pdf}
-        \caption{
-            Vehicle displacement from calculated row center-points during five row-following trials.
-            Trace colours correspond to the paths presented in Figure~\ref{fig:row_following_paths}.
-            Error bars represent a $\pm$\SI{1}{pixel} error ($\pm$\SI{0.274}{\meter}) from the rendered SLAM map, used to calculate the row's mid-points.
-        }
-        \label{fig:row_following_performance_analysis}
-    \end{figure}
-
-    \begin{figure}[htb]
-        \centering
         \includegraphics[width=\linewidth]{imgs/slam/segmented_analysis_with_centres.pdf}
         \caption{
             Five row-following trials shown with row boundaries overlaid.
@@ -922,11 +916,23 @@
 
     \begin{figure}[htb]
         \centering
+        \includegraphics{imgs/slam/row_tracking_averages.pdf}
+        \caption{
+            Vehicle displacement from calculated row center-points during five row-following trials.
+            Trace colours correspond to the paths presented in Figure~\ref{fig:row_following_paths}.
+            Error bars represent a $\pm$\SI{1}{pixel} error ($\pm$\SI{0.274}{\meter}) from the rendered SLAM map, used to calculate the row's mid-points.
+        }
+        \label{fig:row_following_performance_analysis}
+    \end{figure}
+
+    \begin{figure}[htb]
+        \centering
         \includegraphics{imgs/slam/row_tracking_repeatability.pdf}
         \caption{
-        Repeatability analysis of five row-following trials.
+        Repeatability analysis of the five row-following trials.
+        Each column compares displacements of a single trajectory, from the row's centre, to the average of the five trajectories.
         Whiskers represent maximum deviations in both the positive and negative directions.
-        Each trial has a sample size of 40.
+        % Each trial has a sample size of 40.
         }
         \label{fig:row_following_repeatability}
     \end{figure}
@@ -942,32 +948,30 @@
         \label{fig:row_following_end_points}
     \end{figure}
 
-    Figure~\ref{fig:row_following_paths} shows five trial trajectories overlaid into the resulting orchard SLAM map.
+    The five trials and the generated SLAM map are presented together in Figure~\ref{fig:row_following_paths}.
     While differences in start position are estimated to be less than \SI{0.1}{\meter}, the trajectories show a spread of \SI{1.69}{\meter}.
-    This is due to a higher localisation uncertainty caused by limited sensor data at the beginning of each run.
-    The total path distance travelled in each run is given in Table \ref{table:row_follow_path_lenghts}.
+    We attribute this to a higher localisation uncertainty at the commencement of each trial.
+    The total distance travelled in each trial is listed in Table \ref{table:row_follow_path_lenghts}.
 
-    Figure~\ref{fig:row_following_performance_analysis} presents an analysis of the path following performance.
-    It shows the vehicle's deviation from the row's centre while accounting for the non-linearity of the row.
-    This involved calculating the midpoints between post/trunk pairs on the generated SLAM map and measuring the distance between these midpoints and each of the five trajectories.
-    Sources of error were $\pm$\SI{1} pixel at each end of midpoint lines as well as measurement rounding errors, which are shown as error bars on the graph.
+    Analysis of the tracking performance is particularly difficult as the row itself is not linear.
+    Figure~\ref{fig:row_following_paths_segmented} shows the same five trajectories, but has been annotated to show approximate row boundaries.
+    The vertical grey lines link the post/trunk pairs that were used to calculate row mid-points.
+    Calculating the mid-point between each post/trunk-pair gives an idea of row's centre at forty locations along the row.
+    Due to differences in the starting and end positions of each trial, each trajectory intersects 39 of these post/trunk-pair lines.
+    The distance between each of these points and the five trajectories was measured to quantify the deviation between each trajectory and the row's centre.
+    Figure~\ref{fig:row_following_performance_analysis} presents these centreline deviations along with error estimates arising from our measurement method.
+    Sources of error were $\pm$\SI{1} pixel at each end of the post/trunk-pair lines as well as measurement rounding errors.
+    In this analysis we assume that the generated SLAM map is perfectly accurate, which is not the case in reality.
 
-    Figure~\ref{fig:row_following_repeatability} quantifies the divergence of each path from the average location recorded between each trunk/post pair.
-    Figure~\ref{fig:row_following_end_points} shows the end-points for each run relative to the row features at the end of the row.
-
-    Analysis of the tracking performance is particularly difficult as the positioning of the posts/trunks show obvious signs of deviation, evident in Figure~\ref{fig:row_following_paths_segmented}.
-    For example, the dip at post/trunk pair twenty-two in Figure~\ref{fig:row_following_performance_analysis} corresponds with the post/trunk pair near the \SI{58}{\meter} mark in Figure~\ref{fig:row_following_paths_segmented}.
-    Similarly, the peak at position 26 corresponds to the post/trunk pair near the \SI{70}{\meter} mark.
-    Without significant corrections to the data, which would be subjective, the analysis describes more about the linearity of the orchard than the trajectory.
-    It is apparent however from Figure~\ref{fig:row_following_paths_segmented} that the vehicle's path is relatively straight and remains unperturbed by the non-linearity in positioning of the row's features.
-
-    Figure~\ref{fig:row_following_repeatability} quantifies the deviation between each trial relative to the mean path taken over the five trials.
+    Figure~\ref{fig:row_following_repeatability} then compares each trajectory to the average trajectory.
+    The data presented in this figure makes no reference to the row's centre, instead each trajectory is compared only to the average of all five trajectories.
+    The distance between each trajectory and the average was calculated along the 39 post/trunk-pair lines shown in Figure~\ref{fig:row_following_paths_segmented}.
     It shows that the worst case repeatability was less than $\pm$\SI{75}{\milli\meter}.
 
-    Finally, Figure~\ref{fig:row_following_end_points} shows the end position of each path.
+    % TODO{Mark} Add more details of how the row-following algorithm determines the end of row, referring to what I add earlier.
+    Finally, Figure~\ref{fig:row_following_end_points} shows the final resting position of the vehicle after each trial.
     The path-following algorithm determines the end position based on its proximity to the last post-pair within its detection range.
-    Notice that the last post in each row is spaced slightly further than is usual inside the row.
-    This is visible along the left hand side of the SLAM map shown in Figure~\ref{fig:row_following_paths}.
+    Notice that the end posts of each row are spaced slightly further than is usual inside the row.
     That extra spacing places the final post-pair near the software-defined cut-off region used to identify post/trunk pairs.
     Stopping slightly earlier results in the last post/trunk pair not being detected, as is the case in path groups A and B.
     Additionally, there is ambiguity in the position of the second-to-last post/trunk pair because vines have been planted in close proximity to the posts.
@@ -975,6 +979,8 @@
 
 \section{Discussion}
 \label{sect:discussion}
+
+    % TODO{Mark}: Discuss that there is high localisation uncertainty at the start because we do not use a pre-computed map and because there isn't much sensor information at the commencement of each trial.
 
     The reported platform meets the specified requirements and has proved its usefulness during three pollination and harvesting seasons.
     However, during these operations the vehicle was mostly operated under manual control because of the need to drive close to row boundaries.
