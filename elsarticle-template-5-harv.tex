@@ -664,11 +664,11 @@
     These features were: traversable space, tree-lines, and row-ends \citep{Bell2017}.
     A centreline was then fitted to the areas marked as traversable and used to generate a control vector.
 
-    Both algorithms were developed on smaller, commercially available, test platforms while our larger platform was being built.
+    Both algorithms were developed on smaller, commercially available, test platforms while our heavy-duty  platform was being fabricated.
     A laptop (Dell E6410) with integrated graphics processor (Nvidia M5000M) was used on those platforms to process sensor data and generate drive vectors.
     Both approaches produced paths that led to reproducible row following behaviour.
-    A method of conducting row-end turns was trialled on the Pioneer 3-AT robot using the lidar based approach.
-    However, the platform's drive system lacked the power required to turn into rows on uphill slopes.
+    % A method of conducting row-end turns was trialled on the Pioneer 3-AT robot using the lidar based approach.
+    % However, the Pioneer's drive system lacked the power required to turn into rows on uphill slopes.
 
     To determine when the vehicle was at the end of a row, the multi-layer lidar was used to detect the absence of canopy in a volume above the front and to the sides of the vehicle.
     The camera based method was unable to detect this end-of-row condition which is necessary for initiating the turn.
@@ -692,17 +692,17 @@
         \label{fig:turn_diagram}
     \end{figure}
 
-    Figure~\ref{fig:turn_diagram} depicts the steps taken when traversing an orchard block.
+    Figure~\ref{fig:turn_diagram} presents a state diagram illustrating the steps taken when autonomously traversing an orchard block.
     The multi-layer lidar is used to detect whether the vehicle is \textit{in\_row} or \textit{out\_of\_row} based on the presence of canopy above.
     A row-end turn sees the platform execute a series of turn segments which have previously been tuned for the specific row number and turn direction.
     Initially, a template set of turn-segments is executed at each row's end while under observation.
     If the vehicle gets too close to obstacles or nearby boundaries during execution, the operator would intervene before collision occurs.
 
-    A complete row-end turn contains any number of segments.
+    A complete row-end turn can contain any number of `turn segments'.
     A `turn segment' is simply a vector and an end condition.
     Once the operator intervenes, he/she will tweak relevant parameters of the turn.
     This can be widening or tightening as well as lengthening or shortening the distance or angle of each segment.
-    Finally, if an object is detected in the vehicle's path during a turn, the steering is automatically adjusted to avoid the object.
+    Finally, if an object is detected in the vehicle's path during a turn, the steering angle is automatically increased so as to avoid the object, or the vehicle stops if the object is unavoidable.
     This happens independently from the parameters contained in the map file.
     Figure~\ref{fig:suzy_turning} shows the platform performing a row-end turn while under autonomous control.
 
@@ -797,10 +797,6 @@
     % Also, variation is much lower at the higher speed (\SI{0.04}{\meter}) versus (\SI{0.11}{\meter}) at the slow speed.
 
 
-
-
-
-    % TODO{Mark}: Re-read from here onwards
   \subsection{Bin Lifter}
 
     A pallet-mounted mass of \SI{370}{\kilo\gram} was used to test the bin lifter.
@@ -820,13 +816,13 @@
   \subsection{Turning Between Rows}
 
     Two orchard blocks (from different orchards) were used for row-turn testing.
-    These blocks will be referred to as blocks A and B.
-    Block~A was \SI{1.15}{\kilo\meter} in total traversable length spread over 10 rows, while block B was \SI{670}{\meter} in total traversable length spread over 9 rows.
-    After tuning the row-end turning manoeuvres, our platform navigated block~A consecutively 7 times.
-    Figure~\ref{fig:block_traversal_bateman} shows the number of interventions per traversal within block~A.
+    These blocks will be referred to as Block A and Block B.
+    Block~A was \SI{1.15}{\kilo\meter} in total traversable length spread over 10 rows, while Block~B was \SI{670}{\meter} in total traversable length spread over 9 rows.
+    After tuning the row-end turning manoeuvres, our platform navigated Block~A consecutively 7 times.
+    Figure~\ref{fig:block_traversal_bateman} shows the number of interventions per traversal within Block~A.
     A total of 19 traversals were used to tune the turns in this orchard.
-    After tuning the row end-turns in block~B, it was navigated 3 times consecutively.
-    Figure~\ref{fig:block_traversal_newnham} shows the number of interventions per traversal while under tuning in block~B, with 10 traversals in total.
+    After tuning the row end-turns in Block~B, it was navigated 3 times consecutively.
+    Figure~\ref{fig:block_traversal_newnham} shows the number of interventions per traversal while under tuning in Block~B, with 10 traversals in total.
     % This equates to a total of \SI{10}{\kilo\meter} of successfully navigated orchard rows.
 
     \begin{figure}[htb]
