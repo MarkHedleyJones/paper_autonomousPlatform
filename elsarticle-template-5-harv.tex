@@ -656,14 +656,14 @@
 
 \section{Autonomous Block Traversal}
 \label{sect:autonomous}
-    Two row following strategies were developed for implementation on the platform.
-    Further details and results of each have been published separately.
+    Initially, two row following strategies were developed for implementation on the platform.
+    Details and results of each have been published separately.
     One method used multi-layer lidar to detect the trunks and posts of the orchard and follow a centre-line between them \citep{Bell2016}.
     The second method used a single camera combined with a convolutional neural network to segment features within the image.
     These features were: traversable space, tree-lines, and row-ends \citep{Bell2017}.
     A centreline was then fitted to the areas marked as traversable and used to generate a control vector.
 
-    Both algorithms were developed on smaller, commercially available, test platforms while the presented platform was being fabricated.
+    Both algorithms were developed on smaller, commercially available, platforms while the presented platform was being fabricated.
     A laptop (Dell E6410) with integrated graphics processor (Nvidia M5000M) was used on those test platforms to process sensor data and generate drive vectors.
     Both approaches produced paths that led to reproducible row following behaviour.
     % A method of conducting row-end turns was trialled on the Pioneer 3-AT robot using the lidar based approach.
@@ -673,9 +673,8 @@
     The camera based method was unable to detect this end-of-row condition which is necessary for initiating the turn.
     It also lacked the ability to locate obstacles, which is critical for our target platform due to its size and power.
     Finally, the lidar based approach required much less computational power to achieve similar performance.
-    While it would be possible to combine the approaches, only the lidar based method was adapted for use on the presented platform.
+    While it would be possible to combine the approaches, only the lidar based method was adapted for use on the target platform.
 
-    Differences in geometry meant adjustments were needed when installing the sensors on the target platform.
     The multi-layer lidar was mounted horizontally above the front-right steering motor, visible in Figure~\ref{fig:suzy} and in Figure~\ref{fig:suzy_turning}.
     The smaller platforms used a skid-steer geometry, whereas our platform uses Ackermann steering geometry.
     This means that when turning, a skid-steered platform pivots along a lateral axis passing midway between the front and rear wheels.
@@ -694,7 +693,7 @@
     Figure~\ref{fig:turn_diagram} presents a state diagram illustrating the steps taken when autonomously traversing an orchard block.
     The multi-layer lidar is used to detect whether the vehicle is \textit{in\_row} or \textit{out\_of\_row} based on the presence of canopy above.
     A row-end turn sees the platform execute a series of turn segments which have previously been tuned for the specific row number and turn direction.
-    Initially, a template set of turn-segments is executed at each row's end while under observation.
+    To start with, a template set of turn-segments is executed at each row's end while under observation.
     If the vehicle gets too close to obstacles or nearby boundaries during execution, the operator would intervene before collision occurs.
 
     A complete row-end turn can contain any number of `turn segments'.
@@ -855,14 +854,15 @@
 
   \subsection{Row Following}
     Row-following repeatability trials saw the platform self-drive through a single row, from approximately the same starting point, five times.
-    The algorithm used was similar to that reported in \cite{Bell2016}, but with the following alterations.
+    In this trial the row-following algorithm was similar to that reported in \cite{Bell2016}, but with the following alterations.
     Firstly, the filtering of incoming point-cloud data was altered such that incoming points were filtered based on their proximity to the ground.
-    This involved first filtering out points that were expected to represent the ground and using them to create a smooth surface.
+    This involved first filtering out points that were expected to represent the ground and using them to create a surface representing the ground.
     That surface was then used to filter the remaining points based on their height above the ground; not so far as to potentially be part of the overhead canopy, but not so close that they may be weeds or related to the ground itself.
     Further processing checked the geometric relationship of the remaining points and made predicitons about the location of post/trunk pairs.
     This was repeated for every frame sent from the lidar (approximately \SI{10}{\hertz}).
     The vehicle then steered toward the mid-point of the most distant post/trunk pair in front of itself.
-    Once there were no post/trunk pairs further than \SI{2.5}{\meter} in front of the vehicle, it stopped.
+    Detection of the \textit{out\_of\_row} condition was calculated based the vehicle's proximity to the farterest post/trunk pair.
+    Once there were no post/trunk pairs further than \SI{2.5}{\meter} in front of the vehicle, the vehicle would stop.
     This algorithm made no attempt to avoid obstacles or turn between rows.
 
     Each trial was conducted at the vehicle's target operating speed of \SI{1.39}{\meter\per\second} (\SI{5}{\kilo\meter\per\hour}).
@@ -953,15 +953,15 @@
 
     Analysis of the tracking performance is particularly difficult as the row itself is not linear.
     Figure~\ref{fig:row_following_paths_segmented} shows the same five trajectories, but has been annotated to show approximate row boundaries.
-    The vertical grey lines link the post/trunk pairs that were used to calculate row mid-points.
+    The vertical grey lines link the post/trunk pairs used to calculate row mid-points.
     Calculating the mid-point between each post/trunk-pair gives an idea of row's centre at forty locations along the row.
     Due to differences in the starting and end positions of each trial, each trajectory intersects 39 of these post/trunk-pair lines.
     The distance between each of these points and the five trajectories was measured to quantify the deviation between each trajectory and the row's centre.
     Figure~\ref{fig:row_following_performance_analysis} presents these centreline deviations along with error estimates arising from our measurement method.
     Sources of error were $\pm$\SI{1} pixel at each end of the post/trunk-pair lines as well as measurement rounding errors.
-    In this analysis we assume that the generated SLAM map is perfectly accurate, which is not the case in reality.
+    In this analysis we assume that the generated SLAM map is perfectly accurate.
 
-    Figure~\ref{fig:row_following_repeatability} then compares each trajectory to the average trajectory.
+    Figure~\ref{fig:row_following_repeatability} compares each trajectory to the average trajectory.
     The data presented in this figure makes no reference to the row's centre, instead each trajectory is compared only to the average of all five trajectories.
     The distance between each trajectory and the average was calculated along the 39 post/trunk-pair lines shown in Figure~\ref{fig:row_following_paths_segmented}.
     It shows that the worst case repeatability was less than $\pm$\SI{75}{\milli\meter}.
@@ -973,7 +973,7 @@
     That extra spacing places the final post-pair near the software-defined cut-off region used to identify post/trunk pairs.
     Stopping slightly earlier results in the last post/trunk pair not being detected, as is the case in path groups A and B.
     Additionally, there is ambiguity in the position of the second-to-last post/trunk pair because vines have been planted in close proximity to the posts.
-    Analysis of the recorded sensor data shows this to be the cause of the separation in end-positions between points A and B.
+    Analysis of the recorded sensor data shows this ambiguity to be the cause of the separation in end-positions between points A and B.
 
 \section{Discussion}
 \label{sect:discussion}
