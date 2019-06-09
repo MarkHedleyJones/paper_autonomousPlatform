@@ -859,16 +859,22 @@
 
   \subsection{Row Following}
     Row-following repeatability trials saw the platform self-drive through a single row, from approximately the same starting point, five times.
-    In this trial the row-following algorithm was similar to that reported in \cite{Bell2016}, but with the following alterations.
+    In this trial the row-following algorithm was similar to that reported in \cite{Bell2016} that used a lidar to detect post/trunks, but with three main differences.
+
     Firstly, the filtering of incoming point-cloud data was altered such that incoming points were filtered based on their proximity to the ground.
-    This involved first filtering out points that were expected to represent the ground and using them to create a surface representing the ground.
+    This involved first filtering out points that were expected to represent the ground and using them to generate a representative surface.
     That surface was then used to filter the remaining points based on their height above the ground; not so far as to potentially be part of the overhead canopy, but not so close that they may be weeds or related to the ground itself.
-    Further processing checked the geometric relationship of the remaining points and made predicitons about the location of post/trunk pairs.
+    Further processing checked the geometric relationship of the remaining points and made predictions about the location of posts/trunks.
+    The process involved a recursive walk around the filtered points to search for squares defined by posts/trunks; a pair on the left boundary and a pair on the right.
+    Those squares were evaluated using a cost function to find those having a high degree of symmetry, regular internal angles, and appropriate length of sides,
+    A similar process was then repeated to join the squares into chains that represented a continuous section of row.
+    At each stage, the squares, and chain proposals were evaluated using cost functions to weigh up and filtered based on minimum acceptable criteria.
+
     This was repeated for every frame sent from the lidar (approximately \SI{10}{\hertz}).
     The vehicle then steered toward the mid-point of the most distant post/trunk pair in front of itself.
-    Detection of the \textit{out\_of\_row} condition was calculated based the vehicle's proximity to the farterest post/trunk pair.
+    Secondly, detection of the \textit{out\_of\_row} condition was calculated based the vehicle's proximity to the farthest post/trunk pair in front of the vehicle.
     Once there were no post/trunk pairs further than \SI{2.5}{\meter} in front of the vehicle, the vehicle would stop.
-    This algorithm made no attempt to avoid obstacles or turn between rows.
+    Thirdly, this algorithm made no attempt to turn between rows.
 
     Each trial was conducted at the vehicle's target operating speed of \SI{1.39}{\meter\per\second} (\SI{5}{\kilo\meter\per\hour}).
     To determine the vehicle's trajectory, recordings of the lidar and IMU were taken and post-processed using a SLAM package off-line.
