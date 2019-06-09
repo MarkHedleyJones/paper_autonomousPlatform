@@ -656,12 +656,17 @@
 
 \section{Autonomous Block Traversal}
 \label{sect:autonomous}
-    Initially, two row following strategies were developed for implementation on the platform.
+    Initially, two row following strategies were developed for block traversal on the platform.
     Details and results of each have been published separately.
-    One method used multi-layer lidar to detect the trunks and posts of the orchard and follow a centre-line between them \citep{Bell2016}.
-    The second method used a single camera combined with a convolutional neural network to segment features within the image.
-    These features were: traversable space, tree-lines, and row-ends \citep{Bell2017}.
-    A centreline was then fitted to the areas marked as traversable and used to generate a control vector.
+    One method used a multi-layer lidar to detect the posts and trunks of the orchard and follow a centre-line between them \citep{Bell2016}.
+    This involved segmenting points related to posts/trunks and then linking them together using a nearest neighbour approach.
+    Because posts/trunks in the same row-line are nearer than those of the adjacent row, this approach generated row boundary lines.
+    Once each side of the row was determined, linear and angular offsets were calculated between the row's centre and the vehicle.
+    Those offsets were then used to steer the vehicle so as to maintain the desired heading.
+    The second method used a single camera combined with a convolutional neural network to segment areas within the image.
+    These segmented areas were: traversable space, tree-lines, and row-ends \citep{Bell2017}.
+    The area of the image marked as traversable space was used to calculate a centreline based on the area's pixel-width in the image.
+    That centreline was then used to generate a control vector to keep the vehicle centered with respect to the traversable area.
 
     Both algorithms were developed on smaller, commercially available, platforms while the presented platform was being fabricated.
     A laptop (Dell E6410) with integrated graphics processor (Nvidia M5000M) was used on those test platforms to process sensor data and generate drive vectors.
