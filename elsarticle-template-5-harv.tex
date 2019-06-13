@@ -660,9 +660,10 @@
     Details and results of each have been published separately.
     One method used a multi-layer lidar to detect the posts and trunks of the orchard and follow a centre-line between them \citep{Bell2016}.
     This involved segmenting points related to posts/trunks and then linking them together using a nearest neighbour approach.
-    Because posts/trunks in the same row-line are nearer than those of the adjacent row, this approach generated row boundary lines.
-    Once each side of the row was determined, linear and angular offsets were calculated between the row's centre and the vehicle.
+    Because posts/trunks in the same row-line are nearer than those of the adjacent row, this approach resulted in the generation row boundary lines.
+    Once each side of the row was determined, linear and angular offsets were calculated between the row's centre and the vehicle's pivot axis.
     Those offsets were then used to steer the vehicle so as to maintain the desired heading.
+
     The second method used a single camera combined with a convolutional neural network to segment areas within the image.
     These segmented areas were: traversable space, tree-lines, and row-ends \citep{Bell2017}.
     The area of the image marked as traversable space was used to calculate a centreline based on the area's pixel-width in the image.
@@ -681,9 +682,9 @@
     While it would be possible to combine the approaches, only the lidar based method was adapted for use on the target platform.
 
     The multi-layer lidar was mounted horizontally above the front-right steering motor, visible in Figure~\ref{fig:suzy} and in Figure~\ref{fig:suzy_turning}.
-    The smaller platforms used a skid-steer geometry, whereas our platform uses Ackermann steering geometry.
-    This means that when turning, a skid-steered platform pivots along a lateral axis passing midway between the front and rear wheels.
-    On the target platform, that axis instead passes through the rear axle.
+    The smaller platforms used a skid-steer or differential-drive geometry, whereas our platform uses Ackermann steering geometry.
+    This means that when turning, a skid/differential drive platform pivots along a lateral axis passing midway between the front and rear wheels.
+    On the target platform however, that axis is aligned along what would be the rear axle.
     The software was modified to account for the change in pivot axis and mounting location of the lidar.
 
     \begin{figure}[htb]
@@ -706,7 +707,7 @@
     Once the operator intervenes, he/she will tweak relevant parameters of the turn.
     This can be widening or tightening as well as lengthening or shortening the distance or angle of each segment.
     Finally, if an object is detected in the vehicle's path during a turn, the steering angle is automatically increased so as to avoid the object, or the vehicle stops if the object is unavoidable.
-    This happens independently from the parameters contained in the map file.
+    This happens independently from the parameters contained in the map.
     Figure~\ref{fig:suzy_turning} shows the platform performing a row-end turn while under autonomous control.
 
     \begin{figure}[htb]
@@ -865,10 +866,10 @@
     This involved first filtering out points that were expected to represent the ground and using them to generate a representative surface.
     That surface was then used to filter the remaining points based on their height above the ground; not so far as to potentially be part of the overhead canopy, but not so close that they may be weeds or related to the ground itself.
     Further processing checked the geometric relationship of the remaining points and made predictions about the location of posts/trunks.
-    The process involved a recursive walk around the filtered points to search for squares defined by posts/trunks; a pair on the left boundary and a pair on the right.
-    Those squares were evaluated using a cost function to find those having a high degree of symmetry, regular internal angles, and appropriate length of sides,
+    The process involved a recursive walk around the filtered points to search for squares with vertices defined by posts/trunks; a pair on the left-hand boundary and a pair on the right.
+    Those squares were evaluated using a cost function to sort for those having a high degree of symmetry, regular internal angles, and appropriate length of sides,
     A similar process was then repeated to join the squares into chains that represented a continuous section of row.
-    At each stage, the squares, and chain proposals were evaluated using cost functions to weigh up and filtered based on minimum acceptable criteria.
+    At each stage, the squares, and chain proposals were evaluated using cost functions to weigh-up strong proposals and filter-out weak proposals based on minimum acceptable criteria.
 
     This was repeated for every frame sent from the lidar (approximately \SI{10}{\hertz}).
     The vehicle then steered toward the mid-point of the most distant post/trunk pair in front of itself.
@@ -970,7 +971,7 @@
     The distance between each of these points and the five trajectories was measured to quantify the deviation between each trajectory and the row's centre.
     Figure~\ref{fig:row_following_performance_analysis} presents these centreline deviations along with error estimates arising from our measurement method.
     Sources of error were $\pm$\SI{1} pixel at each end of the post/trunk-pair lines as well as measurement rounding errors.
-    In this analysis we assume that the generated SLAM map is perfectly accurate.
+    In this analysis we make the assumption that the generated SLAM map was perfectly accurate.
 
     Figure~\ref{fig:row_following_repeatability} compares each trajectory to the average trajectory.
     The data presented in this figure makes no reference to the row's centre, instead each trajectory is compared only to the average of all five trajectories.
