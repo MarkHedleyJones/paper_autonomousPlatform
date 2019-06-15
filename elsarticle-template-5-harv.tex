@@ -682,10 +682,10 @@
     While it would be possible to combine the approaches, only the lidar based method was adapted for use on the target platform.
 
     The multi-layer lidar was mounted horizontally above the front-right steering motor, visible in Figure~\ref{fig:suzy} and in Figure~\ref{fig:suzy_turning}.
-    The smaller platforms used a skid-steer or differential-drive geometry, whereas our platform uses Ackermann steering geometry.
-    This means that when turning, a skid/differential drive platform pivots along a lateral axis passing midway between the front and rear wheels.
+    The smaller platforms used a skid-steer geometry, whereas our platform uses Ackermann steering geometry.
+    When turning, a skid drive platform pivots along a lateral axis passing midway between the front and rear wheels.
     On the target platform however, that axis is aligned along what would be the rear axle.
-    The software was modified to account for the change in pivot axis and mounting location of the lidar.
+    The software was modified to account for the change in pivoting axis as well as the new mounting location for the lidar.
 
     \begin{figure}[htb]
         \centering
@@ -720,6 +720,28 @@
         \label{fig:suzy_turning}
     \end{figure}
 
+    \subsection{Pure Row-following}
+    \label{sub:rowfollowing}
+      A third row-following algorithm was developed which was based on \cite{Bell2016}, but with three key differences.
+      The first was that the algorithm made no attempt to turn between rows or avoid obstacles; it followed a row until it detected the row's end.
+
+      Secondly, the filtering of point-cloud data was altered such that points were filtered based on their proximity to the ground.
+      This involved first filtering out points that were expected to represent the ground and using them to generate a representative surface.
+      That surface was then used to filter the remaining points based on their height above the surface/ground; not so far as to potentially be part of the overhead canopy, but not so close that they may be weeds or related to the ground itself.
+      Further processing checked the geometric relationship of the remaining points and made predictions about the location of posts/trunks.
+      The process involved evaluating groupings of four post/trunks to find those likely to represent adjacent post/trunks on either side of the row -- forming a square.
+      These squares were then evaluated using a cost function to sort for those having a high degree of symmetry, regular internal angles, and appropriate length of sides,
+      A similar process was then repeated to join the squares into chains that represented a continuous section of row.
+      Such an arrangement can be seen in Figure~\ref{fig:row_following_paths_segmented} where a ladder-like structure is used to connect the posts/trunks in the generated map.
+      Again using cost functions, possible chain sections were then evaluated based on the regularity of areas of the squares they were made up of, their linearity, and the number of squares they contained.
+      The highest scoring chain was then used as the best interpretation of the row's geometry.
+      This process was repeated for every frame sent from the lidar (approximately \SI{10}{\hertz}).
+      The final stage located the mid-point of the furtherest post/trunk pair in front of the vehicle, which was used as a steering target.
+      The position of the steering target was averaged over 10 samples to both stabalise its location and smooth its transition to a newly detected post/trunk pair.
+
+      The third alteration was that the detection of the \textit{out\_of\_row} condition was calculated based the vehicle's proximity to the steering target.
+      Once the vehicle came within \SI{2.5}{\meter} of the steering target, it was assumed that the vehicle had reached the end of the row.
+      The value of \SI{2.5}{\meter} was chosen based on the amount of area at the end of the rows relative to the spacing of posts/trunks within the row.
 \section{Testing}
 \label{sub:testing}
 
@@ -858,26 +880,12 @@
     In this case the most feasible path for row following was detected along the headland area - instead of through the target row.
     One intervention, attempt 12 of block~A, was caused by the canopy detection system triggering a row-end turn whilst still inside a row.
 
-  \subsection{Row Following}
+  \subsection{Pure Row-following}
     Row-following repeatability trials saw the platform self-drive through a single row, from approximately the same starting point, five times.
-    In this trial the row-following algorithm was similar to that reported in \cite{Bell2016} that used a lidar to detect post/trunks, but with three main differences.
-
-    Firstly, the filtering of incoming point-cloud data was altered such that incoming points were filtered based on their proximity to the ground.
-    This involved first filtering out points that were expected to represent the ground and using them to generate a representative surface.
-    That surface was then used to filter the remaining points based on their height above the ground; not so far as to potentially be part of the overhead canopy, but not so close that they may be weeds or related to the ground itself.
-    Further processing checked the geometric relationship of the remaining points and made predictions about the location of posts/trunks.
-    The process involved a recursive walk around the filtered points to search for squares with vertices defined by posts/trunks; a pair on the left-hand boundary and a pair on the right.
-    Those squares were evaluated using a cost function to sort for those having a high degree of symmetry, regular internal angles, and appropriate length of sides,
-    A similar process was then repeated to join the squares into chains that represented a continuous section of row.
-    At each stage, the squares, and chain proposals were evaluated using cost functions to weigh-up strong proposals and filter-out weak proposals based on minimum acceptable criteria.
-
-    This was repeated for every frame sent from the lidar (approximately \SI{10}{\hertz}).
-    The vehicle then steered toward the mid-point of the most distant post/trunk pair in front of itself.
-    Secondly, detection of the \textit{out\_of\_row} condition was calculated based the vehicle's proximity to the farthest post/trunk pair in front of the vehicle.
-    Once there were no post/trunk pairs further than \SI{2.5}{\meter} in front of the vehicle, the vehicle would stop.
-    Thirdly, this algorithm made no attempt to turn between rows.
-
     Each trial was conducted at the vehicle's target operating speed of \SI{1.39}{\meter\per\second} (\SI{5}{\kilo\meter\per\hour}).
+    The modified version of \cite{Bell2016} was used for the row-following trial.
+    At the beginning of each trial the navigation software was started with no prior information about the row.
+
     To determine the vehicle's trajectory, recordings of the lidar and IMU were taken and post-processed using a SLAM package off-line.
     The SLAM package used was Cartographer (version 1.0) that was integrated into a ROS package (cartographer\_ros).
     It was used to calculate the vehicle's trajectory and a 2D map of the surrounding environment \citep{Hess2016}.
@@ -916,7 +924,7 @@
         \centering
         \includegraphics[width=\linewidth]{imgs/slam/segmented_analysis_with_centres.pdf}
         \caption{
-            Five row-following trials shown with row boundaries overlaid.
+            Generated SLAM map with five row-following trials overlaid.
             Blue lines link posts and trunks along each boundary line.
             Grey dotted lines link post/trunk pairs, the mid-point of which define the row's centre.
             Grey numbers indicate the post/trunk pair numbers relative to the start of the row.
@@ -972,6 +980,7 @@
     Figure~\ref{fig:row_following_performance_analysis} presents these centreline deviations along with error estimates arising from our measurement method.
     Sources of error were $\pm$\SI{1} pixel at each end of the post/trunk-pair lines as well as measurement rounding errors.
     In this analysis we make the assumption that the generated SLAM map was perfectly accurate.
+    The maximum recorded displacement from the centreline was \SI{326}{\milli\meter}, which occurred at the twenty-second post/trunk pair.
 
     Figure~\ref{fig:row_following_repeatability} compares each trajectory to the average trajectory.
     The data presented in this figure makes no reference to the row's centre, instead each trajectory is compared only to the average of all five trajectories.
@@ -982,35 +991,36 @@
     Finally, Figure~\ref{fig:row_following_end_points} shows the final resting position of the vehicle after each trial.
     The path-following algorithm determines the end position based on its proximity to the last post-pair within its detection range.
     Notice that the end posts of each row are spaced slightly further than is usual inside the row.
-    That extra spacing places the final post-pair near the software-defined cut-off region used to identify post/trunk pairs.
+    That extra spacing places the final post-pair near the software-defined cut-off region used to identify post/trunk pairs in front of the vehicle.
     Stopping slightly earlier results in the last post/trunk pair not being detected, as is the case in path groups A and B.
     Additionally, there is ambiguity in the position of the second-to-last post/trunk pair because vines have been planted in close proximity to the posts.
-    Analysis of the recorded sensor data shows this ambiguity to be the cause of the separation in end-positions between points A and B.
+    Analysis of the recorded sensor data suggests sensitivity to this ambiguity causes the separation between points A and B.
 
 \section{Discussion}
 \label{sect:discussion}
 
     % TODO{Mark}: Discuss that there is high localisation uncertainty at the start because we do not use a pre-computed map and because there isn't much sensor information at the commencement of each trial.
 
-    The reported platform meets the specified requirements and has proved its usefulness during three pollination and harvesting seasons.
+    The reported platform met the specified requirements and was trialled during three pollination and harvesting seasons.
     However, during these operations the vehicle was mostly operated under manual control because of the need to drive close to row boundaries.
-    The width of the vehicle and modules meant it was necessary to perform two passes through each row in order to access the full canopy area.
-    The vehicle's overall height is \SI{1.25}{\meter}, leaving \SI{0.15}{\meter} between it and the target ceiling height of \SI{1.4}{\meter}.
+    The width of the robotic modules meant it was necessary to perform two passes through each row in order to access the full canopy area.
+    The vehicle's overall height was \SI{1.25}{\meter}, leaving \SI{0.15}{\meter} between it and the target ceiling height of \SI{1.4}{\meter}.
 
     Results from navigation tests indicate that multi-layer lidar with wheel-encoder feedback is sufficient for row turning tasks.
-    For row following, an IMU and multi-layer lidar based algorithm produced paths that were sufficiently repeatable and close to the row's centre-line.
-    Wheel slippage meant encoder information was less suitable for long-term odometry than the odometry information provided by the SLAM package, which was based on processed lidar and IMU data.
-    While more accurate for longer-term path tracking, the short-term response is not as accurate as encoder or IMU based odometry.
-    Future work will combine all three sources into a single output with improved short and long-term accuracy.
-
     The method for turning between rows calls for further work.
-    Row end turning was a manual process that involved observing an autonomously driven turn and manually adjusting the length or radius of path segments.
-    Future work will focus on enabling the system to plan row-end turns based on perception based sensor data -- without a manually created map.
+    Row-end turning was a manual process that involved observing pre-calculated turn and manually adjusting the length or radius of path segments.
+    Future work will focus on enabling the system to plan row-end turns based on perception based sensor data -- without a pre-computed map.
     Observationally, detecting row end-points based on the vehicle's proximity to the last post-pair proved more reliable than detecting the presence/absence of canopy.
 
-    The platform's \SI{96}{\volt} battery pack and electrical system introduced a electrical hazard during development.
-    % While essential for safety, risk mitigation procedures added complexities and delays that could have been avoided by simply selecting a lower operating voltage.
-    The authors suggest a voltage of \SI{48}{\volt} as it bears a reduced risk of injury from shock.
+    For row following, a multi-layer lidar algorithm produced paths that were repeatable to within \SI{75}{\milli\meter}.
+    Wheel slippage meant encoder information was less suitable for long-term odometry than the odometry information provided by the SLAM package, which was based solely on lidar information.
+    Our analysis showed a worst-case deviation of \SI{326}{\milli\meter} from the row's mid-point, however this figure appears to mostly be influenced by the non-linearity of the row itself.
+    As Figure~\ref{fig:row_following_performance_analysis} shows, the worst case error for each trial occurred between post/trunk pair twenty-two.
+    Matching this with the corresponding post/trunk pair in Figure~\ref{fig:row_following_paths_segmented} shows the placement of the right-hand post/trunk is a contributing factor.
+    Our method of measuring deviation of the vehicle's trajectory from the row's centre calls for improvement.
+
+    The platform's \SI{96}{\volt} battery pack and electrical system introduced a electrical hazard that caused delays.
+    The authors suggest a voltage of \SI{48}{\volt} for development vehicle such as this as it bears a reduced risk of injury from electrical shock.
     Inputs of \SI{48}{\volt} are supported across a wider range of motors, motor controllers, and power converters, but cabling requirements are increased.
 
     The series-hybrid electrical configuration allowed the vehicle to drive and provide power to subsystems without running the petrol engine.
@@ -1030,14 +1040,14 @@
 \section{Conclusion}
     This work presents a platform designed specifically for autonomously transporting task-specific modules through pergola-style kiwifruit orchards.
     The platform is capable of carrying over twice the mass of similar platforms reported previously.
-    The four wheel drive system with two individually-actuated steering wheels was well suited for use in and around kiwifruit orchards.
-    The authors deem the use of a four-wheel steering configuration in this environment to be unnecessary.
+    The four wheel drive system with two individually-actuated steering wheels proved suitable for use in and around kiwifruit orchards.
+    Subsequently, the authors deem the use of a four-wheel steering configuration in this environment to be unnecessary.
 
     Various navigation sensors were trialled in the kiwifruit orchard environment.
     Multi-layer lidar proved to be the most versatile sensor for orchard based navigation owing to its wide field-of-view and robust outputs.
     Using a map of manually adjusted row-end turns, the platform has navigated over \SI{10}{\kilo\meter} of orchard rows using only wheel-encoders and a single multi-layer lidar.
     A significant amount of work was required to tune the row-end-turns, which has implications for commercial deployment.
-    Row following tests using an algorithm based only on multi-layer lidar and IMU inputs proved to be repeatable to within $\pm$\SI{75}{\milli\meter}.
+    Row following trials using an algorithm based only on multi-layer lidar inputs was repeatable to within $\pm$\SI{75}{\milli\meter} over five trials.
 
     % The authors recommend a system voltage of \SI{48}{\volt} for development platforms due to safety and component availability, which this platform did not use.
     The use of smaller, commercially available, robots proved valuable when developing navigation software due to their safety and portability.
