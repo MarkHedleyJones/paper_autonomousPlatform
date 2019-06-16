@@ -60,7 +60,7 @@
 
 \title{Design and Testing of a Heavy-Duty Platform for Autonomous Navigation in Kiwifruit Orchards}
 
-\author[UoW]{Mark H. Jones\corref{mjemail}}
+\author[UoW]{Mark Hedley Jones\corref{mjemail}}
 \cortext[mjemail]{markhedleyjones@gmail.com}
 
 \author[UoA]{Jamie Bell\corref{jbemail}}
@@ -82,9 +82,9 @@
     This paper presents a heavy-duty platform capable of carrying modules of up to \SI{1000}{\kilo\gram} beneath \SI{1.4}{\meter} high pergola-style kiwifruit canopies.
     We discuss the design of the vehicle's software, electrical system, and mechanical structure.
     Examples of related modules are robotic kiwifruit harvesters and kiwifruit pollination modules.
-    Sensors suitable for autonomous navigation are evaluated in-orchard and tested with prototype navigation algorithms.
+    Sensors suitable for autonomous navigation are evaluated in-orchard and tested with prototype algorithms.
     Row following trials show a repeatability of within $\pm$\SI{75}{\milli\meter} using only a multi-layer lidar.
-    Combined with a method of automatically turning between rows, the vehicle traversed over \SI{10}{\kilo\meter} of orchard rows unassisted.
+    With a method of automatically turning between rows, the vehicle traversed over \SI{10}{\kilo\meter} of orchard rows unassisted.
 \end{abstract}
 
 \begin{keyword}
@@ -106,7 +106,7 @@
 \nomenclature{$\Delta~v$}{Change in velocity (\SI{}{\meter\per\second})}
 \nomenclature{$\omega$}{Angular velocity (\SI{}{\radian\per\second})}
 \nomenclature{$\tau$}{Torque (\SI{}{\newton\meter})}
-\nomenclature{$B$}{Nominal width of a tyre (\SI{}{\meter})}
+\nomenclature{$B$}{Nominal tyre width (\SI{}{\meter})}
 \nomenclature{$C_{rr}$}{Rolling resistance coefficient (unitless)}
 \nomenclature{$E$}{Offset between a tyre and its axis of rotation (\SI{}{\meter})}
 \nomenclature{$F_{accel}$}{Force required to accelerate (\SI{}{\newton})}
@@ -116,13 +116,13 @@
 \nomenclature{$G$}{Acceleration due to gravity (\SI{}{\meter\per\second\squared})}
 % \nomenclature{$m$}{Mass (\SI{}{\kilo\gram})}
 % \nomenclature{$P$}{Power (\SI{}{\watt})}
-\nomenclature{$r$}{Radius of a wheel (\SI{}{\meter})}
+\nomenclature{$r$}{Wheel radius (\SI{}{\meter})}
 \nomenclature{$u$}{Friction coefficient (unitless)}
 % \nomenclature{$v$}{Velocity (\SI{}{\meter\per\second})}
 \nomenclature{$W$}{Weight (\SI{}{\newton})}
 \nomenclature{CAN}{Controller Area Network}
-\nomenclature{GLONASS}{A GNSS service operated by the Russian Federation}
 \nomenclature{GNSS}{Global Navigation Satellite System}
+\nomenclature{GLONASS}{A GNSS service operated by the Russian Federation}
 \nomenclature{GPS}{An GNSS service operated by the United States}
 \nomenclature{IMU}{Inertial Measurement Unit}
 \nomenclature{PSA}{Pseudomonas syringae pv. actinidiae (type of bacteria)}
@@ -163,7 +163,7 @@
     Additional requirements are to:
     \begin{enumerate}
         \item support a mass of \SI{1000}{\kilo\gram},
-        \item have a maximum height of \SI{1.4}{\meter},
+        \item have a maximum height of less than \SI{1.4}{\meter},
         \item provide \SI{8}{\kilo\watt} of electrical power to modules,
         \item turn between rows using existing headland areas,
         \item include a bin-lifting mechanism for carrying fruit bins, and
@@ -187,7 +187,7 @@
         Their vehicle combined wheel encoders, a compass, and accelerometers for odometry information.
         It also featured a camera based row guidance system.
         The system as a whole was capable of spraying individual plants whilst driving autonomously at \SI{0.7}{\meter\per\second} (\SI{2.5}{\kilo\meter\per\hour}).
-        While their purpose built experimental vehicle proved capable of row following and targeted spraying, it was not modular.
+        While their purpose built experimental vehicle proved capable of row following and targeted spraying, its design was not modular.
 
         Four years later, two autonomous vehicles designed for weed mapping and control in open field crops were presented \citep{Pedersen2002,Astrand2002}.
         These platforms had simple chassis and drive systems as they were both at a prototype stage; neither were designed to carry modularised payloads.
@@ -261,7 +261,7 @@
         The vehicle's design is mostly influenced by the need to carry modularised robotic systems and fruit bins.
         Existing commercial platforms suitable for use in horticulture already exist, such as the Warthog from ClearPath Robotics, but the maximum payload, battery life, and vehicle geometry make them unsuitable for kiwifruit harvesting.
         The mass of robotic modules for pollination or harvesting can be as much as \SI{600}{\kilo\gram} and a bin of kiwifruit adds an additional \SI{400}{\kilo\gram}.
-        The minimum canopy height in typical commercial orchards range from \SI{1.4}{\meter} to \SI{1.7}{\meter}, so the vehicle must also have a low profile.
+        The minimum canopy height in typical commercial orchards ranges from \SI{1.4}{\meter} to \SI{1.7}{\meter}, so the vehicle must also have a low profile.
         Modules carried by the platform require clearance from the canopy in addition to the height they occupy themselves.
         To maximise the space available to these modules the platform must be low-slung at the point they attach.
         Figure~\ref{fig:AMMP} illustrates the platform's design, with module area allocated between markers `G' and `H' in the side-view (top left).
@@ -276,7 +276,7 @@
 
         The chassis is assembled from sections of \SI{3}{\milli\meter} laser-cut and folded mild steel.
         The sections are welded together on jigs, also made from laser-cut and folded steel, before being powder-coated and assembled.
-        Much of the folded chassis structure contains triangular cut-outs, reducing weight while having minimal impact on rigidity.
+        Much of the folded chassis structure contains triangular cut-outs, reducing mass while having minimal impact on rigidity.
         Finite element analysis was used during the design phase to help identify areas needing to be strengthened and areas where material could be removed.
         This helped to ensure the platform met its target load capacity of \SI{1000}{\kilo\gram}, while the bare chassis weighs only \SI{190}{\kilo\gram}.
         A drawing of the bare chassis is shown in Figure~\ref{fig:AMMPChassis}.
@@ -294,7 +294,7 @@
         These motors can generate \SI{7.32}{\newton\meter} of torque with a maximum angular velocity of \SI{3000}{rev\per\minute} and are rated at \SI{2.3}{\kilo\watt}.
         Their outputs are fed through fixed-ratio planetary gearboxes with a 64:1 reduction, increasing torque to \SI{470}{\newton\meter} while reducing the maximum angular velocity to \SI{47}{rev\per\min}.
 
-        Torque requirements for the steering motors are based on a static friction scenario with the vehicle loaded with a \SI{1000}{\kilo\gram} mass, sitting on concrete.
+        Torque requirements for the steering motors are based on a static friction scenario with the vehicle loaded with a \SI{1000}{\kilo\gram} mass while sitting on concrete.
         This is described by the following equation:
         \begin{equation}
         \label{eqn:steer_torque}
@@ -307,7 +307,7 @@
         The mass of the vehicle (\SI{800}{\kilo\gram}), plus payload (\SI{1000}{\kilo\gram}), and fuel (\SI{60}{\kilo\gram}) adds to \SI{1860}{\kilo\gram}.
         Allowing for uneven weight distribution and a safety margin, the per-wheel mass supported is \SI{500}{\kilo\gram}, or a weight of \SI{4900}{\newton}.
         The tyre width is \SI{0.28}{\meter}.
-        By combining these values, as per Equation~\ref{eqn:steer_torque}, a torque of \SI{388}{\newton\meter} is required to overcome static friction when actuating the steering motors.
+        By combining these values, as per Equation~\ref{eqn:steer_torque}, a torque of \SI{388}{\newton\meter} is required to overcome static friction when actuating the steering wheels.
 
         Actuating the steering wheels independently removes the need for mechanical linkages between them, allowing for more extreme steering angles and a simpler mechanical design.
         Both steered wheels have the freedom to rotate \SI{330}{\degree}, artificially limited by mechanical stops.
@@ -316,14 +316,14 @@
 
         Implementing a four-wheel steering system would shift the pivot point to the vehicle's centre, roughly halving the turn radius, but this was deemed unnecessary.
         Headlands in kiwifruit orchards are sized for tractors with much larger turning radii than that of our platform.
-        The use of a two-wheeled steering system removes the need to develop the ``non-trivial'' control strategies developed by \cite{Bak2004}.
+        The use of a two-wheeled steering system removes the need to develop the ``non-trivial'' control strategies required by \cite{Bak2004}.
         It also increases the usable area at the rear of the vehicle by removing the need for clearances around actuated wheels.
         A skid steer system was expected to cause ground damage to a level considered unacceptable to orchard owners.
 
         The steering motors have incremental encoders, but no means of absolute positioning built-in.
         This means that the front-wheel angles must aligned before use.
         A homing sequence at boot-up is used to find an absolute angle as a reference point for relative rotation data.
-        Inductive proximity sensors are used as a means of detecting the position of the wheels during this sequence.
+        Inductive proximity sensors are used to detect the position of the wheels during this sequence.
 
     \subsection{Drive system}
     \label{sub:drive}
@@ -371,7 +371,7 @@
 
         In total there are seven brushless AC motors on the platform: four drive motors, two steering motors, and a motor used for electrical power generation.
         Each are connected to individual controllers (Sevcon Gen4 DC Size 4).
-        These controllers are available in four bus voltage options: 24-36V, 36-48V, 72V-80V, and 96V-110V.
+        These controllers are available in four input voltage options: 24-36V, 36-48V, 72V-80V, and 96V-110V.
         The six motors used for traction and steering are together capable of consuming \SI{30.2}{\kilo\watt}.
         With a \SI{48}{\volt}DC bus this would equate to a current draw of \SI{630}{\ampere}.
         As \SI{24}{\meter} of cabling is required to connect the motors and controllers to a common point on the vehicle, a \SI{96}{\volt}DC bus was used to reduce the required gauge of that cable.
@@ -379,7 +379,7 @@
 
     \subsection{Power Distribution}
     \label{sub:power}
-        The system bus connects the batteries and generator to motor controllers and on-board power converters.
+        The system's electrical bus connects the batteries and generator to motor controllers and on-board power converters.
         A series of heavy-duty contactors (TE Connectivity Kilovac LEV200) control each device's connection to the bus, as well as the bus's connection to the power source.
         Figure~\ref{fig:power_system_diagram} illustrates the power-distribution on the platform.
 
@@ -392,7 +392,7 @@
 
         Two battery modules attached to the sides of the chassis each house fifteen lithium-iron-phosphate (LiFePO$_{\text{4}}$) batteries connected in series.
         Together, the batteries (Winston/Thundersky WB-LYP90AHA) provide a nominal bus voltage of \SI{96}{\volt} and a total electrical capacity of \SI{8.64}{\kilo\watt\hour}.
-        The battery packs were manually `bottom-balanced' before being fitted and no cell-level voltage monitoring is present.
+        The battery packs were manually `bottom-balanced' before being installed and no cell-level voltage monitoring is present.
         Maximum and minimum pack voltages were established by monitoring individual cells during charging and discharging.
         At the point that any individual cell exceeded a safe maximum/minimum threshold, the respective maximum/minimum pack voltage was recorded.
 
@@ -413,7 +413,7 @@
         The controller provides voltage and current limits as well as the ability to reduce output as the batteries become charged.
         These settings provide all the functionality of a general purpose battery charger, making this a cost effective and versatile charging solution.
         Electrical energy from the power generation unit is fed to the batteries in a series-hybrid configuration.
-        An external charging port is also fitted to allow charging of the batteries externally.
+        An charge plug has been fitted to allow charging of the batteries from an external source.
 
         A fuel tank is fitted over the rear right-hand wheel (visible in Figure~\ref{fig:suzy}).
         It can hold \SI{60}{\litre} of petrol, allowing the vehicle to operate continuously for over \SI{24}{\hour}.
@@ -467,7 +467,7 @@
         This interface is configured using a proprietary tool and is not intended for use other than between controllers configured with their software.
         By observing the communication protocol between a master and slave in operation, it was possible to implement a master node in software that runs on the Platform PC.
         With this, all motor controllers on the platform are programmed as slave devices.
-        This allows them to accept drive commands via CAN interface, allowing them to be directly controlled by ROS nodes.
+        This allows them to accept drive commands via a CAN interface, allowing them to be directly controlled by ROS nodes.
 
         Relay modules allow the Platform PC to toggle power to on-board power supplies, motor controllers, park-brakes, and lights.
         They also monitor the timing of synchronisation messages transmitted by the Platform PC onto the CAN bus.
@@ -512,7 +512,7 @@
             Encoder                   & Error accumulation \\ \hline
             Lidar                     & Reduced visibility in fog and heavy rain \\ \hline
             Time of Flight Camera     & Reduced visibility in sunlight, fog and heavy rain \\ \hline
-            Camera                    & Reduced visibility in fog or direct sunlight \\ \hline
+            Camera                    & Reduced visibility in fog or direct sunlight, blurring \\ \hline
             Thermal Camera            & Reduced visibility in conditions of low thermal contrast\\ \hline
         \end{tabular}
         \caption{Sensor types considered for inclusion on the platform.}
@@ -579,7 +579,7 @@
         Three lidar based sensors were evaluated, two single-plane and one multi-layer.
         The two single-plane lidar were the Hokuyo UTM-30LX and a SICK LMS111.
         The multi-layer lidar is a Velodyne VLP-16 which has 16 horizontal \SI{360}{\degree} layers separated over \SI{15}{\degree}.
-        Data was collected from each device while driving through orchard rows with the sensor placed \SI{0.8}{\meter} above ground level.
+        Data was collected from each sensor while driving through orchard rows with the units placed \SI{0.8}{\meter} above ground level.
 
         \begin{figure}[htb]
             \centering
@@ -727,11 +727,11 @@
       This involved first filtering out points that were expected to represent the ground and using them to generate a representative surface.
       That surface was then used to filter the remaining points based on their height above the surface/ground; not so far as to potentially be part of the overhead canopy, but not so close that they may be weeds or related to the ground itself.
       Further processing checked the geometric relationship of the remaining points and made predictions about the location of posts/trunks.
-      The process involved evaluating groupings of four post/trunks to find those likely to represent adjacent post/trunks on either side of the row -- forming a rectangle.
+      The process involved evaluating groupings of four post/trunks to find those likely to represent pairs of adjacent post/trunks on either side of the row -- forming a rectangle.
       These rectangles were then evaluated using a cost function to sort for those having regular internal angles, correct orientation, and appropriate side lengths.
       A similar process was then repeated to join the rectangles into a lattice, representing a continuous section of an orchard row.
       Such an arrangement can be seen in Figure~\ref{fig:row_following_paths_segmented} where a ladder-like structure is used to connect the posts/trunks in the generated map.
-      Again using cost functions, possible lattice sections were then evaluated based on the regularity of areas of the rectangle they were made up of, their linearity, and the number of rectangles they contained.
+      Again using a cost function, possible lattice sections were evaluated based on the regularity of areas of the rectangles they were made up of, the lattice's overall linearity, and the number of rectangles they contained.
       The highest scoring lattice was then used as the best interpretation of the row's geometry.
       This process was repeated for every data frame sent from the lidar (approximately \SI{10}{\hertz}).
       The final stage located the mid-point of the furtherest post/trunk pair in front of the vehicle, which was used as a steering target.
@@ -922,7 +922,7 @@
         \centering
         \includegraphics[width=\linewidth]{imgs/slam/segmented_analysis_with_centres.pdf}
         \caption{
-            Generated SLAM map with five row-following trials overlaid.
+            Cropped SLAM map with five row-following trials overlaid.
             Blue lines link posts and trunks along each boundary line.
             Grey dotted lines link post/trunk pairs, the mid-point of which define the row's centre.
             Grey numbers indicate the post/trunk pair numbers relative to the start of the row.
@@ -981,7 +981,7 @@
     The maximum recorded displacement from the centreline was \SI{326}{\milli\meter}, which occurred at the twenty-second post/trunk pair.
 
     Figure~\ref{fig:row_following_repeatability} compares each trajectory to the average trajectory.
-    The data presented in this figure makes no reference to the row's centre, instead each trajectory is compared only to the average of all five trajectories.
+    The data presented in this figure makes no reference to the row's centre, instead each trajectory is compared only to the average of the five trajectories.
     The distance between each trajectory and the average was calculated along the 39 post/trunk-pair lines shown in Figure~\ref{fig:row_following_paths_segmented}.
     It shows that the worst case repeatability was less than $\pm$\SI{75}{\milli\meter}.
 
@@ -1006,7 +1006,7 @@
 
     Results from navigation tests indicate that multi-layer lidar with wheel-encoder feedback is sufficient for row turning tasks.
     The method for turning between rows calls for further work.
-    Row-end turning was a manual process that involved observing pre-calculated turn and manually adjusting the length or radius of path segments.
+    Row-end turning was a manual process that involved observing pre-calculated turns and manually adjusting the length or radius of path segments.
     Future work will focus on enabling the system to plan row-end turns based on perception based sensor data -- without a pre-computed map.
     Observationally, detecting row end-points based on the vehicle's proximity to the last post-pair proved more reliable than detecting the presence/absence of canopy.
 
@@ -1014,16 +1014,16 @@
     Wheel slippage meant encoder information was less suitable for long-term odometry than the odometry information provided by the SLAM package, which was based solely on lidar information.
     Our analysis showed a worst-case deviation of \SI{326}{\milli\meter} from the row's mid-point during row-following, however this figure appears to mostly be influenced by the non-linearity of the row itself.
     As Figure~\ref{fig:row_following_performance_analysis} shows, the worst case error for each trial occurred between post/trunk pair twenty-two.
-    Matching this with the corresponding post/trunk pair in Figure~\ref{fig:row_following_paths_segmented} shows the placement of the right-hand post/trunk is a contributing factor.
+    Matching this with the corresponding post/trunk pair in Figure~\ref{fig:row_following_paths_segmented} shows the placement of the right-hand post/trunk is certainly a contributing factor.
     Our method of measuring deviation of the vehicle's trajectory from the row's centre calls for improvement.
 
-    The regular and easily detectable structure of a pergola style kiwifruit orchard made generating odometry information directly from lidar scans reliable.
-    This data was generated by the SLAM package and removed the need for wheel odometry and an IMU when performing row following.
+    The structure of the pergola style kiwifruit orchard made generating odometry information directly from lidar scans reliable enough to replace wheel encoders and IMU based odometry.
+    This data was generated by the SLAM package (Cartographer) by matching subsequent lidar frames.
     As it was based on visual information it was much less prone to drift than the wheel encoders or IMU, although we did not quantify the difference.
 
     The platform's \SI{96}{\volt} battery pack and electrical system introduced a electrical hazard that caused delays during development, assembly, and testing.
-    The authors suggest a voltage of \SI{48}{\volt} for development vehicle such as this as it bears a reduced risk of injury from electrical shock.
-    Inputs of \SI{48}{\volt} are also supported across a wider range of motors, motor controllers, and power converters, but cabling requirements are increased.
+    The authors suggest a voltage of \SI{48}{\volt} for similar developmental vehicles as it bears a reduced risk of injury from electrical shock.
+    Inputs of \SI{48}{\volt} are supported across a wider range of motors, motor controllers, and power converters, but cabling requirements are increased.
 
     The series-hybrid electrical configuration allowed the vehicle to drive and provide power to subsystems without running the petrol engine.
     This was useful in testing scenarios, where people are in close proximity to the vehicle, as it eliminated exhaust fumes and reduced noise and vibration.
@@ -1032,31 +1032,34 @@
     An electric air-compressor would allow the system to run without the petrol engine for much longer periods.
 
     The use of more general purpose platforms to test navigation algorithms enabled the navigation software to be developed in parallel with the physical hardware.
-    Their smaller size eliminated the risk of serious injury and led to a speed up in development and test cycles.
-    It also meant that navigation testing could continue while the full-size platform was engaged in other activities.
+    Their smaller size eliminated the risk of serious injury and led to a speed-up in development and test cycles.
+    It also meant that navigation testing could continue while the full sized platform was engaged in other activities.
 
     An added benefit to the modularisation of the robotic harvesting and pollination systems was the ability to operate them independently from the vehicle.
-    In the event that the vehicle required repair or maintenance work during a harvesting or pollination season, the modules could be mounted on a trailer and towed behind an ATV until the vehicle was ready.
+    In the event that the vehicle required repair or maintenance work during a harvesting or pollination season, the modules could be mounted on a trailer and towed behind a quad-bike until the vehicle was ready.
 
     % Simulation of the robot hardware proved useful for finding software issues before implementation on hardware.
     % Much of the time developing the simulation went into the creation of a geometric model of the platform.
     % The model also proved useful for visualising the state of the vehicle and sensor outputs, using Rviz, in real-time and when replaying recorded sensor data.
 
 \section{Conclusion}
-    This work presents a platform designed specifically for autonomously transporting task-specific modules through pergola-style kiwifruit orchards.
+    We presented a platform designed specifically for autonomously transporting task-specific modules and kiwifruit bins through pergola-style kiwifruit orchards.
     The platform is capable of carrying over twice the mass of similar platforms reported previously.
     The four wheel drive system with two individually-actuated steering wheels proved suitable for use in and around kiwifruit orchards.
     Subsequently, the authors deem the use of a four-wheel steering configuration in this environment to be unnecessary.
 
     Various navigation sensors were trialled in the kiwifruit orchard environment.
     Multi-layer lidar proved to be the most versatile sensor for orchard based navigation owing to its wide field-of-view and robust outputs.
+    Row following trials using an algorithm based only on multi-layer lidar was repeatable to within $\pm$\SI{75}{\milli\meter} over five trials.
+    GNSS, time-of-flight, and infra-red stereoscopic cameras proved unsuitable as row guidance sensors.
+    2D cameras and neural network based processing proved capable of row following, but the lidar based method was more robust and less demanding of computation resources.
     Using a map of manually adjusted row-end turns, the platform has navigated over \SI{10}{\kilo\meter} of orchard rows using only wheel-encoders and a single multi-layer lidar.
     A significant amount of work was required to tune the row-end-turns, which has implications for commercial deployment.
-    Row following trials using an algorithm based only on multi-layer lidar inputs was repeatable to within $\pm$\SI{75}{\milli\meter} over five trials.
+    Future work will focus on enabling the vehicle to plan its own row-end turns based on sensory data.
 
     % The authors recommend a system voltage of \SI{48}{\volt} for development platforms due to safety and component availability, which this platform did not use.
-    The use of smaller, commercially available, robots proved valuable when developing navigation software due to their safety and portability.
-    Future work will focus on developing the navigation system so that the vehicle can plan row-end turns and avoid obstacles whilst row following.
+    % The use of smaller, commercially available, robots proved valuable when developing navigation software due to their safety and portability.
+    % Future work will focus on developing the navigation system so that the vehicle can plan row-end turns and avoid obstacles whilst row following.
 
 
 \section*{Acknowledgements}
