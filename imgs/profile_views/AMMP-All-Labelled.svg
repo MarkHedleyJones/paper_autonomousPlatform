@@ -512,10 +512,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="4.0000001"
-     inkscape:cx="160.99819"
-     inkscape:cy="139.73295"
+     inkscape:cx="118.40851"
+     inkscape:cy="144.21608"
      inkscape:document-units="px"
-     inkscape:current-layer="g4600"
+     inkscape:current-layer="g4550"
      showgrid="false"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -547,7 +547,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1182,7 +1182,7 @@
              id="tspan4544-0"
              sodipodi:role="line"
              x="299.74667"
-             y="670.89636">Kerb weight: 850</tspan></text>
+             y="670.89636">Kerb weight: 860</tspan></text>
         <text
            sodipodi:linespacing="125%"
            id="text4147-8-0-5"
