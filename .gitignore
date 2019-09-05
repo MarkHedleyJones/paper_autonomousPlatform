@@ -9,5 +9,6 @@
 *.nlo
 *.nls
 *.out
+*.spl
 *.synctex.gz
 elsarticle-template-5-harv.pdf

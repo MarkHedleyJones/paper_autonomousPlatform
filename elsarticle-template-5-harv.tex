@@ -29,8 +29,6 @@
 
 \usepackage{amssymb}
 \usepackage{amsmath}
-\usepackage{color}
-\usepackage{soul}  % Remove on submission
 \usepackage{siunitx}
 \usepackage{array}
 \usepackage{lineno}
@@ -84,7 +82,6 @@
     General purpose platforms reported previously are designed to carry relatively light payloads orientated toward ground based crops.
     This paper presents a heavy-duty platform, capable of carrying modules of up to \SI{1000}{\kilo\gram}, beneath \SI{1.4}{\meter} high pergola-style kiwifruit canopies.
     We discuss the design of the vehicle's software, electrical system, and mechanical structure.
-    % Examples of related modules are robotic kiwifruit harvesters and kiwifruit pollination modules.
     Sensors suitable for autonomous navigation are evaluated in-orchard and tested with prototype algorithms.
     Row following trials show a repeatability of within $\pm$\SI{75}{\milli\meter} using only a multi-layer lidar.
     With a method of automatically turning between rows, the vehicle traversed over \SI{10}{\kilo\meter} of orchard rows unassisted.
@@ -96,7 +93,7 @@
 
 \end{frontmatter}
 
-\linenumbers
+% \linenumbers
 
 \begin{table*}
   \small
@@ -117,11 +114,8 @@
 \nomenclature{$F_{roll}$}{Force due to rolling resistance (\SI{}{\newton})}
 \nomenclature{$F_{total}$}{Total force (\SI{}{\newton})}
 \nomenclature{$G$}{Acceleration due to gravity (\SI{}{\meter\per\second\squared})}
-% \nomenclature{$m$}{Mass (\SI{}{\kilo\gram})}
-% \nomenclature{$P$}{Power (\SI{}{\watt})}
 \nomenclature{$r$}{Wheel radius (\SI{}{\meter})}
 \nomenclature{$u$}{Friction coefficient (unitless)}
-% \nomenclature{$v$}{Velocity (\SI{}{\meter\per\second})}
 \nomenclature{$W$}{Weight (\SI{}{\newton})}
 \nomenclature{CAN}{Controller Area Network}
 \nomenclature{GNSS}{Global Navigation Satellite System}
@@ -172,7 +166,7 @@
     \end{enumerate}
     \begin{figure}[htb]
         \centering
-        \includegraphics[width=\linewidth]{imgs/photos/suzy_general.jpg}
+        \includegraphics[width=\linewidth]{images/suzy_general.jpg}
         \caption{
             The presented platform driving through a pergola-style kiwifruit orchard during winter months.
         }
@@ -197,7 +191,7 @@
         The second unit, described by Pedersen et~al.\@, was four-wheel drive with two-wheel steering and used satellite navigation as its primary navigation input.
         It was battery powered only and lacked any sort of row guidance sensor or power generation unit.
         The authors found that row-crop based navigation using satellite navigation alone was not practical and proposed the integration of a row-guidance sensor in their next design.
-        They also proposed a revised drive system with four-wheel steering.% and a Controller Area Network (CAN) bus for low-level system communication as opposed to using serial links.
+        They also proposed a revised drive system with four-wheel steering.
 
         Two years later, the revised design proposed by \cite{Pedersen2002} was presented by \cite{Bak2004}.
         Its drive system was modularised with four identical drive/steering modules mounted to the chassis.
@@ -221,7 +215,6 @@
         It is battery powered and designed to autonomously return to a shipping container with a built-in solar powered charging station.
         The vehicle is made of two side modules bridged by a modular `implement unit' containing the robotic systems.
         The side modules contain the drive system, whereas the centrepiece is designed to be specific to the application.
-        % Like the previously mentioned robots, its payloads are oriented toward ground based crops and its carrying capacity (\SI{200}{\kilo\gram}) is insufficient.
         Like the previously mentioned robots, its payload capacity (\SI{200}{\kilo\gram}) is insufficient for our tasks and is orientated toward ground-based crops.
 
         Of particular relevance, is the earlier work of Scarfe et~al.\@ on an autonomous kiwifruit picking robot \citep{scarfe2009, Scarfe2012}.
@@ -240,14 +233,8 @@
         During a pollination season it can hold a tank of liquid pollen solution.
         The ability to pick up a standard pallet has broad applications in and around orchards too.
 
-        % \cite{Blackmore2007} envisaged significant reductions in production costs for agricultural robotics by repurposing parts already in use in the agricultural and automotive industry.
-        % High-power AC motor controllers are one such component which are increasingly being used by automotive manufacturers.
-        % Significant cost reductions are possible by using controllers designed for integration by automotive manufacturers as opposed to more general purpose controllers.
-        % While not a physical component, the CAN bus is another example of technology borrowed from the automotive industry.
-        % Most of the more recent platforms made use of this for low-level communication.
         Reported use of GNSS systems indicate that they are not suitable for navigating row based crops on their own.
         With regards to the use of RTK based GNSS guidance, Slaughter et~al.\@ points out the trade-off of requiring an ``unobstructed `view' of the sky from all parts of the field'' \citep{Slaughter2008}.
-        % \cite{Durrant-Whyte2005} describe one failure mode of GPS being multipath signal propagation caused by nearby foliage or the geometry of the land itself.
         \cite{Li2009} conclude that the use of either GPS and machine vision, or GPS and lidar will become a development trend.
         Based on the increased reception requirements, we discount the use of RTK based systems, but still consider the use of general purpose GNSS receivers as a navigation input.
 
@@ -255,7 +242,7 @@
 \label{sect:design}
         \begin{figure}[htb]
             \centering
-            \includegraphics[width=\linewidth]{imgs/profile_views/AMMP-All-Labelled.pdf}
+            \includegraphics[width=\linewidth]{images/AMMP-All-Labelled.pdf}
             \caption{Profile drawings of the robotic platform with kiwifruit bin.}
             \label{fig:AMMP}
         \end{figure}
@@ -271,7 +258,7 @@
 
         \begin{figure}[htb]
             \centering
-            \includegraphics[width=0.6\linewidth]{imgs/profile_views/AMMP-Chassis-1-20.pdf}
+            \includegraphics[width=0.6\linewidth]{images/AMMP-Chassis-1-20.pdf}
             \caption{Drawing of the vehicle's chassis showing the front pivoting mechanism and steering linkages. The laser-cut and folded structure has a total mass of \SI{190}{\kilo\gram}.}
             \label{fig:AMMPChassis}
         \end{figure}
@@ -304,7 +291,6 @@
         \end{equation}
         where $\tau$ is the torque required to break static friction, $W$ is the weight transmitted through each wheel, $u$ is the coefficient of friction, $B$ is the nominal width of the tyre, and $E$ is the offset between the tyre's contact surface and its axis of rotation.
         The axis of rotation on the vehicle lies directly through the centre of the tyre, meaning $E=0$.
-        % As the axis of steering rotation lies directly through the centre of the wheel, $E=0$.
         A value of 0.75 was used as the coefficient of friction as a best-guess representation of a tractor-grip tyre on dry concrete.
         The mass of the vehicle (\SI{800}{\kilo\gram}), plus payload (\SI{1000}{\kilo\gram}), and fuel (\SI{60}{\kilo\gram}) adds to \SI{1860}{\kilo\gram}.
         Allowing for uneven weight distribution and a safety margin, the per-wheel mass supported is \SI{500}{\kilo\gram}, or a weight of \SI{4900}{\newton}.
@@ -333,16 +319,6 @@
         It uses a pivoting front axle to do this and is depicted in Figure~\ref{fig:AMMPChassis}.
         As the operating speed for the vehicle is \SI{1.39}{\meter\per\second} (\SI{5.0}{\kilo\meter\per\hour}), the tyres alone were expected to provide sufficient shock absorption.
 
-        % \begin{figure}[htb]
-        %     \centering
-        %     \includegraphics[width=0.8\linewidth]{imgs/photos/RVIZ.png}
-        %     \caption{3D Model showing placement of the lidar and IMU at the front of the vehicle.}
-        %     \label{fig:rviz}
-        % \end{figure}
-
-        % Potentially useful picture above
-        %%% Mark: Editing checkpoint (from beginning)
-
         Performance requirements for the vehicle's traction system, whilst loaded, during up-hill acceleration, were calculated as follows:
         \begin{align}
         \label{eqn_f_roll}
@@ -353,8 +329,6 @@
         F_{total} &= F_{roll} + F_{grade} + F_{accel}
         \end{align}
         Where $F_{roll}$ is the force due to rolling-resistance; $F_{grade}$ is the grade (or incline) force; and $F_{accel}$ is the force required for mass acceleration.
-        % A rolling-resistance coefficient ($C_{rr}$) of 0.04 was chosen based on values found in an automotive handbook \citep{RobertBoschGmbH2002}.
-        % It represents the case of a pneumatic tyre on medium-hard soil.
         A rolling-resistance coefficient ($C_{rr}$) of 0.04 was chosen as it represents the case of a pneumatic tyre on medium-hard soil \citep{RobertBoschGmbH2002}.
         Other variables used are: a vehicle mass ($m$) of \SI{1900}{\kilo\gram}, slope angle ($\alpha$) of \SI{20}{\degree}, velocity change ($\Delta v$) of \SI{2.78}{\metre\per\second} (\SI{10}{\kilo\meter\per\hour}), and an acceleration time ($t$) of \SI{6}{\second}.
         Putting these values into Equations \ref{eqn_f_roll}--\ref{eqn_f_accel} gives a total force requirement of \SI{7.99}{\kilo\newton}.
@@ -388,7 +362,7 @@
 
         \begin{figure}[htb]
             \centering
-            \includegraphics[width=\linewidth]{imgs/system_diagram/full-system-diagram_v1.pdf}
+            \includegraphics[width=\linewidth]{images/full-system-diagram_v1.pdf}
             \caption{Power distribution system diagram. Dashed lines in grey indicate control lines to contactors.}
             \label{fig:power_system_diagram}
         \end{figure}
@@ -429,7 +403,7 @@
 
         \begin{figure}[htb]
             \centering
-            \includegraphics[width=\linewidth]{imgs/system_diagram/diagram_v5.pdf}
+            \includegraphics[width=\linewidth]{images/diagram_v5.pdf}
             \caption{
                 Communications level system diagram.
                 Devices on right-hand side of the serial link are mechanically integrated into the vehicle, whereas those on the left are modular and can be removed.
@@ -485,7 +459,7 @@
 
         \begin{figure}[htb]
             \centering
-            \includegraphics[width=\linewidth]{imgs/system_diagram/software_v2.pdf}
+            \includegraphics[width=\linewidth]{images/software_v2.pdf}
             \caption{Simplified diagram showing connectivity between ROS nodes used for manual and autonomous platform control.}
             \label{fig:system_diagram_software}
         \end{figure}
@@ -562,7 +536,7 @@
 
         \begin{figure}[htb]
             \centering
-            \includegraphics[width=\linewidth]{imgs/camera_comparison/camera_comparison.pdf}
+            \includegraphics[width=\linewidth]{images/camera_comparison.pdf}
             \caption{
                 Example images captured from trialled 2D cameras.
                 Basler Dart daA1600-60uc (left), Flir CM3-U3-13S2C-CS (centre), Logitech C920 web-camera (right).
@@ -586,7 +560,7 @@
 
         \begin{figure}[htb]
             \centering
-            \includegraphics[width=\linewidth]{imgs/canopy_data/canopy_data.pdf}
+            \includegraphics[width=\linewidth]{images/canopy_data.pdf}
             \caption{
                 Birds-eye view of data captured from a single plane lidar showing non-structural points reflected by the canopy (indicated by red markers) and structural points from tree trunks and posts (blue markers).
                 The arrow indicates the position and heading of the platform at the time of capture.
@@ -603,7 +577,7 @@
 
         \begin{figure}[htb]
             \centering
-            \includegraphics[width=\linewidth]{imgs/concave_slope/concave_slope_v4.pdf}
+            \includegraphics[width=\linewidth]{images/concave_slope_v4.pdf}
             \caption{
                 On concave slopes the lidar scan plane meets the ground instead of striking row-defining features.
                 The dashed line shows a horizontal plane coming from the the lidar.
@@ -636,7 +610,7 @@
 
         \begin{figure}[htb]
             \centering
-            \includegraphics{imgs/gps_path/gps_path.pdf}
+            \includegraphics{images/gps_path.pdf}
             \caption{
                 Aerial view of the path taken through the test orchard and the captured GPS data.
                 Dashes, representing the approximate path, are spaced at intervals of \SI{5.5}{\meter}.
@@ -673,8 +647,6 @@
     Both algorithms were developed on smaller, commercially available, platforms while the presented platform was being fabricated.
     A laptop (Dell E6410) with integrated graphics processor (Nvidia M5000M) was used on those test platforms to process sensor data and generate drive vectors.
     Both approaches produced paths that led to reproducible row following behaviour.
-    % A method of conducting row-end turns was trialled on the Pioneer 3-AT robot using the lidar based approach.
-    % However, the Pioneer's drive system lacked the power required to turn into rows on uphill slopes.
 
     To determine when the vehicle was at the end of a row, the multi-layer lidar was used to detect the absence of canopy in a volume above the front and to the sides of the vehicle.
     The camera based method was unable to detect this end-of-row condition which is necessary for initiating the turn.
@@ -690,7 +662,7 @@
 
     \begin{figure}[htb]
         \centering
-        \includegraphics[width=\linewidth]{imgs/turning_diagrams/flowchart.pdf}
+        \includegraphics[width=\linewidth]{images/flowchart.pdf}
         \caption{
             Flow-chart of the developed autonomous block traversal algorithm.
         }
@@ -713,7 +685,7 @@
 
     \begin{figure}[htb]
         \centering
-        \includegraphics[width=\linewidth]{imgs/photos/suzy_turning.jpg}
+        \includegraphics[width=\linewidth]{images/suzy_turning.jpg}
         \caption{
             A row end turn being performed autonomously by the platform.
             The multi-layer lidar (Velodyne VLP-16) is visible above the front-right steering motor.
@@ -750,15 +722,6 @@
     Structural integrity testing was carried out by mounting a \SI{1100}{\kilo\gram} mass to the vehicle's module area.
     No deflection of the vehicle's chassis structure was evident upon application of the test mass.
     Deflection of \SI{1.5}{\milli\meter} was measured between the front pivot and the wheel supports.
-    % \begin{figure}[htb]
-    %     \centering
-    %     \includegraphics[width=\linewidth]{imgs/photos/stopTesting.jpg}
-    %     % \includegraphics[width=\linewidth]{imgs/photos/suzy_turning_small.jpg}
-    %     \caption{
-    %         Stop testing down a \SI{10}{\degree} slope with a \SI{1100}{\kilo\gram} mass strapped to the module area.
-    %     }
-    %     \label{fig:suzy_testing}
-    % \end{figure}
     Static steering tests conducted on a dry concrete surface showed no reduction in ability to turn while loaded with the test mass.
     Dynamic tests involved three instances of stopping during a \SI{10}{\degree} descent at a speed of \SI{10}{\kilo\meter\per\hour}.
     During each test the vehicle came to a complete stop within \SI{2.0}{\meter}.
@@ -767,7 +730,7 @@
 
     \begin{figure}[htb]
         \centering
-        \includegraphics{imgs/drive_system/graph_acceleration.pdf}
+        \includegraphics{images/graph_acceleration.pdf}
         \caption{
             Acceleration of the platform on level ground (red) and up a \SI{3.5}{\degree} incline (blue).
         }
@@ -801,29 +764,6 @@
     This gives a turning radius of \SI{3.23}{\meter}, \SI{0.05}{\meter} wider than the estimate based on kinematic calculations.
     The authors put this discrepancy down to the accuracy of the angular calibration of the front wheels.
 
-    % \begin{table}[htbp]
-    %   \centering
-    %   \footnotesize
-    %   \begin{tabular}{ l | r r | r r | r r }
-
-    %       \textbf{Test} & \multicolumn{2}{c}{\textbf{Tarmac}} & \multicolumn{2}{c}{\textbf{Gravel}} & \multicolumn{2}{c}{\textbf{Grass}}\\ \hline
-    %                     & \SI{1.39}{\meter\per\second} & \SI{2.78}{\meter\per\second}     & \SI{1.39}{\meter\per\second} & \SI{2.78}{\meter\per\second}     & \SI{1.39}{\meter\per\second} & \SI{2.78}{\meter\per\second}   \\ \hline
-    %       1 & 2.90 & 2.78 & 2.84 & 2.78 & 2.79 & 2.74\\
-    %       2 & 2.90 & 2.78 & 2.84 & 2.78 & 2.79 & 2.74\\
-    %       3 & 2.90 & 2.78 & 2.84 & 2.78 & 2.79 & 2.74\\
-    %       4 & 2.90 & 2.78 & 2.84 & 2.78 & 2.79 & 2.74\\
-    %       5 & 2.90 & 2.78 & 2.84 & 2.78 & 2.79 & 2.74\\
-    %   \end{tabular}
-    %   \caption{Results of turn-radius testing on three surface types and at two speeds.}
-    %   \label{table:row_follow_path_lenghts}
-    % \end{table}
-
-    % Results from these tests are shown in \ref{table:row_follow_path_lenghts}.
-    % They highlight issues with the turning capability of the vehicle.
-    % Notice that the measured radius at the higher speed is less than that at lower speeds.
-    % Also, variation is much lower at the higher speed (\SI{0.04}{\meter}) versus (\SI{0.11}{\meter}) at the slow speed.
-
-
   \subsection{Bin Lifting}
 
     A pallet-mounted mass of \SI{370}{\kilo\gram} was used to test the bin lifter.
@@ -850,11 +790,10 @@
     A total of 19 traversals were used to tune the turns in this orchard.
     After tuning the row end-turns in Block~B, it was navigated 3 times consecutively.
     Figure~\ref{fig:block_traversal_newnham} shows the number of interventions per traversal whilst being tuned in Block~B, with 10 traversals in total.
-    % This equates to a total of \SI{10}{\kilo\meter} of successfully navigated orchard rows.
 
     \begin{figure}[htb]
         \centering
-        \includegraphics{imgs/tuning_graphs/bateman.pdf}
+        \includegraphics{images/bateman.pdf}
         \caption{
             Number of interventions during tuning of row-end turns throughout block A.
         }
@@ -863,7 +802,7 @@
 
     \begin{figure}[htb]
         \centering
-        \includegraphics{imgs/tuning_graphs/newnham.pdf}
+        \includegraphics{images/newnham.pdf}
         \caption{
             Number of interventions during tuning of row-end turns throughout block B.
         }
@@ -896,7 +835,7 @@
 
     \begin{figure}[htb]
         \centering
-        \includegraphics[width=\linewidth]{imgs/slam/paths2.pdf}
+        \includegraphics[width=\linewidth]{images/paths2.pdf}
         \caption{
             Trajectories recorded during five row-following repeatability trials.
             The trajectories are overlaid onto the generated SLAM map, which depicts the trial orchard block.
@@ -923,7 +862,7 @@
 
     \begin{figure}[htb]
         \centering
-        \includegraphics[width=\linewidth]{imgs/slam/segmented_analysis_with_centres.pdf}
+        \includegraphics[width=\linewidth]{images/segmented_analysis_with_centres.pdf}
         \caption{
             Cropped SLAM map with five row-following trials overlaid.
             Blue lines link posts and trunks along each boundary line.
@@ -935,7 +874,7 @@
 
     \begin{figure}[htb]
         \centering
-        \includegraphics{imgs/slam/row_tracking_averages.pdf}
+        \includegraphics{images/row_tracking_averages.pdf}
         \caption{
             Vehicle displacement from calculated row centre-points during five row-following trials.
             Trace colours correspond to the paths presented in Figure~\ref{fig:row_following_paths}.
@@ -946,12 +885,11 @@
 
     \begin{figure}[htb]
         \centering
-        \includegraphics{imgs/slam/row_tracking_repeatability.pdf}
+        \includegraphics{images/row_tracking_repeatability.pdf}
         \caption{
         Repeatability analysis of the five row-following trials.
         Each column compares displacements of a single trajectory, from the row's centre, to the average of the five trajectories.
         Whiskers represent maximum deviations in both the positive and negative directions.
-        % Each trial has a sample size of 40.
         }
         \label{fig:row_following_repeatability}
     \end{figure}
@@ -959,7 +897,7 @@
 
     \begin{figure}[htb]
         \centering
-        \includegraphics{imgs/slam/paths_end_points.pdf}
+        \includegraphics{images/paths_end_points.pdf}
         \caption{
             Graph showing row-following end positions relative to tracked row features.
             Grey dotted lines connect row feature pairs, with squares indicating their mid-points.
@@ -988,11 +926,9 @@
     The distance between each trajectory and the average was calculated along the 39 post/trunk-pair lines shown in Figure~\ref{fig:row_following_paths_segmented}.
     It shows that the worst case repeatability was less than $\pm$\SI{75}{\milli\meter}.
 
-    % TODO{Mark} Add more details of how the row-following algorithm determines the end of row, referring to what I add earlier.
     Finally, Figure~\ref{fig:row_following_end_points} shows the final resting position of the vehicle after each trial.
     The path-following algorithm determines the end-of-row position based on its proximity to the heading target -- placed between the furtherest detected post/trunk pair in front of the vehicle.
     The end posts of each row are spaced slightly further than is usual inside the row.
-    % That extra spacing places the final post-pair near the software-defined cut-off region used to identify post/trunk pairs in front of the vehicle.
     That extra spacing places the final post-pair at the boundary of the software-defined region used to detect post/trunk pairs.
     Stopping slightly earlier results in the last post/trunk pair not being detected, as is the case in path groups A and B.
     Additionally, there is ambiguity in the position of the second-to-last post/trunk pair because vines have been planted in close proximity to the posts.
@@ -1000,8 +936,6 @@
 
 \section{Discussion}
 \label{sect:discussion}
-
-    % TODO{Mark}: Discuss that there is high localisation uncertainty at the start because we do not use a pre-computed map and because there isn't much sensor information at the commencement of each trial.
 
     The reported platform meets the requirements outlined in the introduction and has been trialled during three pollination and harvesting seasons.
     However, during those operations the vehicle was mostly operated under manual control because of the need to drive close to row boundaries.
@@ -1014,7 +948,6 @@
     Observationally, detecting the row's end based on the vehicle's proximity to the last post-pair proved more reliable than detecting the presence/absence of canopy.
 
     For pure row-following, without obstacle avoidance, a multi-layer lidar algorithm produced paths that were repeatable to within $\pm$\SI{75}{\milli\meter}.
-    % Wheel slippage meant encoder information was less suitable for long-term odometry than the odometry information provided by the SLAM package, which was based solely on lidar information.
     Our analysis showed a worst-case deviation of \SI{326}{\milli\meter} from the row's mid-point during row-following, however this figure appears to mostly be influenced by the non-linearity of the row itself.
     As Figure~\ref{fig:row_following_performance_analysis} shows, the worst case error for each trial occurred between post/trunk pair twenty-two.
     Matching this with the corresponding post/trunk pair in Figure~\ref{fig:row_following_paths_segmented} shows the placement of the right-hand post/trunk is likely to be a contributing factor.
@@ -1024,11 +957,6 @@
     This odometry source was used by the pure-row-following algorithm presented in Section~\ref{sub:rowfollowing}.
     It was generated by the SLAM package (Cartographer) by matching subsequent lidar frames.
     As it was based on visual information it was much less prone to drift than the wheel encoders or IMU, although this was not quantified.
-
-    % The structure of the pergola-style kiwifruit orchard made generating odometry information directly from lidar scans reliable enough to replace wheel encoders and IMU based odometry.
-    % The odometry was generated by the SLAM package (Cartographer) by matching subsequent lidar frames.
-    % As it was based on visual information it was much less prone to drift than the wheel encoders or IMU, although we did not quantify the difference.
-    % This odometry source was used by the pure row-following algorithm presented in Section~\ref{sub:rowfollowing}.
 
     The platform's \SI{96}{\volt} battery pack and electrical system introduced a electrical hazard that caused delays during development, assembly, and testing.
     The authors suggest a voltage of \SI{48}{\volt} for similar developmental vehicles as it bears a reduced risk of injury from electrical shock.
@@ -1047,10 +975,6 @@
     An added benefit to the modularisation of the robotic harvesting and pollination systems was the ability to operate them independently from the vehicle.
     In the event that the vehicle required repair or maintenance work during a harvesting or pollination season, the modules could be mounted on a trailer and towed behind a quad-bike until the vehicle returned to service.
 
-    % Simulation of the robot hardware proved useful for finding software issues before implementation on hardware.
-    % Much of the time developing the simulation went into the creation of a geometric model of the platform.
-    % The model also proved useful for visualising the state of the vehicle and sensor outputs, using Rviz, in real-time and when replaying recorded sensor data.
-
 \section{Conclusion}
     We present a platform designed specifically for autonomously transporting task-specific modules and kiwifruit bins through pergola-style kiwifruit orchards.
     The vehicle is capable of carrying over twice the mass of similar platforms reported previously.
@@ -1066,11 +990,6 @@
     Using a map of manually adjusted row-end turns, the platform has navigated over \SI{10}{\kilo\meter} of orchard rows using only wheel-encoders and a single multi-layer lidar.
     A significant amount of work was required to tune the row-end-turns, which has implications for commercial deployment.
     Future work will focus on enabling the vehicle to plan its own row-end turns based on sensory data.
-
-    % The authors recommend a system voltage of \SI{48}{\volt} for development platforms due to safety and component availability, which this platform did not use.
-    % The use of smaller, commercially available, robots proved valuable when developing navigation software due to their safety and portability.
-    % Future work will focus on developing the navigation system so that the vehicle can plan row-end turns and avoid obstacles whilst row following.
-
 
 \section*{Acknowledgements}
 This research was supported by the New Zealand Ministry for Business, Innovation and Employment (MBIE) on contract UOAX1414.
